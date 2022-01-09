@@ -5,7 +5,7 @@
 <br>
 <h3>:memo:소개</h3>
 - 동덕여대 교내동아리 DALC - team05 <br>
-- ai 웹서비스 프로젝트 <br>
+- ai 웹서비스 프로젝트
 
 <br>
 <h3>:calendar:기간</h3>
