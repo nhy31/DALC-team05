@@ -15,7 +15,7 @@
 - 개발 2022/ <br>
 
 <br>
-<h3>:woman:담당업무</h3>
+<h3>:two_women_holding_hands:담당업무</h3>
 - 기획 : 이가은 (sub : 김효선, 손예서) <br>
 - 디자인 : 손예서 <br>
 - 시각화 : 김효선 <br>
