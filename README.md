@@ -4,7 +4,7 @@
 
 <br>
 <h3>:memo:팀소개</h3>
-- 동덕여대 교내동아리 DALC - team05 <br>
+- 동덕여대 교내동아리 DALC team05 <br>
 - ai 웹서비스 프로젝트 <br>
 - 팀장: 나하윤 <br>
 - 팀원: 김효선, 박소현, 손예서, 안태연, 이가은, 유나연 <br>
@@ -20,8 +20,8 @@
 - 디자인 : 손예서 <br>
 - 시각화 : 김효선 <br>
 - AI : 박소현, 안태연, 유나연 <br>
-- Back-end : 나하윤 (sub : 안태연, 유나연) <br>
-- Front-end : 유나연 (sub : 나하윤) <br>
+- BackEnd : 나하윤 (sub : 안태연, 유나연) <br>
+- FrontEnd : 유나연 (sub : 나하윤) <br>
 
 
 // commit message는 [이름] ~~ update 형태로 push <br>
