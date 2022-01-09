@@ -6,6 +6,7 @@ ai 웹서비스 프로젝트 <br>
 개발기간 2022/01/09 ~ <br>
 
 Back-end : 나하윤 <br>
-..
+......
 
 // commit message는 [이름] ~~ update 형태로 push
+// readMe 자유롭게 추가 및 수정하기
