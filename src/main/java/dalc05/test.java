@@ -1,5 +1,5 @@
 // ...........
-
+// 진짜 짜증난다 왜 오류나지
 package dalc05;
 
 public class test {
