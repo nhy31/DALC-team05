@@ -28,7 +28,7 @@
 			<li><a href="<c:url value="/main/login" />">로그인</a></li>
 			<li><a href="<c:url value="/main/join" />">회원가입</a></li>
 		</c:if>
-		<c:if test="${ses == 1 }"> 
+		<c:if test="${ses == 1}"> 
 	    	<li>${member_nickName}님 </li>
          	<li><a href="<c:url value='/main/logout.do'/>">로그아웃</a></li>
 		</c:if>

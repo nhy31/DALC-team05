@@ -3,6 +3,7 @@
 
 package dongduk.dalc05.aah.controller;
 
+import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.service.MemberService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import java.util.Date;
 import java.util.Map;
 
 @Controller
@@ -56,34 +59,36 @@ public class MemberController {
         return mav;
 	}
 		
-//	// 회원가입
-//	@RequestMapping(value="/member/join.do", method = RequestMethod.POST)
-//	public ModelAndView joinDo(
-//			HttpServletRequest request,
-//			@RequestParam ("member_id") String member_id,
-//    		@RequestParam ("member_pw") String member_pw) {
-//		
-//		ModelAndView mav = new ModelAndView();
-//		
-//		Map<String, String> check = memberService.isValidUser(member_id, member_pw);
-//		
-//		if (check != null) {
-//			// 로그인 세션 처리 (고유번호, 아이디, 닉네임)
-//			HttpSession session = request.getSession();
-//			session.setAttribute("username", check.get("member_code"));
-//			session.setAttribute("username", check.get("member_id"));
-//			session.setAttribute("memberId", check.get("member_nickName"));
-//
-//			mav.setViewName("main/main");
-//
-//    		return mav;
-//    	} 
-//    	
-//    	mav.setViewName("member/login"); 
-//    	mav.addObject("isLoginFail", "true");
-//
-//        return mav;
-//	}
+	// 회원가입
+	@RequestMapping(value="/member/join.do")
+	public ModelAndView joinDo(
+			HttpServletRequest request,
+			@RequestParam ("member_id") String member_id,
+    		@RequestParam ("member_pw") String member_pw,
+    		@RequestParam ("member_name") String member_name,
+    		@RequestParam ("member_nickName") String member_nickName,
+    		@RequestParam ("member_phone") String member_phone,
+    		@RequestParam ("member_email") String member_email,
+    		@RequestParam ("member_birth") Date member_birth,
+    		@RequestParam ("sick_code") int sick_code,
+    		@RequestParam ("bad_ingredient_code") int bad_ingredient_code,
+    		@RequestParam ("member_image") String member_image,
+    		@RequestParam ("member_sex") int member_sex
+			) {
+		
+		System.out.println("/member/join.do");
+		ModelAndView mav = new ModelAndView();
+		
+		Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone
+				, member_email, member_birth, sick_code, bad_ingredient_code, member_image, member_sex);
+		
+		memberService.insertMember(member);
+		
+		System.out.println(member_id + member_pw + member_name + member_nickName);
+    	mav.setViewName("redirect:/main"); 
+ 
+        return mav;
+	}
 //	
 //	// 탈퇴
 //	@RequestMapping(value="/member/delete.do", method = RequestMethod.POST)
