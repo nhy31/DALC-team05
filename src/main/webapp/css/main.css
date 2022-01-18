@@ -1,0 +1,42 @@
+
+body{
+   margin: 0;
+   font-family: 'Arial';
+   font-size:13px;
+}
+
+a{
+   text-decoration: none;
+   color: black;
+}
+
+.dalcbar{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   backgroud-color: white;
+   padding: 5px 10px;
+   font-size: 13px;
+   color: black;
+}
+
+.dalc_img table{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.dalc_menu{
+   display: flex;
+   list-style: none;
+   padding-left: 0;
+}
+
+.dalc_menu li{
+   padding: 8px 10px;
+}
+
+.dalc_menu li:hover{
+   background-color: #D5D5D5;
+   border-radius: 4px;
+}

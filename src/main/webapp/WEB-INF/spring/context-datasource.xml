@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+     xsi:schemaLocation="http://www.springframework.org/schema/context 
+	     http://www.springframework.org/schema/context/spring-context.xsd
+	     http://www.springframework.org/schema/beans 
+	     http://www.springframework.org/schema/beans/spring-beans.xsd
+	     http://www.springframework.org/schema/jdbc 
+	     http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+	     http://www.springframework.org/schema/tx 
+	     http://www.springframework.org/schema/tx/spring-tx.xsd
+	     http://mybatis.org/schema/mybatis-spring 
+	     http://mybatis.org/schema/mybatis-spring.xsd">
+
+	<!-- 데이터베이스 연결  -->
+<!-- 	<bean id="dataSource" -->
+<!-- 		class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"> -->
+<!-- 		<property name="driverClassName" -->
+<!-- 			value="oracle.jdbc.driver.OracleDriver" /> -->
+<!-- 		<property name="url" -->
+<!-- 			value="jdbc:oracle:thin:@202.20.119.117:1521:orcl" /> -->
+<!-- 		<property name="username" value="sd0208" /> -->
+<!-- 		<property name="password" value="bookchigo" /> -->
+<!-- 	</bean> -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/dalc05?useSSL=false&amp;serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8" />
+		<property name="username" value="root" />
+		<property name="password" value="1031" />
+	</bean>
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="typeAliasesPackage" value="dongduk.dalc05.aah.domain" />
+        <property name="configLocation" value="classpath:/mybatis-config.xml" />
+        <property name="mapperLocations" value="classpath*:dongduk/dalc05/aah/dao/mybatis/mapper/*.xml" />
+    </bean>
+
+	<!-- Transaction manager for a single JDBC DataSource -->
+	<bean id="transactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- SqlSession -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache"> 
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" /> 
+	</bean>
+
+	<!-- 아노테이션 기반의 트랜잭션을 사용합니다. -->
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+		
+	<context:component-scan base-package="dongduk.dalc05.aah.service" /> 
+	<context:component-scan base-package="dongduk.dalc05.aah.dao" />
+	<mybatis:scan base-package="dongduk.dalc05.aah.dao.mybatis.mapper" />
+
+</beans>
