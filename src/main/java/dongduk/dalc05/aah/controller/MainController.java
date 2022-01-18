@@ -1,5 +1,3 @@
-//1111111
-//메인페이지에서 이동하는 모든 것들에 대한 컨트롤러
 package dongduk.dalc05.aah.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+//메인페이지에서 클릭해서 이동하는 모든 것들에 대한 컨트롤러
 @Controller
 public class MainController {
 
 	@RequestMapping(value="/main")
 	public ModelAndView main(HttpServletRequest request) {
-		
 		HttpSession session = request.getSession();
 		String member_code = (String) session.getAttribute("member_code");
 		String member_id = (String) session.getAttribute("member_id");
@@ -38,16 +36,14 @@ public class MainController {
 		return mav;
 	}
 
-	
-	// 로그인상태 : 메인페이지 -> 로그아웃
+	// 메인페이지(로그인상태) -> 로그아웃
 	@RequestMapping(value = "/main/logout.do", method = RequestMethod.GET)
 	public String logoutDo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.removeAttribute("member_id");
 		session.removeAttribute("member_code");
 		session.removeAttribute("member_nickName");
-
-		return "main/main";
+		return "redirect:/main";
 	}
 	
 	// 메인페이지 -> 로그인페이지 이동
@@ -85,4 +81,5 @@ public class MainController {
     public String community() {
 		return "community/list";
     }
+    
 }

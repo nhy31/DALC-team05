@@ -7,6 +7,7 @@ import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.service.MemberService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -69,7 +70,7 @@ public class MemberController {
     		@RequestParam ("member_nickName") String member_nickName,
     		@RequestParam ("member_phone") String member_phone,
     		@RequestParam ("member_email") String member_email,
-    		@RequestParam ("member_birth") Date member_birth,
+    		@RequestParam ("member_birth") @DateTimeFormat (pattern ="yyyy-MM-dd") Date member_birth,
     		@RequestParam ("sick_code") int sick_code,
     		@RequestParam ("bad_ingredient_code") int bad_ingredient_code,
     		@RequestParam ("member_image") String member_image,

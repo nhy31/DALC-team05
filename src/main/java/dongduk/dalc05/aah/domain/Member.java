@@ -1,8 +1,11 @@
 package dongduk.dalc05.aah.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Member {
+import org.springframework.format.annotation.DateTimeFormat;
+
+public class Member implements Serializable {
 	private int member_code;
 	private String member_id;
 	private String member_pw;
@@ -10,7 +13,10 @@ public class Member {
 	private String member_nickName;
 	private String member_phone;
 	private String member_email;
+	
+	@DateTimeFormat (pattern ="yyyy-MM-dd")
 	private Date member_birth;
+	
 	private int sick_code;
 	private int bad_ingredient_code;
 	private String member_image;

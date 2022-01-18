@@ -3,19 +3,17 @@
 
 <mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.MemberMapper">
 
-<!-- 	<insert id="insertMember" parameterType="dongduk.dalc05.aah.domain.Member"> -->
-<!-- 		<selectKey keyProperty="member_code" resultType="int" order="BEFORE"> -->
-<!-- 			SELECT MEMBER_SEQ.NEXTVAL -->
-<!-- 			FROM DUAL -->
-<!-- 		</selectKey> -->
+	<insert id="insertMember" parameterType="dongduk.dalc05.aah.domain.Member">
+	
 		
-<!-- 		.nextval -->
-		
-<!-- 		Insert Into Member -->
-<!-- 		(MEMBERID, ACCOUNT, ID, PASSWD, NAME, PHONE, ADDRESS, TRADECOUNT, ISDELETED) -->
-<!-- 		VALUES -->
-<!-- 		(#{memberId}, #{account}, #{id}, #{password}, #{name}, #{phone}, #{address}, 0, 'N') -->
-<!-- 	</insert> -->
+		Insert Into Member
+		(MEMBER_CODE, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE, MEMBER_BIRTH,
+		MEMBER_EMAIL, MEMBER_SEX, MEMBER_IMAGE)
+		VALUES
+		(0, #{member_id}, #{member_pw}, #{member_name}, #{member_nickName}, #{member_phone}, #{member_birth}, 
+		#{member_email}, #{member_sex}, #{member_image})
+	</insert>
+
 	
 	<update id="deleteMember" parameterType="Integer">
 		UPDATE Member

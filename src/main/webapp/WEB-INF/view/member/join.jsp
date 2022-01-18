@@ -61,19 +61,13 @@
 			<hr>
 			<div>전체동의
 				<input type="text">서비스 이용약관 동의(필수)
-				<input type="text">
+				<input type="check">
 				<input type="text">
 				<input type="text">
 			</div>
 		</div>	
 		<input type="submit" value="회원가입">
 	</form>
-	
-	
 			
-
-
-
-					
 </body>
 </html>
