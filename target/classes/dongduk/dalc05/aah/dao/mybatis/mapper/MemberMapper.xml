@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.MemberMapper">
+
+	<insert id="insertMember" parameterType="dongduk.dalc05.aah.domain.Member">
+		<selectKey keyProperty="member_code" resultType="int" order="BEFORE">
+			SELECT MEMBER_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+		
+		Insert Into Member
+		(MEMBERID, ACCOUNT, ID, PASSWD, NAME, PHONE, ADDRESS, TRADECOUNT, ISDELETED)
+		VALUES
+		(#{memberId}, #{account}, #{id}, #{password}, #{name}, #{phone}, #{address}, 0, 'N')
+	</insert>
+	
+	<update id="deleteMember" parameterType="Integer">
+		UPDATE Member
+			SET ISDELETED = 'Y'
+			WHERE
+				MEMBERID = #{memberId}
+	</update>
+	
+
+<!-- 	<select id="getPassword" parameterType="String" resultType="String"> -->
+<!-- 		Select PASSWD -->
+<!-- 			FROM Member -->
+<!-- 			WHERE -->
+<!-- 				id = #{username} AND ISDELETED != 'Y' -->
+<!--   	</select> -->
+
+<!-- 	<select id="getMemerCode" parameterType="String" resultType="String"> -->
+<!-- 		Select ACCOUNT -->
+<!-- 			FROM Member -->
+<!-- 			WHERE -->
+<!-- 				id = #{username} -->
+<!-- 	  </select> -->
+
+<!-- 	<select id="getMemberNickName" parameterType="String" resultType="String"> -->
+<!-- 		Select MEMBERID -->
+<!-- 			FROM Member -->
+<!-- 			WHERE -->
+<!-- 				id = #{username} -->
+<!-- 	</select> -->
+
+
+
+
+</mapper>
