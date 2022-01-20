@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!-- 아아현 메인페이지 -->
 <!DOCTYPE html>
@@ -19,17 +22,8 @@
 
 <title>아프다 아파, 현대사회</title>
 </head>
-	<script type="text/javascript">
-		const msg = "${msg}";
-		if(msg="loginSucess") {
-			alert(${member_nickName} + "님 환영합니다");
-		}
-		if(msg="loginFailed") {
-			alert("로그인 실패");
-		}
-</script>
-<body>
 
+<body>
    <nav class="dalcbar">
       <div class="dalc_name">
          <h2><a href="<c:url value='/main'/>">로고 이미지</a></h2>

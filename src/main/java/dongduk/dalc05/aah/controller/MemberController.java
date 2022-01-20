@@ -9,6 +9,7 @@ import dongduk.dalc05.aah.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,18 +33,17 @@ public class MemberController {
 	
 	// 로그인 시도
 	@RequestMapping(value="/member/login.do", method = RequestMethod.POST)
-	@ResponseBody
 	public String loginDo(
 			HttpServletRequest request,
-			HttpServletResponse response,
-			RedirectAttributes ra,
+			Model model,
 			@RequestParam ("member_id") String member_id,
     		@RequestParam ("member_pw") String member_pw) throws IOException {
 		
 		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/main");
 		
 		boolean isValidUser = memberService.isValidUser(member_id, member_pw);
-		
+	
 		if (isValidUser == true) {
 			
 			// 로그인 세션 처리 (고유번호, 아이디, 닉네임)
@@ -55,15 +55,19 @@ public class MemberController {
 			
 			session.setAttribute("member_code", memberService.getMemberCode(member_id));
 			
-			ra.addFlashAttribute("msg", "loginSucess");
-			ra.addFlashAttribute("member_nickName", member_nickName);
-	        return "redirect:/main"; 
+		
+			 model.addAttribute("msg", "방문을 환영합니다");
+	         model.addAttribute("url","/");
+	    
+	         return "alert/alert";
 	        
-    	} 
-    	
-		ra.addFlashAttribute("msg", "loginFailed");
-        return "redirect:/main";
-        
+    	}
+	
+		 model.addAttribute("msg","로그인 실패");
+         model.addAttribute("url","/");
+   
+		 return "alert/alert";
+
 	}
 		
 	// 회원가입
