@@ -9,5 +9,21 @@
 		ORDER BY post_hits DESC
 		limit 10;
 	</select>
+	
+	<select id="getCommuName" resultType="String">
+		Select commu_name
+		FROM COMMUNITY
+		WHERE commu_code = ${commu_code}
+	</select>
+	
+	<select id="getMemberNickName" resultType="String">
+		Select member_nickName
+		FROM member
+		WHERE member_Code = ${member_code}
+	</select>
+	
+	
+	
+	
 
 </mapper>
