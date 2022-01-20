@@ -60,7 +60,7 @@ public class MemberController {
     	}
 	
 		 model.addAttribute("msg", "아이디와 비밀번호가 틀렸습니다.");
-         model.addAttribute("url","/");
+         model.addAttribute("url","/main/login");
    
 		 return "alert/alert";
 
