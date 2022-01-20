@@ -20,7 +20,11 @@ public interface MemberService{
 	public int getMemberCode(String member_id);
 	
 	// 아이디로 member_nickName 불러오기
+<<<<<<< HEAD
 	String getMemberNickName(String member_id);
+=======
+	public String getMemberNickName(String member_id);
+>>>>>>> branch 'hy' of https://github.com/nhy31/DALC-team05.git
 	
 	// 유효한 로그인인지 판단
 	public boolean isValidUser(String member_id, String member_pw);

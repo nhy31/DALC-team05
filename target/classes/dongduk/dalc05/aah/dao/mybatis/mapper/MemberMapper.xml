@@ -4,8 +4,6 @@
 <mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.MemberMapper">
 
 	<insert id="insertMember" parameterType="dongduk.dalc05.aah.domain.Member">
-	
-		
 		Insert Into Member
 		(MEMBER_CODE, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE, MEMBER_BIRTH,
 		MEMBER_EMAIL, MEMBER_SEX, MEMBER_IMAGE)
@@ -13,25 +11,53 @@
 		(0, #{member_id}, #{member_pw}, #{member_name}, #{member_nickName}, #{member_phone}, #{member_birth}, 
 		#{member_email}, #{member_sex}, #{member_image})
 	</insert>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> branch 'hy' of https://github.com/nhy31/DALC-team05.git
 	
+<<<<<<< HEAD
+=======
+	<update id="deleteMember" parameterType="Integer">
+		DELETE From Member
+		WHERE MEMBER_CODE = #{member_code}
+	</update>
+>>>>>>> branch 'hy' of https://github.com/nhy31/DALC-team05.git
 	
+<<<<<<< HEAD
 	<select id="getPassword" parameterType="String" resultType="String">
 		Select member_pw
 		FROM Member
 		WHERE member_id = #{member_id}
+=======
+	<select id="getMemberInfo" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Member">
+		Select *
+		FROM Member
+		MEMBER_CODE = #{member_code}
+	</select>
+	
+	<select id="getPassword" parameterType="String" resultType="String">
+		Select member_pw
+		FROM Member
+		WHERE MEMBER_ID = #{member_id}
+>>>>>>> branch 'hy' of https://github.com/nhy31/DALC-team05.git
   	</select>
 
 	<select id="getMemberCode" parameterType="String" resultType="Integer">
 		Select member_code
 		FROM Member
+<<<<<<< HEAD
 		WHERE member_id = #{member_id}
+=======
+		WHERE MEMBER_ID = #{member_id}
+>>>>>>> branch 'hy' of https://github.com/nhy31/DALC-team05.git
 	  </select>
 
 	<select id="getMemberNickName" parameterType="String" resultType="String">
 		Select member_nickName
 		FROM Member
+<<<<<<< HEAD
 		WHERE member_id = #{member_id}
 	</select>
 
@@ -40,5 +66,9 @@
 
 
 
+=======
+		WHERE MEMBER_ID = #{member_id}
+	</select>
+>>>>>>> branch 'hy' of https://github.com/nhy31/DALC-team05.git
 
 </mapper>

@@ -19,6 +19,7 @@ import java.text.*;
  
 @Controller
 public class MediaController {
+<<<<<<< HEAD
 
     private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
     
@@ -68,4 +69,71 @@ public class MediaController {
         return "news/news";
     }
     
+=======
+    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+ 
+    public static HashMap<String, String> map;
+ 
+    @RequestMapping(value = "/main/media")
+    public String startCrawl(Model model) throws IOException {
+ 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy.MM.dd", Locale.KOREA);
+        
+        // System.out.println(formatter);
+        
+        Date currentTime = new Date();
+        
+        Calendar cal = Calendar.getInstance();
+        
+        // System.out.println(formatter.format(currentTime));
+        
+        String dTime = formatter.format(currentTime);
+        String e_date = dTime;
+ 
+        currentTime.setDate(currentTime.getDate() - 7);
+        String s_date = formatter.format(currentTime);
+ 
+        String query = "허리 디스크";
+        String s_from = s_date.replace(".", "");
+        String e_to = e_date.replace(".", "");
+        int page = 1;
+        ArrayList<String> al1 = new ArrayList<>();
+        ArrayList<String> al2 = new ArrayList<>();
+ 
+
+        while (page < 20) {
+            String address = "https://search.naver.com/search.naver?where=news&query=" + query + "&sort=1&ds=" + s_date
+                    + "&de=" + e_date + "&nso=so%3Ar%2Cp%3Afrom" + s_from + "to" + e_to + "%2Ca%3A&start="
+                    + Integer.toString(page);
+            
+            Document rawData = Jsoup.connect(address).timeout(5000).get();
+            System.out.println(address);
+            
+            Elements blogOption = rawData.select("dl dt");
+            String realURL = "";
+            String realTITLE = "";
+ 
+            for (Element option : blogOption) {
+                realURL = option.select("a").attr("href");
+                realTITLE = option.select("a").attr("title");
+                System.out.println(realTITLE);
+                
+                al1.add(realURL);
+                al2.add(realTITLE);
+            }
+            page += 10;
+        }
+        model.addAttribute("urls", al1);
+        model.addAttribute("titles", al2);
+        
+        for(int i=0; i<al1.size(); i++)
+        	System.out.println(al1.get(i));
+        
+        for(int i=0; i<al2.size(); i++)
+        	System.out.println(al2.get(i));
+
+ 
+        return "media/list";
+    }
+>>>>>>> branch 'hy' of https://github.com/nhy31/DALC-team05.git
 }

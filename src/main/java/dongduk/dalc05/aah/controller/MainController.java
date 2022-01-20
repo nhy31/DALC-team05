@@ -1,14 +1,17 @@
+//
 package dongduk.dalc05.aah.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-//메인페이지에서 클릭해서 이동하는 모든 것들에 대한 컨트롤러
+
 @Controller
 public class MainController {
 
@@ -20,8 +23,7 @@ public class MainController {
 		String login = (String) session.getAttribute("login");
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main/main");
-		
+	
 		if (member_id == null) {
 			mav.addObject("ses", 0);
 		} 
@@ -39,17 +41,37 @@ public class MainController {
 			mav.addObject("member_nickName", member_nickName);
 		}
 		
+<<<<<<< HEAD
+=======
+		mav.setViewName("main/main");
+>>>>>>> branch 'hy' of https://github.com/nhy31/DALC-team05.git
 		return mav;
 	}
+	
+	// 메인페이지 -> 검색기능
+	@RequestMapping(value = "/main/search", method = RequestMethod.GET)
+	public String search(HttpServletRequest request,
+			@RequestParam ("search") String search) {
+		HttpSession session = request.getSession();
+
+		
+		return "search/list";
+	}	
 
 	// 메인페이지(로그인상태) -> 로그아웃
 	@RequestMapping(value = "/main/logout.do", method = RequestMethod.GET)
-	public String logoutDo(HttpServletRequest request) {
+	public String logoutDo(HttpServletRequest request,
+			Model model) {
+		
 		HttpSession session = request.getSession();
 		session.removeAttribute("member_id");
 		session.removeAttribute("member_code");
 		session.removeAttribute("member_nickName");
-		return "redirect:/main";
+		
+		model.addAttribute("msg", "로그아웃하였습니다");
+        model.addAttribute("url","/");
+    
+         return "alert/alert";
 	}
 	
 	// 메인페이지 -> 로그인페이지 이동
@@ -76,16 +98,7 @@ public class MainController {
 		return "exercise/list";
     }
     
-    // 메인페이지 -> 미디어페이지 이동
-    @RequestMapping(value = "/main/media")
-    public String media() {
-		return "media/list";
-    }
     
-    // 메인페이지 -> 커뮤니티페이지 이동
-    @RequestMapping(value = "/main/community")
-    public String community() {
-		return "community/list";
-    }
+  
     
 }

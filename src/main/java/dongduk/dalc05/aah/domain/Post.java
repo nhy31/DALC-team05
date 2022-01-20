@@ -11,7 +11,14 @@ public class Post {
 	private String post_content;
 	private Date post_uploadDate;
 	private Date post_updateDate;
-	
+	private int post_hits;
+
+	public int getPost_hits() {
+		return post_hits;
+	}
+	public void setPost_hits(int post_hits) {
+		this.post_hits = post_hits;
+	}
 	public int getPost_code() {
 		return post_code;
 	}

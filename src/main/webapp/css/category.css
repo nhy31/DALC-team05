@@ -1,0 +1,42 @@
+@charset "EUC-KR";
+
+body{
+	margin: 0;
+	font-family: 'Arial';
+	font-size: 13px;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+.category_menu{
+	margin: 0px;
+	font-size: 13px;
+	color: black;
+}
+
+.category_menu ul{
+	list-style: none;
+	text-align: center;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 20px 0;
+}
+
+.category_menu ul li{
+	display: inline;
+	text-transform: uppercase;
+	padding: 0 50px;
+	letter-spacing: 5px;
+}
+
+.category_menu ul li a{
+	text-decoration: none;
+	color: black;
+}
+
+.category_menu ul li a:hover{
+	text-decoration: underline;
+}

@@ -1,0 +1,17 @@
+@charset "EUC-KR";
+
+.swiper-containter{
+	height: 200px;
+}
+
+.swiper-slide{
+	text-align: center;
+	display: flex;				/* 내용 중앙정렬 */
+	align-items: center;		/* 위아래 기준 중앙정렬 */
+	justify-content: center;	/* 좌우 기준 중앙정렬 */
+}
+
+.swiper-slide img{
+	max-width: 100%;	/* 이미지 최대너비 제한, 슬라이드에 이미지가 여러 개 보여질 때 필요 */
+	max-height: 99%;
+}
