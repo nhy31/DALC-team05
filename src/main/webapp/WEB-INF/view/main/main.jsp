@@ -24,6 +24,7 @@
 </head>
 
 <body>
+
    <nav class="dalcbar">
       <div class="dalc_name">
          <h2><a href="<c:url value='/main'/>">로고 이미지</a></h2>
