@@ -45,11 +45,12 @@ a{
 .disease_btn{
 	width: 55px;
 	height: 35px;
+	text-align:center;
 	font-size: 6px;
 	font-weight: bold;
 	border-radius: 85%;
-	border-width: 1px 1px 1px 1px;
-	border-color: #E5CCFF #E5CCFF #E5CCFF #E5CCFF;
+	border-width: 1px 1px;
+	border-color: #E5CCFF #E5CCFF;
 	background-color: white;
 }
 

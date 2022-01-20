@@ -26,8 +26,8 @@
       
       <div align = "center">
       	<form name="mainSearch" action="" method="GET">
-      		<input type="text" name="searchView" placeholder="검색어를 입력하세요." size="100">
-      		<input type="image" src="<c:url value='webapp/image/search.png'/>" alt="검색버튼" width="15" height="15">
+      		<input type="text" name="searchView" placeholder="검색어를 입력하세요." width="700" height="50">
+      		<input type="image" src="<c:url value='/images/search.png'/>" alt="검색버튼" width="15" height="15">
       	</form>
       </div>
       
@@ -56,11 +56,11 @@
    </nav>
    <hr>
    
-   <div class="dalc_img">
-   	<img id="mainImg" src="<c:url value='../image/search2.png'/>" alt="추후 메인 이미지" width="300" height="300"/>
+   <div class="dalc_img" align="center">
+   	<img id="mainImg" src="<c:url value='/images/default.jpg'/>" alt="추후 메인 이미지" width="300" height="300"/>
    </div>
    
-   <!-- 질병 별 추천 레시피 -->
+   <!-- 추천 레시피 부분-->
    <br>
    <h1><font size="5" face="돋움">질병 별 추천 레시피</font></h1>
    	<div align="left">
@@ -77,15 +77,15 @@
 		<div class="swiper-wrapper">
 			<div class="swiper-slide">
 				<a href="">
-				<img src="/image/testImg.jpg"></a></div>
+				<img src="/images/testImg.jpg"></a></div>
 			<div class="swiper-slide"><a href="">
-				<img src="<c:url value='/image/testImg.jpg'/> "></a></div>
+				<img src="<c:url value='/images/testImg.jpg'/> "></a></div>
 			<div class="swiper-slide"><a href="">
-				<img src="<c:url value='/image/testImg.jpg'/> "></a></div>
+				<img src="<c:url value='/images/testImg.jpg'/> "></a></div>
 			<div class="swiper-slide"><a href="">
-				<img src="<c:url value='/image/testImg.jpg'/> "></a></div>
+				<img src="<c:url value='/images/testImg.jpg'/> "></a></div>
 			<div class="swiper-slide"><a href="">
-				<img src="<c:url value='/image/testImg.jpg'/> "></a></div>
+				<img src="<c:url value='/images/testImg.jpg'/> "></a></div>
 		</div>
 		
 		<!-- 네비게이션 -->
@@ -107,6 +107,29 @@
 		<button name="recipe_etc" class="disease_btn" onClick=""> 기타 </button>
 	</div>
 	<br>
+	
+	<!-- 페이징 처리 -->
+	<script>
+		new Swiper('.swiper-container', {
+			slidesPerView: 3,	// 동시에 보여줄 슬라이드 갯수
+			spaceBetween: 30,	// 슬라이드 간 간격
+			slidesPerGroup: 3,	// 그룹으로 묶는 개수
+			
+			// 그룹 수가 맞지 않을 경우 빈칸으로 채우기
+			loopFillGroupWithBlank: true
+			loop: true,	//무한 반복
+			
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true, 	//페이징을 클릭하면 해당 영역으로 이동 <- 필요시 지정
+			},
+			
+			navigaion:{
+				nextEl: '.swiper-button-next',	//다음 버튼 클래스명
+				prevEl: '.swiper-button-prev',	//이번 버튼 클래스명
+			}
+		});
+	</script>
 	
 </body>
 </html>
