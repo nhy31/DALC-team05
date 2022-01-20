@@ -90,10 +90,10 @@ public class MainController {
     }
     
     // 메인페이지 -> 미디어페이지 이동
-    @RequestMapping(value = "/main/media")
-    public String media() {
-		return "media/list";
-    }
+//    @RequestMapping(value = "/main/media")
+//    public String media() {
+//		return "media/list";
+//    }
     
     // 메인페이지 -> 커뮤니티페이지 이동
     @RequestMapping(value = "/main/community")
