@@ -2,7 +2,7 @@
 body{
    margin: 0;
    font-family: 'Arial';
-   font-size:13px;
+   font-size: 13px;
 }
 
 a{
@@ -14,7 +14,7 @@ a{
    display: flex;
    justify-content: space-between;
    align-items: center;
-   backgroud-color: white;
+   background-color: white;
    padding: 5px 10px;
    font-size: 13px;
    color: black;
@@ -29,6 +29,7 @@ a{
 .dalc_menu{
    display: flex;
    list-style: none;
+   justify-content: center;
    padding-left: 0;
 }
 
@@ -37,6 +38,23 @@ a{
 }
 
 .dalc_menu li:hover{
-   background-color: #D5D5D5;
+   background-color: #FDE6FF;
    border-radius: 4px;
+}
+
+.disease_btn{
+   width: 55px;
+   height: 35px;
+   text-align:center;
+   font-size: 6px;
+   font-weight: bold;
+   border-radius: 80%;
+   border-width: 1px 1px;
+   border-color: #E5CCFF #E5CCFF;
+   background-color: white;
+}
+
+button.disease_btn:hover{
+   outline: none;
+   background-color: #E5CCFF;
 }
