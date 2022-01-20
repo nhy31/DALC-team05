@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-//메인페이지에서 클릭해서 이동하는 모든 것들에 대한 컨트롤러
+
 @Controller
 public class MainController {
 
@@ -89,16 +89,7 @@ public class MainController {
 		return "exercise/list";
     }
     
-    // 메인페이지 -> 미디어페이지 이동
-//    @RequestMapping(value = "/main/media")
-//    public String media() {
-//		return "media/list";
-//    }
     
-    // 메인페이지 -> 커뮤니티페이지 이동
-    @RequestMapping(value = "/main/community")
-    public String community() {
-		return "community/list";
-    }
+  
     
 }

@@ -68,8 +68,9 @@ public class MemberController {
 		
 	// 회원가입
 	@RequestMapping(value="/member/join.do")
-	public ModelAndView joinDo(
+	public String joinDo(
 			HttpServletRequest request,
+			Model model,
 			@RequestParam ("member_id") String member_id,
     		@RequestParam ("member_pw") String member_pw,
     		@RequestParam ("member_name") String member_name,
@@ -92,9 +93,12 @@ public class MemberController {
 		memberService.insertMember(member);
 		
 		System.out.println(member_id + member_pw + member_name + member_nickName);
-    	mav.setViewName("redirect:/main"); 
- 
-        return mav;
+		
+		model.addAttribute("msg", "가입을 축하합니다! 로그인을 해주세요");
+        model.addAttribute("url","/main/login");
+    
+        return "alert/alert";
+
 	}
 	
 	// 탈퇴
