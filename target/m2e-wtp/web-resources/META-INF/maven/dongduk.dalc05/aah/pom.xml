@@ -57,6 +57,7 @@
   
   	<dependency>
 		<!-- jsoup HTML parser library @ https://jsoup.org/ -->
+		<!-- 웹크롤러사용 -->	
 		<groupId>org.jsoup</groupId>
 		<artifactId>jsoup</artifactId>
 		<version>1.13.1</version>
