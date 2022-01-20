@@ -13,7 +13,7 @@
 	</insert>
 	
 	<update id="deleteMember" parameterType="Integer">
-		UPDATE Member
+		DELETE From Member
 		WHERE MEMBER_CODE = #{member_code}
 	</update>
 	

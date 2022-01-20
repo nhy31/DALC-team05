@@ -38,10 +38,7 @@ public class MemberController {
 			Model model,
 			@RequestParam ("member_id") String member_id,
     		@RequestParam ("member_pw") String member_pw) throws IOException {
-		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/main");
-		
+			
 		boolean isValidUser = memberService.isValidUser(member_id, member_pw);
 	
 		if (isValidUser == true) {
@@ -55,15 +52,14 @@ public class MemberController {
 			
 			session.setAttribute("member_code", memberService.getMemberCode(member_id));
 			
-		
-			 model.addAttribute("msg", "방문을 환영합니다");
-	         model.addAttribute("url","/");
+			model.addAttribute("msg", member_nickName + "님 방문을 환영합니다");
+	        model.addAttribute("url","/");
 	    
 	         return "alert/alert";
 	        
     	}
 	
-		 model.addAttribute("msg","로그인 실패");
+		 model.addAttribute("msg", "아이디와 비밀번호가 틀렸습니다.");
          model.addAttribute("url","/");
    
 		 return "alert/alert";
@@ -100,43 +96,35 @@ public class MemberController {
  
         return mav;
 	}
-//	
-//	// 탈퇴
-//	@RequestMapping(value="/member/delete.do", method = RequestMethod.POST)
-//	public ModelAndView deleteDo(
-//			HttpServletRequest request,
-//			@RequestParam ("member_id") String member_id,
-//	    	@RequestParam ("member_pw") String member_pw) {
-//			
-//		ModelAndView mav = new ModelAndView();
-//			
-//		Map<String, String> check = memberService.isValidUser(member_id, member_pw);
-//			
-//		if (check != null) {
-//			// 로그인 세션 처리 (고유번호, 아이디, 닉네임)
-//			HttpSession session = request.getSession();
-//			session.setAttribute("username", check.get("member_code"));
-//			session.setAttribute("username", check.get("member_id"));
-//			session.setAttribute("memberId", check.get("member_nickName"));
-//
-//			mav.setViewName("main/main");
-//
-//	    	return mav;
-//	    } 
-//	    	
-//	    mav.setViewName("member/login"); 
-//	    mav.addObject("isLoginFail", "true");
-//
-//	    return mav;
-//	}
-//		
-//	
-//	// 정보수정
+	
+	// 탈퇴
+	@RequestMapping(value="/member/delete.do")
+	public String deleteDo(
+			HttpServletRequest request,
+			Model model) {
+					
+		HttpSession session = request.getSession();
+		String member_id = (String) session.getAttribute("member_id");
+		
+		memberService.deleteMember(memberService.getMemberCode(member_id));
+		
+		session.removeAttribute("member_id");
+		session.removeAttribute("member_code");
+		session.removeAttribute("member_nickName");
+		
+		model.addAttribute("msg", "탈퇴되었습니다.");
+        model.addAttribute("url","/");
+  
+		return "alert/alert";
+	}
+		
+	
+//	// 정보수정 -> 페이지구현되면 바끄
 //	public ModelAndView updateDo(
-//			HttpServletRequest request,
-//			@RequestParam ("member_id") String member_id,
-//	    	@RequestParam ("member_pw") String member_pw) {
+//			HttpServletRequest request) {
 //			
+//		
+//		
 //		ModelAndView mav = new ModelAndView();
 //			
 //		Map<String, String> check = memberService.isValidUser(member_id, member_pw);

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,12 +50,18 @@ public class MainController {
 
 	// 메인페이지(로그인상태) -> 로그아웃
 	@RequestMapping(value = "/main/logout.do", method = RequestMethod.GET)
-	public String logoutDo(HttpServletRequest request) {
+	public String logoutDo(HttpServletRequest request,
+			Model model) {
+		
 		HttpSession session = request.getSession();
 		session.removeAttribute("member_id");
 		session.removeAttribute("member_code");
 		session.removeAttribute("member_nickName");
-		return "redirect:/main";
+		
+		model.addAttribute("msg", "로그아웃하였습니다");
+        model.addAttribute("url","/");
+    
+         return "alert/alert";
 	}
 	
 	// 메인페이지 -> 로그인페이지 이동
