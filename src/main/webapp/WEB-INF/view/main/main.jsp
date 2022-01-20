@@ -19,8 +19,17 @@
 
 <title>아프다 아파, 현대사회</title>
 </head>
-
+	<script type="text/javascript">
+		const msg = "${msg}";
+		if(msg="loginSucess") {
+			alert(member_nickName + "님 환영합니다");
+		}
+		if(msg="loginFailed") {
+			alert("로그인 실패");
+		}
+</script>
 <body>
+
    <nav class="dalcbar">
       <div class="dalc_name">
          <h2><a href="<c:url value='/main'/>">로고 이미지</a></h2>

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,9 +33,10 @@ public class MemberController {
 	// 로그인 시도
 	@RequestMapping(value="/member/login.do", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView loginDo(
+	public String loginDo(
 			HttpServletRequest request,
 			HttpServletResponse response,
+			RedirectAttributes ra,
 			@RequestParam ("member_id") String member_id,
     		@RequestParam ("member_pw") String member_pw) throws IOException {
 		
@@ -47,23 +49,20 @@ public class MemberController {
 			// 로그인 세션 처리 (고유번호, 아이디, 닉네임)
 			HttpSession session = request.getSession();
 			session.setAttribute("member_id", member_id);
-			session.setAttribute("member_code", memberService.getMemberCode(member_id));
-			session.setAttribute("member_nickName", memberService.getMemberNickName(member_id));
 			
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('아아현 방문을 환영합니다'); location.href='redirect:/main';</script>");
-			out.flush();
-
-			// mav.setViewName("redirect:/main");
-
-    		return mav;
+			String member_nickName = memberService.getMemberNickName(member_id);
+			session.setAttribute("member_nickName", member_nickName);
+			
+			session.setAttribute("member_code", memberService.getMemberCode(member_id));
+			
+			ra.addFlashAttribute("msg", "loginSucess");
+	        return "redirect:/main"; 
+	        
     	} 
     	
-    	mav.setViewName("member/login"); 
-    	mav.addObject("isLoginFail", "true");
-
-        return mav;
+		ra.addFlashAttribute("msg", "loginFailed");
+        return "redirect:/main";
+        
 	}
 		
 	// 회원가입
