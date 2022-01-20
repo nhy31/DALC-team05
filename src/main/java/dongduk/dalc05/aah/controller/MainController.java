@@ -15,9 +15,9 @@ public class MainController {
 	@RequestMapping(value="/main")
 	public ModelAndView main(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String member_code = (String) session.getAttribute("member_code");
 		String member_id = (String) session.getAttribute("member_id");
 		String member_nickName = (String) session.getAttribute("member_nickName");
+		String login = (String) session.getAttribute("login");
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main/main");
@@ -26,6 +26,11 @@ public class MainController {
 			mav.addObject("ses", 0);
 		} 
 		else {
+			if(login.equals("first")) {
+				// mav.addObject(alert, alert);
+				session.removeAttribute("login");
+			}
+			
 			mav.addObject("ses", 1);
 			System.out.println("MainController - login success!");
 			System.out.println("MainController - member_id : " + member_id);
@@ -33,6 +38,7 @@ public class MainController {
 			mav.addObject("member_id", member_id);
 			mav.addObject("member_nickName", member_nickName);
 		}
+		
 		return mav;
 	}
 
