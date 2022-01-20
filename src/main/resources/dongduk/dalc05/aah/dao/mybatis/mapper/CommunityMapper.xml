@@ -22,8 +22,5 @@
 		WHERE member_Code = ${member_code}
 	</select>
 	
-	
-	
-	
 
 </mapper>
