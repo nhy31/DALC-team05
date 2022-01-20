@@ -21,5 +21,13 @@ public class CommunityDaoImpl implements CommunityDao {
 	public List<Post> getBestPosts() {
 		return communityMapper.getBestPosts();
 	}
+	
+	public String getCommuName(int coomu_code) {
+		return communityMapper.getCommuName(coomu_code);
+	}
+	
+	public String getMemberNickName(int member_code) {
+		return communityMapper.getMemberNickName(member_code);
+	}
 
 }

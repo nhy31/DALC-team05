@@ -9,8 +9,8 @@ public interface CommunityService {
 	// 인기글 10개 보여주기
 	public List<Post> getBestPosts();
 	
-//	public getCommuName(int coomu_code);
-//	
-//	public getMemberNickName(int memmer_code);
+	public String getCommuName(int coomu_code);
+	
+	public String getMemberNickName(int member_code);
 
 }

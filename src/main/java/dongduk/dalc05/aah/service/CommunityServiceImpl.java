@@ -19,4 +19,15 @@ public class CommunityServiceImpl implements CommunityService {
 		return commuDao.getBestPosts();
 	}
 
+	@Override
+	public String getCommuName(int coomu_code) {
+		return commuDao.getCommuName(coomu_code);
+	}
+
+	@Override
+	public String getMemberNickName(int member_code) {
+		return commuDao.getMemberNickName(member_code);
+	}
+	
+
 }

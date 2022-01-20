@@ -14,4 +14,8 @@ public interface CommunityDao {
 	// 인기글 10개 보여주기
 	List<Post> getBestPosts();
 	
+	String getCommuName(int coomu_code);
+	
+	String getMemberNickName(int member_code);
+	
 }

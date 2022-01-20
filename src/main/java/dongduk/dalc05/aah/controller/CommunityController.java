@@ -20,17 +20,20 @@ public class CommunityController {
 	
 	@RequestMapping(value = "/main/community")
 	public ModelAndView getCommuMain() {
-		List<Post> list = new ArrayList<>();
+		List<Post> bests = new ArrayList<>();
+		bests = commuService.getBestPosts(); // 한 sql쿼리로 조회순 나열해서 10개정도뽑아서 정렬
+		
+		for(int i=0; i<bests.size(); i++) {
+			bests.get(i).setMember_nickName(commuService.getMemberNickName(bests.get(i).getMember_code()));
+			bests.get(i).setCommu_name(commuService.getCommuName(bests.get(i).getCommu_code()));
 			
-		list = commuService.getBestPosts(); // 한 sql쿼리로 조회순 나열해서 10개정도뽑아서 정렬
-		
-		for(int i=0; i<list.size(); i++) {
-			System.out.print(list.get(i).getPost_title());
+			System.out.println(bests.get(i).getPost_title());
+			
 		}
-		
+			
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("community/list");
-		mav.addObject("BestPosts", list);
+		mav.addObject("BestPosts", bests);
 		return mav;
 	}
 		
