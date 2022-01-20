@@ -24,5 +24,5 @@ public interface MemberDao {
 	int getMemberCode(String member_id);
 	
 	// 아이디로 member_nickName 불러오기
-	int getMemberNickName(String member_id);
+	String getMemberNickName(String member_id);
 }

@@ -9,7 +9,7 @@
 <title>로그인</title>
 </head>
 <body>
-	<form name="form" method="POST" action="<c:url value='/member/join.do' />" enctype="multipart/form-data">	
+	<form name="form" method="POST" action="<c:url value='/member/login.do' />" enctype="multipart/form-data">	
 		<div>현대인의 간편한 건강 관리
 			<div>이미지
 				<div align="center"> <!-- 로그인시, 아이디인지 이메일인지,, -->

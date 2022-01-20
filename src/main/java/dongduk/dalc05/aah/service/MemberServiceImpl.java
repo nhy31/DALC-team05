@@ -45,7 +45,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int getMemberNickName(String member_id) {
+	public String getMemberNickName(String member_id) {
 		return memberDao.getMemberNickName(member_id);
 	}
 

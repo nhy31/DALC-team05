@@ -12,11 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.Map;
 
@@ -27,10 +31,12 @@ public class MemberController {
 	
 	// 로그인 시도
 	@RequestMapping(value="/member/login.do", method = RequestMethod.POST)
+	@ResponseBody
 	public ModelAndView loginDo(
 			HttpServletRequest request,
+			HttpServletResponse response,
 			@RequestParam ("member_id") String member_id,
-    		@RequestParam ("member_pw") String member_pw) {
+    		@RequestParam ("member_pw") String member_pw) throws IOException {
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -43,13 +49,13 @@ public class MemberController {
 			session.setAttribute("member_id", member_id);
 			session.setAttribute("member_code", memberService.getMemberCode(member_id));
 			session.setAttribute("member_nickName", memberService.getMemberNickName(member_id));
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('아아현 방문을 환영합니다'); location.href='redirect:/main';</script>");
+			out.flush();
 
-			// 전달값으로 하던가
-			mav.addObject("member_id", member_id);
-			mav.addObject("member_code", memberService.getMemberCode(member_id));
-			mav.addObject("member_nickName",  memberService.getMemberNickName(member_id));
-					
-			mav.setViewName("redirect:/main");
+			// mav.setViewName("redirect:/main");
 
     		return mav;
     	} 

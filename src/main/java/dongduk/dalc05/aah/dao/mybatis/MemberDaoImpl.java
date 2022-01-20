@@ -43,7 +43,7 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public int getMemberNickName(String member_id) {
+	public String getMemberNickName(String member_id) {
 		return memberMapper.getMemberNickName(member_id);
 	}
 	

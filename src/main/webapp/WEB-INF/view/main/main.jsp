@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width-device-width">
+
 <!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
@@ -26,7 +27,7 @@
       </div>
       
       <div align = "center">
-         <form name="mainSearch" action="" method="GET">
+         <form name="mainSearch" action="/main/search" method="GET">
             <input type="text" name="searchView" placeholder="검색어를 입력하세요." width="700" height="50">
             <input type="image" src="<c:url value='/images/search.png'/>" alt="검색버튼" width="15" height="15">
          </form>

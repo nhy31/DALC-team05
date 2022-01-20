@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 //메인페이지에서 클릭해서 이동하는 모든 것들에 대한 컨트롤러
@@ -15,13 +16,11 @@ public class MainController {
 	@RequestMapping(value="/main")
 	public ModelAndView main(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String member_code = (String) session.getAttribute("member_code");
 		String member_id = (String) session.getAttribute("member_id");
 		String member_nickName = (String) session.getAttribute("member_nickName");
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("main/main");
-		
+	
 		if (member_id == null) {
 			mav.addObject("ses", 0);
 		} 
@@ -33,8 +32,20 @@ public class MainController {
 			mav.addObject("member_id", member_id);
 			mav.addObject("member_nickName", member_nickName);
 		}
+		
+		mav.setViewName("main/main");
 		return mav;
 	}
+	
+	// 메인페이지 -> 검색기능
+	@RequestMapping(value = "/main/search", method = RequestMethod.GET)
+	public String search(HttpServletRequest request,
+			@RequestParam ("search") String search) {
+		HttpSession session = request.getSession();
+
+		
+		return "search/list";
+	}	
 
 	// 메인페이지(로그인상태) -> 로그아웃
 	@RequestMapping(value = "/main/logout.do", method = RequestMethod.GET)
