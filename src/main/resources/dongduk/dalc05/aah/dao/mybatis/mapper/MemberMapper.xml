@@ -13,12 +13,10 @@
 	</insert>
 
 
-	<update id="deleteMember" parameterType="Integer">
-		UPDATE Member
-			SET ISDELETED = 'Y'
-			WHERE
-				MEMBERID = #{memberId}
-	</update>
+	<delete id="deleteMember" parameterType="Integer">
+		delete from member
+		WHERE MEMBER_code = #{member_code}
+	</delete>
 
 	<select id="getPassword" parameterType="String" resultType="String">
 		Select member_pw
