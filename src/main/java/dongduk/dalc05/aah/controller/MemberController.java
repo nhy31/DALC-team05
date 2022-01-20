@@ -56,6 +56,7 @@ public class MemberController {
 			session.setAttribute("member_code", memberService.getMemberCode(member_id));
 			
 			ra.addFlashAttribute("msg", "loginSucess");
+			ra.addFlashAttribute("member_nickName", member_nickName);
 	        return "redirect:/main"; 
 	        
     	} 

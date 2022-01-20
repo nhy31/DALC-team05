@@ -22,7 +22,7 @@
 	<script type="text/javascript">
 		const msg = "${msg}";
 		if(msg="loginSucess") {
-			alert(member_nickName + "님 환영합니다");
+			alert(${member_nickName} + "님 환영합니다");
 		}
 		if(msg="loginFailed") {
 			alert("로그인 실패");
