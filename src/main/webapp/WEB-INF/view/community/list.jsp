@@ -21,15 +21,16 @@
 			<th>게시글 제목</th>	 
  			<th>작성자</th>	  
 			<th>작성일</th>	
-		<c:forEach var="post" items="${BestPosts}">
-			<tr onClick="location.href='<c:url value='/community/post/detail.do'>
-			<c:param name="BestPosts.post_code" value="${post.post_code}"/></c:url>'" style="cursor:pointer;">
- 			<th style="width:10%;">${post.commu_name}</th>	 
-			<th style="width:10%;">${post.post_title}</th>	 
-			<th style="width:10%;">${post.member_nickName}</th>	   
-			<th style="width:10%;">${post.post_uploadDate}</th>	
 		</tr>
-		</c:forEach>	 
+		<c:forEach var="post" items="${BestPosts}">
+		<tr onClick="location.href='<c:url value='/community/post/detail.do'>
+		<c:param name="BestPosts.post_code" value="${post.post_code}"/></c:url>'" style="cursor:pointer;">
+ 			<td>${post.commu_name}</td>	 
+			<td>${post.post_title}</td>	 
+			<td>${post.member_nickName}</td>	   
+			<td>${post.post_uploadDate}</td>	
+		</c:forEach>	
+		</tr>	 
 	</table>
 	
 	<button value="커뮤니티 전체보기" onClick=""></button>
@@ -37,10 +38,10 @@
 		<c:forEach var="commu" items="${Commus}">
 			<tr onClick="location.href='<c:url value='/community/post/detail.do'>
 			<c:param name="BestPosts.post_code" value="${post.post_code}"/></c:url>'" style="cursor:pointer;">
-			<th style="width:10%;">${post.commu_name}</th>	
-			<th style="width:10%;">${post.post_title}</th>	 
-			<th style="width:10%;">${post.member_nickName}</th>	  
-			<th style="width:10%;">${post.post_uploadDate}</th>	
+			<td>${post.commu_name}</td>	
+			<td>${post.post_title}</td>	 
+			<td>${post.member_nickName}</td>	  
+			<td>${post.post_uploadDate}</td>	
 		</tr>
 		</c:forEach>	 
 	</table>

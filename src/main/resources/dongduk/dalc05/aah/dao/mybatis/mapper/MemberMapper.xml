@@ -12,7 +12,6 @@
 		#{member_email}, #{member_sex}, #{member_image})
 	</insert>
 
-
 	<delete id="deleteMember" parameterType="Integer">
 		delete from member
 		WHERE MEMBER_code = #{member_code}

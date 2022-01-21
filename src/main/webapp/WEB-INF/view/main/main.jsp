@@ -45,7 +45,7 @@
       </c:if>
       <c:if test="${ses == 1}"> 
           <li>${member_nickName}님 </li>
-            <li><a href="<c:url value='/main/logout.do'/>">로그아웃</a></li>
+            <li><a href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
             <li><a href="<c:url value="/member/delete.do" />">탈퇴</a></li> <!-- 탈퇴기능만 한번테스트해보려고 잠깐삽입 -->
       </c:if>
       </ul>

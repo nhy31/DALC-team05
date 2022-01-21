@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입 페이지</title>
+<title>회원가입 페이지</title>  <!-- 소셜가입 연동 JS 코드필요  -->
 </head>
 <body>
 <!-- 카카오, 네이버 연동 추가해야함  -->

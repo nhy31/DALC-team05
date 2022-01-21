@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>로그인</title> <!-- 소셜로그인 연동 JS 코드필요  -->
 </head>
 <body>
 	<form name="form" method="POST" action="<c:url value='/member/login.do' />" enctype="multipart/form-data">	
@@ -22,6 +22,7 @@
 			</div>
 		</div>				
 	</form>
+	
 	
 	<div align="center">
 		회원이 아니신가요? <a href="<c:url value='/main/join'/>"> 회원가입 </a>

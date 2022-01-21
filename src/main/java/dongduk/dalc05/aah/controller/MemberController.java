@@ -27,6 +27,16 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	// 메인페이지(로그인상태) -> 로그아웃
+	@RequestMapping(value = "/member/logout.do", method = RequestMethod.GET)
+	public String logoutDo(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("member_id");
+		session.removeAttribute("member_code");
+		session.removeAttribute("member_nickName");
+		return "redirect:/main";
+	}
+	
 	// 로그인 시도
 	@RequestMapping(value="/member/login.do", method = RequestMethod.POST)
 	public String loginDo(
