@@ -25,10 +25,6 @@ public class MainController {
 			mav.addObject("ses", 0);
 		} 
 		else {
-			if(login.equals("first")) {
-				// mav.addObject(alert, alert);
-				session.removeAttribute("login");
-			}
 			
 			mav.addObject("ses", 1);
 			System.out.println("MainController - login success!");
