@@ -33,6 +33,8 @@
 		</tr>	 
 	</table>
 	
+	<button value="커뮤니티 생성" onClick="/community/create"></button>
+	
 	<button value="커뮤니티 전체보기" onClick=""></button>
 	<table>		
 		<c:forEach var="commu" items="${Commus}">
