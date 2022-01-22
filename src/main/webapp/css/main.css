@@ -34,11 +34,11 @@ a{
 }
 
 .dalc_menu li{
-   padding: 8px 10px;
+   padding: 8px 30px 8px 30px;
 }
 
 .dalc_menu li:hover{
-   background-color: #FDE6FF;
+   background-color: #E5CCFF;
    border-radius: 4px;
 }
 

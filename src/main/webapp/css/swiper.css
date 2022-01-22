@@ -14,4 +14,6 @@
 .swiper-slide img{
 	max-width: 100%;	/* 이미지 최대너비 제한, 슬라이드에 이미지가 여러 개 보여질 때 필요 */
 	max-height: 99%;
+	width: 300px;
+	height: 200px;
 }

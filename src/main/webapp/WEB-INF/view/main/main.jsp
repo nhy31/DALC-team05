@@ -32,7 +32,7 @@
       
       <div align = "center">
          <form name="mainSearch" action="/main/search" method="GET">
-            <input type="text" name="searchView" placeholder="검색어를 입력하세요." width="700" height="50">
+            <input type="text" name="searchView" placeholder="검색어를 입력하세요." width="500" height="40">
             <input type="image" src="<c:url value='/images/search.png'/>" alt="검색버튼" width="15" height="15">
          </form>
       </div>
@@ -58,7 +58,7 @@
          <li><a href="<c:url value='/main/recipe'/>">레시피 추천</a></li>
          <li><a href="<c:url value='/main/exercise'/>">홈트레이닝 추천</a></li>
          <li><a href="<c:url value='/main/media/crawling'/>">건강 미디어</a></li>
-         <li><a href="<c:url value='/main/community'/>">현대사회 커뮤니키</a></li>
+         <li><a href="<c:url value='/main/community'/>">현대사회 커뮤니티</a></li>
       </ul>
    </p>
    </nav>
@@ -68,7 +68,7 @@
       <img id="mainImg" src="<c:url value='/images/default.jpg'/>" alt="추후 메인 이미지" width="300" height="300"/>
    </div>
    
-   <!-- 추천 레시피 부분-->
+   <!-- 추천 레시피 부분 -->
    <br>
    <h1><font size="5" face="돋움">질병 별 추천 레시피</font></h1>
       <div align="left">
@@ -84,17 +84,17 @@
    <div class="swiper-container">
       <div class="swiper-wrapper">
          <div class="swiper-slide">
-            <a href=""><img src="/images/testImg.jpg"></a>
+            <a href=""><img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200" alt="테스트용" ></a>
          </div>
          <div class="swiper-slide">
-            <a href=""><img src="<c:url value='/images/testImg.jpg'/>" alt="테스트용"></a>
+            <a href=""><img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a>
          </div>
          <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/testImg.jpg'/> "></a></div>
+            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
          <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/testImg.jpg'/> "></a></div>
+            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
          <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/testImg.jpg'/> "></a></div>
+            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
       </div>
       
       <!-- 네비게이션 -->
@@ -106,19 +106,79 @@
    </div>
    <hr>
    
+   
    <!-- 질병 별 추천 홈트레이닝 -->
     <br>
     <h1><font size="5" face="돋움">질병 별 추천 홈트레이닝</font></h1>
       <div align="left">
-      <button name="recipe_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
-      <button name="recipe_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
-      <button name="recipe_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
-      <button name="recipe_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
-      <button name="recipe_etc" class="disease_btn" onClick=""> 기타 </button>
+      <button name="training_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
+      <button name="training_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
+      <button name="training_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
+      <button name="training_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
+      <button name="training_etc" class="disease_btn" onClick=""> 기타 </button>
    </div>
    <br>
    
-   <!-- 페이징 처리 -->
+   <div class="swiper-container">
+      <div class="swiper-wrapper">
+         <div class="swiper-slide">
+            <a href=""><img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a>
+         </div>
+         <div class="swiper-slide">
+            <a href=""><img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200" alt="테스트용"></a>
+         </div>
+         <div class="swiper-slide"><a href="">
+            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
+         <div class="swiper-slide"><a href="">
+            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
+         <div class="swiper-slide"><a href="">
+            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
+      </div>
+      
+      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+      
+      <div class="swiper-pagination"></div>
+   </div>
+   <hr>
+   
+   
+   <!-- 건강 미디어 -->
+   <br>
+    <h1><font size="5" face="돋움">건강 미디어</font></h1>
+      <div align="left">
+      <button name="media_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
+      <button name="media_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
+      <button name="media_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
+      <button name="media_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
+      <button name="media_etc" class="disease_btn" onClick=""> 기타 </button>
+   </div>
+   <br>
+   
+   <div class="swiper-container">
+      <div class="swiper-wrapper">
+         <div class="swiper-slide">
+            <a href=""><img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a>
+         </div>
+         <div class="swiper-slide">
+            <a href=""><img src="<c:url value='/images/default.jpg'/>" width="300" height="200" alt="테스트용"></a>
+         </div>
+         <div class="swiper-slide"><a href="">
+            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
+         <div class="swiper-slide"><a href="">
+            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
+         <div class="swiper-slide"><a href="">
+            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
+      </div>
+      
+      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+      
+      <div class="swiper-pagination"></div>
+   </div>
+   <br><br>
+   
+   
    <script>
    new Swiper('.swiper-container', {
       slidesPerView : 3, // 동시에 보여줄 슬라이드 rotn
