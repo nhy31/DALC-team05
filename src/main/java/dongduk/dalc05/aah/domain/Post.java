@@ -6,12 +6,36 @@ public class Post {
 	
 	private int post_code;
 	private int member_code;
+	
+	private String member_nickName;
+	private String commu_name;
+	
 	private int commu_code;
 	private String post_title;
 	private String post_content;
 	private Date post_uploadDate;
 	private Date post_updateDate;
+	private int post_hits;
+
+	public String getMember_nickName() {
+		return member_nickName;
+	}
+	public void setMember_nickName(String member_nickName) {
+		this.member_nickName = member_nickName;
+	}
+	public String getCommu_name() {
+		return commu_name;
+	}
+	public void setCommu_name(String commu_name) {
+		this.commu_name = commu_name;
+	}
 	
+	public int getPost_hits() {
+		return post_hits;
+	}
+	public void setPost_hits(int post_hits) {
+		this.post_hits = post_hits;
+	}
 	public int getPost_code() {
 		return post_code;
 	}

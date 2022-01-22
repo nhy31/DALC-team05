@@ -6,11 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입 페이지</title>  <!-- 소셜가입 연동 JS 코드필요  -->
+<title>회원가입 페이지</title>
 </head>
 <body>
 <!-- 카카오, 네이버 연동 추가해야함  -->
+
 	<form name="form" method="POST" action="<c:url value='/member/join.do' />" enctype="multipart/form-data">
+			
 		<div>현대인의 간편한 건강 관리
 			<div>필수정보 입력
 				<div>

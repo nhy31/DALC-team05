@@ -8,16 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-//메인페이지에서 클릭해서 이동하는 모든 것들에 대한 컨트롤러
 @Controller
 public class MainController {
 
 	@RequestMapping(value="/main")
 	public ModelAndView main(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String member_code = (String) session.getAttribute("member_code");
 		String member_id = (String) session.getAttribute("member_id");
 		String member_nickName = (String) session.getAttribute("member_nickName");
+		String login = (String) session.getAttribute("login");
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main/main");
@@ -26,6 +25,7 @@ public class MainController {
 			mav.addObject("ses", 0);
 		} 
 		else {
+			
 			mav.addObject("ses", 1);
 			System.out.println("MainController - login success!");
 			System.out.println("MainController - member_id : " + member_id);
@@ -33,18 +33,11 @@ public class MainController {
 			mav.addObject("member_id", member_id);
 			mav.addObject("member_nickName", member_nickName);
 		}
+		
 		return mav;
 	}
 
-	// 메인페이지(로그인상태) -> 로그아웃
-	@RequestMapping(value = "/main/logout.do", method = RequestMethod.GET)
-	public String logoutDo(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		session.removeAttribute("member_id");
-		session.removeAttribute("member_code");
-		session.removeAttribute("member_nickName");
-		return "redirect:/main";
-	}
+
 	
 	// 메인페이지 -> 로그인페이지 이동
     @RequestMapping(value = "/main/login")
@@ -68,18 +61,6 @@ public class MainController {
     @RequestMapping(value = "/main/exercise")
     public String exercise() {
 		return "exercise/list";
-    }
-    
-    // 메인페이지 -> 미디어페이지 이동
-    @RequestMapping(value = "/main/media")
-    public String media() {
-		return "media/list";
-    }
-    
-    // 메인페이지 -> 커뮤니티페이지 이동
-    @RequestMapping(value = "/main/community")
-    public String community() {
-		return "community/list";
     }
     
 }

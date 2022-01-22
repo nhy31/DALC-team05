@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.CommunityMapper">
+
+	<select id="getBestPosts" resultType="dongduk.dalc05.aah.domain.Post">
+		Select *
+		FROM POST
+		ORDER BY post_hits DESC
+		limit 10;
+	</select>
+	
+	<select id="getCommuName" resultType="String">
+		Select commu_name
+		FROM COMMUNITY
+		WHERE commu_code = ${commu_code}
+	</select>
+	
+	<select id="getMemberNickName" resultType="String">
+		Select member_nickName
+		FROM member
+		WHERE member_Code = ${member_code}
+	</select>
+	
+
+</mapper>

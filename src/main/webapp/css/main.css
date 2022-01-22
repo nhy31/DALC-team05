@@ -43,18 +43,18 @@ a{
 }
 
 .disease_btn{
-	width: 55px;
-	height: 35px;
-	text-align:center;
-	font-size: 6px;
-	font-weight: bold;
-	border-radius: 80%;
-	border-width: 1px 1px;
-	border-color: #E5CCFF #E5CCFF;
-	background-color: white;
+   width: 55px;
+   height: 35px;
+   text-align:center;
+   font-size: 6px;
+   font-weight: bold;
+   border-radius: 80%;
+   border-width: 1px 1px;
+   border-color: #E5CCFF #E5CCFF;
+   background-color: white;
 }
 
 button.disease_btn:hover{
-	outline: none;
-	background-color: #E5CCFF;
+   outline: none;
+   background-color: #E5CCFF;
 }

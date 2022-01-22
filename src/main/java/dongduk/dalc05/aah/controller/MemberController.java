@@ -1,69 +1,83 @@
 
-//  회원가입, 탈퇴, 로그인, 정보수정 등 유저가 할 수 있는 것들에 대한 컨트롤러
-
 package dongduk.dalc05.aah.controller;
 
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.service.MemberService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.Map;
 
 @Controller
 public class MemberController {
+//	
 	@Autowired
 	private MemberService memberService;
 	
+	// 메인페이지(로그인상태) -> 로그아웃
+	@RequestMapping(value = "/member/logout.do", method = RequestMethod.GET)
+	public String logoutDo(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.removeAttribute("member_id");
+		session.removeAttribute("member_code");
+		session.removeAttribute("member_nickName");
+		return "redirect:/main";
+	}
+	
 	// 로그인 시도
 	@RequestMapping(value="/member/login.do", method = RequestMethod.POST)
-	public ModelAndView loginDo(
+	public String loginDo(
 			HttpServletRequest request,
+			Model model,
 			@RequestParam ("member_id") String member_id,
-    		@RequestParam ("member_pw") String member_pw) {
-		
-		ModelAndView mav = new ModelAndView();
-		
+    		@RequestParam ("member_pw") String member_pw) throws IOException {
+			
 		boolean isValidUser = memberService.isValidUser(member_id, member_pw);
-		
+	
 		if (isValidUser == true) {
 			
 			// 로그인 세션 처리 (고유번호, 아이디, 닉네임)
 			HttpSession session = request.getSession();
 			session.setAttribute("member_id", member_id);
+			
+			String member_nickName = memberService.getMemberNickName(member_id);
+			session.setAttribute("member_nickName", member_nickName);
+			
 			session.setAttribute("member_code", memberService.getMemberCode(member_id));
-			session.setAttribute("member_nickName", memberService.getMemberNickName(member_id));
+			
+			model.addAttribute("msg", member_nickName + "님 방문을 환영합니다");
+	        model.addAttribute("url","/");
+	    
+	         return "alert/alert";
+	        
+    	}
 
-			// 전달값으로 하던가
-			mav.addObject("member_id", member_id);
-			mav.addObject("member_code", memberService.getMemberCode(member_id));
-			mav.addObject("member_nickName",  memberService.getMemberNickName(member_id));
-					
-			mav.setViewName("redirect:/main");
+		 model.addAttribute("msg", "아이디와 비밀번호가 틀렸습니다.");
+         model.addAttribute("url","/");
+         model.addAttribute("url","/main/login");
 
-    		return mav;
-    	} 
-    	
-    	mav.setViewName("member/login"); 
-    	mav.addObject("isLoginFail", "true");
+		 return "alert/alert";
 
-        return mav;
 	}
 		
 	// 회원가입
 	@RequestMapping(value="/member/join.do")
-	public ModelAndView joinDo(
+	public String joinDo(
 			HttpServletRequest request,
+			Model model,
 			@RequestParam ("member_id") String member_id,
     		@RequestParam ("member_pw") String member_pw,
     		@RequestParam ("member_name") String member_name,
@@ -86,69 +100,54 @@ public class MemberController {
 		memberService.insertMember(member);
 		
 		System.out.println(member_id + member_pw + member_name + member_nickName);
-    	mav.setViewName("redirect:/main"); 
- 
-        return mav;
-	}
-//	
-//	// 탈퇴
-//	@RequestMapping(value="/member/delete.do", method = RequestMethod.POST)
-//	public ModelAndView deleteDo(
-//			HttpServletRequest request,
-//			@RequestParam ("member_id") String member_id,
-//	    	@RequestParam ("member_pw") String member_pw) {
-//			
-//		ModelAndView mav = new ModelAndView();
-//			
-//		Map<String, String> check = memberService.isValidUser(member_id, member_pw);
-//			
-//		if (check != null) {
-//			// 로그인 세션 처리 (고유번호, 아이디, 닉네임)
-//			HttpSession session = request.getSession();
-//			session.setAttribute("username", check.get("member_code"));
-//			session.setAttribute("username", check.get("member_id"));
-//			session.setAttribute("memberId", check.get("member_nickName"));
-//
-//			mav.setViewName("main/main");
-//
-//	    	return mav;
-//	    } 
-//	    	
-//	    mav.setViewName("member/login"); 
-//	    mav.addObject("isLoginFail", "true");
-//
-//	    return mav;
-//	}
-//		
-//	
-//	// 정보수정
-//	public ModelAndView updateDo(
-//			HttpServletRequest request,
-//			@RequestParam ("member_id") String member_id,
-//	    	@RequestParam ("member_pw") String member_pw) {
-//			
-//		ModelAndView mav = new ModelAndView();
-//			
-//		Map<String, String> check = memberService.isValidUser(member_id, member_pw);
-//			
-//		if (check != null) {
-//			// 로그인 세션 처리 (고유번호, 아이디, 닉네임)
-//			HttpSession session = request.getSession();
-//			session.setAttribute("username", check.get("member_code"));
-//			session.setAttribute("username", check.get("member_id"));
-//			session.setAttribute("memberId", check.get("member_nickName"));
-//
-//			mav.setViewName("main/main");
-//
-//	    	return mav;
-//	    } 
-//	    	
-//	    mav.setViewName("member/login"); 
-//	    mav.addObject("isLoginFail", "true");
-//
-//	    return mav;
-//	}
-//		
-//		
 		
-}
+		model.addAttribute("msg", "가입을 축하합니다! 로그인을 해주세요");
+        model.addAttribute("url","/main/login");
+    
+        return "alert/alert";
+	}
+	
+	// 탈퇴
+	@RequestMapping(value="/member/delete.do")
+	public String deleteDo(
+			HttpServletRequest request,
+			Model model) {
+					
+		HttpSession session = request.getSession();
+		String member_id = (String) session.getAttribute("member_id");
+		
+		memberService.deleteMember(memberService.getMemberCode(member_id));
+		
+		session.removeAttribute("member_id");
+		session.removeAttribute("member_code");
+		session.removeAttribute("member_nickName");
+		
+		model.addAttribute("msg", "탈퇴되었습니다.");
+        model.addAttribute("url","/");
+  
+		return "alert/alert";
+	}
+	}
+		
+	
+//	// 정보수정 -> 페이지구현되면 바끄
+//	public ModelAndView updateDo(
+//			HttpServletRequest request) {
+//			
+//		
+//		
+//		ModelAndView mav = new ModelAndView();
+//			
+//		Map<String, String> check = memberService.isValidUser(member_id, member_pw);
+//			
+//		if (check != null) {
+//			// 로그인 세션 처리 (고유번호, 아이디, 닉네임)
+//			HttpSession session = request.getSession();
+//			session.setAttribute("username", check.get("member_code"));
+//			session.setAttribute("username", check.get("member_id"));
+//			session.setAttribute("memberId", check.get("member_nickName"));
+//
+//			mav.setViewName("main/main");
+//
+//	    	return mav;
+//	    } 
