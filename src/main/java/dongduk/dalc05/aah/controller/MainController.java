@@ -38,7 +38,6 @@ public class MainController {
 	}
 
 
-	
 	// 메인페이지 -> 로그인페이지 이동
     @RequestMapping(value = "/main/login")
     public String login() {

@@ -94,8 +94,8 @@ public class MemberController {
 		System.out.println("/member/join.do");
 		ModelAndView mav = new ModelAndView();
 		
-		Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone
-				, member_email, member_birth, sick_code, bad_ingredient_code, member_image, member_sex);
+		Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone,
+				member_email, member_birth, sick_code, bad_ingredient_code, member_image, member_sex);
 		
 		memberService.insertMember(member);
 		
@@ -127,27 +127,14 @@ public class MemberController {
   
 		return "alert/alert";
 	}
-	}
-		
 	
-//	// 정보수정 -> 페이지구현되면 바끄
-//	public ModelAndView updateDo(
-//			HttpServletRequest request) {
-//			
-//		
-//		
-//		ModelAndView mav = new ModelAndView();
-//			
-//		Map<String, String> check = memberService.isValidUser(member_id, member_pw);
-//			
-//		if (check != null) {
-//			// 로그인 세션 처리 (고유번호, 아이디, 닉네임)
-//			HttpSession session = request.getSession();
-//			session.setAttribute("username", check.get("member_code"));
-//			session.setAttribute("username", check.get("member_id"));
-//			session.setAttribute("memberId", check.get("member_nickName"));
-//
-//			mav.setViewName("main/main");
-//
-//	    	return mav;
-//	    } 
+	// 정보수정 - 페이지 제작되면 구현시작
+	public ModelAndView updateDo(
+			HttpServletRequest request) {
+			
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
+	
+	
+}
