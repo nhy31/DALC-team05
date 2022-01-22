@@ -6,13 +6,81 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/join.css'/>" type="text/css">
+
 <title>회원가입 페이지</title>  <!-- 소셜가입 연동 JS 코드필요  -->
 </head>
+
 <body>
+	<!-- 기본 상단바 -->
+	<nav class="dalcbar">
+		<div class="dalc_name">
+			<h2><a href="<c:url value='/main'/>">로고 이미지</a></h2>
+		</div>
+      
+      <div align = "center">
+      	<form name="mainSearch" action="/main/search" method="GET">
+      		<input type="text" name="searchView" placeholder="검색어를 입력하세요." width="500" height="40">
+      		<input type="image" src="<c:url value='/images/search.png'/>" alt="검색버튼" width="15" height="15">
+      	</form>
+      </div>
+      
+      <ul class="dalc_menu">
+      	<c:if test="${ses == 0}"> 
+      		<li><a href="<c:url value="/main/login" />">로그인</a></li>
+      		<li><a href="<c:url value="/main/join" />">회원가입</a></li>
+      	</c:if>
+      	<c:if test="${ses == 1}"> 
+      		<li>${member_nickName}님 </li>
+            <li><a href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
+            <li><a href="<c:url value="/member/delete.do" />">탈퇴</a></li> <!-- 탈퇴기능만 한번테스트해보려고 잠깐삽입 -->
+        </c:if>
+      </ul>
+   </nav>
+   <hr>
+   
 <!-- 카카오, 네이버 연동 추가해야함  -->
+<div class = "content">
+	<h2> 회원 가입 </h2>
+	<p class="hr_write">필수정보</p>
+	
 	<form name="form" method="POST" action="<c:url value='/member/join.do' />" enctype="multipart/form-data">
-		<div>현대인의 간편한 건강 관리
-			<div>필수정보 입력
+		<table>
+			<tr>
+				<th> 이름 </th>
+				<td> <input type="text" name="member_name" placeholder="이름" required="required"> </td>
+			</tr>
+			<tr>
+				<th> 이메일 </th>
+				<td><input type="email" name="member_email" placeholder="이메일" required="required">
+					<button>인증메일 발송</button> 우선 버튼만
+				</td>
+			</tr>
+			<tr>
+				<th> 아이디 </th>
+				<td><input type="text" name="member_id" placeholder="아이디" required="required">
+					<button>중복확인</button> 우선버튼만, 아이디 중복됐는지 테이블에서 확인 후 다시하라고 알림창
+				</td>
+			</tr>
+			<tr>
+				<th> 닉네임 </th>
+				<td><input type="text" name="member_nickName" placeholder="닉네임" required="required">
+					<button>중복확인</button> 우선버튼만, 아이디 중복됐는지 테이블에서 확인 후 다시하라고 알림창	
+				</td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="text" name="member_pw" placeholder="비밀번호" required="required"></td>
+			</tr>
+			<tr>
+				<th>비밀번호 확인</th>
+				<td><input type="text" placeholder="비밀번호 확인" required="required"></td>
+			</tr>
+		</table>
+		
+		<!-- 테이블 미사용(기존 코드) -->
+		<!--  
 				<div>
 					<input type="text" name="member_name" placeholder="이름" required="required">
 				</div>
@@ -42,8 +110,10 @@
 					<div>비밀번호가 일치하지않습니다</div> 우선대충		
 				</div>
 			</div>
-			<hr>
-			<div>추가정보 입력
+			-->
+			
+			<p class="hr_write">추가정보</p>
+			<div>
 				<div>성별
 					<input type="text" name="member_sex" value=1>
 				</div>
@@ -56,16 +126,18 @@
 					<input type="text" name="member_image" value=0000>
 				</div>	
 			</div>
-			<hr>
-			<div>전체동의
-				<input type="text">서비스 이용약관 동의(필수)
-				<input type="check">
+	
+			<p class="hr_last"/>
+			<div>
+				전체동의 <input type="text"> <br>
+				서비스 이용약관 동의(필수) <input type="checkbox">
 				<input type="text">
 				<input type="text">
 			</div>
 		</div>	
 		<input type="submit" value="회원가입">
 	</form>
+</div>
 			
 </body>
 </html>

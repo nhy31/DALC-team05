@@ -1,0 +1,41 @@
+@charset "EUC-KR";
+
+.content {
+	text-align: center;
+	display: felx;
+	flex-direction: column;
+	align-items: center;
+}
+
+table, td{
+	margin: auto;
+	text-align: center;
+}
+
+.hr_write{
+	display: flex;
+	flex-basis: 80%;
+	align-items: center;
+	color: purple;
+	font-size: 12px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin: 30px 0px;
+}
+
+.hr_write::before,
+.hr_write::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	margin: 0px 60px;
+	}
+	
+.hr_last{
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	margin: 30px 60px;
+}
