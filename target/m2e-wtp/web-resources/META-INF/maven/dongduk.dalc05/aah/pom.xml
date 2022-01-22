@@ -55,14 +55,6 @@
 
   <dependencies>
   
-  <!-- 이메일 인증: https://mvnrepository.com/artifact/javax.mail/mail -->
-<dependency>
-	<groupId>javax.mail</groupId>
-	<artifactId>mail</artifactId>
-	<version>1.4.7</version>
-</dependency>
-  
-  
  	<dependency> <!-- 크롤러 사용-->
  		<!-- jsoup HTML parser library @ https://jsoup.org/ -->
         <groupId>org.jsoup</groupId>
