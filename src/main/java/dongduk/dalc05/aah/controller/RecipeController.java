@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import dongduk.dalc05.aah.service.CommunityService;
+import dongduk.dalc05.aah.service.CrawlingService;
 import dongduk.dalc05.aah.service.MemberService;
 
 @Controller
@@ -30,6 +31,9 @@ public class RecipeController {
 	@Autowired
 	private CommunityService commuService;
 	
+	@Autowired
+	private CrawlingService crawlingService;
+	
 	
 	@RequestMapping(value="/main/recipe/crawling")
 	public String startCrawl(Model model,
@@ -40,28 +44,42 @@ public class RecipeController {
 		
 		int member_code = memberService.getMemberCode(member_id);
 		int sick_code = memberService.getMemberInfo(member_code).getSick_code();
-		return member_id;
 		
-		//String query = crawlingService.getIngredients(sick_code);
+		String query = crawlingService.getIngredients(sick_code);
 		
+		String realURL = "";
+		String image = "";
+		String title = "";
+		ArrayList<String> images = new ArrayList<>();
+				
 		 // 1. 수집 대상 URL
-		//String URL = "https://haemukja.com/recipes?utf8=%E2%9C%93&sort=rlv&name=" + query;
-        
+		String start = "https://www.10000recipe.com/recipe/list.html?q=" + query;
         // 2. Connection 생성
-        //Connection conn = Jsoup.connect(URL);
-        
+        Connection conn = Jsoup.connect(start);
         // 3. HTML 파싱.
-        //Document html = conn.get();
-    	
+        Document rawData = conn.get();
         // 4. 요소 탐색
-        // 4-1. Attribute 탐색
+        Elements contents = rawData.select("li");
         
-        //Elements contents = html.select(".li > a");
+        for (Element option : contents) {
+        	realURL = option.select("a").attr("href");
+        	String url = "https://www.10000recipe.com" + realURL;
+        	rawData = Jsoup.connect(url).get();
+        	contents = rawData.select("div[id=\"contents_area\"]");
+        	for (Element option2 : contents) {
+        		image = option2.select("img").attr("src");
+        		// title = option2.select("h3");
+        		//view2_summary_info2
+        		//view2_summary_info3
+        		System.out.println("만개의레시피크롤링중" + image);
+        		images.add(image);
+        	}
+        	
+        }
+        
+        model.addAttribute("image", image);
         
         
-        
-        
-        
-        
+        return "recipe/list";
 
 	}}

@@ -9,6 +9,12 @@
 		where sick_code = ${sick_code}
 	</select>
 	
+	<select id="getMemberInfo" resultType="dongduk.dalc05.aah.domain.Member">
+		Select *
+		FROM member
+		where member_code = ${member_code}
+	</select>
+	
 	<select id="getBestPosts" resultType="dongduk.dalc05.aah.domain.Post">
 		Select *
 		FROM POST
@@ -38,8 +44,5 @@
 		FROM Sick
 	</select>
 
-
-	
-	
 
 </mapper>
