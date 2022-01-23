@@ -65,7 +65,7 @@
 			</tr>
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="text" name="member_pw" placeholder="비밀번호" required="required"></td>
+				<td><input type="password" name="member_pw" placeholder="비밀번호" required="required"></td>
 			</tr>
 			<tr>
 				<th>비밀번호 확인</th>
