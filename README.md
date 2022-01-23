@@ -17,9 +17,12 @@
 
 <br>
 <h3>:two_women_holding_hands:담당업무</h3>
-- 기획 : 이가은 (sub : 김효선, 손예서) <br>
+<h4>기획 : 이가은 <h4>
+- 기획 sub : 김효선, 손예서 <br>
 - 디자인 : 손예서 <br>
 - 시각화 : 김효선 <br>
 - AI : 박소현, 안태연, 유나연 <br>
-- BackEnd : 나하윤 (sub : 안태연, 유나연) <br>
-- FrontEnd : 유나연 (sub : 나하윤) <br>
+- BackEnd : 나하윤 <br>
+- BE sub : 안태연, 유나연 <br>
+- FrontEnd : 유나연 <br>
+- FE sub : 박소현, 나하윤 <br>
