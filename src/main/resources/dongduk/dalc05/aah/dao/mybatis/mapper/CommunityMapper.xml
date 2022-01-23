@@ -2,7 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.CommunityMapper">
-
+	
+	<select id="getSickName" resultType="String">
+		Select sick_name
+		FROM sick
+		where sick_code = ${sick_code}
+	</select>
+	
 	<select id="getBestPosts" resultType="dongduk.dalc05.aah.domain.Post">
 		Select *
 		FROM POST
@@ -21,6 +27,13 @@
 		FROM member
 		WHERE member_Code = ${member_code}
 	</select>
+	
+	<select id="getCommuList" resultType="dongduk.dalc05.aah.domain.Community">
+		Select *
+		FROM Community
+	</select>
+
+	
 	
 
 </mapper>

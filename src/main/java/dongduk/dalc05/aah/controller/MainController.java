@@ -56,10 +56,5 @@ public class MainController {
 		return "recipe/list";
     }
     
-    // 메인페이지 -> 홈트페이지 이동
-    @RequestMapping(value = "/main/exercise")
-    public String exercise() {
-		return "exercise/list";
-    }
-    
+
 }

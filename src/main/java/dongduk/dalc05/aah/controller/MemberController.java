@@ -10,17 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
-import java.util.Map;
 
+// 멤버만이 사용할 수 있는 멤버관련 컨트롤러
 @Controller
 public class MemberController {
 //	
@@ -37,6 +33,19 @@ public class MemberController {
 		return "redirect:/main";
 	}
 	
+	// 메인페이지(로그인상태) -> 보관함
+	@RequestMapping(value = "/member/mybox", method = RequestMethod.GET)
+	public String mybox() {
+		return "member/mybox";
+	}
+	
+	// 메인페이지(로그인상태) -> 다이어리(캘린더) 들어가기
+	@RequestMapping(value = "/member/diary", method = RequestMethod.GET)
+	public String diary() {
+		return "member/diary";
+	}
+	
+  
 	// 로그인 시도
 	@RequestMapping(value="/member/login.do", method = RequestMethod.POST)
 	public String loginDo(
@@ -61,15 +70,15 @@ public class MemberController {
 			model.addAttribute("msg", member_nickName + "님 방문을 환영합니다");
 	        model.addAttribute("url","/");
 	    
-	         return "alert/alert";
+	        return "alert/alert";
 	        
     	}
 
-		 model.addAttribute("msg", "아이디와 비밀번호가 틀렸습니다.");
-         model.addAttribute("url","/");
-         model.addAttribute("url","/main/login");
+		 //model.addAttribute("msg", "아이디와 비밀번호가 틀렸습니다.");
+         //model.addAttribute("url","/");
+         //model.addAttribute("url","/main/login");
 
-		 return "alert/alert";
+		 return "member/WrongIdOrPw";
 
 	}
 		
@@ -128,13 +137,6 @@ public class MemberController {
 		return "alert/alert";
 	}
 	
-	// 정보수정 - 페이지 제작되면 구현시작
-	public ModelAndView updateDo(
-			HttpServletRequest request) {
-			
-		ModelAndView mav = new ModelAndView();
-		return mav;
-	}
-	
+
 	
 }

@@ -77,6 +77,14 @@
 				<th>비밀번호 확인</th>
 				<td><input type="text" placeholder="비밀번호 확인" required="required"></td>
 			</tr>
+			<tr>
+				<th>핸드폰</th>
+				<td><input type="text" name="member_phone" placeholder="휴대폰(-없이 숫자만 입력)" required="required"></td>				
+			</tr>
+			<tr>
+				<th>생년월일</th>
+				<td><input type="date" name="member_birth" placeholder="생년월일" required="required">	</td>
+			</tr>
 		</table>
 		
 		<!-- 테이블 미사용(기존 코드) -->

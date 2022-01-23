@@ -10,7 +10,16 @@
 <head>
 <meta charset="UTF-8">
 <title>커뮤니티</title>
-
+<style>
+  table {
+    width: 100%;
+    border: 1px solid #444444;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid #444444;
+  }
+</style>
 </head>
 <body>
 
@@ -23,6 +32,7 @@
 			<th>게시글 제목</th>	 
  			<th>작성자</th>	  
 			<th>작성일</th>	
+			<th>조회수</th>
 		</tr>
 		<c:forEach var="post" items="${BestPosts}">
 		<tr onClick="location.href='<c:url value='/community/post/detail.do'>
@@ -30,7 +40,8 @@
  			<td>${post.commu_name}</td>	 
 			<td>${post.post_title}</td>	 
 			<td>${post.member_nickName}</td>	   
-			<td>${post.post_uploadDate}</td>	
+			<td>${post.post_uploadDate}</td>
+			<td>코드추가하기</td>	<!-- ${post.hits} -->
 		</c:forEach>	
 		</tr>	 
 	</table>
@@ -39,8 +50,7 @@
 	<h3>자신의 질병의 게시판 자리 여기 글들이 보임. 바로위에 다른 질병 선택가능하도록 페이지구현하기</h3>	
 	<input type = "button" onClick="/community/post/upload" value="게시글 작성하러가기"></input> 
 	<input type="button" value="커뮤니티 생성" onClick="/community/create"></input>
-	<input type="button" value="커뮤니티 목록보기" onClick="//community/commulists"></input>
-	
+	<input type="button" value="커뮤니티 목록보기" onclick="location.href='<c:url value='/community/commulist' />'"></input>
 <!-- 	<table>		 -->
 <%-- 		<c:forEach var="commu" items="${Commus}"> --%>
 <%-- 			<tr onClick="location.href='<c:url value='/community/post/detail.do'> --%>
