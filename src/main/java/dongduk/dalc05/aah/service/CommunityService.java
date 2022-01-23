@@ -4,6 +4,7 @@ import java.util.List;
 
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
+import dongduk.dalc05.aah.domain.Sick;
 
 public interface CommunityService {
 	
@@ -18,4 +19,6 @@ public interface CommunityService {
 	public List<Community> getCommuList();
 
 	public String getSickName(int sick_code);
+	
+	public List<Sick> getSickNameList();
 }

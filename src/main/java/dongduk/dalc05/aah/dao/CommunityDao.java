@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Post;
+import dongduk.dalc05.aah.domain.Sick;
 
 @Repository
 public interface CommunityDao {
@@ -23,5 +24,7 @@ public interface CommunityDao {
 	List<Community> getCommuList();
 	
 	String getSickName(int sick_code);
+	
+	List<Sick> getSickNameList();
 	
 }

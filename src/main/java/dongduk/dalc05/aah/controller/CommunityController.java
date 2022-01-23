@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
+import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.CommunityService;
 
 @Controller
@@ -81,29 +82,45 @@ public class CommunityController {
       return mav;
    }
    
-   //커뮤생성하기
+   //커뮤생성하기로 이동
    @RequestMapping(value = "/community/create")
-   public ModelAndView commuCreate() {
-      List<Community> list = new ArrayList<>();
-         
-      list = commuService.getCommuList(); // 전체불러옴
-      
-      for(int i=0; i<list.size(); i++) {
-    	  list.get(i).setMember_nickName(commuService.getMemberNickName(list.get(i).getMember_code()));
-    	  list.get(i).setSick_name(commuService.getSickName(list.get(i).getSick_code()));
-    	  
-    	  System.out.println("M "+ list.get(i).getCommu_code());
-    	  System.out.println("M "+ list.get(i).getMember_code());
-    	  System.out.println("M "+ list.get(i).getMember_nickName());
-    	  System.out.println("M "+ list.get(i).getCommu_name());
-    	  System.out.println("M "+ list.get(i).getSick_code());
-    	  System.out.println("M "+ list.get(i).getSick_name());
-      }
-     
-      ModelAndView mav = new ModelAndView();
-      mav.setViewName("community/commuList");
-      mav.addObject("CommuList", list);
-      return mav;
+   public ModelAndView commuCreate(
+		   HttpServletRequest request) {
+	  
+	   HttpSession session = request.getSession();
+	   String MyNickName = (String) session.getAttribute("member_nickName");
+	   
+	   System.out.println("commu create" + MyNickName);
+	   
+	   ModelAndView mav = new ModelAndView();
+	   mav.setViewName("community/create");
+	   
+	   List<Sick> list = new ArrayList<>();
+	   list = commuService.getSickNameList();
+
+	   mav.addObject("sicks", list);
+	   
+	   mav.addObject(MyNickName, MyNickName);
+	   
+	   return mav;
    }
+   
+//   @RequestMapping(value = "/community/create.do")
+//   public ModelAndView createDo(
+//		   HttpServletRequest request) {
+//	   HttpSession session = request.getSession();
+//	   
+//	   
+//	   
+//	   
+//	   return null;
+//	   
+//   }
+//   
+   
+   
+   
+	 
+  
 
 }

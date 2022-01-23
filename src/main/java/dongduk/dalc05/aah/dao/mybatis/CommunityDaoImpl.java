@@ -10,6 +10,7 @@ import dongduk.dalc05.aah.dao.mybatis.mapper.CommunityMapper;
 import dongduk.dalc05.aah.dao.mybatis.mapper.MemberMapper;
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
+import dongduk.dalc05.aah.domain.Sick;
 
 @Repository
 public class CommunityDaoImpl implements CommunityDao {
@@ -41,5 +42,11 @@ public class CommunityDaoImpl implements CommunityDao {
 	@Override
 	public String getSickName(int sick_code) {
 		return communityMapper.getSickName(sick_code);
+	}
+
+	@Override
+	public List<Sick> getSickNameList() {
+		// TODO Auto-generated method stub
+		return communityMapper.getSickNameList();
 	}
 }

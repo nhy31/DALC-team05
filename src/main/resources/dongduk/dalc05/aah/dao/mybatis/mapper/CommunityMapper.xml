@@ -33,6 +33,12 @@
 		FROM Community
 	</select>
 
+	<select id="getSickNameList" resultType="dongduk.dalc05.aah.domain.Sick">
+		Select *
+		FROM Sick
+	</select>
+
+
 	
 	
 

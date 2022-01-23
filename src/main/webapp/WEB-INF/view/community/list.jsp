@@ -41,7 +41,8 @@
 			<td>${post.post_title}</td>	 
 			<td>${post.member_nickName}</td>	   
 			<td>${post.post_uploadDate}</td>
-			<td>코드추가하기</td>	<!-- ${post.hits} -->
+			<td>코드추가하기</td>	
+<%-- 			${post.post_hits} --%>
 		</c:forEach>	
 		</tr>	 
 	</table>
@@ -49,7 +50,7 @@
 	
 	<h3>자신의 질병의 게시판 자리 여기 글들이 보임. 바로위에 다른 질병 선택가능하도록 페이지구현하기</h3>	
 	<input type = "button" onClick="/community/post/upload" value="게시글 작성하러가기"></input> 
-	<input type="button" value="커뮤니티 생성" onClick="/community/create"></input>
+	<input type="button" value="커뮤니티 생성" onclick="location.href='<c:url value='/community/create' />'"></input>
 	<input type="button" value="커뮤니티 목록보기" onclick="location.href='<c:url value='/community/commulist' />'"></input>
 <!-- 	<table>		 -->
 <%-- 		<c:forEach var="commu" items="${Commus}"> --%>

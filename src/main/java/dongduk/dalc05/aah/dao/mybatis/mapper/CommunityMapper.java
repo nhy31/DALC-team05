@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
+import dongduk.dalc05.aah.domain.Sick;
 
 @Mapper
 public interface CommunityMapper {
@@ -23,4 +24,6 @@ public interface CommunityMapper {
 	
 	String getSickName(int sick_code);
 
+	
+	List<Sick> getSickNameList();
 }
