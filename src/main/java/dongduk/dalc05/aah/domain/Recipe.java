@@ -7,7 +7,14 @@ public class Recipe {
 	private float recipe_level; //double
 	private int recipe_length;
 	private int sick_code;
+	private String recipe_img;
 	
+	public String getRecipe_img() {
+		return recipe_img;
+	}
+	public void setRecipe_img(String recipe_img) {
+		this.recipe_img = recipe_img;
+	}
 	public int getRecipe_code() {
 		return recipe_code;
 	}

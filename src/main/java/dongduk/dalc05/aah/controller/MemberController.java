@@ -92,7 +92,6 @@ public class MemberController {
     		@RequestParam ("member_name") String member_name,
     		@RequestParam ("member_nickName") String member_nickName,
     		@RequestParam ("member_phone") String member_phone,
-    		@RequestParam ("member_email") String member_email,
     		@RequestParam ("member_birth") @DateTimeFormat (pattern ="yyyy-MM-dd") Date member_birth,
     		@RequestParam ("sick_code") int sick_code,
     		@RequestParam ("bad_ingredient_code") int bad_ingredient_code,
@@ -104,7 +103,7 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		
 		Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone,
-				member_email, member_birth, sick_code, bad_ingredient_code, member_image, member_sex);
+				member_birth, sick_code, bad_ingredient_code, member_image, member_sex);
 		
 		memberService.insertMember(member);
 		
