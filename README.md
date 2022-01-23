@@ -21,8 +21,8 @@
 <h4> # 시각화 : 김효선 </h4>
 <h4> # AI : 박소현, 안태연, 유나연 </h4>
 <h4> # BackEnd : 나하윤 </h4>
-- SUB : 안태연, 유나연 <br>
+&nbsp;&nbsp; - SUB : 안태연, 유나연 <br>
 <h4> # FrontEnd : 유나연 </h4>
-- SUB : 박소현, 나하윤 <br>
+&nbsp;&nbsp; - SUB : 박소현, 나하윤 <br>
 
 
