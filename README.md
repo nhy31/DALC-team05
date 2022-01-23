@@ -16,14 +16,11 @@
 
 <br>
 <h2>:two_women_holding_hands:담당업무</h2>
-<h4> # 기획 : 이가은 </h4> 
-&nbsp;&nbsp; - SUB : 김효선, 손예서 </font><br>
-<h4> # 디자인 : 손예서 </h4>
-<h4> # 시각화 : 김효선 </h4>
-<h4> # AI : 박소현, 안태연, 유나연 </h4>
-<h4> # BackEnd : 나하윤 </h4>
-&nbsp;&nbsp; - SUB : 안태연, 유나연 <br>
-<h4> # FrontEnd : 유나연 </h4>
-&nbsp;&nbsp; - SUB : 박소현, 나하윤 <br>
+기획 : 이가은 (SUB : 김효선, 손예서) <br>
+디자인 : 손예서 <br>
+시각화 : 김효선  <br>
+AI : 박소현, 안태연, 유나연 <br>
+BackEnd : 나하윤 (SUB : 안태연, 유나연) <br>
+FrontEnd : 유나연 (SUB : 박소현, 나하윤) <br>
 
 
