@@ -1,3 +1,4 @@
+<br>
 <h1>:mask:아프다 아파, 현대사회:sweat_drops:</h1>
 :mag_right:사용자 질병별 요리 레시피 및 홈트레이닝 맞춤 추천 웹서비스 <br>
 
@@ -15,7 +16,8 @@
 
 <br>
 <h2>:two_women_holding_hands:담당업무</h2>
-<h4> # 기획 : 이가은 </h4> &nbsp;&nbsp; - SUB : 김효선, 손예서 </font><br>
+<h4> # 기획 : 이가은 </h4> 
+&nbsp;&nbsp; - SUB : 김효선, 손예서 </font><br>
 <h4> # 디자인 : 손예서 </h4>
 <h4> # 시각화 : 김효선 </h4>
 <h4> # AI : 박소현, 안태연, 유나연 </h4>
