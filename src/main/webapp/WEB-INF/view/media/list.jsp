@@ -43,6 +43,7 @@ div {
 
 
 <body>
+미디어는 프론트도 하기 
 	<table class=big>
 		<colgroup>
 			<col width="50%">

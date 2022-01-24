@@ -53,14 +53,8 @@
 			</tr>
 			<tr>
 				<th> 이메일 </th>
-				<td><input type="email" name="member_email" placeholder="이메일" required="required">
+				<td><input type="email" name="member_id" placeholder="이메일" required="required">
 					<button>인증메일 발송</button> 우선 버튼만
-				</td>
-			</tr>
-			<tr>
-				<th> 아이디 </th>
-				<td><input type="text" name="member_id" placeholder="아이디" required="required">
-					<button>중복확인</button> 우선버튼만, 아이디 중복됐는지 테이블에서 확인 후 다시하라고 알림창
 				</td>
 			</tr>
 			<tr>
@@ -71,11 +65,26 @@
 			</tr>
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="text" name="member_pw" placeholder="비밀번호" required="required"></td>
+				<td><input type="password" name="member_pw" placeholder="비밀번호" required="required"></td>
 			</tr>
 			<tr>
 				<th>비밀번호 확인</th>
 				<td><input type="text" placeholder="비밀번호 확인" required="required"></td>
+			</tr>
+			<tr>
+				<th>핸드폰</th>
+				<td><input type="text" name="member_phone" placeholder="휴대폰(-없이 숫자만 입력)" required="required"></td>				
+			</tr>
+			<tr>
+				<th>생년월일</th>
+				<td><input type="date" name="member_birth" placeholder="생년월일" required="required">	</td>
+			</tr>
+			<tr>
+				<th>현재 질병 및 관심 질병 (1개)</th>
+				<td> 
+					<input type="text" name="sick_code" value=3> 
+					<!-- 개발에 질병 정보있는게 나아서 우선 당뇨로 가정, 당뇨 코드번호3  value 나중에 sick_name으로 바꿀까 3임-->
+				</td>
 			</tr>
 		</table>
 		
@@ -86,7 +95,7 @@
 				</div>
 				<div>
 					<input type="email" name="member_email" placeholder="이메일" required="required">
-					<button>인증메일 발송</button> 우선 버튼만
+				//tddsssssssss인증메일 발송</button> 우선 버튼만
 				<div>
 					<input type="text" name="member_id" placeholder="아이디" required="required">
 					<button>중복확인</button> 우선버튼만, 아이디 중복됐는지 테이블에서 확인 후 다시하라고 알림창

@@ -47,6 +47,8 @@
           <li>${member_nickName}님 </li>
             <li><a href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
             <li><a href="<c:url value="/member/delete.do" />">탈퇴</a></li> <!-- 탈퇴기능만 한번테스트해보려고 잠깐삽입 -->
+            <li><a href="<c:url value="/member/mybox" />">보관함</a></li> <!-- 한번테스트해보려고 잠깐삽입 -->
+            <li><a href="<c:url value="/member/diary" />">나의 기록</a></li> <!--한번테스트해보려고 잠깐삽입 -->
       	</c:if>
       </ul>
    </nav>
@@ -55,7 +57,7 @@
    <nav class="dalcbar">
    <p align="center">
       <ul class="dalc_menu">
-         <li><a href="<c:url value='/main/recipe'/>">레시피 추천</a></li>
+         <li><a href="<c:url value='/main/recipe/crawling'/>">레시피 추천</a></li>
          <li><a href="<c:url value='/main/exercise'/>">홈트레이닝 추천</a></li>
          <li><a href="<c:url value='/main/media/crawling'/>">건강 미디어</a></li>
          <li><a href="<c:url value='/main/community'/>">현대사회 커뮤니티</a></li>

@@ -12,7 +12,6 @@ public class Member implements Serializable {
 	private String member_name;
 	private String member_nickName;
 	private String member_phone;
-	private String member_email;
 	
 	@DateTimeFormat (pattern ="yyyy-MM-dd")
 	private Date member_birth;
@@ -27,7 +26,7 @@ public class Member implements Serializable {
 	}
 	
 	public Member(String member_id, String member_pw, String member_name, String member_nickName, String member_phone,
-			String member_email, Date member_birth, int sick_code, int bad_ingredient_code, String member_image,
+			Date member_birth, int sick_code, int bad_ingredient_code, String member_image,
 			int member_sex) {
 		super();
 		this.member_id = member_id;
@@ -35,7 +34,6 @@ public class Member implements Serializable {
 		this.member_name = member_name;
 		this.member_nickName = member_nickName;
 		this.member_phone = member_phone;
-		this.member_email = member_email;
 		this.member_birth = member_birth;
 		this.sick_code = sick_code;
 		this.bad_ingredient_code = bad_ingredient_code;
@@ -79,12 +77,7 @@ public class Member implements Serializable {
 	public void setMember_phone(String member_phone) {
 		this.member_phone = member_phone;
 	}
-	public String getMember_email() {
-		return member_email;
-	}
-	public void setMember_email(String member_email) {
-		this.member_email = member_email;
-	}
+
 	public Date getMember_birth() {
 		return member_birth;
 	}

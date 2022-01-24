@@ -1,0 +1,56 @@
+/* Rectangle 241 */
+
+.topiImages {
+position: absolute;
+width: 223px;
+height: 152px;
+left: 243px;
+top: 243px;
+
+background: #E1E1E1;
+border-radius: 6px;
+background: #E1E1E1;
+border-radius: 6px;
+}
+
+/* Rectangle 245 */
+
+.bottomImages {
+position: absolute;
+width: 223px;
+height: 152px;
+left: 243px;
+top: 660px;
+}
+
+
+
+
+.mybox {
+position: absolute;
+width: 18px;
+height: 20.5px;
+left: 432px;
+top: 243px;
+
+background: #851BD8;}
+
+
+.sick_name {
+position: absolute;
+width: 62px;
+height: 15px;
+left: 245px;
+top: 588px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 17px;
+line-height: 20px;
+text-align: center;
+
+color: #FFFFFF;
+	
+}
+

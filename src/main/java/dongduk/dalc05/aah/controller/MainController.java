@@ -5,14 +5,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
 
 	@RequestMapping(value="/main")
-	public ModelAndView main(HttpServletRequest request) {
+	public ModelAndView main(
+			HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String member_id = (String) session.getAttribute("member_id");
 		String member_nickName = (String) session.getAttribute("member_nickName");
@@ -38,7 +38,6 @@ public class MainController {
 	}
 
 
-	
 	// 메인페이지 -> 로그인페이지 이동
     @RequestMapping(value = "/main/login")
     public String login() {
@@ -57,10 +56,5 @@ public class MainController {
 		return "recipe/list";
     }
     
-    // 메인페이지 -> 홈트페이지 이동
-    @RequestMapping(value = "/main/exercise")
-    public String exercise() {
-		return "exercise/list";
-    }
-    
+
 }

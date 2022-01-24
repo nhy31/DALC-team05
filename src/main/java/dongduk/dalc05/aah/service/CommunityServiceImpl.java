@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dongduk.dalc05.aah.dao.CommunityDao;
+import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
+import dongduk.dalc05.aah.domain.Sick;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {
@@ -27,6 +29,22 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public String getMemberNickName(int member_code) {
 		return commuDao.getMemberNickName(member_code);
+	}
+
+	@Override
+	public List<Community> getCommuList() {
+		return commuDao.getCommuList();
+	}
+
+	@Override
+	public String getSickName(int sick_code) {
+		return commuDao.getSickName(sick_code);
+	}
+
+	@Override
+	public List<Sick> getSickNameList() {
+		// TODO Auto-generated method stub
+		return commuDao.getSickNameList();
 	}
 	
 
