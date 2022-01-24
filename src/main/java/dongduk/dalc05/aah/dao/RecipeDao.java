@@ -1,5 +1,9 @@
 package dongduk.dalc05.aah.dao;
 
-public class RecipeDao {
+import org.springframework.stereotype.Repository;
 
+@Repository
+public interface RecipeDao {
+
+	String getIngredients(int sick_code);
 }

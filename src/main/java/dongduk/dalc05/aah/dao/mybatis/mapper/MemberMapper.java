@@ -11,10 +11,10 @@ public interface MemberMapper {
 	void insertMember(Member member) throws DataAccessException;
 
 	// 탈퇴
-	void deleteMember(int memberId);
+	void deleteMember(int member_code);
 
 	// 정보 불러오기
-	Member getMemberInfo(int memberId);
+	Member getMemberInfo(int member_code);
 	
 	// 아이디에 맞는 올바른 패스워드인지 확인
 	String getPassword(String member_id);

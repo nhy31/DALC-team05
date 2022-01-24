@@ -16,6 +16,12 @@
 		delete from member
 		WHERE MEMBER_code = #{member_code}
 	</delete>
+	
+	<select id="getMemberInfo" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Member">
+		Select *
+		FROM Member
+		WHERE member_code = #{member_code}
+  	</select>
 
 	<select id="getPassword" parameterType="String" resultType="String">
 		Select member_pw
