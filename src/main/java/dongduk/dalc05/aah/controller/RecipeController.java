@@ -31,8 +31,6 @@ public class RecipeController {
 	@Autowired
 	private MemberService memberService;
 	
-	
-	
 	@Autowired
 	private RecipeService recipeService;
 	
@@ -47,6 +45,8 @@ public class RecipeController {
 		int sick_code = memberService.getMemberInfo(member_code).getSick_code();
 		
 		List<String> q = recipeService.getIngredients(sick_code);
+		  
+		ArrayList<Recipe> recipes = new ArrayList<>();
 		
 		for(int j=0; j<q.size(); j++) {
 			
@@ -95,13 +95,13 @@ public class RecipeController {
 			        r.setRecipe_length(length);
 			        r.setSick_code(sick_code);
 			       
+			        recipes.add(r);
+			        
 			        r.setRecipe_code(Integer.parseInt(realURL.toString().replace("/recipe/", "")));
 			        
-			        //recipeService.insertRecipe(r);
+			        recipeService.insertRecipe(r);
 			           
-			        ArrayList<rUse> uses = new ArrayList<>();
-			        ArrayList<Recipe> recipes = new ArrayList<>();
-			        
+			     
 			        Elements u = option2.select("ul[class=\"case1\"]").select("a").select("li");
 			        System.out.println("만개의레시피크롤링중 재료들 ");
 			        for(Element use : u) {
@@ -120,46 +120,43 @@ public class RecipeController {
 			        	//System.out.println(r.getRecipe_code());
 			        	//System.out.println(result.getRecipe_code());
 			        	
-			        	//recipeService.insertUse(result);
+			        	recipeService.insertUse(result);
 			        			
-			        	uses.add(result);
 			        }
 			        
-			        Elements u2 = option2.select("div[class=\"view_step\"]");
+			        Elements u2 = option2.select("div[class=\"view_step\"]").select("div[class=\"media-body\"]");
 			        System.out.println("만개의레시피크롤링중 순서");
 			        int i = 1;
 			        for(Element use : u2) {
-			        	String str = use.select("div[class=\"media-body\"]").toString();
+	
+			        	String str = use.toString();
 			        	
-//			        	1 <div id="stepdescr1" class="media-body">
-//			        	 옥수수콘는 체에 밭쳐 물기를 뺀다.
-//			        	</div>
-//			        	<div id="stepdescr2" class="media-body">
-//			        	 볼에 옥수수콘, 허니머스타드, 마요네즈, 모짜렐라치즈, 후추를 넣고 섞는다.
-//			        	</div>
-//			        	<div id="stepdescr3" class="media-body">
-//			        	 모닝빵은 가운데를 파낸다.
-//			        	</div>
-//			        	<div id="stepdescr4" class="media-body">
-//			        	 모닝빵에 2를 넣는다.
-//			        	</div>
-//			        	<div id="stepdescr5" class="media-body">
-//			        	 에어프라이어 바스켓에 넣고 180도 온도에서 10분간 구워 완성한다.
-//			        	 <p class="step_add add_tool">에어프라이어</p>
-//			        	</div>
+			        	str = str.substring(str.indexOf(">")+1);
+			        	str = str.substring(0, str.indexOf("</div>"));
 			        	
+			        	if (str.contains("<p")) {
+			        		str = str.substring(0, str.indexOf("<p"));
+			        	}
 			        	
-			        	// System.out.println(r.getRecipe_code());
-			        
-			        	// String str1 = str.spl;
-			        	System.out.println(i + " " + str);
+			        	String[] s = str.split("<br>");
+			        	
 			        	
 			        	rOrder result = new rOrder();
 			        	result.setRecipe_code(r.getRecipe_code());
 			        	result.setrOrder_num(i);
 			        	
+			        	String s2 = "";
+			        	for(int k=0; k<s.length; k++) {
+			        		s2 += s[k];
+			        	}
+			        	result.setrOrder_content(i + s2);
+			        	
+			        	System.out.println(s2);
+			        	
+			        	recipeService.insertOrder(result);
+			        	 	
 			        	i++;
-			        	//recipeService.insertOrder(null)
+			        	
 			        }
 			   
 			    }
@@ -169,7 +166,7 @@ public class RecipeController {
 			
 		}
 		
-	    //model.addAttribute("recipes", recipes);
+	    model.addAttribute("recipes", recipes);
 		     
 		return "recipe/list";
 	}
