@@ -41,14 +41,13 @@ public class CommunityController {
 	  }
 	   
       List<Post> bests = new ArrayList<>();
-      bests = commuService.getBestPosts(); // 한 sql쿼리로 조회순 나열해서 10개정도뽑아서 정렬
+      bests = commuService.getBestPosts(); // sql쿼리로 조회순 나열해서 10개정도뽑아서 정렬
       
       for(int i=0; i<bests.size(); i++) {
          bests.get(i).setMember_nickName(commuService.getMemberNickName(bests.get(i).getMember_code()));
          bests.get(i).setCommu_name(commuService.getCommuName(bests.get(i).getCommu_code()));
          
          System.out.println(bests.get(i).getPost_title());
-         
       }
          
       ModelAndView mav = new ModelAndView();

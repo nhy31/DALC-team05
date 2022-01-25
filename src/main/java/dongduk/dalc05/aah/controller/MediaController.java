@@ -25,7 +25,6 @@ public class MediaController {
     @RequestMapping(value="/main/media/crawling", method=RequestMethod.GET)
     public String startCrawl(Model model) throws IOException {
 
-    	
     	String query = "허리디스크"; // 카테고리선택, 우선 허리디스크로 입력함, 리케스트 파라미터써서 질병코드,이름 받아오자
     	int page = 1;
     	ArrayList<String> urls = new ArrayList<>();
