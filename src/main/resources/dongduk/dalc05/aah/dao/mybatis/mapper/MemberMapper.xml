@@ -6,10 +6,10 @@
 	<insert id="insertMember" parameterType="dongduk.dalc05.aah.domain.Member">	
 		Insert Into Member
 		(MEMBER_CODE, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE, MEMBER_BIRTH,
-		MEMBER_SEX, MEMBER_IMAGE)
+		MEMBER_SEX, MEMBER_IMAGE, sick_code)
 		VALUES
 		(0, #{member_id}, #{member_pw}, #{member_name}, #{member_nickName}, #{member_phone}, 
-		#{member_birth}, #{member_sex}, #{member_image})
+		#{member_birth}, #{member_sex}, #{member_image},  #{sick_code})
 	</insert>
 
 	<delete id="deleteMember" parameterType="Integer">

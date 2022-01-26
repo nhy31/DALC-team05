@@ -6,7 +6,34 @@
 	<select id="getIngredients" resultType="String">
 		Select ingredient_name
 		FROM ingredient
-		where sick_code = ${sick_code}
+		where sick_code = #{sick_code}
 	</select>
+	
+	<select id="getRecipeCode" resultType="Integer">
+		Select recipe_name
+		FROM recipe
+		where recipe_name = #{recipe_name}
+	</select>
+	
+	<insert id="insertRecipe" parameterType="dongduk.dalc05.aah.domain.Recipe">	
+		Insert Into RECIPE
+		(recipe_code, recipe_title, recipe_length, sick_code, recipe_img)
+		VALUES
+		(#{recipe_code}, #{recipe_title}, #{recipe_length}, #{sick_code}, #{recipe_img})
+	</insert>
+	
+	<insert id="insertUse" parameterType="dongduk.dalc05.aah.domain.rUse">	
+		Insert Into rUse
+		(recipe_code, rUse_use)
+		VALUES
+		(#{recipe_code}, #{rUse_use})
+	</insert>
+	
+	<insert id="insertOrder" parameterType="dongduk.dalc05.aah.domain.rOrder">	
+		Insert Into rOrder
+		(recipe_code, rOrder_num, rOrder_content)
+		VALUES
+		(#{recipe_code}, #{rOrder_num}, #{rOrder_content})
+	</insert>
 	
 </mapper>
