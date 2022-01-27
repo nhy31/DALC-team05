@@ -3,7 +3,10 @@ package dongduk.dalc05.aah.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
- 
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -19,12 +22,16 @@ import java.text.*;
  
 @Controller
 public class MediaController {
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
     public static HashMap<String, String> map;
  
     @RequestMapping(value="/main/media/crawling", method=RequestMethod.GET)
-    public String startCrawl(Model model) throws IOException {
+    public String startCrawl(Model model,
+    		HttpServletRequest request) throws IOException {
 
+    	HttpSession session = request.getSession();
+    	String member_id = (String) session.getAttribute("member_id");
+    	
     	String query = "허리디스크"; // 카테고리선택, 우선 허리디스크로 입력함, 리케스트 파라미터써서 질병코드,이름 받아오자
     	int page = 1;
     	ArrayList<String> urls = new ArrayList<>();

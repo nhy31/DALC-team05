@@ -57,7 +57,9 @@ public class RecipeController {
 			String realURL = "";
 			String image = "";
 			String title = "";
+			String amount = ""; 
 			String length = "";
+			String level = "";
 			
 			// 1. 수집 대상 URL
 			String start = "https://www.10000recipe.com/recipe/list.html?q=" + query;
@@ -85,21 +87,30 @@ public class RecipeController {
 			        title = title.replace("<h3>", "").replace("</h3>", "");
 			        System.out.println("만개의레시피크롤링중 title: " + title);
 
+			        amount = option2.select("span[class=\"view2_summary_info1\"]").toString();
+			        amount = amount.replace("<span class=\"view2_summary_info1\">", "").replace("</span>", "");
+			        System.out.println("만개의레시피크롤링중 amount " + amount);
+			        
 			        length = option2.select("span[class=\"view2_summary_info2\"]").toString();
 			        length = length.replace("<span class=\"view2_summary_info2\">", "").replace("</span>", "");
 			        System.out.println("만개의레시피크롤링중 length " + length);
+			        
+			        level = option2.select("span[class=\"view2_summary_info3\"]").toString();
+			        level = level.replace("<span class=\"view2_summary_info3\">", "").replace("</span>", "");
+			        System.out.println("만개의레시피크롤링중 난이도 " + level);
 			   
 			        Recipe r = new Recipe();
 			        r.setRecipe_img(image);
 			        r.setRecipe_title(title);
 			        r.setRecipe_length(length);
 			        r.setSick_code(sick_code);
-			       
+			        r.setRecipe_level(level);
+			        r.setRecipe_amount(amount);
 			        recipes.add(r);
 			        
 			        r.setRecipe_code(Integer.parseInt(realURL.toString().replace("/recipe/", "")));
 			        
-			        recipeService.insertRecipe(r);
+			       // recipeService.insertRecipe(r);
 			           
 			     
 			        Elements u = option2.select("ul[class=\"case1\"]").select("a").select("li");
@@ -120,7 +131,7 @@ public class RecipeController {
 			        	//System.out.println(r.getRecipe_code());
 			        	//System.out.println(result.getRecipe_code());
 			        	
-			        	recipeService.insertUse(result);
+			        	//recipeService.insertUse(result);
 			        			
 			        }
 			        
@@ -153,7 +164,7 @@ public class RecipeController {
 			        	
 			        	System.out.println(s2);
 			        	
-			        	recipeService.insertOrder(result);
+			        	//recipeService.insertOrder(result);
 			        	 	
 			        	i++;
 			        	
