@@ -16,8 +16,7 @@ public class MainController {
 		HttpSession session = request.getSession();
 		String member_id = (String) session.getAttribute("member_id");
 		String member_nickName = (String) session.getAttribute("member_nickName");
-		String login = (String) session.getAttribute("login");
-		
+	
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main/main");
 		

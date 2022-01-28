@@ -12,10 +12,22 @@ public class Recipe {
 	
 	private List<rUse> uses;
 	
-//	private String recipe_level;
-//	private String recipe_amount;
+	private String recipe_level;
+	private String recipe_amount;
 	
-
+	
+	public String getRecipe_level() {
+		return recipe_level;
+	}
+	public void setRecipe_level(String recipe_level) {
+		this.recipe_level = recipe_level;
+	}
+	public String getRecipe_amount() {
+		return recipe_amount;
+	}
+	public void setRecipe_amount(String recipe_amount) {
+		this.recipe_amount = recipe_amount;
+	}
 	public List<rUse> getUses() {
 		return uses;
 	}

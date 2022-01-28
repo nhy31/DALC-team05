@@ -15,6 +15,8 @@
 	     http://www.springframework.org/schema/tx/spring-tx.xsd
 	     http://mybatis.org/schema/mybatis-spring 
 	     http://mybatis.org/schema/mybatis-spring.xsd">
+	     
+	     
 
 	<!-- 데이터베이스 연결  -->
 <!-- 	<bean id="dataSource" -->
