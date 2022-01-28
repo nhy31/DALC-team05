@@ -167,7 +167,7 @@ public class RecipeController {
 		}
 		
 	    model.addAttribute("recipes", recipes);
-		     
+		System.out.println("검사");
 		return "recipe/list";
 	}
 }
