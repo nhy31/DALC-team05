@@ -40,9 +40,21 @@ public class RecipeController {
 		
 		HttpSession session = request.getSession();
 		String member_id = (String) session.getAttribute("member_id");
+		int sick_code = 0;
 		
-		int member_code = memberService.getMemberCode(member_id);
-		int sick_code = memberService.getMemberInfo(member_code).getSick_code();
+		if (member_id != null) {
+			// 로그인상태 O
+			
+			
+		}
+		
+		else {
+			
+			int member_code = memberService.getMemberCode(member_id);
+			sick_code = memberService.getMemberInfo(member_code).getSick_code();
+			
+		}
+		
 		
 		List<String> q = recipeService.getIngredients(sick_code);
 		  
