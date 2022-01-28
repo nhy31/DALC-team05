@@ -16,9 +16,22 @@ public class CommunityServiceImpl implements CommunityService {
 	@Autowired
 	private CommunityDao commuDao;
 	
+	@Override
+	public void insertCommu(Community c) {
+		// TODO Auto-generated method stub
+		commuDao.insertCommu(c);
+	}
+
 	// 인기글 10개 보여주기
 	public List<Post> getBestPosts() {
 		return commuDao.getBestPosts();
+	}
+	
+
+	@Override
+	public String checkName(String commu_name) {
+		// TODO Auto-generated method stub
+		return commuDao.checkName(commu_name);
 	}
 
 	@Override
@@ -46,6 +59,13 @@ public class CommunityServiceImpl implements CommunityService {
 		// TODO Auto-generated method stub
 		return commuDao.getSickNameList();
 	}
-	
+
+	@Override
+	public int getSickCode(String sick_name) {
+		// TODO Auto-generated method stub
+		return commuDao.getSickCode(sick_name);
+	}
+
+
 
 }

@@ -18,6 +18,18 @@ public class CommunityDaoImpl implements CommunityDao {
 	@Autowired
 	private CommunityMapper communityMapper;
 	
+	@Override
+	public void insertCommu(Community c) {
+		// TODO Auto-generated method stub
+		communityMapper.insertCommu(c);
+	}
+	
+	@Override
+	public String checkName(String commu_name) {
+		// TODO Auto-generated method stub
+		return communityMapper.checkName(commu_name);
+	}
+	
 	// 인기글 10개 보여주기
 	@Override
 	public List<Post> getBestPosts() {
@@ -49,4 +61,14 @@ public class CommunityDaoImpl implements CommunityDao {
 		// TODO Auto-generated method stub
 		return communityMapper.getSickNameList();
 	}
+
+	@Override
+	public int getSickCode(String sick_name) {
+		// TODO Auto-generated method stub
+		return communityMapper.getSickCode(sick_name);
+	}
+
+
+
+
 }

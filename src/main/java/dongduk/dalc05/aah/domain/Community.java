@@ -8,8 +8,15 @@ public class Community {
 	private int member_code;
 	private String member_nickName;
 	private String sick_name;
+	private String commu_introduce;
 	
 	
+	public String getCommu_introduce() {
+		return commu_introduce;
+	}
+	public void setCommu_introduce(String commu_introduce) {
+		this.commu_introduce = commu_introduce;
+	}
 	public String getSick_name() {
 		return sick_name;
 	}

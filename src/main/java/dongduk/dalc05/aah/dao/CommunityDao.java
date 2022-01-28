@@ -16,6 +16,12 @@ public interface CommunityDao {
 	// 인기글 10개 보여주기
 	List<Post> getBestPosts();
 	
+	int getSickCode(String sick_name);
+	
+	void insertCommu(Community c);
+	
+	String checkName(String commu_name);
+	
 	String getCommuName(int coomu_code);
 	
 	String getMemberNickName(int member_code);

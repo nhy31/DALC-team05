@@ -6,13 +6,34 @@
 	<select id="getSickName" resultType="String">
 		Select sick_name
 		FROM sick
-		where sick_code = ${sick_code}
+		where sick_code = #{sick_code}
 	</select>
 	
+	<select id="getSickCode"  parameterType="String" resultType="Integer">
+		Select sick_code 
+		FROM sick 
+		where sick_name = #{sick_name}
+	</select>
+	
+	<select id="checkName"  parameterType="String" resultType="String">
+		Select commu_name 
+		FROM community 
+		where commu_name = #{commu_name}
+	</select>
+	
+
+	 <insert id="insertCommu" parameterType="dongduk.dalc05.aah.domain.Community">
+	 
+	 	insert into community(sick_code, commu_name, commu_introduce) 
+	 	values 
+	 	(#{sick_code}, #{commu_name}, #{commu_introduce}); 
+	 
+	</insert>
+	 
 	<select id="getMemberInfo" resultType="dongduk.dalc05.aah.domain.Member">
 		Select *
 		FROM member
-		where member_code = ${member_code}
+		where member_code = #{member_code}
 	</select>
 	
 	<select id="getBestPosts" resultType="dongduk.dalc05.aah.domain.Post">
@@ -25,13 +46,13 @@
 	<select id="getCommuName" resultType="String">
 		Select commu_name
 		FROM COMMUNITY
-		WHERE commu_code = ${commu_code}
+		WHERE commu_code = #{commu_code}
 	</select>
 	
 	<select id="getMemberNickName" resultType="String">
 		Select member_nickName
 		FROM member
-		WHERE member_Code = ${member_code}
+		WHERE member_Code = #{member_code}
 	</select>
 	
 	<select id="getCommuList" resultType="dongduk.dalc05.aah.domain.Community">

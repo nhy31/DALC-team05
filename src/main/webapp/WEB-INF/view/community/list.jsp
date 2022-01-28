@@ -49,7 +49,7 @@
 	</div>
 	
 	<h3>자신의 질병의 게시판 자리 여기 글들이 보임. 바로위에 다른 질병 선택가능하도록 페이지구현하기</h3>	
-	<input type = "button" onClick="/community/post/upload" value="게시글 작성하러가기"></input> 
+	<input type ="button" value="게시글 작성하러가기" onclick="location.href='<c:url value='/community/post/upload' />'"></input> 
 	<input type="button" value="커뮤니티 생성" onclick="location.href='<c:url value='/community/create' />'"></input>
 	<input type="button" value="커뮤니티 목록보기" onclick="location.href='<c:url value='/community/commulist' />'"></input>
 <!-- 	<table>		 -->

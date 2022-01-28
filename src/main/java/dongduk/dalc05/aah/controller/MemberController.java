@@ -3,8 +3,11 @@ package dongduk.dalc05.aah.controller;
 
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.service.MemberService;
+import dongduk.dalc05.aah.service.SickService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 
 // 멤버만이 사용할 수 있는 멤버관련 컨트롤러
@@ -22,6 +26,9 @@ public class MemberController {
 //	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private SickService sickService;
 	
 	// 메인페이지(로그인상태) -> 로그아웃
 	@RequestMapping(value = "/member/logout.do", method = RequestMethod.GET)
@@ -93,17 +100,30 @@ public class MemberController {
     		@RequestParam ("member_nickName") String member_nickName,
     		@RequestParam ("member_phone") String member_phone,
     		@RequestParam ("member_birth") @DateTimeFormat (pattern ="yyyy-MM-dd") Date member_birth,
-    		@RequestParam ("sick_code") int sick_code,
-    		@RequestParam ("bad_ingredient_code") int bad_ingredient_code,
-    		@RequestParam ("member_image") String member_image,
-    		@RequestParam ("member_sex") int member_sex
+    		@RequestParam (value="sick_name", required = false) String sick_name,
+    		@RequestParam (value="member_allergy", required = false) String member_allergy ,
+    		@RequestParam (value="member_image", required = false) String member_image,
+    		@RequestParam (value="member_sex", required = false) int member_sex
 			) {
 		
 		System.out.println("/member/join.do");
 		ModelAndView mav = new ModelAndView();
 		
+		
+//		if(memberService.checkId(member_id)) {
+//			Member member = new Member();
+//		}
+//		
+//		if(memberService.checkNickName(member_nickName)) {
+//			Member member = new Member2();
+//		}
+		
+		int sick_code = sickService.getSickCode(sick_name) ;
+	
 		Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone,
-				member_birth, sick_code, bad_ingredient_code, member_image, member_sex);
+				member_birth, sick_code, member_allergy, member_image, member_sex);
+		
+		System.out.println("멤버정보뽑기" + member.toString());
 		
 		memberService.insertMember(member);
 		

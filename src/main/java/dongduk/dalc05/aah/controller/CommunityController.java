@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dongduk.dalc05.aah.domain.Community;
@@ -104,19 +105,43 @@ public class CommunityController {
 	   return mav;
    }
    
-//   @RequestMapping(value = "/community/create.do")
-//   public ModelAndView createDo(
-//		   HttpServletRequest request) {
-//	   HttpSession session = request.getSession();
-//	   
-//	   
-//	   
-//	   
-//	   return null;
-//	   
-//   }
-//   
-   
+ @RequestMapping(value = "/community/create.do")
+ public ModelAndView createDo(
+	   Model model,
+       @RequestParam String sick_name,
+       @RequestParam String commu_name,
+       @RequestParam String commu_introduce
+       ) {
+
+	System.out.println("테스트1" + commu_name + "//" + commuService.checkName(commu_name));
+	ModelAndView mav = new ModelAndView();
+	
+	 if(commuService.checkName(commu_name) != null) {
+		  
+		  	mav.setViewName("alert/alert");
+			model.addAttribute("msg", "이미 존재하는 커뮤니티 이름입니다.");
+	        model.addAttribute("url","/community/create");
+	    
+	        return mav;
+	 }
+	 
+	 int code = commuService.getSickCode(sick_name);
+	
+	System.out.print("테스트" + code);
+	
+    Community c = new Community();
+    c.setCommu_introduce(commu_introduce);
+    c.setCommu_name(commu_name);
+    c.setSick_code(code);
+    c.setSick_name(sick_name);
+    
+    commuService.insertCommu(c);      
+
+    mav.setViewName("redirect:/community/commulist");
+    return mav;
+    
+ }
+
    
    
 	 

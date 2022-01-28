@@ -25,4 +25,6 @@ public interface MemberDao {
 	
 	// 아이디로 member_nickName 불러오기
 	String getMemberNickName(String member_id);
+	
+
 }

@@ -11,6 +11,12 @@ public interface CommunityService {
 	// 인기글 10개 보여주기
 	public List<Post> getBestPosts();
 	
+	public int getSickCode(String sick_name);
+	
+	public void insertCommu(Community c);
+	
+	public String checkName(String commu_name);
+	
 	public String getCommuName(int coomu_code);
 	
 	public String getMemberNickName(int member_code);

@@ -79,13 +79,6 @@
 				<th>생년월일</th>
 				<td><input type="date" name="member_birth" placeholder="생년월일" required="required">	</td>
 			</tr>
-			<tr>
-				<th>현재 질병 및 관심 질병 (1개)</th>
-				<td> 
-					<input type="text" name="sick_code" value=3> 
-					<!-- 개발에 질병 정보있는게 나아서 우선 당뇨로 가정, 당뇨 코드번호3  value 나중에 sick_name으로 바꿀까 3임-->
-				</td>
-			</tr>
 		</table>
 		
 		<!-- 테이블 미사용(기존 코드) -->
@@ -123,16 +116,23 @@
 			
 			<p class="hr_write">추가정보</p>
 			<div>
-				<div>성별
-					<input type="text" name="member_sex" value=1>
+				<div>성별  :      
+					정보 미제공 <input type="radio" name="member_sex" value="100" checked />  
+                	남성 <input type="radio" name="member_sex" value="0" />
+                	여성 <input type="radio" name="member_sex" value="1" />
 				</div>
 				<div>음식 알레르기
-					<input type="text" name="bad_ingredient_code" value=0000>
+					<input type="text" name="member_allergy">
 				<div>현재 질환 및 관심 질병
-					<input type="text" name="sick_code" value=0000>
+						<select name="sick_name">
+							<option selected>없음</option>
+							<c:forEach var="illness" items="${sicks}">
+								<option>${illness.sick_name}</option>
+							</c:forEach>
+						</select>
 				</div>
 				<div>사진등록
-					<input type="text" name="member_image" value=0000>
+					<input type="text" name="member_image">
 				</div>	
 			</div>
 	
