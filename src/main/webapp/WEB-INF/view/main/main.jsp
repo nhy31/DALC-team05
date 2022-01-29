@@ -46,7 +46,7 @@
       	<c:if test="${ses == 1}"> 
           <li>${member_nickName}님 </li>
             <li><a href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
-            <li><a href="<c:url value='/member/logout.do'/>">로</a></li>
+            <li><a href="<c:url value='/member/mypage'/>">정보수정</a></li>
             <li><a href="<c:url value="/member/delete.do" />">탈퇴</a></li> <!-- 탈퇴기능만 한번테스트해보려고 잠깐삽입 -->
             <li><a href="<c:url value="/member/mybox" />">보관함</a></li> <!-- 한번테스트해보려고 잠깐삽입 -->
             <li><a href="<c:url value="/member/diary" />">나의 기록</a></li> <!--한번테스트해보려고 잠깐삽입 -->

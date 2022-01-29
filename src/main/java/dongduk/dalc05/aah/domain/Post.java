@@ -2,6 +2,8 @@ package dongduk.dalc05.aah.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Post {
 	
 	// DB
@@ -10,8 +12,12 @@ public class Post {
 	private int commu_code;
 	private String post_title;
 	private String post_content;
+	
+	@DateTimeFormat (pattern ="yyyy/MM/dd HH:mm")
 	private Date post_uploadDate;
+	@DateTimeFormat (pattern ="yyyy/MM/dd HH:mm")
 	private Date post_updateDate;
+	
 	private int post_hits;
 	
 	// only domain

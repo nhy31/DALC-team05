@@ -1,11 +1,11 @@
 package dongduk.dalc05.aah.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class Member implements Serializable {
+public class Member {
+	
 	private int member_code;
 	private String member_id;
 	private String member_pw;
@@ -21,30 +21,10 @@ public class Member implements Serializable {
 	private String member_image;
 	private int member_sex;
 	
-	public Member(String member_name) {
-		super();
-		this.member_name = member_name;
-	}
-
-
-	public void Member2(String member_id, String member_pw, String member_name, String member_phone, Date member_birth,
-			int sick_code, String member_allergy, String member_image, int member_sex) {
+	public Member() {}
 	
-		this.member_id = member_id;
-		this.member_pw = member_pw;
-		this.member_name = member_name;
-		this.member_phone = member_phone;
-		this.member_birth = member_birth;
-		this.sick_code = sick_code;
-		this.member_allergy = member_allergy;
-		this.member_image = member_image;
-		this.member_sex = member_sex;
-	}
-
-
-	public Member(String member_id, String member_pw, String member_name, String member_nickName,
-			String member_phone, Date member_birth, int sick_code, String member_allergy, String member_image,
-			int member_sex) {
+	public Member(String member_id, String member_pw, String member_name, String member_nickName, String member_phone,
+			Date member_birth, int sick_code, String member_allergy, String member_image, int member_sex) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
@@ -57,8 +37,6 @@ public class Member implements Serializable {
 		this.member_image = member_image;
 		this.member_sex = member_sex;
 	}
-
-
 
 
 	public int getMember_code() {

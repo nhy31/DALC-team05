@@ -3,18 +3,21 @@
 
 <mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.SickMapper">
 	
+	<!-- sick_code로 질병이름 불러오기  -->
 	<select id="getSickCode" resultType="Integer">
 		Select sick_code
 		FROM sick
 		where sick_name = #{sick_name}
 	</select>
 	
+	<!-- sick_name으로 질병코드 불러오기 -->
 	<select id="getSickName" resultType="String">
 		Select sick_name
 		FROM sick
 		where sick_code = #{sick_code}
 	</select>
 	
+	<!-- sickName 전체 불러오기 -->
 	<select id="getSickNameList" resultType="dongduk.dalc05.aah.domain.Sick">
 		Select *
 		FROM Sick

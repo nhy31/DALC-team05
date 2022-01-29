@@ -29,8 +29,8 @@ public class MemberController {
 	@RequestMapping(value = "/member/logout.do")
 	public String logoutDo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
+		// session.removeAttribute("member_code");
 		session.removeAttribute("member_id");
-		session.removeAttribute("member_code");
 		session.removeAttribute("member_nickName");
 		return "redirect:/main";
 	}
@@ -62,7 +62,7 @@ public class MemberController {
 			
 			// 로그인 세션 처리 (고유번호, 아이디, 닉네임)
 			HttpSession session = request.getSession();
-			session.setAttribute("member_code", member_code);
+			// session.setAttribute("member_code", member_code);
 			session.setAttribute("member_id", member_id);
 			session.setAttribute("member_nickName", member_nickName);
 			
@@ -76,30 +76,30 @@ public class MemberController {
 		return "member/wrongIdOrPw";
 	}
 	
-	// 아이디(이메일) 중복확인
-	@RequestMapping(value="/member/checkId")
-	public ModelAndView checkId(
-			HttpServletRequest request,
-			Model model,
-			@RequestParam (value="member_name", required = false) String member_name,
-			@RequestParam ("member_id") String member_id) {
-		
-		ModelAndView mav = new ModelAndView();
-		Member member = new Member(member_name);
-		
-		if(memberService.checkId(member_id) != null) {
-			model.addAttribute("msg", "이미 존재하는 이메일 ID입니다.");
-	        model.addAttribute("url","/main/join");
-	        
-	        mav.addObject("member", member);
-	        mav.setViewName("alert/alert");
-	        return mav;
-		}
-		
-		mav.setViewName("member/join");
-		mav.addObject("member", member);
-		return mav;
-	}
+//	// 아이디(이메일) 중복확인
+//	@RequestMapping(value="/member/checkId")
+//	public ModelAndView checkId(
+//			HttpServletRequest request,
+//			Model model,
+//			@RequestParam (value="member_name", required = false) String member_name,
+//			@RequestParam ("member_id") String member_id) {
+//		
+//		ModelAndView mav = new ModelAndView();
+//		Member member = new Member(member_name);
+//		
+//		if(memberService.checkId(member_id) != null) {
+//			model.addAttribute("msg", "이미 존재하는 이메일 ID입니다.");
+//	        model.addAttribute("url","/main/join");
+//	        
+//	        mav.addObject("member", member);
+//	        mav.setViewName("alert/alert");
+//	        return mav;
+//		}
+//		
+//		mav.setViewName("member/join");
+//		mav.addObject("member", member);
+//		return mav;
+//	}
 		
 	// 회원가입
 	@RequestMapping(value="/member/join.do")
@@ -146,8 +146,8 @@ public class MemberController {
 		// DB에서 삭제 
 		memberService.deleteMember(memberService.getMemberCode(member_id));
 		
+		// session.removeAttribute("member_code");
 		session.removeAttribute("member_id");
-		session.removeAttribute("member_code");
 		session.removeAttribute("member_nickName");
 		
 		model.addAttribute("msg", "탈퇴되었습니다.");
@@ -155,5 +155,47 @@ public class MemberController {
   
 		return "alert/alert";
 	}
+	
+	
+	// 정보수정(마이페이지)으로 이동
+	@RequestMapping(value="/member/mypage")
+	public ModelAndView myPage(
+			HttpServletRequest request,
+			Model model) {
+					
+		HttpSession session = request.getSession();
+		String member_id = (String) session.getAttribute("member_id");
+	
+		int code = memberService.getMemberCode(member_id);
+		Member me = memberService.getMemberInfo(code);
+  
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("member/myPage");
+        mav.addObject("me", me);
+		return mav;
+	}
+	
+	// 내정보 업데이트
+	@RequestMapping(value="/member/mypage/update.do")
+	public String MyPageUpdate(
+			HttpServletRequest request,
+			Model model) {
+					
+		HttpSession session = request.getSession();
+		String member_id = (String) session.getAttribute("member_id");
+		
+		// DB에서 삭제 
+		memberService.deleteMember(memberService.getMemberCode(member_id));
+		
+		// session.removeAttribute("member_code");
+		session.removeAttribute("member_id");
+		session.removeAttribute("member_nickName");
+		
+		model.addAttribute("msg", "탈퇴되었습니다.");
+        model.addAttribute("url","/");
+  
+		return "alert/alert";
+	}
+	
 
 }

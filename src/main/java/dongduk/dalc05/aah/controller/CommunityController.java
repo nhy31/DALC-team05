@@ -17,6 +17,7 @@ import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
 import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.CommunityService;
+import dongduk.dalc05.aah.service.MemberService;
 import dongduk.dalc05.aah.service.SickService;
 
 @Controller
@@ -27,6 +28,9 @@ public class CommunityController {
 
    @Autowired
    private SickService sickService;
+   
+   @Autowired
+   private MemberService memberService;
    
    // 메인에서 커뮤니티로 이동
    @RequestMapping(value = "/main/community")
@@ -51,9 +55,9 @@ public class CommunityController {
       
       for(int i=0; i<bests.size(); i++) {
     	 // DB에 포스트별 멤버코드 저장되어있음 -> 작성자의 닉네임 불러오기
-         bests.get(i).setMember_nickName(commuService.getMemberNickName(bests.get(i).getMember_code())); 
+         bests.get(i).setMember_nickName(memberService.getMemberInfo(bests.get(i).getMember_code()).getMember_nickName()); 
          // DB에 포스트별 커뮤코드 저장되어있음 -> 작성자의 커뮤이름 불러오기
-         bests.get(i).setCommu_name(commuService.getCommuName(bests.get(i).getCommu_code())); // 
+         bests.get(i).setCommu_name(commuService.getCommuName(bests.get(i).getCommu_code()));
       }
          
       ModelAndView mav = new ModelAndView();
@@ -101,7 +105,6 @@ public class CommunityController {
       return mav;
    }
    
- 
    // 커뮤니티 생성
    @RequestMapping(value = "/community/create.do")
    public ModelAndView createDo(
@@ -132,5 +135,4 @@ public class CommunityController {
 	   mav.setViewName("redirect:/community/commulist");
 	   return mav;
    }
-
 }

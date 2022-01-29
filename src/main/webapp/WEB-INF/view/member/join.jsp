@@ -52,16 +52,16 @@
 				<td> <input type="text" name="member_name" placeholder="이름" required="required"> </td>
 			</tr>
 			<tr>
-				<th> 이메일 </th>
+				<th> 아이디(이메일) </th>
 				<td> <input type="email" name="member_id" placeholder="이메일" required="required">
-					 <input type="button" onclick="idCheck()'" value="중복확인" >
+					 <input type="button" onclick="<c:url value='/member/checkId' /> " value="중복확인" >
 					 <input type="hidden" name="idDulipcate" value="idDulipcate">
 				</td>
 			</tr>
 			<tr>
 				<th> 닉네임 </th>
 				<td> <input type="text" name="member_nickName" placeholder="닉네임" required="required"> 
-					 <input type="button" onclick="idCheck()'" value="중복확인" > 
+					 <input type="button" onclick="<c:url value='/member/checkNickName' /> " value="중복확인" > 
 					 <input type="hidden" name="idDulipcate" value="idDulipcate">
 				</td>
 			</tr>
@@ -75,21 +75,20 @@
 			</tr>
 			<tr>
 				<th>핸드폰</th>
-				<td><input type="text" name="member_phone" placeholder="휴대폰(-없이 숫자만 입력)" required="required"></td>				
+				<td> <input type="text" name="member_phone" placeholder="휴대폰(-없이 숫자만 입력)" required="required"></td>				
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><input type="date" name="member_birth" placeholder="생년월일" required="required">	</td>
+				<td> <input type="date" name="member_birth" placeholder="생년월일" required="required">	</td>
 			</tr>
 			<tr>
 				<th>현재 질환 및 관심 질병</th> <!-- 수정사항 선택입력 -> 필수정보 -> 제공안하거나 기타질병을 default 감기로 -->
 				<td> 
 					<select name="sick_code">
-						<option selected value="0">없음</option>
+						<option selected value="0">정보미제공</option>
 							<c:forEach var="illness" items="${sicks}">
 								<option value="${illness.sick_code}">${illness.sick_name}</option>
 							</c:forEach>
-						<option value="0">기타질병</option>
 					</select>
 				</td>			
 			</tr>
