@@ -19,7 +19,7 @@
 <br>
 
 <br>
-<h2>:computer:기술스택</h2>
+<h2>:wrench:기술스택</h2>
 <br>
 
 <br>
