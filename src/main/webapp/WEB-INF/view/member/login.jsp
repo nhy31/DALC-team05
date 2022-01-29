@@ -8,9 +8,10 @@
 <meta charset="UTF-8">
 <link rel=stylesheet href="<c:url value='/css/login.css'/>" type="text/css">
 <script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
-<title>로그인</title> <!-- 소셜로그인 연동 JS 코드필요  -->
+<title>로그인</title>
 </head>
 
+<!-- 소셜로그인 연동 JS 코드필요  -->
 <body>	
 	<div class="main-container">
 		<div class = "main-wrap">

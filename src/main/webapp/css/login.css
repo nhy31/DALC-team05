@@ -106,17 +106,9 @@ body{
 	padding-top: 40px;
 
 }
+
 .Easy-sgin-in-wrap h2{
 	font-size: 20px;
-}
-.Easy-sgin-in-wrap .sign-button-list
-{
-	padding-top:25px;
-	list-style: none;
-	width: 465px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 }
 
 .Easy-sgin-in-wrap .forget-msg{
