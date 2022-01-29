@@ -19,7 +19,7 @@
 <br>
 
 <br>
-<h2>:nut_and_bolt:기술스택</h2>
+<h2>:paperclip:기술스택</h2>
 <br>
 
 <br>
