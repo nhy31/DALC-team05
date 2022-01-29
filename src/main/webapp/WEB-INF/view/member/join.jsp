@@ -53,23 +53,25 @@
 			</tr>
 			<tr>
 				<th> 이메일 </th>
-				<td><input type="email" name="member_id" placeholder="이메일" required="required">
-					<button>인증메일 발송</button> 우선 버튼만
+				<td> <input type="email" name="member_id" placeholder="이메일" required="required">
+					 <input type="button" onclick="idCheck()'" value="중복확인" >
+					 <input type="hidden" name="idDulipcate" value="idDulipcate">
 				</td>
 			</tr>
 			<tr>
 				<th> 닉네임 </th>
-				<td><input type="text" name="member_nickName" placeholder="닉네임" required="required">
-					<button>중복확인</button> 우선버튼만, 아이디 중복됐는지 테이블에서 확인 후 다시하라고 알림창	
+				<td> <input type="text" name="member_nickName" placeholder="닉네임" required="required"> 
+					 <input type="button" onclick="idCheck()'" value="중복확인" > 
+					 <input type="hidden" name="idDulipcate" value="idDulipcate">
 				</td>
 			</tr>
 			<tr>
-				<th>비밀번호</th>
-				<td><input type="password" name="member_pw" placeholder="비밀번호" required="required"></td>
+				<th> 비밀번호 </th>
+				<td> <input type="password" name="member_pw" placeholder="비밀번호" required="required"> </td>
 			</tr>
 			<tr>
-				<th>비밀번호 확인</th>
-				<td><input type="text" placeholder="비밀번호 확인" required="required"></td>
+				<th> 비밀번호 확인 </th> <!-- js 함수필요 -->
+				<td> <input type="text" placeholder="비밀번호 확인" required="required"> </td>
 			</tr>
 			<tr>
 				<th>핸드폰</th>
@@ -78,6 +80,18 @@
 			<tr>
 				<th>생년월일</th>
 				<td><input type="date" name="member_birth" placeholder="생년월일" required="required">	</td>
+			</tr>
+			<tr>
+				<th>현재 질환 및 관심 질병</th> <!-- 수정사항 선택입력 -> 필수정보 -> 제공안하거나 기타질병을 default 감기로 -->
+				<td> 
+					<select name="sick_code">
+						<option selected value="0">없음</option>
+							<c:forEach var="illness" items="${sicks}">
+								<option value="${illness.sick_code}">${illness.sick_name}</option>
+							</c:forEach>
+						<option value="0">기타질병</option>
+					</select>
+				</td>			
 			</tr>
 		</table>
 		
@@ -117,20 +131,13 @@
 			<p class="hr_write">추가정보</p>
 			<div>
 				<div>성별  :      
-					정보 미제공 <input type="radio" name="member_sex" value="100" checked />  
+					정보 미제공 <input type="radio" name="member_sex" value="999" checked />  
                 	남성 <input type="radio" name="member_sex" value="0" />
                 	여성 <input type="radio" name="member_sex" value="1" />
 				</div>
 				<div>음식 알레르기
 					<input type="text" name="member_allergy">
-				<div>현재 질환 및 관심 질병
-						<select name="sick_name">
-							<option selected>없음</option>
-							<c:forEach var="illness" items="${sicks}">
-								<option>${illness.sick_name}</option>
-							</c:forEach>
-						</select>
-				</div>
+				
 				<div>사진등록
 					<input type="text" name="member_image">
 				</div>	

@@ -49,11 +49,6 @@ public class MainController {
 		return "member/join";
     }
 
-    // 메인페이지 -> 레시피페이지 이동
-    @RequestMapping(value = "/main/recipe")
-    public String recipe() {
-		return "recipe/list";
-    }
-    
 
+    
 }

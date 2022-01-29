@@ -17,13 +17,18 @@ import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
 import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.CommunityService;
+import dongduk.dalc05.aah.service.SickService;
 
 @Controller
 public class CommunityController {
    
    @Autowired
    private CommunityService commuService;
+
+   @Autowired
+   private SickService sickService;
    
+   // 메인에서 커뮤니티로 이동
    @RequestMapping(value = "/main/community")
    public ModelAndView getCommuMain(
 		   HttpServletRequest request,
@@ -32,23 +37,23 @@ public class CommunityController {
 	  HttpSession session = request.getSession();
 	  String member_id = (String) session.getAttribute("member_id");
 	  
+	  // 로그인 X -> 이용불가
 	  if(member_id == null) {
 		  	ModelAndView mav = new ModelAndView();
 		  	mav.setViewName("alert/alert");
 			model.addAttribute("msg", "로그인 후 이용하실 수 있습니다.");
 	        model.addAttribute("url","/main/login");
-	    
 	        return mav;
 	  }
 	   
       List<Post> bests = new ArrayList<>();
-      bests = commuService.getBestPosts(); // sql쿼리로 조회순 나열해서 10개정도뽑아서 정렬
+      bests = commuService.getBestPosts(); // sql쿼리로 조회순 나열해서 10개뽑아서 정렬
       
       for(int i=0; i<bests.size(); i++) {
-         bests.get(i).setMember_nickName(commuService.getMemberNickName(bests.get(i).getMember_code()));
-         bests.get(i).setCommu_name(commuService.getCommuName(bests.get(i).getCommu_code()));
-         
-         System.out.println(bests.get(i).getPost_title());
+    	 // DB에 포스트별 멤버코드 저장되어있음 -> 작성자의 닉네임 불러오기
+         bests.get(i).setMember_nickName(commuService.getMemberNickName(bests.get(i).getMember_code())); 
+         // DB에 포스트별 커뮤코드 저장되어있음 -> 작성자의 커뮤이름 불러오기
+         bests.get(i).setCommu_name(commuService.getCommuName(bests.get(i).getCommu_code())); // 
       }
          
       ModelAndView mav = new ModelAndView();
@@ -56,24 +61,38 @@ public class CommunityController {
       mav.addObject("BestPosts", bests);
       return mav;
    }
+   
+   // 커뮤니티 생성하기로 이동
+   @RequestMapping(value = "/community/create")
+   public ModelAndView commuCreate(
+		   HttpServletRequest request) {
+	  
+	   ModelAndView mav = new ModelAndView();
+	   mav.setViewName("community/create");
+	   
+	   List<Sick> list = new ArrayList<>();
+	   list = sickService.getSickNameList();
+
+	   mav.addObject("sicks", list);
+	   
+	   return mav;
+   }
     
-   // 전체커뮤들보기
+   // 전체 커뮤니티 리스트보기
    @RequestMapping(value = "/community/commulist")
    public ModelAndView getCommuList() {
+	   
       List<Community> list = new ArrayList<>();
-         
-      list = commuService.getCommuList(); // 전체불러옴
+      list = commuService.getCommuList(); // 전체 불러오기
       
       for(int i=0; i<list.size(); i++) {
-    	  list.get(i).setMember_nickName(commuService.getMemberNickName(list.get(i).getMember_code()));
-    	  list.get(i).setSick_name(commuService.getSickName(list.get(i).getSick_code()));
+    	  list.get(i).setSick_name(sickService.getSickName(list.get(i).getSick_code()));
     	  
-    	  System.out.println("M "+ list.get(i).getCommu_code());
-    	  System.out.println("M "+ list.get(i).getMember_code());
-    	  System.out.println("M "+ list.get(i).getMember_nickName());
-    	  System.out.println("M "+ list.get(i).getCommu_name());
-    	  System.out.println("M "+ list.get(i).getSick_code());
-    	  System.out.println("M "+ list.get(i).getSick_name());
+    	  System.out.println("commulist getCommu_code() "+ list.get(i).getCommu_code());
+    	  System.out.println("commulist getCommu_name()"+ list.get(i).getCommu_name());
+    	  System.out.println("commulist getSick_code()"+ list.get(i).getSick_code());
+    	  System.out.println("commulist getSick_name()"+ list.get(i).getSick_name());
+    	  System.out.println("commulist getSick_name()"+ list.get(i).getCommu_introduce());
       }
      
       ModelAndView mav = new ModelAndView();
@@ -82,69 +101,36 @@ public class CommunityController {
       return mav;
    }
    
-   //커뮤생성하기로 이동
-   @RequestMapping(value = "/community/create")
-   public ModelAndView commuCreate(
-		   HttpServletRequest request) {
-	  
-	   HttpSession session = request.getSession();
-	   String MyNickName = (String) session.getAttribute("member_nickName");
-	   
-	   System.out.println("commu create" + MyNickName);
-	   
+ 
+   // 커뮤니티 생성
+   @RequestMapping(value = "/community/create.do")
+   public ModelAndView createDo(
+		   Model model,
+		   @RequestParam int sick_code,
+		   @RequestParam String commu_name,
+		   @RequestParam String commu_introduce
+		   ) {
+
 	   ModelAndView mav = new ModelAndView();
-	   mav.setViewName("community/create");
-	   
-	   List<Sick> list = new ArrayList<>();
-	   list = commuService.getSickNameList();
-
-	   mav.addObject("sicks", list);
-	   
-	   mav.addObject(MyNickName, MyNickName);
-	   
-	   return mav;
-   }
-   
- @RequestMapping(value = "/community/create.do")
- public ModelAndView createDo(
-	   Model model,
-       @RequestParam String sick_name,
-       @RequestParam String commu_name,
-       @RequestParam String commu_introduce
-       ) {
-
-	System.out.println("테스트1" + commu_name + "//" + commuService.checkName(commu_name));
-	ModelAndView mav = new ModelAndView();
 	
-	 if(commuService.checkName(commu_name) != null) {
-		  
+	   // 커뮤니티 이름 중복체크
+	   if(commuService.checkName(commu_name) != null) {
 		  	mav.setViewName("alert/alert");
 			model.addAttribute("msg", "이미 존재하는 커뮤니티 이름입니다.");
 	        model.addAttribute("url","/community/create");
-	    
 	        return mav;
-	 }
-	 
-	 int code = commuService.getSickCode(sick_name);
-	
-	System.out.print("테스트" + code);
-	
-    Community c = new Community();
-    c.setCommu_introduce(commu_introduce);
-    c.setCommu_name(commu_name);
-    c.setSick_code(code);
-    c.setSick_name(sick_name);
+	   }
+	   
+	   Community c = new Community();
+	   c.setCommu_introduce(commu_introduce);
+	   c.setCommu_name(commu_name);
+	   c.setSick_code(sick_code);
+	   c.setSick_name(sickService.getSickName(sick_code));
     
-    commuService.insertCommu(c);      
+	   commuService.insertCommu(c);      
 
-    mav.setViewName("redirect:/community/commulist");
-    return mav;
-    
- }
-
-   
-   
-	 
-  
+	   mav.setViewName("redirect:/community/commulist");
+	   return mav;
+   }
 
 }

@@ -24,7 +24,7 @@ public interface CommunityService {
 	//전체 커뮤니티리스트 보기
 	public List<Community> getCommuList();
 
-	public String getSickName(int sick_code);
 	
-	public List<Sick> getSickNameList();
+	
+	
 }

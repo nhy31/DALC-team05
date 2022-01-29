@@ -21,24 +21,12 @@ public class Member implements Serializable {
 	private String member_image;
 	private int member_sex;
 	
-	
-	
-	
-	public Member(String member_pw, String member_name, String member_nickName, String member_phone, Date member_birth,
-			int sick_code, String member_allergy, String member_image, int member_sex) {
+	public Member(String member_name) {
 		super();
-		this.member_pw = member_pw;
 		this.member_name = member_name;
-		this.member_nickName = member_nickName;
-		this.member_phone = member_phone;
-		this.member_birth = member_birth;
-		this.sick_code = sick_code;
-		this.member_allergy = member_allergy;
-		this.member_image = member_image;
-		this.member_sex = member_sex;
 	}
 
-	
+
 	public void Member2(String member_id, String member_pw, String member_name, String member_phone, Date member_birth,
 			int sick_code, String member_allergy, String member_image, int member_sex) {
 	
@@ -69,6 +57,9 @@ public class Member implements Serializable {
 		this.member_image = member_image;
 		this.member_sex = member_sex;
 	}
+
+
+
 
 	public int getMember_code() {
 		return member_code;

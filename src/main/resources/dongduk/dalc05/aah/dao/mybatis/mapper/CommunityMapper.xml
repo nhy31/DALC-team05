@@ -3,11 +3,7 @@
 
 <mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.CommunityMapper">
 	
-	<select id="getSickName" resultType="String">
-		Select sick_name
-		FROM sick
-		where sick_code = #{sick_code}
-	</select>
+	
 	
 	<select id="getSickCode"  parameterType="String" resultType="Integer">
 		Select sick_code 
@@ -60,10 +56,7 @@
 		FROM Community
 	</select>
 
-	<select id="getSickNameList" resultType="dongduk.dalc05.aah.domain.Sick">
-		Select *
-		FROM Sick
-	</select>
+
 
 
 </mapper>

@@ -24,10 +24,12 @@
 <body>
 	<div>
 		<form name="form" method="POST" action="<c:url value='/community/create.do' />" enctype="multipart/form-data">
-			<select name="sick_name">
-				<c:forEach var="illness" items="${sicks}">
-					<option>${illness.sick_name}</option>
-				</c:forEach>
+			<select name="sick_code">
+				<option selected value="0">없음</option>
+					<c:forEach var="illness" items="${sicks}">
+						<option value="${illness.sick_code}">${illness.sick_name}</option>
+					</c:forEach>
+				<option value="0">기타질병</option>
 			</select>
 			
 			<table> 

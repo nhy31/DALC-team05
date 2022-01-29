@@ -51,16 +51,6 @@ public class CommunityDaoImpl implements CommunityDao {
 		return communityMapper.getCommuList();
 	}
 
-	@Override
-	public String getSickName(int sick_code) {
-		return communityMapper.getSickName(sick_code);
-	}
-
-	@Override
-	public List<Sick> getSickNameList() {
-		// TODO Auto-generated method stub
-		return communityMapper.getSickNameList();
-	}
 
 	@Override
 	public int getSickCode(String sick_name) {

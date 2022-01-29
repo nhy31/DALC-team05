@@ -3,42 +3,55 @@
 
 <mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.MemberMapper">
 
+	<!-- 가입 -->
 	<insert id="insertMember" parameterType="dongduk.dalc05.aah.domain.Member">	
 		Insert Into Member
-		(MEMBER_CODE, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE, MEMBER_BIRTH,
-		MEMBER_SEX, MEMBER_IMAGE, sick_code)
+		(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE, 
+		MEMBER_BIRTH, MEMBER_SEX, MEMBER_IMAGE, sick_code)
 		VALUES
-		(0, #{member_id}, #{member_pw}, #{member_name}, #{member_nickName}, #{member_phone}, 
-		#{member_birth}, #{member_sex}, #{member_image},  #{sick_code})
+		(#{member_id}, #{member_pw}, #{member_name}, #{member_nickName}, #{member_phone}, 
+		#{member_birth}, #{member_sex}, #{member_image}, #{sick_code})
 	</insert>
 
+	<!-- 아이디 중복확인 -->
+	<select id="checkId" parameterType="String" resultType="dongduk.dalc05.aah.domain.Member">
+		Select *
+		FROM Member
+		WHERE member_id = #{member_id}
+  	</select>
+  	
+  	<!-- 탈퇴 -->
 	<delete id="deleteMember" parameterType="Integer">
 		delete from member
 		WHERE MEMBER_code = #{member_code}
 	</delete>
 	
-	<select id="getMemberInfo" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Member">
-		Select *
-		FROM Member
-		WHERE member_code = #{member_code}
-  	</select>
-
-	<select id="getPassword" parameterType="String" resultType="String">
-		Select member_pw
-		FROM Member
-		WHERE member_id = #{member_id}
-  	</select>
-
+	<!-- ID로 member_code 불러오기 -->
 	<select id="getMemberCode" parameterType="String" resultType="Integer">
 		Select member_code
 		FROM Member
 		WHERE member_id = #{member_id}
-	  </select>
+	</select>
 
+	<!-- ID로 nickName 불러오기  -->
 	<select id="getMemberNickName" parameterType="String" resultType="String">
 		Select member_nickName
 		FROM Member
 		WHERE member_id = #{member_id}
 	</select>
+	
+	<!-- ID에 맞는 올바른 패스워드인지 확인 -->
+	<select id="getPassword" parameterType="String" resultType="String">
+		Select member_pw
+		FROM Member
+		WHERE member_id = #{member_id}
+  	</select>
+  	
+  	<!-- member_code로 모든정보 불러오기 -->	
+  	<select id="getMemberInfo" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Member">
+		Select *
+		FROM Member
+		WHERE member_code = #{member_code}
+  	</select>
 	
 </mapper>

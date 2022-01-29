@@ -29,8 +29,5 @@ public interface CommunityDao {
 	//전체 커뮤니티리스트 보기
 	List<Community> getCommuList();
 	
-	String getSickName(int sick_code);
-	
-	List<Sick> getSickNameList();
-	
+
 }

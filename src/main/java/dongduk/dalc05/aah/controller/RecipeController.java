@@ -34,6 +34,12 @@ public class RecipeController {
 	@Autowired
 	private RecipeService recipeService;
 	
+    // 메인페이지 -> 레시피페이지 이동
+    @RequestMapping(value = "/main/recipe")
+    public String recipe() {
+		return "recipe/list";
+    }
+	
 	@RequestMapping(value="/main/recipe/crawling")
 	public String startCrawl(Model model,
 		  HttpServletRequest request) throws IOException {

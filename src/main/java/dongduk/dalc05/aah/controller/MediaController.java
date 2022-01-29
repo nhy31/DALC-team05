@@ -17,22 +17,42 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import dongduk.dalc05.aah.domain.Member;
+import dongduk.dalc05.aah.service.MemberService;
+import dongduk.dalc05.aah.service.SickService;
+
 import java.util.*;
 import java.text.*;
  
 @Controller
 public class MediaController {
 	
+	private SickService sickService;
+	
+	private MemberService memberService;
+	
     public static HashMap<String, String> map;
  
-    @RequestMapping(value="/main/media/crawling", method=RequestMethod.GET)
+    @RequestMapping(value="/main/media", method=RequestMethod.GET)
     public String startCrawl(Model model,
     		HttpServletRequest request) throws IOException {
 
     	HttpSession session = request.getSession();
     	String member_id = (String) session.getAttribute("member_id");
     	
-    	String query = "허리디스크"; // 카테고리선택, 우선 허리디스크로 입력함, 리케스트 파라미터써서 질병코드,이름 받아오자
+    	// 로그인 안하면 '질병:감기'
+    	int mediaQuery = 0;
+    	
+    	// 로그인 상태 O
+    	if(member_id != null) {
+    		int member_code = memberService.getMemberCode(member_id);
+        	Member m = memberService.getMemberInfo(member_code);
+        	mediaQuery = m.getSick_code();
+    	}
+    	
+    	String query = sickService.getSickName(mediaQuery);
+    	
     	int page = 1;
     	ArrayList<String> urls = new ArrayList<>();
         ArrayList<String> titles = new ArrayList<>();

@@ -27,8 +27,5 @@ public interface CommunityMapper {
 	// 전체 커뮤니티 리스트 보여주기
 	List<Community> getCommuList();
 	
-	String getSickName(int sick_code);
-
 	
-	List<Sick> getSickNameList();
 }

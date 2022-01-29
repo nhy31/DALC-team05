@@ -49,16 +49,6 @@ public class CommunityServiceImpl implements CommunityService {
 		return commuDao.getCommuList();
 	}
 
-	@Override
-	public String getSickName(int sick_code) {
-		return commuDao.getSickName(sick_code);
-	}
-
-	@Override
-	public List<Sick> getSickNameList() {
-		// TODO Auto-generated method stub
-		return commuDao.getSickNameList();
-	}
 
 	@Override
 	public int getSickCode(String sick_name) {

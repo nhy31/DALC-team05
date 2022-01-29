@@ -4,19 +4,20 @@ import java.util.Date;
 
 public class Post {
 	
+	// DB
 	private int post_code;
 	private int member_code;
-	
-	private String member_nickName;
-	private String commu_name;
-	
 	private int commu_code;
 	private String post_title;
 	private String post_content;
 	private Date post_uploadDate;
 	private Date post_updateDate;
 	private int post_hits;
-
+	
+	// only domain
+	private String member_nickName;
+	private String commu_name;
+	
 	public String getMember_nickName() {
 		return member_nickName;
 	}

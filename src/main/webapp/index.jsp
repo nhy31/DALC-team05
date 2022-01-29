@@ -6,7 +6,7 @@
 	<title>Welcome</title>
 </head>
 <body>
-<% System.out.println("helloWorld, Hy"); %>
+<% System.out.println("helloWorld"); %>
 <% response.sendRedirect(request.getContextPath() + "/main"); %>
 <h2>Hello World, Hy!</h2>
 </body>
