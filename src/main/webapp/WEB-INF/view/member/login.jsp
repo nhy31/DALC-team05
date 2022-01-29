@@ -24,7 +24,7 @@
 			<section class="login-input-section-wrap">
 				<form name="form" method="POST" action="<c:url value='/member/login.do' />" enctype="multipart/form-data">
 					<div class="login-input-wrap">
-						<input type="text" name="member_id" placeholder="아이디" required="required">
+						<input type="text" name="member_id" placeholder="이메일" required="required">
 					</div>
 					<div class="login-input-wrap password-wrap">
 						<input type="text" name="member_pw" placeholder="비밀번호" required="required">
