@@ -15,6 +15,19 @@
 - 개발 2022/01 ~ 2022/02 <br>
 
 <br>
+<h2>:bulb:프로젝트소개</h2>
+<br>
+
+<br>
+<h2>:paperclip:기술스택</h2>
+<br>
+
+<br>
+<h2>:speech_balloon:주요 기능 및 화면 소개</h2>
+<br>
+
+
+<br>
 <h2>:two_women_holding_hands:담당업무</h2>
 - 기획 : 이가은 (SUB : 김효선, 손예서) <br>
 - 디자인 : 손예서 <br>
