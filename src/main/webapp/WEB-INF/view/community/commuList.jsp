@@ -24,28 +24,21 @@
 <body>
 
 <div align="center">
-<br><br><br>
-	인기글들 목록 보이는 자리 - 전체 게시판에서? 
+
 	<table>		
 		<tr>
  			<th>커뮤니티 이름</th>	 
 			<th>관련질병</th>	 
- 			<th>회장</th>	  	
+ 			<th>소개한줄</th>	  	
 		</tr>
 		<c:forEach var="list" items="${CommuList}">
-		<tr style="cursor:pointer;">
- 			<td>${list.commu_name}</td>	 
-			<td>${list.sick_name}</td>	 
-			<td>${list.member_nickName}</td>	   	
-		</tr>	
+			<tr style="cursor:pointer;">
+ 				<td>${list.commu_name}</td>	 
+				<td>${list.sick_name}</td>	 
+				<td>${list.commu_introduce}</td>	   	
+			</tr>	
 		</c:forEach> 
 	</table>
-	</div>
 	
-<br><br><br>
-<div align="center">
-	<form name="postSearch" method="POST" action="<c:url value='/community/post/search.do'/>">
-   		<input type="text" id="search_box" placeholder="검색어를 입력하세요" required="required" name="post_title">
-   		<input type="submit" value="search">
- 	</form>
 </div>
+	

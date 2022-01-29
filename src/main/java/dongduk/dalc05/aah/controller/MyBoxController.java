@@ -12,10 +12,15 @@
 //
 //@Controller
 //public class MyBoxController {
-//	@Autowired
-//	private MyBoxService myboxService;
 //	
-//	// 보관함
+////	@Autowired
+////	private MyBoxService myboxService;
 //	
+//	// 보관함 페이지로 이동
+//	@RequestMapping(value = "/member/mybox")
+//	public String mybox() {
+//		return "member/mybox";
+//	}
+//		
 //	
 //}

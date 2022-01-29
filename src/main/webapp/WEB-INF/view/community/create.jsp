@@ -23,27 +23,27 @@
 </head>
 <body>
 	<div>
-		<form name="form" method="POST" action="<c:url value='/member/join.do' />" enctype="multipart/form-data">
-			
-			<select>
+		<form name="form" method="POST" action="<c:url value='/community/create.do' />" enctype="multipart/form-data">
+			<select name="sick_code">
 				<c:forEach var="illness" items="${sicks}">
-					<option>${illness.sick_name}</option>
+					<option value="${illness.sick_code}">${illness.sick_name}</option>
 				</c:forEach>
 			</select>
 			
 			<table> 
 				<tr>
-					<th>작성자</th>
-					<th>${ MyNickName }님</th> 
+					<th>커뮤니티 이름</th>
+					<td> <input type="text" name="commu_name" required="required">  </td> 
 				</tr>
 						
 				<tr>
-					<th>내용</th>
+					<th>한줄소개</th>
 					<td>
-						<input type="text" name="post_comtent" placeholder="내용을 입력하세요" required="required"> 
+						<input type="text" name="commu_introduce" required="required"> 
 					</td>
 				</tr>
 			</table>
+			<input type="submit" value="생성하기">
 		</form>
 		
 	</div>

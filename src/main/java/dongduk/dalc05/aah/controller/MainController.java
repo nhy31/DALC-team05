@@ -13,6 +13,7 @@ public class MainController {
 	@RequestMapping(value="/main")
 	public ModelAndView main(
 			HttpServletRequest request) {
+		
 		HttpSession session = request.getSession();
 		String member_id = (String) session.getAttribute("member_id");
 		String member_nickName = (String) session.getAttribute("member_nickName");
@@ -24,7 +25,6 @@ public class MainController {
 			mav.addObject("ses", 0);
 		} 
 		else {
-			
 			mav.addObject("ses", 1);
 			System.out.println("MainController - login success!");
 			System.out.println("MainController - member_id : " + member_id);
@@ -35,7 +35,6 @@ public class MainController {
 		
 		return mav;
 	}
-
 
 	// 메인페이지 -> 로그인페이지 이동
     @RequestMapping(value = "/main/login")
@@ -48,12 +47,4 @@ public class MainController {
     public String join() {
 		return "member/join";
     }
-
-    // 메인페이지 -> 레시피페이지 이동
-    @RequestMapping(value = "/main/recipe")
-    public String recipe() {
-		return "recipe/list";
-    }
-    
-
 }

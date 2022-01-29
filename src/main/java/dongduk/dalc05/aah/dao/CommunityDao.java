@@ -2,29 +2,30 @@ package dongduk.dalc05.aah.dao;
 
 import java.util.List;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import dongduk.dalc05.aah.domain.Community;
-import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Post;
-import dongduk.dalc05.aah.domain.Sick;
 
 @Repository
 public interface CommunityDao {
 
-	// 인기글 10개 보여주기
+	// 전체게시판 게시글 인기순 10개 보여주기
 	List<Post> getBestPosts();
 	
-	String getCommuName(int coomu_code);
-	
-	String getMemberNickName(int member_code);
-	
-	//전체 커뮤니티리스트 보기
+	// 전체 커뮤니티 리스트 보기
 	List<Community> getCommuList();
 	
-	String getSickName(int sick_code);
+	// 나의 커뮤니티들
+	List<Community> myCommuList(int member_code);
 	
-	List<Sick> getSickNameList();
+	// 커뮤니티 생성
+	void insertCommu(Community c);
+	
+	// 커뮤 생성시 커뮤이름 중복확인
+	String checkName(String commu_name);
+	
+	// commu_code로 name 가져오기
+	String getCommuName(int commu_code);
 	
 }

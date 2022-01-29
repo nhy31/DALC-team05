@@ -2,21 +2,28 @@ package dongduk.dalc05.aah.domain;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Post {
 	
+	// DB
 	private int post_code;
 	private int member_code;
-	
-	private String member_nickName;
-	private String commu_name;
-	
 	private int commu_code;
 	private String post_title;
 	private String post_content;
+	
+	@DateTimeFormat (pattern ="yyyy/MM/dd HH:mm")
 	private Date post_uploadDate;
+	@DateTimeFormat (pattern ="yyyy/MM/dd HH:mm")
 	private Date post_updateDate;
+	
 	private int post_hits;
-
+	
+	// only domain
+	private String member_nickName;
+	private String commu_name;
+	
 	public String getMember_nickName() {
 		return member_nickName;
 	}
