@@ -49,25 +49,24 @@
 		<table>
 			<tr>
 				<th> 이름 </th>
-				<td> <input type="text" name="member_name" required="required" value="${me.member_name}"readonly>  </td>
+				<td> <input type="text" name="member_name" required="required" value="${me.member_name}" readonly>  </td>
 			</tr>
 			<tr>
 				<th> 아이디(이메일) </th>
-				<td> <input type="email" name="member_id" placeholder="이메일" required="required">
-					 <input type="button" onclick="<c:url value='/member/checkId' /> " value="중복확인" >
-					 <input type="hidden" name="idDulipcate" value="idDulipcate">
+				<td> <input type="email" name="member_id" readonly value="${me.member_id}" required="required">
+				     <input type="hidden" name="member_code" readonly> 
 				</td>
 			</tr>
 			<tr>
 				<th> 닉네임 </th>
-				<td> <input type="text" name="member_nickName" placeholder="닉네임" required="required"> 
+				<td> <input type="text" name="member_nickName" value="${me.member_nickName}" required="required"> 
 					 <input type="button" onclick="<c:url value='/member/checkNickName' /> " value="중복확인" > 
 					 <input type="hidden" name="idDulipcate" value="idDulipcate">
 				</td>
 			</tr>
 			<tr>
 				<th> 비밀번호 </th>
-				<td> <input type="password" name="member_pw" placeholder="비밀번호" required="required"> </td>
+				<td> <input type="password" name="member_pw" placeholder="비밀번호" value="${me.member_pw}"required="required"> </td>
 			</tr>
 			<tr>
 				<th> 비밀번호 확인 </th> <!-- js 함수필요 -->
@@ -75,11 +74,11 @@
 			</tr>
 			<tr>
 				<th>핸드폰</th>
-				<td> <input type="text" name="member_phone" placeholder="휴대폰(-없이 숫자만 입력)" required="required"></td>				
+				<td> <input type="text" name="member_phone" value="${me.member_pw}" required="required"></td>				
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td> <input type="date" name="member_birth" placeholder="생년월일" required="required">	</td>
+				<td> <input type="date" name="member_birth" required="required" value="${me.member_birth}"readonly>	</td>
 			</tr>
 			<tr>
 				<th>현재 질환 및 관심 질병</th> <!-- 수정사항 선택입력 -> 필수정보 -> 제공안하거나 기타질병을 default 감기로 -->
@@ -94,8 +93,6 @@
 			</tr>
 		</table>
 		
-		
-			
 			<p class="hr_write">추가정보</p>
 			<div>
 				<div>성별  :      
@@ -104,22 +101,15 @@
                 	여성 <input type="radio" name="member_sex" value="1" />
 				</div>
 				<div>음식 알레르기
-					<input type="text" name="member_allergy">
-				
+					<input type="text" name="member_allergy" value="${me.member_allergy}">
 				<div>사진등록
 					<input type="text" name="member_image">
 				</div>	
 			</div>
 	
-			<p class="hr_last"/>
-			<div>
-				전체동의 <input type="text"> <br>
-				서비스 이용약관 동의(필수) <input type="checkbox">
-				<input type="text">
-				<input type="text">
-			</div>
+			
 		</div>	
-		<input type="submit" value="회원가입">
+		<input type="submit" value="정보 업데이트">
 	</form>
 </div>
 			

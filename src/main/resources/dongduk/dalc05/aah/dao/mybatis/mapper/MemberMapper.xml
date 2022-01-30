@@ -26,6 +26,17 @@
 		WHERE MEMBER_code = #{member_code}
 	</delete>
 	
+<!-- delete from comment -->
+<!-- where member_code = 1; -->
+
+<!-- delete from post -->
+<!-- where member_code = 1; -->
+
+<!-- delete from member -->
+<!-- WHERE MEMBER_code = 1; -->
+		
+	
+	
 	<!-- ID로 member_code 불러오기 -->
 	<select id="getMemberCode" parameterType="String" resultType="Integer">
 		Select member_code
