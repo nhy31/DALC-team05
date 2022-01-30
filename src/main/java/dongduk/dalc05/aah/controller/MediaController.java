@@ -2,6 +2,7 @@ package dongduk.dalc05.aah.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dongduk.dalc05.aah.domain.Media;
+import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.MemberService;
 import dongduk.dalc05.aah.service.SickService;
 
@@ -154,8 +156,14 @@ public class MediaController {
 	    	Media o = medias2.get(j);
 	    	System.out.println("테스트중" + o.getImage() + " " + o.getTitle() + " " + o.getUrl());
 	    }
+	    
 	    mav.addObject("medias2", medias2);
 	    
+	    List<Sick> list = new ArrayList<>();
+	    list = sickService.getSickNameList();
+
+	    mav.addObject("sicks", list);
+	    mav.addObject("medias2", medias2);
         
     	return mav;
   

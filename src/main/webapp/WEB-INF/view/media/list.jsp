@@ -83,6 +83,14 @@
    	</div>
    	
    	<div>   
+   	<h2>질병별 뉴스</h2>
+   		<div>       
+   			<form action="">
+   				<c:forEach var="illness" items="${sicks}">
+					<input type="radio" value="${illness.sick_code}">${illness.sick_name}</option>
+				</c:forEach>
+   			</form>
+		</div>
         <table>
         	<c:forEach var="list" items="${medias2}">
         		<tr>
