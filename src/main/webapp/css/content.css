@@ -1,0 +1,14 @@
+.today_img {
+	position: relative;
+	width: 300px;
+	height: 200px;
+}
+
+button.btn-mark {
+	background-image: url(/images/mark.png);
+	border: none;
+
+	position: absolute;
+	top: 0px;
+	right: 30px;
+}

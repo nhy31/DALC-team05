@@ -15,8 +15,6 @@
 	     http://www.springframework.org/schema/tx/spring-tx.xsd
 	     http://mybatis.org/schema/mybatis-spring 
 	     http://mybatis.org/schema/mybatis-spring.xsd">
-	     
-	     
 
 	<!-- 데이터베이스 연결  -->
 <!-- 	<bean id="dataSource" -->
@@ -28,11 +26,14 @@
 <!-- 		<property name="username" value="sd0208" /> -->
 <!-- 		<property name="password" value="bookchigo" /> -->
 <!-- 	</bean> -->
+
+	<!-- 기존 하윤 url db: dalc 변경 -->
+	<!-- 기존 하윤 password: 1031 변경 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/dalc05?useSSL=false&amp;serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8" />
+		<property name="url" value="jdbc:mysql://localhost:3306/dalc_db?useSSL=false&amp;serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8" />
 		<property name="username" value="root" />
-		<property name="password" value="1031" />
+		<property name="password" value="521000" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
