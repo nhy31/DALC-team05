@@ -56,14 +56,16 @@ public class CommunityController {
       for(int i=0; i<bests.size(); i++) {
     	 // DB에 포스트별 멤버코드 저장되어있음 -> 작성자의 닉네임 불러오기
          bests.get(i).setMember_nickName(memberService.getMemberInfo(bests.get(i).getMember_code()).getMember_nickName()); 
-         // DB에 포스트별 커뮤코드 저장되어있음 -> 작성자의 커뮤이름 불러오기
-         bests.get(i).setCommu_name(commuService.getCommuName(bests.get(i).getCommu_code()));
       }
          
       ModelAndView mav = new ModelAndView();
       mav.setViewName("community/list");
       mav.addObject("BestPosts", bests);
       
+      List<Sick> list = new ArrayList<>();
+	  list = sickService.getSickNameList();
+
+	  mav.addObject("sicks", list);
 //      List<POST> posts = new ArrayList<>(); 
 //      
 //      posts = commuservice.getAllPostList(); // 최신순 

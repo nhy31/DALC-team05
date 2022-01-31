@@ -50,6 +50,8 @@ public class MediaController {
     		String realURL = "";
             String realTITLE = "";
             String realIMAGE = "";
+            String realSOURCE = "";
+            String realTIME ="";
              
     		Document rawData = Jsoup.connect(url).get(); // 웹에서 내용을 가져온다.
     	    Elements contents = rawData.select("li[class=\"bx\"]"); // 기사1개
@@ -66,10 +68,23 @@ public class MediaController {
             	realIMAGE = option.select("a[class=\"dsc_thumb\"]").select("img[class=\"thumb api_get\"]").attr("src");
             	System.out.println("image " + realIMAGE);
 
+            	realSOURCE = option.select("a[class=\"info press\"]").toString();
+            	realSOURCE = realSOURCE.substring(realSOURCE.indexOf("</span>")+7);
+            	realSOURCE = realSOURCE.substring(0, realSOURCE.indexOf("<"));
+            	System.out.println("source " + realSOURCE);
+            	
+            	realTIME = option.select("div[class=\"info_group\"]").select("span[class=\"info\"]").toString();
+            	realTIME = realTIME.substring(realTIME.indexOf(">")+1);
+            	realTIME = realTIME.substring(0, realTIME.indexOf("<"));
+            	System.out.println("time " + realTIME);	
+            			
             	Media m = new Media();
             	m.setUrl(realURL);
             	m.setTitle(realTITLE);
             	m.setImage(realIMAGE);
+            	m.setSource(realSOURCE);
+            	m.setTime(realTIME);
+             	
             	medias.add(m);
             	
             	cnt++;

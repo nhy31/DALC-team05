@@ -17,6 +17,34 @@
 <title>미디어 메인페이지</title>
 
 <style>
+
+.content {
+ margin: 40px 200px 250px 200px;
+}
+
+.sick_box {
+width: 70px;
+height: 31px;
+background: #851BD8;
+border-radius: 79px; 
+float: left; "
+}
+
+.sick_box_font {
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 15px;
+line-height: 20px;
+text-align: center;
+color: #FFFFFF;
+}
+
+.img {
+width: 223px;
+height: 152px;
+border-radius: 6px;}
+
 </style>
 
 </head>
@@ -65,33 +93,46 @@
    <hr>
    <!-- 기본 상단바 끝 -->
   
+  <div class="content">
+  
 	<h2>오늘의 건강 이슈 TOP8</h2>
 		<div class="swiper-container">
-   			<div class="swiper-wrapper">
+   			<div class="swiper-wrapper">		
    				<c:forEach var="list" items="${medias}">
-        			<div class="swiper-slide">
-            			${list.title}
-            			<a href="${list.url}"><img class="today_img" src="<c:url value='${list.image}'/>" width="300" height="200" alt="테스트용" ></a>
-            			<button class="btn-mark" type="button">찜하기</button>	
-            		</div>
-            	</c:forEach>
-      	</div>
-
-      	<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
-      	<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 -->
-      	<div class="swiper-pagination"></div>	<!-- 페이징 -->
-   	</div>
-   	
+		        	<div class="swiper-slide">
+		            	<a href="${list.url}">
+		            		<img class="img" src="<c:url value='${list.image}'/>" alt="테스트용" >
+		            	 	<br><br><em>${list.title} ${list.source} ${list.time} </em>
+	
+		            	</a>
+		            </div>         
+	            </c:forEach>
+	         </div>
+	         
+      		<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
+      		<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 -->
+      		<br><br><br>
+      		<div align="center" class="swiper-pagination"></div>	<!-- 페이징 -->
+   		</div>
    	<div>   
-   	<h2>질병별 뉴스</h2>
-   		<div>       
-   			<form action="">
-   				<c:forEach var="illness" items="${sicks}">
-					<input type="radio" value="${illness.sick_code}">${illness.sick_name}</option>
-				</c:forEach>
-   			</form>
+   	
+   	<h2>질병별 건강뉴스</h2>
+		<div>     
+			<table> 
+				<tr>
+					<c:forEach var="illness" items="${sicks}">
+					 	<th onclick="">
+					 		<div class="sick_box">
+					 			<a href=""> <span class="sick_box_font"> ${illness.sick_name} </span> </a>  
+					 		</div>
+						</th>
+					</c:forEach>
+				</tr>
+				
+			</table>
+   			
 		</div>
-        <table>
+        <table> 
         	<c:forEach var="list" items="${medias2}">
         		<tr>
         			<td>
@@ -105,10 +146,12 @@
          </table>
  	</div>
  	
+	</div>
+	
    <script>
    new Swiper('.swiper-container', {
       slidesPerView : 4, // 동시에 보여줄 슬라이드 rotn
-      spaceBetween : 30, // 슬라이드 간 간격
+      spaceBetween : 20, // 슬라이드 간 간격
       slidesPerGroup : 4, // 그룹으로 묶는 개수
       
       // 그룹수가 맞지 않을 경우 빈칸으로 메우기
