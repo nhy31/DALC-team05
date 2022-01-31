@@ -15,6 +15,31 @@
 <link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
 
 <title>레시피 메인페이지</title>
+
+<style type="text/css">
+.content {
+ margin: 40px 200px 250px 200px;
+}
+
+.sick_box {
+width: 70px;
+height: 31px;
+background: #851BD8;
+border-radius: 79px; 
+float: left; "
+}
+
+.sick_box_font {
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 15px;
+line-height: 20px;
+text-align: center;
+color: #FFFFFF;
+}
+
+</style>
 </head>
 
 <body>
@@ -60,28 +85,30 @@
    </nav>
    <hr>
    <!-- 기본 상단바 끝 -->
-   
-   	<h2>오늘의 인기 레시피</h2>
-   	<div class="swiper-container">
-   		<div class="swiper-wrapper">
-        	<div class="swiper-slide">
-            	<a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" width="300" height="200" alt="테스트용" ></a>
-            	<button class="btn-mark" type="button">찜하기</button>	
-            </div>
-         	<div class="swiper-slide">
-            	<a href=""><img src="<c:url value='/images/testImg.jpg'/>" ></a> </div>
-         	<div class="swiper-slide"><a href="">
-            	<img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
-         	<div class="swiper-slide"><a href="">
-            	<img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
-         	<div class="swiper-slide"><a href="">
-            	<img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
-      	</div>
 
-      	<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
-      	<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 -->
-      	<div class="swiper-pagination"></div>	<!-- 페이징 -->
-   	</div>
+	<div class="content">
+	   	<h2>오늘의 인기 레시피</h2>
+	   	<div class="swiper-container">
+	   		<div class="swiper-wrapper">
+	        	<div class="swiper-slide">
+	            	<a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" width="300" height="200" alt="테스트용" ></a>
+	            	<button class="btn-mark" type="button">찜하기</button>	
+	            </div>
+	         	<div class="swiper-slide">
+	            	<a href=""><img src="<c:url value='/images/testImg.jpg'/>" ></a> </div>
+	         	<div class="swiper-slide"><a href="">
+	            	<img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
+	         	<div class="swiper-slide"><a href="">
+	            	<img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
+	         	<div class="swiper-slide"><a href="">
+	            	<img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
+	      	</div>
+	
+	      	<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
+	      	<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 -->
+	      	<div class="swiper-pagination"></div>	<!-- 페이징 -->
+	   	</div>
+    </div>
    
    <!-- 
    <c:forEach var="best" items="${BestRecipes}">
