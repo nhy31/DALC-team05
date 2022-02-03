@@ -18,6 +18,7 @@
 </head>
 
 <body>
+
 	<!-- 기본 상단바 (나중에 되면 링크 걸어서 따로 불러오든 코드 간소화 필요할듯) -->
    <nav class="dalcbar">
       <div class="dalc_name">
@@ -60,29 +61,63 @@
    </nav>
    <hr>
    <!-- 기본 상단바 끝 -->
-   
-   	<h2>오늘의 인기 레시피</h2>
+   	
+   	<div class="content_header">
+   		<h2>오늘의 인기 레시피</h2>
+   	</div>
+   	<div class="content_container">
    	<div class="swiper-container">
    		<div class="swiper-wrapper">
         	<div class="swiper-slide">
-            	<a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" width="300" height="200" alt="테스트용" ></a>
-            	<button class="btn-mark" type="button">찜하기</button>	
+        		<table>
+        			<tr><td><a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a></td></tr>
+        			<tr><td><h2>레시피 제목</h2></td></tr>
+        			<tr><td>레시피 출처입니다.</td></tr>
+        			<tr><td>조회수 1.5천회</td></tr>
+        		</table>
+            	<button id="btn-mark" type="button">찜하기</button>	
             </div>
          	<div class="swiper-slide">
-            	<a href=""><img src="<c:url value='/images/testImg.jpg'/>" ></a> </div>
-         	<div class="swiper-slide"><a href="">
-            	<img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
-         	<div class="swiper-slide"><a href="">
-            	<img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
+         	    <table>
+        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
+        			<tr><td><h2>레시피 제목</h2></td></tr>
+        			<tr><td>레시피 출처입니다.</td></tr>
+        			<tr><td>조회수 1.5천회</td></tr>
+        		</table>
+            	<button id="btn-mark" type="button">찜하기</button>
+            </div>
+         	<div class="swiper-slide">
+         	    <table>
+        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
+        			<tr><td><h2>레시피 제목</h2></td></tr>
+        			<tr><td>레시피 출처입니다.</td></tr>
+        			<tr><td>조회수 1.5천회</td></tr>
+        		</table>
+            </div>
+         	<div class="swiper-slide">
+         		<table>
+        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
+        			<tr><td><h2>레시피 제목</h2></td></tr>
+        			<tr><td>레시피 출처입니다.</td></tr>
+        			<tr><td>조회수 1.5천회</td></tr>
+        		</table>
+            </div>
          	<div class="swiper-slide"><a href="">
             	<img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
       	</div>
 
       	<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
       	<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 -->
+      	<br><br>
       	<div class="swiper-pagination"></div>	<!-- 페이징 -->
    	</div>
-   
+	</div>
+	
+	<div class="content_header">
+		<br><br>
+   		<h2>질병 별 추천 레시피</h2>
+   	</div>
+
    <!-- 
    <c:forEach var="best" items="${BestRecipes}">
    	<tr>

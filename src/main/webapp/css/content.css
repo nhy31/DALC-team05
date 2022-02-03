@@ -1,13 +1,37 @@
+* {
+	margin: 0;
+	padding: 0;
+	
+	box-sizing: border-box;
+}
+
+ol, ul{
+	list-style: none;
+}
+
+.content_container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	width: 1500px;
+	margin: 0 auto;
+}
+
+.content_header {
+	position: realative;
+	border-bottom: solid 1px #e5e5e5;
+	padding: 26px 0 10px;
+}
+
 .today_img {
 	position: relative;
-	width: 300px;
-	height: 200px;
+	width: 200px;
+	height: 150px;
 }
 
 button.btn-mark {
-	background-image: url(/images/mark.png);
 	border: none;
-
 	position: absolute;
 	top: 0px;
 	right: 30px;
