@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
@@ -14,13 +15,18 @@
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
 
+<style type="text/css">
+.content {
+	margin: 40px 200px 250px 200px;
+}
+</style>
+
 <title>레시피 메인페이지</title>
 </head>
 
 <body>
-
 	<!-- 기본 상단바 (나중에 되면 링크 걸어서 따로 불러오든 코드 간소화 필요할듯) -->
-   <nav class="dalcbar">
+   	<nav class="dalcbar">
       <div class="dalc_name">
          <h2><a href="<c:url value='/main'/>">로고 이미지</a></h2>
       </div>
@@ -33,7 +39,7 @@
       </div>
       
       <ul class="dalc_menu">
-         <c:if test="${ses == 0}"> 
+        <c:if test="${ses == 0}"> 
         	<li><a href="<c:url value="/main/login" />">로그인</a></li>
          	<li><a href="<c:url value="/main/join"/> ">회원가입</a></li>
       	</c:if>
@@ -47,8 +53,9 @@
             <li><a href="<c:url value="/member/diary" />">나의 기록</a></li> <!--한번테스트해보려고 잠깐삽입 -->
       	</c:if>
       </ul>
-   </nav>
+   	</nav>
    <hr>
+   
    <nav class="dalcbar">
    <p align="center">
       <ul class="dalc_menu">
@@ -62,11 +69,9 @@
    <hr>
    <!-- 기본 상단바 끝 -->
    	
-   	<div class="content_header">
-   		<h2>오늘의 인기 레시피</h2>
-   	</div>
-   	<div class="content_container">
-   	<div class="swiper-container">
+	<div class="content">
+   	<div class="content_header">	<h2>오늘의 인기 레시피</h2>	</div>
+   		<div class="swiper-container">
    		<div class="swiper-wrapper">
         	<div class="swiper-slide">
         		<table>
@@ -102,22 +107,68 @@
         			<tr><td>조회수 1.5천회</td></tr>
         		</table>
             </div>
-         	<div class="swiper-slide"><a href="">
-            	<img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
+         	<div class="swiper-slide">
+         		<table>
+        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
+        			<tr><td><h2>레시피 제목</h2></td></tr>
+        			<tr><td>레시피 출처입니다.</td></tr>
+        			<tr><td>조회수 1.5천회</td></tr>
+        		</table>
+         	</div>
       	</div>
-
+      	
       	<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
       	<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 -->
       	<br><br>
       	<div class="swiper-pagination"></div>	<!-- 페이징 -->
-   	</div>
-	</div>
+   	 </div>
 	
-	<div class="content_header">
-		<br><br>
-   		<h2>질병 별 추천 레시피</h2>
-   	</div>
-
+	<br><br>
+	
+	<div class="content_header"> <h2>질병 별 추천 레시피</h2> </div> <br>
+		<div align="left">
+	     	<button name="best_recipe_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
+	      	<button name="best_recipe_pressure" class="disease_btn" onClick=""> 고혈압 </button>
+	      	<button name="best_recipe_pressure" class="disease_btn" onClick=""> 저혈압 </button>
+	      	<button name="best_recipe_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
+	      	<button name="best_recipe_etc" class="disease_btn" onClick=""> 기타 </button>
+	   	</div>
+	   	<br>
+	   	<div>
+	   		<table border='0'>
+	   			<tr>
+	   				<td rowspan='4'>
+	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
+	   				</td>
+	   				<th>두부 김치찜</th>
+	   			</tr>
+	   			<tr><td>저혈압, 고지혈증..</td></tr>
+	   			<tr><td>음식에 대한 정보</td></tr>
+	   			<tr><td>음색에 필요한 재료</td></tr>
+	   		</table>
+	   		<table border='0'>
+	   			<tr>
+	   				<td rowspan='4'>
+	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
+	   				</td>
+	   				<th>레시피 제목</th>
+	   			</tr>
+	   			<tr><td>질병 키워드들</td></tr>
+	   			<tr><td>음식에 대한 정보</td></tr>
+	   			<tr><td>음색에 필요한 재료</td></tr>
+	   		</table>
+	   		<table border='0'>
+	   			<tr>
+	   				<td rowspan='4'>
+	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
+	   				</td>
+	   				<th>레시피 제목</th>
+	   			</tr>
+	   			<tr><td>질병 키워드들</td></tr>
+	   			<tr><td>음식에 대한 정보</td></tr>
+	   			<tr><td>음색에 필요한 재료</td></tr>
+	   		</table>
+	   	</div>
    <!-- 
    <c:forEach var="best" items="${BestRecipes}">
    	<tr>
@@ -127,12 +178,12 @@
 	<tr>
 	</c:forEach>	
 	-->
-
+	</div>
    <script>
    new Swiper('.swiper-container', {
-      slidesPerView : 3, // 동시에 보여줄 슬라이드 rotn
+      slidesPerView : 4, // 동시에 보여줄 슬라이드 rotn
       spaceBetween : 30, // 슬라이드 간 간격
-      slidesPerGroup : 3, // 그룹으로 묶는 개수
+      slidesPerGroup : 4, // 그룹으로 묶는 개수
       
       // 그룹수가 맞지 않을 경우 빈칸으로 메우기
       loopFillGroupWithBlank : true,

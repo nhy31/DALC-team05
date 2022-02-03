@@ -21,6 +21,32 @@
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
 
 <title>아프다 아파, 현대사회</title>
+
+<style type="text/css">
+.content {
+ margin: 40px 200px 250px 200px;
+}
+
+.sick_box {
+width: 70px;
+height: 31px;
+background: #851BD8;
+border-radius: 79px; 
+float: left; "
+}
+
+.sick_box_font {
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 15px;
+line-height: 20px;
+text-align: center;
+color: #FFFFFF;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -72,115 +98,113 @@
    </div>
    
    <!-- 추천 레시피 부분 -->
-   <br>
-   <h1><font size="5" face="돋움">질병 별 추천 레시피</font></h1>
-      <div align="left">
-      <button name="recipe_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
-      <button name="recipe_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
-      <button name="recipe_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
-      <button name="recipe_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
-      <button name="recipe_etc" class="disease_btn" onClick=""> 기타 </button>
-   </div>
-   <br>
+	<div class="content">
+	   <br>
+	   <h1><font size="5" face="돋움">질병 별 추천 레시피</font></h1>
+	      <div align="left">
+	      <button name="recipe_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
+	      <button name="recipe_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
+	      <button name="recipe_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
+	      <button name="recipe_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
+	      <button name="recipe_etc" class="disease_btn" onClick=""> 기타 </button>
+	   </div>
+	   <br>
+	   
+	   <!-- swiper : 위 버튼 누른거에 따라서 링크 구현필요할듯 -->
+	   <div class="swiper-container">
+	      <div class="swiper-wrapper">
+	         <div class="swiper-slide">
+	            <a href=""><img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200" alt="테스트용" ></a>
+	         </div>
+	         <div class="swiper-slide">
+	            <a href=""><img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a>
+	         </div>
+	         <div class="swiper-slide"><a href="">
+	            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
+	         <div class="swiper-slide"><a href="">
+	            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
+	         <div class="swiper-slide"><a href="">
+	            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
+	      </div>
+	      
+	      <!-- 네비게이션 -->
+	      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+	      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+	      
+	      <!-- 페이징 -->
+	      <div class="swiper-pagination"></div>
+   		</div>
+   		<hr>
    
-   <!-- swiper : 위 버튼 누른거에 따라서 링크 구현필요할듯 -->
-   <div class="swiper-container">
-      <div class="swiper-wrapper">
-         <div class="swiper-slide">
-            <a href=""><img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200" alt="테스트용" ></a>
-         </div>
-         <div class="swiper-slide">
-            <a href=""><img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a>
-         </div>
-         <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
-         <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
-         <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
-      </div>
-      
-      <!-- 네비게이션 -->
-      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
-      
-      <!-- 페이징 -->
-      <div class="swiper-pagination"></div>
-   </div>
-   <hr>
-   
-   
-   <!-- 질병 별 추천 홈트레이닝 -->
-    <br>
-    <h1><font size="5" face="돋움">질병 별 추천 홈트레이닝</font></h1>
-      <div align="left">
-      <button name="training_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
-      <button name="training_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
-      <button name="training_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
-      <button name="training_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
-      <button name="training_etc" class="disease_btn" onClick=""> 기타 </button>
-   </div>
-   <br>
-   
-   <div class="swiper-container">
-      <div class="swiper-wrapper">
-         <div class="swiper-slide">
-            <a href=""><img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a>
-         </div>
-         <div class="swiper-slide">
-            <a href=""><img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200" alt="테스트용"></a>
-         </div>
-         <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
-         <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
-         <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
-      </div>
-      
-      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
-      
-      <div class="swiper-pagination"></div>
-   </div>
-   <hr>
-   
-   
-   <!-- 건강 미디어 -->
-   <br>
-    <h1><font size="5" face="돋움">건강 미디어</font></h1>
-      <div align="left">
-      <button name="media_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
-      <button name="media_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
-      <button name="media_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
-      <button name="media_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
-      <button name="media_etc" class="disease_btn" onClick=""> 기타 </button>
-   </div>
-   <br>
-   
-   <div class="swiper-container">
-      <div class="swiper-wrapper">
-         <div class="swiper-slide">
-            <a href=""><img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a>
-         </div>
-         <div class="swiper-slide">
-            <a href=""><img src="<c:url value='/images/default.jpg'/>" width="300" height="200" alt="테스트용"></a>
-         </div>
-         <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
-         <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
-         <div class="swiper-slide"><a href="">
-            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
-      </div>
-      
-      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
-      
-      <div class="swiper-pagination"></div>
-   </div>
-   <br><br>
-   
+	   <!-- 질병 별 추천 홈트레이닝 -->
+	    <br>
+	    <h1><font size="5" face="돋움">질병 별 추천 홈트레이닝</font></h1>
+	      <div align="left">
+	      <button name="training_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
+	      <button name="training_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
+	      <button name="training_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
+	      <button name="training_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
+	      <button name="training_etc" class="disease_btn" onClick=""> 기타 </button>
+	   </div>
+	   <br>
+	   
+	   <div class="swiper-container">
+	      <div class="swiper-wrapper">
+	         <div class="swiper-slide">
+	            <a href=""><img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a>
+	         </div>
+	         <div class="swiper-slide">
+	            <a href=""><img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200" alt="테스트용"></a>
+	         </div>
+	         <div class="swiper-slide"><a href="">
+	            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
+	         <div class="swiper-slide"><a href="">
+	            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
+	         <div class="swiper-slide"><a href="">
+	            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
+	      </div>
+	      
+	      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+	      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+	      
+	      <div class="swiper-pagination"></div>
+	   </div>
+	   <hr>
+	   
+	   <!-- 건강 미디어 -->
+	   <br>
+	    <h1><font size="5" face="돋움">건강 미디어</font></h1>
+	      <div align="left">
+	      <button name="media_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
+	      <button name="media_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
+	      <button name="media_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
+	      <button name="media_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
+	      <button name="media_etc" class="disease_btn" onClick=""> 기타 </button>
+	   </div>
+	   <br>
+	   
+	   <div class="swiper-container">
+	      <div class="swiper-wrapper">
+	         <div class="swiper-slide">
+	            <a href=""><img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a>
+	         </div>
+	         <div class="swiper-slide">
+	            <a href=""><img src="<c:url value='/images/default.jpg'/>" width="300" height="200" alt="테스트용"></a>
+	         </div>
+	         <div class="swiper-slide"><a href="">
+	            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
+	         <div class="swiper-slide"><a href="">
+	            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
+	         <div class="swiper-slide"><a href="">
+	            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
+	      </div>
+	      
+	      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+	      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+	      
+	      <div class="swiper-pagination"></div>
+		</div>
+	</div>   
    
    <script>
    new Swiper('.swiper-container', {

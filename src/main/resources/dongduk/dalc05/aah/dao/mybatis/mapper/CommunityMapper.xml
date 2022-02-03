@@ -8,7 +8,7 @@
 		Select *
 		FROM POST
 		ORDER BY post_hits DESC
-		limit 10;
+		limit 5;
 	</select>	
 	
 	<!-- 전체 커뮤니티 리스트 보기 -->

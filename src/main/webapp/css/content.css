@@ -14,7 +14,7 @@ ol, ul{
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	width: 1500px;
+	
 	margin: 0 auto;
 }
 
@@ -26,8 +26,8 @@ ol, ul{
 
 .today_img {
 	position: relative;
-	width: 200px;
-	height: 150px;
+	width: 150px;
+	height: 100px;
 }
 
 button.btn-mark {

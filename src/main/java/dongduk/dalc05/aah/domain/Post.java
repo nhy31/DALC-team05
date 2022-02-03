@@ -9,7 +9,6 @@ public class Post {
 	// DB
 	private int post_code;
 	private int member_code;
-	private int commu_code;
 	private String post_title;
 	private String post_content;
 	
@@ -55,12 +54,7 @@ public class Post {
 	public void setMember_code(int member_code) {
 		this.member_code = member_code;
 	}
-	public int getCommu_code() {
-		return commu_code;
-	}
-	public void setCommu_code(int commu_code) {
-		this.commu_code = commu_code;
-	}
+	
 	public String getPost_title() {
 		return post_title;
 	}
