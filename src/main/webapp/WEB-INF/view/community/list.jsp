@@ -125,12 +125,20 @@ border-radius: 6px;}
 		</tr>
 	</table>
    	
-   	<input type ="button" value="글쓰기" onclick="location.href='<c:url value='/community/post' />'"></input> 	
-</div>
+   	<input type ="button" value="글쓰기" onclick="location.href='<c:url value='/community/post/upload' />'"></input> 
+   	
+   	<table>
+   		<tr>
+   			<td>이미지</td>
+   			<td>제목+조회수+업로드날짜</td>
+   			<td>댓글수</td>
+   		</tr>
+   	</table>
+   		
+</div></body>
 	
 	
 
 
 
-
-</div>
+</html>

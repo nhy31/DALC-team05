@@ -62,7 +62,7 @@ public class PostController {
 	}
 	
 	// 게시글 작성 페이지로 이동
-	@RequestMapping(value = "/community/post.do")
+	@RequestMapping(value = "/community/post/upload")
 	public ModelAndView postUpload(
 			HttpServletRequest request,
 			Model model) {
@@ -75,6 +75,23 @@ public class PostController {
 		return mav;
 		
 	}
-				
+	
+//	// 게시글 업로드
+//	@RequestMapping(value = "/community/post/upload.do")
+//	public ModelAndView postUploadDo(
+//			HttpServletRequest request,
+//			Model model,
+//			@RequestParam int sick_code,
+//			@RequestParam String post_title,
+//			@RequestParam String post_content) {
+//		
+//		
+//		
+//		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("community/list");
+//		
+//		return mav;
+//		
+//	}
 
 }
