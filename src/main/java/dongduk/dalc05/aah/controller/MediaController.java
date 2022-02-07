@@ -37,7 +37,7 @@ public class MediaController {
     		HttpServletRequest request) throws IOException {
 
     	ModelAndView mav = new ModelAndView();
-  	    mav.setViewName("media/list");
+  	    mav.setViewName("media/media_main");
   	    
     	// ** 크롤링 1 **
     	// 오늘의 건강 이슈 8개 크롤링 -> 검색키워드 : 건강뉴스
@@ -132,6 +132,7 @@ public class MediaController {
             String realIMAGE2 = "";
             String realSOURCE2 = "";
             String realTIME2 ="";
+            String realCONTENTS2 = "";
             
     		Document rawData2 = Jsoup.connect(url2).get(); // 웹에서 내용을 가져온다.
     	    Elements contents2 = rawData2.select("li[class=\"bx\"]"); // 기사1개
@@ -149,18 +150,23 @@ public class MediaController {
             	realSOURCE2 = option.select("a[class=\"info press\"]").toString();
             	realSOURCE2 = realSOURCE2.substring(realSOURCE2.indexOf("</span>")+7);
             	realSOURCE2 = realSOURCE2.substring(0, realSOURCE2.indexOf("<"));
-            	System.out.println("source " + realSOURCE2);
+            	System.out.println("source2 " + realSOURCE2);
             	
             	realTIME2 = option.select("div[class=\"info_group\"]").select("span[class=\"info\"]").toString();
             	realTIME2 = realTIME2.substring(realTIME2.indexOf(">")+1);
             	realTIME2 = realTIME2.substring(0, realTIME2.indexOf("<"));
-            	System.out.println("time " + realTIME2);	
+            	System.out.println("time2 " + realTIME2);	
             			
+            	realCONTENTS2 = option.select("div[class=\"dsc_wrap\"]").select("a").text();
+            	System.out.println("내용 " + realCONTENTS2);
+            	
+            	
             	Media m = new Media();
             	m.setSource(realSOURCE2);
             	m.setTime(realTIME2);
             	m.setUrl(realURL2);
             	m.setTitle(realTITLE2);
+            	m.setContents(realCONTENTS2);
             	
             	if(realIMAGE2.equals("")) {
             		m.setImage("/images/noimg.jpg");
@@ -191,7 +197,7 @@ public class MediaController {
     		@RequestParam int sick_code) throws IOException {
     	
     	ModelAndView mav = new ModelAndView();
-  	    mav.setViewName("media/list");
+  	    mav.setViewName("media/media_main");
   	
     	// ** 크롤링 1 **
     	// 오늘의 건강 이슈 8개 크롤링 -> 검색키워드 : 건강
@@ -268,7 +274,8 @@ public class MediaController {
             String realIMAGE2 = "";
             String realSOURCE2 = "";
             String realTIME2 ="";
-             
+        	String realCONTENTS2 = "";
+        	
     		Document rawData2 = Jsoup.connect(url2).get(); // 웹에서 내용을 가져온다.
     	    Elements contents2 = rawData2.select("li[class=\"bx\"]"); // 기사1개
            
@@ -291,12 +298,17 @@ public class MediaController {
             	realTIME2 = realTIME2.substring(realTIME2.indexOf(">")+1);
             	realTIME2 = realTIME2.substring(0, realTIME2.indexOf("<"));
             	System.out.println("time " + realTIME2);	
+            	
+            	realCONTENTS2 = option.select("div[class=\"dsc_wrap\"]").select("a").text();
+            	System.out.println("내용 " + realCONTENTS2);
+            	
 
             	Media m = new Media();
             	m.setUrl(realURL2);
             	m.setTitle(realTITLE2);
             	m.setSource(realSOURCE2);
             	m.setTime(realTIME2);
+            	m.setContents(realCONTENTS2);
             	
             	if(realIMAGE2.equals("")) {
             		m.setImage("/images/noimg.jpg");

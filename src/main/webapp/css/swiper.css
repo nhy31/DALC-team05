@@ -1,19 +1,21 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 .swiper-containter{
 	height: 200px;
 }
 
 .swiper-slide{
+	margin: 25px 0 0 0;  /* 0207 íƒ€ì´í‹€ ë°‘ ìŠ¤ì™€ì´í¼ ì‹œì‘í•˜ê¸°ê¹Œì§€ ì—¬ë°±í•„ìš” (íƒ€ì´í‹€ ì˜ˆ) ì˜¤ëŠ˜ì˜ì¸ê¸°ë ˆì‹œí”¼, ì˜¤ëŠ˜ì˜ê±´ê°•ì´ìŠˆ*/
 	text-align: center;
-	display: flex;				/* ³»¿ë Áß¾ÓÁ¤·Ä */
-	align-items: center;		/* À§¾Æ·¡ ±âÁØ Áß¾ÓÁ¤·Ä */
-	justify-content: center;	/* ÁÂ¿ì ±âÁØ Áß¾ÓÁ¤·Ä */
+	display: flex;				/* ë‚´ìš© ì¤‘ì•™ì •ë ¬ */
+	align-items: center;		/* ìœ„ì•„ë˜ ê¸°ì¤€ ì¤‘ì•™ì •ë ¬ */
+	justify-content: center;	/* ì¢Œìš° ê¸°ì¤€ ì¤‘ì•™ì •ë ¬ */
 }
 
 .swiper-slide img{
-	max-width: 100%;	/* ÀÌ¹ÌÁö ÃÖ´ë³Êºñ Á¦ÇÑ, ½½¶óÀÌµå¿¡ ÀÌ¹ÌÁö°¡ ¿©·¯ °³ º¸¿©Áú ¶§ ÇÊ¿ä */
+	max-width: 100%;	/* ì´ë¯¸ì§€ ìµœëŒ€ë„ˆë¹„ ì œí•œ, ìŠ¬ë¼ì´ë“œì— ì´ë¯¸ì§€ê°€ ì—¬ëŸ¬ ê°œ ë³´ì—¬ì§ˆ ë•Œ í•„ìš” */
 	max-height: 99%;
-	width: 300px;
-	height: 200px;
+	width: 223px; /* 0207 í•˜ìœ¤í¬ê¸°ìˆ˜ì • */
+	height: 152px; /* 0207 í•˜ìœ¤í¬ê¸°ìˆ˜ì • */
+	border-radius: 6px; /* 0207 í•˜ìœ¤ì¶”ê°€ */
 }

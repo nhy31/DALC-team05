@@ -71,7 +71,7 @@ public class CommunityController {
    }
 
    // 전체 커뮤니티 리스트보기
-   @RequestMapping(value = "/community/commulist")
+   @RequestMapping(value = "/community/list")
    public ModelAndView getCommuList() {
 	   
       List<Community> list = new ArrayList<>();
@@ -88,7 +88,7 @@ public class CommunityController {
       }
      
       ModelAndView mav = new ModelAndView();
-      mav.setViewName("community/commuList");
+      mav.setViewName("community/community_list");
       mav.addObject("CommuList", list);
       return mav;
    }
@@ -135,7 +135,7 @@ public class CommunityController {
     
 	   commuService.insertCommu(c);      
 
-	   mav.setViewName("redirect:/community/commulist");
+	   mav.setViewName("redirect:/community/list");
 	   return mav;
    }
 }

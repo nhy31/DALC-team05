@@ -4,11 +4,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="../main/top.jsp"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
 <!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
@@ -19,7 +21,7 @@
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
 
-<title>커뮤니티 메인페이지</title>
+<title>아아현 커뮤니티</title>
 
 <style>
 
@@ -35,7 +37,7 @@ color: #000000;
 }
 
 .main_title2 {
-margin: 45px 0 0 0;
+margin: 50px 0 25 0; /*hr존재x, 60-> 50으로 수정*/
 font-family: 'Nanum Gothic', sans-serif;
 font-style: normal;
 font-weight: bold;
@@ -132,7 +134,9 @@ border-radius: 6px;}
 	
 	<div align="left">
 		<div class="main_title2">최신 포스트</div>
-		<input type ="button" value="전체 커뮤니티 보기" onclick="location.href='<c:url value='/community/post/upload' />'"></input> 
+		<input type ="button" value="전체 커뮤니티 보기" onclick="location.href='<c:url value='/community/list' />'"></input> 
+		<input type ="button" value="커뮤니티 만들기" onclick="location.href='<c:url value='/community/create' />'"></input> 
+		
 	</div>
 	
 	<div align="right">

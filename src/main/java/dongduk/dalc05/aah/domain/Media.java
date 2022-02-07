@@ -8,7 +8,8 @@ public class Media {
 	private String image;
 	private String source;
 	private String time;
-	
+	private String contents;
+
 	public Media() {}
 	
 	public Media(String url, String title, String image, String source, String time) {
@@ -49,5 +50,12 @@ public class Media {
 	}
 	public void setTime(String time) {
 		this.time = time;
+	}
+	public String getContents() {
+		return contents;
+	}
+
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
 }
