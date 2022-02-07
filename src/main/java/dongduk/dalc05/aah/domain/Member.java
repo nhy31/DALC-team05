@@ -6,25 +6,23 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class Member {
 	
-	private int member_code;
+	// DB
+	private int member_code; // auto-increment, pk
 	private String member_id;
 	private String member_pw;
 	private String member_name;
 	private String member_nickName;
 	private String member_phone;
-	
-	@DateTimeFormat (pattern ="yyyy-MM-dd")
-	private Date member_birth;
-	
-	private int sick_code;
+	@DateTimeFormat (pattern ="yyyy-MM-dd") private Date member_birth;
+	private int sick_code; // fk
 	private String member_allergy;
 	private String member_image;
-	private int member_sex;
+	private String member_sex;
 	
 	public Member() {}
 	
 	public Member(String member_id, String member_pw, String member_name, String member_nickName, String member_phone,
-			Date member_birth, int sick_code, String member_allergy, String member_image, int member_sex) {
+			Date member_birth, int sick_code, String member_allergy, String member_image, String member_sex) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
@@ -37,7 +35,6 @@ public class Member {
 		this.member_image = member_image;
 		this.member_sex = member_sex;
 	}
-
 
 	public int getMember_code() {
 		return member_code;
@@ -119,13 +116,11 @@ public class Member {
 		this.member_image = member_image;
 	}
 
-	public int getMember_sex() {
+	public String getMember_sex() {
 		return member_sex;
 	}
 
-	public void setMember_sex(int member_sex) {
+	public void setMember_sex(String member_sex) {
 		this.member_sex = member_sex;
 	}
-	
-	
 }

@@ -3,48 +3,62 @@
 
 <mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.CommunityMapper">
 	
-	<!-- 전체게시판 게시글 인기순 10개 보여주기 -->
-	<select id="getBestPosts" resultType="dongduk.dalc05.aah.domain.Post">
-		Select *
-		FROM POST
-		ORDER BY post_hits DESC
-		limit 5;
-	</select>	
-	
-	<!-- 전체 커뮤니티 리스트 보기 -->
+	<!-- 전체 커뮤니티 리스트  -->
 	<select id="getCommuList" resultType="dongduk.dalc05.aah.domain.Community">
 		Select *
 		FROM Community
 	</select>
 	
 	<!-- 나의 커뮤니티들 -->
-	<select id="myCommuList" resultType="dongduk.dalc05.aah.domain.Community">
-		Select *
-		FROM community
-		WHERE commu_code = ( Select commu_code
-						     FROM cmember
-							 WHERE member_code = #{member_code} ) 
+    <select id="getMyCommuList" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Community">
+      Select *
+      FROM community
+      WHERE commu_code IN ( Select commu_code
+                       	   FROM cmember
+                           WHERE member_code = #{member_code} ) 
 	</select>
-	
-	<!-- 커뮤니티 생성 -->
-	<insert id="insertCommu" parameterType="dongduk.dalc05.aah.domain.Community">
-	 	insert into community(sick_code, commu_name, commu_introduce) 
-	 	values 
-	 	(#{sick_code}, #{commu_name}, #{commu_introduce}); 
-	</insert>
-	
-	<!-- 커뮤 생성시 커뮤이름 중복확인 -->
-	<select id="checkName"  parameterType="String" resultType="String">
-		Select commu_name 
-		FROM community 
-		where commu_name = #{commu_name}
-	</select>
-
-	<!-- commu_code로 name 가져오기 -->
+   
+   	<!-- commu_code로 name 가져오기 -->
 	<select id="getCommuName" resultType="String">
 		Select commu_name
 		FROM COMMUNITY
 		WHERE commu_code = #{commu_code}
 	</select>
 	
+	<!-- 커뮤 생성시, 이름 중복체크 -->
+    <select id="checkName" parameterType="String" resultType="Integer">
+		Select count(*)
+      	FROM community 
+      	where commu_name = #{commu_name}
+	</select>
+	
+	 <!-- 커뮤니티 생성 -->
+    <insert id="insertCommu" parameterType="dongduk.dalc05.aah.domain.Community">
+        insert into community(sick_code, commu_name, commu_introduce) 
+        values 
+        (#{sick_code}, #{commu_name}, #{commu_introduce}); 
+    </insert>
+    
+    <!-- 전체 게시글  -->
+	<select id="getAllPosts" resultType="dongduk.dalc05.aah.domain.Post">
+		Select *
+		FROM POST
+		ORDER BY post_hits DESC
+	</select>	
+ 
+	<!-- 전체게시판 게시글 인기순 10개 보여주기 -->
+	<select id="getBestPosts" resultType="dongduk.dalc05.aah.domain.Post">
+		Select *
+		FROM POST
+		ORDER BY post_hits DESC
+		limit 10;
+	</select>	
+	
+	<!-- 게시글 업로드 -->
+    <insert id="insertPost" parameterType="dongduk.dalc05.aah.domain.Post"> 
+       insert into POST
+       (commu_code, member_code, post_title, post_content, post_hits)
+       values (#{commu_code}, #{member_code}, #{post_title}, #{post_content}, #{post_hits});
+    </insert>
+
 </mapper>

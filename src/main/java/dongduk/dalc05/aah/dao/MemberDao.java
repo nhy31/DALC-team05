@@ -28,5 +28,4 @@ public interface MemberDao {
 	
 	// member_code로 모든정보 불러오기
 	Member getMemberInfo(int member_code);
-
 }

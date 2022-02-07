@@ -35,5 +35,4 @@
 		VALUES
 		(#{recipe_code}, #{rOrder_num}, #{rOrder_content})
 	</insert>
-	
 </mapper>

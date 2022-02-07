@@ -1,6 +1,8 @@
 package dongduk.dalc05.aah.controller;
 
+import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Member;
+import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.MemberService;
 import dongduk.dalc05.aah.service.SickService;
 
@@ -14,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class MemberController {
@@ -25,6 +29,22 @@ public class MemberController {
 	@Autowired
 	private SickService sickService;
 	
+	// 메인페이지 -> 로그인페이지 이동
+    @RequestMapping(value = "/main/login")
+    public String login() {
+		return "member/login";
+    }
+    
+	// 메인페이지 -> 회원가입페이지 이동
+    @RequestMapping(value = "/main/join")
+    public ModelAndView join() {
+    	ModelAndView mav = new ModelAndView();
+        mav.setViewName("member/join");
+    	List<Sick> list = new ArrayList<>();
+    	list = sickService.getSickList();
+    	return mav;
+    }
+	
 	// 로그아웃
 	@RequestMapping(value = "/member/logout.do")
 	public String logoutDo(HttpServletRequest request) {
@@ -34,15 +54,13 @@ public class MemberController {
 		session.removeAttribute("member_nickName");
 		return "redirect:/main";
 	}
+		
+//	// 질병 캘린더(나의기록) 페이지로 이동
+//	@RequestMapping(value = "/member/diary")
+//	public String diary() {
+//		return "member/diary";
+//	}
 	
-	
-	// 질병 캘린더(나의기록) 페이지로 이동
-	@RequestMapping(value = "/member/diary")
-	public String diary() {
-		return "member/diary";
-	}
-	
-  
 	// 로그인 시도
 	@RequestMapping(value="/member/login.do")
 	public String loginDo(
@@ -50,14 +68,12 @@ public class MemberController {
 			Model model,
 			@RequestParam ("member_id") String member_id,
     		@RequestParam ("member_pw") String member_pw) throws IOException {
-			
-		System.out.println("컨트롤러 시작 /member/login.do");
-		
+				
 		boolean isValidUser = memberService.isValidUser(member_id, member_pw);
 	
 		// 유효한 로그인
 		if (isValidUser == true) {
-			int member_code = memberService.getMemberCode(member_id);
+			// int member_code = memberService.getMemberCode(member_id);
 			String member_nickName = memberService.getMemberNickName(member_id);
 			
 			// 로그인 세션 처리 (고유번호, 아이디, 닉네임)
@@ -73,34 +89,12 @@ public class MemberController {
     	}
 
 		// 틀렸을 경우
-		return "member/wrongIdOrPw";
+		model.addAttribute("msg", "아이디와 비밀번호가 올바르지 않습니다.");
+        model.addAttribute("url", "/main/login");
+        
+        return "alert/alert";
 	}
 	
-//	// 아이디(이메일) 중복확인
-//	@RequestMapping(value="/member/checkId")
-//	public ModelAndView checkId(
-//			HttpServletRequest request,
-//			Model model,
-//			@RequestParam (value="member_name", required = false) String member_name,
-//			@RequestParam ("member_id") String member_id) {
-//		
-//		ModelAndView mav = new ModelAndView();
-//		Member member = new Member(member_name);
-//		
-//		if(memberService.checkId(member_id) != null) {
-//			model.addAttribute("msg", "이미 존재하는 이메일 ID입니다.");
-//	        model.addAttribute("url","/main/join");
-//	        
-//	        mav.addObject("member", member);
-//	        mav.setViewName("alert/alert");
-//	        return mav;
-//		}
-//		
-//		mav.setViewName("member/join");
-//		mav.addObject("member", member);
-//		return mav;
-//	}
-		
 	// 회원가입
 	@RequestMapping(value="/member/join.do")
 	public String joinDo(
@@ -115,13 +109,9 @@ public class MemberController {
     		@RequestParam ("sick_code") int sick_code,
     		@RequestParam (value="member_allergy", required = false) String member_allergy ,
     		@RequestParam (value="member_image", required = false) String member_image,
-    		@RequestParam (value="member_sex") int member_sex
+    		@RequestParam (value="member_sex") String member_sex
 			) {
-		
-		System.out.println("컨트롤러 시작 /member/join.do");
-		
-		System.out.println("질병코드 확인" + sick_code);
-	
+
 		// 가입 
 		Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone,
 				member_birth, sick_code, member_allergy, member_image, member_sex);
@@ -156,7 +146,6 @@ public class MemberController {
 		return "alert/alert";
 	}
 	
-	
 	// 정보수정(마이페이지)으로 이동
 	@RequestMapping(value="/member/mypage")
 	public ModelAndView myPage(
@@ -179,23 +168,26 @@ public class MemberController {
 	@RequestMapping(value="/member/mypage/update.do")
 	public String MyPageUpdate(
 			HttpServletRequest request,
-			Model model) {
-					
-		HttpSession session = request.getSession();
-		String member_id = (String) session.getAttribute("member_id");
+			Model model,
+			@RequestParam ("member_id") String member_id,
+    		@RequestParam ("member_pw") String member_pw,
+    		@RequestParam ("member_name") String member_name,
+    		@RequestParam ("member_nickName") String member_nickName,
+    		@RequestParam ("member_phone") String member_phone,
+    		@RequestParam ("member_birth") @DateTimeFormat (pattern ="yyyy-MM-dd") Date member_birth,
+    		@RequestParam ("sick_code") int sick_code,
+    		@RequestParam (value="member_allergy", required = false) String member_allergy ,
+    		@RequestParam (value="member_image", required = false) String member_image,
+    		@RequestParam (value="member_sex") String member_sex) {
 		
-		// DB에서 삭제 
-		memberService.deleteMember(memberService.getMemberCode(member_id));
+//		Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone,
+//				member_birth, sick_code, member_allergy, member_image, member_sex);
+//		memberService.insertMember(member);
+//		System.out.println("회원가입 성공" + member.toString());
 		
-		// session.removeAttribute("member_code");
-		session.removeAttribute("member_id");
-		session.removeAttribute("member_nickName");
-		
-		model.addAttribute("msg", "탈퇴되었습니다.");
-        model.addAttribute("url","/");
-  
-		return "alert/alert";
+		model.addAttribute("msg", "수정하였습니다.");
+        model.addAttribute("url","/member/mypage");
+    
+        return "alert/alert";	
 	}
-	
-
 }

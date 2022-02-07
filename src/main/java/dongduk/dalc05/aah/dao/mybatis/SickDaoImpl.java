@@ -15,6 +15,12 @@ public class SickDaoImpl implements SickDao {
 	@Autowired
 	private SickMapper sickMapper;
 	
+	// 전체 불러오기
+	@Override
+	public List<Sick> getSickList() {
+		return sickMapper.getSickList();
+	}
+	
 	// sick_code로 질병이름 불러오기
 	@Override
 	public String getSickName(int sick_code) {
@@ -27,12 +33,4 @@ public class SickDaoImpl implements SickDao {
 		return sickMapper.getSickCode(sick_name);
 	}
 
-	
-	// sickName 전체 불러오기
-	@Override
-	public List<Sick> getSickNameList() {
-		return sickMapper.getSickNameList();
-	}
-
-	
 }

@@ -49,131 +49,93 @@ public class CommunityController {
 	        model.addAttribute("url","/main/login");
 	        return mav;
 	  }
-	   
-      List<Post> bests = new ArrayList<>();
-      bests = commuService.getBestPosts(); // sql쿼리로 조회순 나열해서 10개뽑아서 정렬
+	  
+	  int member_code = memberService.getMemberCode(member_id);
+	  
+	  ModelAndView mav = new ModelAndView();
+      mav.setViewName("community/community_main");
       
-      for(int i=0; i<bests.size(); i++) {
-    	 // DB에 포스트별 멤버코드 저장되어있음 -> 작성자의 닉네임 불러오기
-         bests.get(i).setMember_nickName(memberService.getMemberInfo(bests.get(i).getMember_code()).getMember_nickName()); 
-      }
-         
-      ModelAndView mav = new ModelAndView();
-      mav.setViewName("community/list");
+      List<Post> bests = new ArrayList<>();
+      bests = commuService.getBestPosts(); // sql 쿼리로 조회순 나열해서 10개 뽑아서 정렬
       mav.addObject("BestPosts", bests);
       
-      List<Sick> list = new ArrayList<>();
-	  list = sickService.getSickNameList();
-
-	  mav.addObject("sicks", list);
-//      List<POST> posts = new ArrayList<>(); 
-//      
-//      posts = commuservice.getAllPostList(); // 최신순 
-//      
-//      mav.addObject("posts", posts);
+      List<Community> cList = new ArrayList<>();
+      cList = commuService.getMyCommuList(member_code);
+      mav.addObject("MyCommuList", cList);
+      
+      List<Post> posts = new ArrayList<>(); 
+      posts = commuService.getAllPosts(); // 전체 게시글 
+      mav.addObject("posts", posts);
     
       return mav;
    }
+
+   // 전체 커뮤니티 리스트보기
+   @RequestMapping(value = "/community/commulist")
+   public ModelAndView getCommuList() {
+	   
+      List<Community> list = new ArrayList<>();
+      list = commuService.getCommuList(); // 전체 불러오기
+      
+      for(int i=0; i<list.size(); i++) {
+    	  list.get(i).setSick_name(sickService.getSickName(list.get(i).getSick_code()));
+    	  
+    	  System.out.println("commulist getCommu_code() "+ list.get(i).getCommu_code());
+    	  System.out.println("commulist getCommu_name()"+ list.get(i).getCommu_name());
+    	  System.out.println("commulist getSick_code()"+ list.get(i).getSick_code());
+    	  System.out.println("commulist getSick_name()"+ list.get(i).getSick_name());
+    	  System.out.println("commulist getCommu_introduce()"+ list.get(i).getCommu_introduce());
+      }
+     
+      ModelAndView mav = new ModelAndView();
+      mav.setViewName("community/commuList");
+      mav.addObject("CommuList", list);
+      return mav;
+   }
+   
+   // 커뮤니티 생성하기로 이동
+   @RequestMapping(value = "/community/create")
+   public ModelAndView commuCreate(
+       HttpServletRequest request) {
+	   
+	   ModelAndView mav = new ModelAndView();
+	   mav.setViewName("community/community_create");
+	   
+	   List<Sick> list = new ArrayList<>();
+	   list = sickService.getSickList();
+	   mav.addObject("sicks", list);
+	   
+	   return mav;
+   }
+   
+   // 커뮤니티 생성
+   @RequestMapping(value = "/community/create.do")
+   public ModelAndView createDo(
+		   Model model,
+		   @RequestParam int sick_code,
+		   @RequestParam String commu_name,
+		   @RequestParam String commu_introduce
+		   ) {
+	   
+	   ModelAndView mav = new ModelAndView();
+	
+	   // 커뮤니티 이름 중복체크
+	   if(commuService.checkName(commu_name) != 0) {
+		  	mav.setViewName("alert/alert");
+			model.addAttribute("msg", "이미 존재하는 커뮤니티 이름입니다.");
+	        model.addAttribute("url","/community/create");
+	        return mav;
+	   }
+	   
+	   Community c = new Community();
+	   c.setCommu_introduce(commu_introduce);
+	   c.setCommu_name(commu_name);
+	   c.setSick_code(sick_code);
+	   c.setSick_name(sickService.getSickName(sick_code));
+    
+	   commuService.insertCommu(c);      
+
+	   mav.setViewName("redirect:/community/commulist");
+	   return mav;
+   }
 }
-//   
-//   // 최신글보기에서 질병별로
-//   @RequestMapping(value = "/main/community")
-//   public ModelAndView getPostList (
-//		   HttpServletRequest request,
-//		   Model model,
-//		   @RequestParam int stick_code) {
-//	   
-//      List<Post> bests = new ArrayList<>();
-//      bests = commuService.getBestPosts(); // sql쿼리로 조회순 나열해서 10개뽑아서 정렬
-//      
-//      for(int i=0; i<bests.size(); i++) {
-//    	 // DB에 포스트별 멤버코드 저장되어있음 -> 작성자의 닉네임 불러오기
-//         bests.get(i).setMember_nickName(memberService.getMemberInfo(bests.get(i).getMember_code()).getMember_nickName()); 
-//         // DB에 포스트별 커뮤코드 저장되어있음 -> 작성자의 커뮤이름 불러오기
-//         bests.get(i).setCommu_name(commuService.getCommuName(bests.get(i).getCommu_code()));
-//      }
-//         
-//      ModelAndView mav = new ModelAndView();
-//      mav.setViewName("community/list");
-//      mav.addObject("BestPosts", bests);
-//      
-////    List<POST> posts2 = new ArrayList<>(); 
-////    
-////    posts2 = commuservice.getPostList(sick_code); // 최신순 
-////    
-////    mav.addObject("posts2", posts2);
-//      
-//      return mav;
-//   }
-//   
-//   
-////   // 커뮤니티 생성하기로 이동
-////   @RequestMapping(value = "/community/create")
-////   public ModelAndView commuCreate(
-////		   HttpServletRequest request) {
-////	  
-////	   ModelAndView mav = new ModelAndView();
-////	   mav.setViewName("community/create");
-////	   
-////	   List<Sick> list = new ArrayList<>();
-////	   list = sickService.getSickNameList();
-////
-////	   mav.addObject("sicks", list);
-////	   
-////	   return mav;
-////   }
-////    
-////   // 전체 커뮤니티 리스트보기
-////   @RequestMapping(value = "/community/commulist")
-////   public ModelAndView getCommuList() {
-////	   
-////      List<Community> list = new ArrayList<>();
-////      list = commuService.getCommuList(); // 전체 불러오기
-////      
-////      for(int i=0; i<list.size(); i++) {
-////    	  list.get(i).setSick_name(sickService.getSickName(list.get(i).getSick_code()));
-////    	  
-////    	  System.out.println("commulist getCommu_code() "+ list.get(i).getCommu_code());
-////    	  System.out.println("commulist getCommu_name()"+ list.get(i).getCommu_name());
-////    	  System.out.println("commulist getSick_code()"+ list.get(i).getSick_code());
-////    	  System.out.println("commulist getSick_name()"+ list.get(i).getSick_name());
-////    	  System.out.println("commulist getSick_name()"+ list.get(i).getCommu_introduce());
-////      }
-////     
-////      ModelAndView mav = new ModelAndView();
-////      mav.setViewName("community/commuList");
-////      mav.addObject("CommuList", list);
-////      return mav;
-////   }
-////   
-////   // 커뮤니티 생성
-////   @RequestMapping(value = "/community/create.do")
-////   public ModelAndView createDo(
-////		   Model model,
-////		   @RequestParam int sick_code,
-////		   @RequestParam String commu_name,
-////		   @RequestParam String commu_introduce
-////		   ) {
-////
-////	   ModelAndView mav = new ModelAndView();
-////	
-////	   // 커뮤니티 이름 중복체크
-////	   if(commuService.checkName(commu_name) != null) {
-////		  	mav.setViewName("alert/alert");
-////			model.addAttribute("msg", "이미 존재하는 커뮤니티 이름입니다.");
-////	        model.addAttribute("url","/community/create");
-////	        return mav;
-////	   }
-////	   
-////	   Community c = new Community();
-////	   c.setCommu_introduce(commu_introduce);
-////	   c.setCommu_name(commu_name);
-////	   c.setSick_code(sick_code);
-////	   c.setSick_name(sickService.getSickName(sick_code));
-////    
-////	   commuService.insertCommu(c);      
-////
-////	   mav.setViewName("redirect:/community/commulist");
-////	   return mav;
-////   }
-//}

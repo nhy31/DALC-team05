@@ -64,5 +64,4 @@
 		FROM Member
 		WHERE member_code = #{member_code}
   	</select>
-	
 </mapper>

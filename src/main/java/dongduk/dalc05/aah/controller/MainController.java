@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MainController {
 
+	// 홈 메인페이지 시작
 	@RequestMapping(value="/main")
 	public ModelAndView main(
 			HttpServletRequest request) {
@@ -26,7 +27,7 @@ public class MainController {
 		} 
 		else {
 			mav.addObject("ses", 1);
-			System.out.println("MainController - login success!");
+			System.out.println("MainController - 로그인성공");
 			System.out.println("MainController - member_id : " + member_id);
 			System.out.println("MainController - member_nickName : " + member_nickName);
 			mav.addObject("member_id", member_id);
@@ -35,16 +36,4 @@ public class MainController {
 		
 		return mav;
 	}
-
-	// 메인페이지 -> 로그인페이지 이동
-    @RequestMapping(value = "/main/login")
-    public String login() {
-		return "member/login";
-    }
-    
-	// 메인페이지 -> 회원가입페이지 이동
-    @RequestMapping(value = "/main/join")
-    public String join() {
-		return "member/join";
-    }
 }

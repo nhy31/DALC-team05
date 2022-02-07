@@ -12,30 +12,20 @@
 <title>게시글 작성</title>
 </head>
 <body>
-	<div>
-		<form name="form" method="POST" action="<c:url value='/community/post.do' />" enctype="multipart/form-data">
-			커뮤니티 선택
+	<div> 커뮤니티 글쓰기
+		<form name="form" action="<c:url value='/community/post/upload.do' />" enctype="multipart/form-data">
+			게시판 선택
 			<select name="commu_code"> 
-				<c:forEach var="c" items="${Commu}">
+				<c:forEach var="c" items="${MyCommuList}">
 					<option value="${c.commu_code}">${c.commu_name}</option>
 				</c:forEach>
 			</select>
 			
 			<table> 
-				<tr>
-					<th>작성자</th>
-					<td> <input type="text" name="member_nickName" required="required" readonly value="${post.member_nickName}">  
-					<input type="hidden" name="member_code" required="required" readonly value="${post.member_code}"> </td> 
-				</tr>
-				
-				<tr>
-					<th>작성일</th>
-					<td> <input type="text" name="post_uploadDate" required="required" readonly>  </td> 
-				</tr>
-				
+		
 				<tr>
 					<th>게시글 제목</th>
-					<td> <input type="text" name="post_title" required="required">  </td> 
+					<td> <input type="text" name="post_title" required="required" placeholder="제목을 입력해주세요.">  </td> 
 				</tr>
 						
 				<tr>
@@ -45,7 +35,7 @@
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="업로드하기">
+			<input type="submit" value="업로드하기" onclick="">
 		</form>
 		
 	</div>

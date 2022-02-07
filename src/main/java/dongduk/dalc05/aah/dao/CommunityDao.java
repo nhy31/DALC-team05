@@ -10,22 +10,16 @@ import dongduk.dalc05.aah.domain.Post;
 @Repository
 public interface CommunityDao {
 
-	// 전체게시판 게시글 인기순 10개 보여주기
-	List<Post> getBestPosts();
+	/* commu 관련*/
+	List<Community> getCommuList(); // 전체 커뮤니티 리스트
+	List<Community> getMyCommuList(int member_code); // 나의 커뮤니티들
+	String getCommuName(int commu_code); // commu_code로 name 가져오기
+	int checkName(String commu_name); // 커뮤 생성시, 이름 중복체크
+	void insertCommu(Community c); // 커뮤니티 생성
 	
-	// 전체 커뮤니티 리스트 보기
-	List<Community> getCommuList();
-	
-	// 나의 커뮤니티들
-	List<Community> myCommuList(int member_code);
-	
-	// 커뮤니티 생성
-	void insertCommu(Community c);
-	
-	// 커뮤 생성시 커뮤이름 중복확인
-	String checkName(String commu_name);
-	
-	// commu_code로 name 가져오기
-	String getCommuName(int commu_code);
-	
+	/* 게시글 post 관련*/
+	List<Post> getAllPosts(); // 전체 게시글 
+	List<Post> getBestPosts(); // 전체게시판 게시글 인기순 10개 보여주기
+	List<Post> getCommuPosts(int commu_code); // 해당 커뮤의 게시글들
+	void insertPost(Post p); // 게시글 업로드
 }

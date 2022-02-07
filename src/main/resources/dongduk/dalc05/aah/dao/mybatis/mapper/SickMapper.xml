@@ -17,8 +17,8 @@
 		where sick_code = #{sick_code}
 	</select>
 	
-	<!-- sickName 전체 불러오기 -->
-	<select id="getSickNameList" resultType="dongduk.dalc05.aah.domain.Sick">
+	<!-- 전체 불러오기 -->
+	<select id="getSickList" resultType="dongduk.dalc05.aah.domain.Sick">
 		Select *
 		FROM Sick
 	</select>

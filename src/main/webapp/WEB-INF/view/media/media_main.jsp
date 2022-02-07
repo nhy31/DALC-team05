@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 
 <!-- 내부 스타일 링크 -->
+<link rel=stylesheet href="<c:url value='/css/all.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
@@ -18,8 +21,25 @@
 
 <style>
 
-.content {
- margin: 40px 200px 250px 200px;
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+.main_title1 {
+font-family: 'Nanum Gothic', sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 22px;
+line-height: 26px;
+color: #000000;
+}
+
+.main_title2 {
+margin: 30px 0 0 0;
+font-family: 'Nanum Gothic', sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 22px;
+line-height: 26px;
+color: #000000;
 }
 
 .sick_box {
@@ -50,61 +70,23 @@ border-radius: 6px;}
 </head>
 
 <body>
-	<!-- 기본 상단바 (나중에 되면 링크 걸어서 따로 불러오든 코드 간소화 필요할듯) -->
-   <nav class="dalcbar">
-      <div class="dalc_name">
-         <h2><a href="<c:url value='/main'/>">로고 이미지</a></h2>
-      </div>
-      
-      <div align = "center">
-         <form name="mainSearch" action="/main/search" method="GET">
-            <input type="text" name="searchView" placeholder="검색어를 입력하세요." width="500" height="40">
-            <input type="image" src="<c:url value='/images/search.png'/>" alt="검색버튼" width="15" height="15">
-         </form>
-      </div>
-      
-      <ul class="dalc_menu">
-         <c:if test="${ses == 0}"> 
-        	<li><a href="<c:url value="/main/login" />">로그인</a></li>
-         	<li><a href="<c:url value="/main/join"/> ">회원가입</a></li>
-      	</c:if>
-      	
-      	<c:if test="${ses == 1}"> 
-          <li>${member_nickName}님 </li>
-            <li><a href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
-            <li><a href="<c:url value='/member/mypage'/>">정보수정</a></li>
-            <li><a href="<c:url value="/member/delete.do" />">탈퇴</a></li> <!-- 탈퇴기능만 한번테스트해보려고 잠깐삽입 -->
-            <li><a href="<c:url value="/member/mybox" />">보관함</a></li> <!-- 한번테스트해보려고 잠깐삽입 -->
-            <li><a href="<c:url value="/member/diary" />">나의 기록</a></li> <!--한번테스트해보려고 잠깐삽입 -->
-      	</c:if>
-      </ul>
-   </nav>
-   <hr>
-   <nav class="dalcbar">
-   <p align="center">
-      <ul class="dalc_menu">
-         <li><a href="<c:url value='/main/recipe'/>">레시피 추천</a></li>
-         <li><a href="<c:url value='/main/exercise'/>">홈트레이닝 추천</a></li>
-         <li><a href="<c:url value='/main/media'/>">건강 미디어</a></li>
-         <li><a href="<c:url value='/main/community'/>">현대사회 커뮤니티</a></li>
-      </ul>
-   </p>
-   </nav>
-   <hr>
-   <!-- 기본 상단바 끝 -->
+
+<div class="content-start">
   
-  <div class="content">
-  
-	<h2>오늘의 건강 이슈 TOP8</h2>
+  	<div align="left">
+		<div class="main_title1">이번 주 인기글</div>
 		<div class="swiper-container">
    			<div class="swiper-wrapper">		
    				<c:forEach var="list" items="${medias}">
 		        	<div class="swiper-slide">
-		            	<a href="${list.url}">
-		            		<img class="img" src="<c:url value='${list.image}'/>" alt="테스트용" >
-		            	 	<br><br><em>${list.title} ${list.source} ${list.time} </em>
-	
-		            	</a>
+			        	<table style="text-align:left">
+	        				<tr><td colspan="2"><a href="${list.url}"><img class="img" src="<c:url value='${list.image}'/>" ></a></td></tr>
+	        				<tr><th colspan="2">${list.title}</th></tr>
+	        				<tr>
+	        					<td >${list.source}</td>
+	        					<td style="text-align:right"> ${list.time}&nbsp; </td>
+	        				</tr>
+	        			</table>
 		            </div>         
 	            </c:forEach>
 	         </div>
@@ -121,9 +103,13 @@ border-radius: 6px;}
 			<table> 
 				<tr>
 					<c:forEach var="illness" items="${sicks}">
-					 	<th onclick="">
+					 	<th >
 					 		<div class="sick_box">
-					 			<a href=""> <span class="sick_box_font"> ${illness.sick_name} </span> </a>  
+					 			<a href='
+					 			<c:url value='/media/crawling'>
+					 				<c:param name="sick_code" value="${illness.sick_code}"></c:param> 
+					 			</c:url>' >
+					 			 <span class="sick_box_font"> ${illness.sick_name} </span> </a>  
 					 		</div>
 						</th>
 					</c:forEach>
@@ -135,13 +121,23 @@ border-radius: 6px;}
         <table> 
         	<c:forEach var="list" items="${medias2}">
         		<tr>
-        			<td>
-        				<a href="${list.url}"><img class="today_img" src="<c:url value='${list.image}'/>" width="300" height="200" alt="테스트용" ></a>
+        			<td rowspan="2">
+        				<a href="${list.url}">
+        				<img class="img" src="<c:url value='${list.image}'/>" width="300" height="200" alt="테스트용" ></a>
         			</td>
-            		<td>
+            		<th colspan="2">
             			${list.title}
+            		</th>
+            		<td>
             		</td>
             	</tr>
+            	<tr>
+            		<td>
+            			${list.source}
+            		</td>
+            		<td>
+            		${list.time}
+            		</td></tr>
            </c:forEach>
          </table>
  	</div>
