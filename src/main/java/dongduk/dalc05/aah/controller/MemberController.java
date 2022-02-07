@@ -1,6 +1,5 @@
 package dongduk.dalc05.aah.controller;
 
-import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.MemberService;
