@@ -122,9 +122,9 @@
 			<p class="hr_write">추가정보</p>
 			<div>
 				<div>성별  :      
-					정보 미제공 <input type="radio" name="member_sex" value="999" checked />  
-                	남성 <input type="radio" name="member_sex" value="0" />
-                	여성 <input type="radio" name="member_sex" value="1" />
+					정보 미제공 <input type="radio" name="member_sex" checked />  
+                	남성 <input type="radio" name="member_sex" />
+                	여성 <input type="radio" name="member_sex" />
 				</div>
 				<div>음식 알레르기
 					<input type="text" name="member_allergy">

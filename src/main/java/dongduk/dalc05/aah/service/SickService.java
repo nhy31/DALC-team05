@@ -14,7 +14,5 @@ public interface SickService {
 
 	// sick_name으로 질병코드 불러오기
 	public int getSickCode(String sick_name);
-
 	
-		
 }

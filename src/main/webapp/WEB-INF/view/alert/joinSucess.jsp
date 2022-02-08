@@ -20,10 +20,7 @@
 swal({
 	 title: "",
 	 text: "${msg}",
-	 icon: "error",
-	 buttons:  {
-		 confirm : "Retry"
-	 }
+	 icon: "success",
 })
 .then(function(){
 	location.href="<c:out value="${pageContext.request.contextPath}"/>${url}";                   
@@ -32,13 +29,3 @@ swal({
 
 </body>
 </html>
-
-<!-- swal({ -->
-<!-- 	title: "failed" -->
-<%-- 	text: "${msg}"; --%>
-<!-- 	icon: "error"; -->
-<!-- 	button: "Retry", -->
-<!-- }) -->
-<!-- .then(function(){ -->
-<%-- 	location.href="<c:out value="${pageContext.request.contextPath}"/>${url}";                    --%>
-<!-- }) -->

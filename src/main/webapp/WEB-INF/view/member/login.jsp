@@ -13,6 +13,18 @@
 
 <!-- 소셜로그인 연동 JS 코드필요  -->
 <body>	
+<%
+    Cookie[] c = request.getCookies();
+    String cookieVal="";
+    if(c!=null){
+        for(Cookie i:c){
+            if(i.getName().equals("saveId")){
+                cookieVal=i.getValue();
+            }
+        }
+    }
+    
+%>
 	<div class="main-container">
 		<div class = "main-wrap">
 			<header>
@@ -24,17 +36,17 @@
 			<section class="login-input-section-wrap">
 				<form name="form" method="POST" action="<c:url value='/member/login.do' />" enctype="multipart/form-data">
 					<div class="login-input-wrap">
-						<input type="text" name="member_id" placeholder="이메일" required="required">
+						<input type="text" name="member_id" placeholder="이메일" required="required" value="<%=cookieVal !="" ? cookieVal : "" %>">
 					</div>
 					<div class="login-input-wrap password-wrap">
-						<input type="text" name="member_pw" placeholder="비밀번호" required="required">
+						<input type="text" name="member_pw" placeholder="비밀번호" required="required" >
 					</div>
 					<div class="login-button-wrap">
 						<button> 로그인 </button>
 					</div>
 					<div class="login-stay-sign-in">
-						<input type="checkbox"> <!-- class="far fa-check-circle" -->
-						<span>자동 로그인</span>
+						<input type="checkbox" id="checkbox" class="keepLogin" name="saveId" <%=cookieVal!=""?"checked" : ""%> >
+						<label class="keepLogin">아이디 저장</label>
 					</div>
 				</form>
 			</section>
