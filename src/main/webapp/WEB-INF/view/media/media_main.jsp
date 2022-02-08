@@ -11,6 +11,12 @@
 <head>
 <meta charset="UTF-8">
 
+<!-- 하윤 0208 부트스트랩 하는중 -->
+<!-- 부트스트랩 css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- 부트스트랩 js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 <!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
@@ -156,6 +162,15 @@ color: #4E4E4E;
 background: #E1E1E1;
 }
 
+.btn btn-primary {
+width: 67px;
+height: 31px;
+background: #851BD8;
+border-radius: 79px; 
+text-align:center;
+display:table-cell;
+vertical-align:middle;
+}
 
 </style>
 
@@ -164,6 +179,14 @@ background: #E1E1E1;
 <body>
 
 <div class="content-start">
+
+<div> <!-- 질병버튼 이걸로 쓸것임 -->
+<a class="btn btn-primary" href="#" role="button">Link</a>
+<button class="btn btn-primary" type="submit">Button</button>
+<input class="btn btn-primary" type="button" value="Input">
+<input class="btn btn-primary" type="submit" value="Submit">
+<input class="btn btn-primary" type="reset" value="Reset">
+</div>
   
   	<div align="left">
 		<div class="main_title1">오늘의 건강 이슈</div>
@@ -199,13 +222,10 @@ background: #E1E1E1;
 				<tr>
 					<c:forEach var="illness" items="${sicks}">
 					 	<th>
-					 		<div class="sick_box">
-					 			<a href='
-					 			<c:url value='/media/crawling'>
+					 		<input class="btn btn-primary" type="button" value="${illness.sick_name}" 
+					 		onclick="location.href='<c:url value='/media/crawling'>
 					 				<c:param name="sick_code" value="${illness.sick_code}"></c:param> 
-					 			</c:url>' >
-					 			 <span class="sick_box_font"> ${illness.sick_name} </span> </a>  
-					 		</div>
+					 			</c:url>'" />
 						</th>
 					</c:forEach>
 				</tr>

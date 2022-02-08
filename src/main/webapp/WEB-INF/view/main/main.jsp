@@ -12,6 +12,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width-device-width">
 
+<!-- 하윤 0208 부트스트랩 하는중 -->
+<!-- 부트스트랩 css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- 부트스트랩 js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 <!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
@@ -93,10 +99,46 @@ color: #FFFFFF;
    </nav>
    <hr>
    
-   <div class="dalc_img" align="center">
-      <img id="mainImg" src="<c:url value='/images/default.jpg'/>" alt="추후 메인 이미지" width="300" height="300"/>
-   </div>
-   
+<!--    <div class="dalc_img" align="center"> -->
+<%--       <img id="mainImg" src="<c:url value='/images/default.jpg'/>" alt="추후 메인 이미지" width="300" height="300"/> --%>
+<!--    </div> 
+width: 943px;
+height: 294px;
+-->
+     <div class="row" style="height: 294px;">
+     <div class="col-md-2"></div>
+    <div class="col-md-8" style="height: 294px; border:1px solid yellow;" >
+   <div  id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"   style="height: 294px; border:1px solid orange;">
+  <div class="carousel-indicators"  style="height: 294px; border:1pb blue;">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner"  style="height: 294px; border:1px solid blue;">
+    <div class="carousel-item active"  style="height: 294px; border:1px solid black;">
+      <img style="height: 294px;" src="<c:url value='/images/main1.jpg'/>" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="<c:url value='/images/default.jpg'/>" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="<c:url value='/images/default.jpg'/>" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  </div>
+  <div class="col-md-2"></div>
+  </div>
+  
+</div>
+
    <!-- 추천 레시피 부분 -->
 	<div class="content">
 	   <br>
