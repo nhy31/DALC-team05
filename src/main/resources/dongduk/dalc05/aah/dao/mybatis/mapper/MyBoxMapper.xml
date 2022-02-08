@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.MyBoxMapper">
+	
+	<!-- 사용자의 box list -->
+	<select id="getAllList" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.MyBox">
+		SELECT * FROM MyBox
+		WHERE member_code = #{member_code}
+	</select>
+	
+	<!-- 보관함에 저장하기 -->
+	<insert id="insertMyBox" parameterType="dongduk.dalc05.aah.domain.MyBox">	
+		Insert Into MyBox
+		(mybox_code, member_code, recipe_code, exercise_code) 
+		values
+		(#{mybox_code}, #{member_code}, #{recipe_code}, #{exercise_code}) 
+	</insert>
+	
+	<!-- 보관함에서 삭제하기 -->
+	<delete id="deleteMyBox">
+		delete from MyBox
+		WHERE MEMBER_code = #{member_code} and  myBox_code = #{myBox_code}
+	</delete>
+</mapper>

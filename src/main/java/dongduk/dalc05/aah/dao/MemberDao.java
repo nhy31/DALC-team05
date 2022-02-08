@@ -10,6 +10,9 @@ public interface MemberDao {
 	
 	// 가입
 	void insertMember(Member member) throws DataAccessException;
+	
+	// 정보 업데이트
+	void updateMember(Member member);
 		
 	// 아이디 중복확인
 	Member checkId(String member_id);

@@ -7,11 +7,19 @@
 	<insert id="insertMember" parameterType="dongduk.dalc05.aah.domain.Member">	
 		Insert Into Member
 		(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME, MEMBER_PHONE, 
-		MEMBER_BIRTH, MEMBER_SEX, MEMBER_IMAGE, sick_code)
+		MEMBER_BIRTH, MEMBER_SEX, MEMBER_IMAGE, sick_code, member_allergy)
 		VALUES
 		(#{member_id}, #{member_pw}, #{member_name}, #{member_nickName}, #{member_phone}, 
-		#{member_birth}, #{member_sex}, #{member_image}, #{sick_code})
+		#{member_birth}, #{member_sex}, #{member_image}, #{sick_code}, #{member_allergy})
 	</insert>
+	
+	<!-- 정보 업데이트 -->
+	<update id="updateMember" parameterType="dongduk.dalc05.aah.domain.Member">
+		UPDATE Member
+		SET MEMBER_PW = #{member_pw}, MEMBER_NICKNAME = #{member_nickName}, MEMBER_PHONE = #{member_phone}, 
+		MEMBER_SEX = #{member_sex}, MEMBER_IMAGE = #{member_image}, sick_code = #{sick_code}, member_allergy = #{member_allergy}
+		WHERE member_code = #{member_code}
+	</update>
 
 	<!-- 아이디 중복확인 -->
 	<select id="checkId" parameterType="String" resultType="dongduk.dalc05.aah.domain.Member">
@@ -25,18 +33,7 @@
 		delete from member
 		WHERE MEMBER_code = #{member_code}
 	</delete>
-	
-<!-- delete from comment -->
-<!-- where member_code = 1; -->
 
-<!-- delete from post -->
-<!-- where member_code = 1; -->
-
-<!-- delete from member -->
-<!-- WHERE MEMBER_code = 1; -->
-		
-	
-	
 	<!-- ID로 member_code 불러오기 -->
 	<select id="getMemberCode" parameterType="String" resultType="Integer">
 		Select member_code

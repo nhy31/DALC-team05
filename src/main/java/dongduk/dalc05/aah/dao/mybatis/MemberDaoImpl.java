@@ -18,6 +18,12 @@ public class MemberDaoImpl implements MemberDao {
 		memberMapper.insertMember(member);
 	}
 
+	// 정보 업데이트
+	@Override
+	public void updateMember(Member member) {
+		memberMapper.updateMember(member);	
+	}	
+		
 	// 아이디 중복확인
 	@Override
 	public Member checkId(String member_id) {
@@ -52,9 +58,5 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public Member getMemberInfo(int member_code) {
 		return memberMapper.getMemberInfo(member_code);
-	}	
-	
-
-
-	
+	}
 }

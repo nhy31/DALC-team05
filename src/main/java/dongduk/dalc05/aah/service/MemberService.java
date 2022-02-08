@@ -6,6 +6,9 @@ public interface MemberService{
 	// 가입
 	public void insertMember(Member member);
 	
+	// 정보 업데이트
+	public void updateMember(Member member);
+	
 	// 아이디 중복확인
 	public Member checkId(String member_id);
 	

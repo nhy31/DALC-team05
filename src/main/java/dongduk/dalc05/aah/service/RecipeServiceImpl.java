@@ -36,7 +36,5 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 	public void insertOrder(rOrder order) {
 		recipeDao.insertOrder(order);
-		
 	};
-
 }

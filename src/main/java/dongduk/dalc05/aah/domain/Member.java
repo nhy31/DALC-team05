@@ -19,8 +19,24 @@ public class Member {
 	private String member_image;
 	private String member_sex;
 	
+	// only domain
+	private String sick_name;
+	
 	public Member() {}
 	
+	public Member(int member_code, String member_pw, String member_nickName, String member_phone, int sick_code,
+			String member_allergy, String member_image, String member_sex) {
+		super();
+		this.member_code = member_code;
+		this.member_pw = member_pw;
+		this.member_nickName = member_nickName;
+		this.member_phone = member_phone;
+		this.sick_code = sick_code;
+		this.member_allergy = member_allergy;
+		this.member_image = member_image;
+		this.member_sex = member_sex;
+	}
+
 	public Member(String member_id, String member_pw, String member_name, String member_nickName, String member_phone,
 			Date member_birth, int sick_code, String member_allergy, String member_image, String member_sex) {
 		super();
@@ -123,4 +139,12 @@ public class Member {
 	public void setMember_sex(String member_sex) {
 		this.member_sex = member_sex;
 	}
+	public String getSick_name() {
+		return sick_name;
+	}
+
+	public void setSick_name(String sick_name) {
+		this.sick_name = sick_name;
+	}
+
 }

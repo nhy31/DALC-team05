@@ -10,6 +10,9 @@ public interface MemberMapper {
 	// 가입
 	void insertMember(Member member) throws DataAccessException;
 
+	// 정보 업데이트
+	void updateMember(Member member);
+		
 	// 아이디 중복확인
 	Member checkId(String member_id);
 	
@@ -27,10 +30,5 @@ public interface MemberMapper {
 
 	// member_code로 모든정보 불러오기
 	Member getMemberInfo(int member_code);
-	
-
-	
-
-
 }
 

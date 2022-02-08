@@ -1,4 +1,3 @@
-
 package dongduk.dalc05.aah.service;
 import dongduk.dalc05.aah.dao.MemberDao;
 import dongduk.dalc05.aah.domain.Member;
@@ -19,6 +18,12 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.insertMember(member);
 	}
 	
+	// 정보 업데이트
+	@Override
+	public void updateMember(Member member) {
+		memberDao.updateMember(member);	
+	}	
+		
 	// 아이디 중복확인
 	@Override
 	public Member checkId(String member_id) {

@@ -20,7 +20,7 @@
 swal({
 	 title: "",
 	 text: "${msg}",
-	 icon: "success",
+	 icon: "error",
 })
 .then(function(){
 	location.href="<c:out value="${pageContext.request.contextPath}"/>${url}";                   

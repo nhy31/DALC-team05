@@ -1,60 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/join.css'/>" type="text/css">
 
-<title>회원가입 페이지</title>  <!-- 소셜가입 연동 JS 코드필요  -->
+<!-- 하윤 0208 부트스트랩 하는중 -->
+<!-- 부트스트랩 css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- 부트스트랩 js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<!-- 외부 스타일 링크 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+
+<!-- 내부 스타일 링크 -->
+<link rel=stylesheet href="<c:url value='/css/all.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css"> 
+<link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
+
+<title>회원정보 수정</title>  
 </head>
 
 <body>
-	<!-- 기본 상단바 -->
-	<nav class="dalcbar">
-		<div class="dalc_name">
-			<h2><a href="<c:url value='/main'/>">로고 이미지</a></h2>
-		</div>
-      
-      <div align = "center">
-      	<form name="mainSearch" action="/main/search" method="GET">
-      		<input type="text" name="searchView" placeholder="검색어를 입력하세요." width="500" height="40">
-      		<input type="image" src="<c:url value='/images/search.png'/>" alt="검색버튼" width="15" height="15">
-      	</form>
-      </div>
-      
-      <ul class="dalc_menu">
-      	<c:if test="${ses == 0}"> 
-      		<li><a href="<c:url value="/main/login" />">로그인</a></li>
-      		<li><a href="<c:url value="/main/join" />">회원가입</a></li>
-      	</c:if>
-      	<c:if test="${ses == 1}"> 
-      		<li>${member_nickName}님 </li>
-            <li><a href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
-            <li><a href="<c:url value="/member/delete.do" />">탈퇴</a></li> <!-- 탈퇴기능만 한번테스트해보려고 잠깐삽입 -->
-        </c:if>
-      </ul>
-   </nav>
-   <hr>
-   
 <!-- 카카오, 네이버 연동 추가해야함  -->
 <div class = "content">
 	<h2> 회원 가입 </h2>
 	<p class="hr_write">나의 정보</p>
 	
-	<form name="form" method="POST" action="<c:url value='/member/mypage/update.do' />" enctype="multipart/form-data">
+	<form name="form" method="POST" action="<c:url value='/member/my/update.do' />" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<th> 이름 </th>
-				<td> <input type="text" name="member_name" required="required" value="${me.member_name}" readonly>  </td>
+				<td> <input type="text" name="member_name" value="${me.member_name}" readonly>  </td>
 			</tr>
 			<tr>
 				<th> 아이디(이메일) </th>
-				<td> <input type="email" name="member_id" readonly value="${me.member_id}" required="required">
-				     <input type="hidden" name="member_code" readonly> 
+				<td> <input type="email" name="member_id" readonly value="${me.member_id}"> 
 				</td>
 			</tr>
 			<tr>
@@ -69,25 +58,25 @@
 				<td> <input type="password" name="member_pw" placeholder="비밀번호" value="${me.member_pw}"required="required"> </td>
 			</tr>
 			<tr>
-				<th> 비밀번호 확인 </th> <!-- js 함수필요 -->
+				<th> 비밀번호 확인 </th>
 				<td> <input type="text" placeholder="비밀번호 확인" required="required"> </td>
 			</tr>
 			<tr>
 				<th>핸드폰</th>
-				<td> <input type="text" name="member_phone" value="${me.member_pw}" required="required"></td>				
+				<td> <input type="text" name="member_phone" value="${me.member_phone}" required="required"></td>				
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td> <input type="date" name="member_birth" required="required" value="${me.member_birth}"readonly>	</td>
+				<td> <input type="text" name="member_birth" value="${me.member_birth}" readonly>	</td>
 			</tr>
 			<tr>
-				<th>현재 질환 및 관심 질병</th> <!-- 수정사항 선택입력 -> 필수정보 -> 제공안하거나 기타질병을 default 감기로 -->
+				<th>현재 질환 및 관심 질병</th>
 				<td> 
 					<select name="sick_code">
-						<option selected value="0">정보미제공</option>
-							<c:forEach var="illness" items="${sicks}">
-								<option value="${illness.sick_code}">${illness.sick_name}</option>
-							</c:forEach>
+						<option value="${me.sick_code}" selected>${me.sick_name}</option>
+						<c:forEach var="illness" items="${sicks}">
+							<option value="${illness.sick_code}">${illness.sick_name}</option>
+						</c:forEach>
 					</select>
 				</td>			
 			</tr>
@@ -95,15 +84,20 @@
 		
 			<p class="hr_write">추가정보</p>
 			<div>
-				<div>성별  :      
-					정보 미제공 <input type="radio" name="member_sex" value="999" checked />  
-                	남성 <input type="radio" name="member_sex" value="0" />
-                	여성 <input type="radio" name="member_sex" value="1" />
+				<div>성별  :  
+				정보 미제공<input type="radio" name="member_sex" value="정보 미제공" 
+				<c:if test="${me.member_sex == '정보 미제공'}">checked</c:if>>
+				
+               	남자<input type="radio" name="member_sex" value="남자" 
+				<c:if test="${me.member_sex == '남자'}">checked</c:if>>
+				
+				여자<input type="radio" name="member_sex" value="여자" 
+				<c:if test="${me.member_sex == '여자'}">checked</c:if>>
 				</div>
 				<div>음식 알레르기
 					<input type="text" name="member_allergy" value="${me.member_allergy}">
 				<div>사진등록
-					<input type="text" name="member_image">
+					<input type="text" name="member_image" value="${me.member_image}">
 				</div>	
 			</div>
 	
