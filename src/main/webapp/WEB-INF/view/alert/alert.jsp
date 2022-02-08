@@ -4,12 +4,41 @@
 <%@ page session="true" %>
 <html>
 <head>
-    <title>알림창</title>
+<meta charset="UTF-8">
+
+<title>알림창</title>
 </head>
+<style>
+.swal-button--confirm{
+  background :  #851BD8;
+}
+</style>
 <body>
+<!-- Include the Minimal theme -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
-    alert('${msg}');
-    location.href='<c:out value="${pageContext.request.contextPath}"/>${url}';
+swal({
+	 title: "",
+	 text: "${msg}",
+	 icon: "error",
+	 buttons:  {
+		 confirm : "Retry"
+	 }
+})
+.then(function(){
+	location.href="<c:out value="${pageContext.request.contextPath}"/>${url}";                   
+})
 </script>
+
 </body>
 </html>
+
+<!-- swal({ -->
+<!-- 	title: "failed" -->
+<%-- 	text: "${msg}"; --%>
+<!-- 	icon: "error"; -->
+<!-- 	button: "Retry", -->
+<!-- }) -->
+<!-- .then(function(){ -->
+<%-- 	location.href="<c:out value="${pageContext.request.contextPath}"/>${url}";                    --%>
+<!-- }) -->
