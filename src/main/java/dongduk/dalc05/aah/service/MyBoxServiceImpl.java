@@ -28,8 +28,8 @@ public class MyBoxServiceImpl implements MyBoxService {
 		
 	// 보관함에서 삭제하기
 	@Override
-	public void deleteMyBox(int myBox_code, int member_code) {
-		myBoxDao.deleteMyBox(myBox_code, member_code);
+	public void deleteMyBox(MyBox box) {
+		myBoxDao.deleteMyBox(box);
 	}
 	
 }

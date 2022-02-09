@@ -13,5 +13,5 @@ public interface MyBoxService {
 	public void insertMyBox(MyBox box);
 	
 	// 보관함에서 삭제하기
-	public void deleteMyBox(int myBox_code, int member_code);
+	public void deleteMyBox(MyBox box);
 }

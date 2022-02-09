@@ -18,8 +18,12 @@
 	</insert>
 	
 	<!-- 보관함에서 삭제하기 -->
-	<delete id="deleteMyBox">
+	<delete id="deleteMyBox"  parameterType="dongduk.dalc05.aah.domain.MyBox" >
 		delete from MyBox
-		WHERE MEMBER_code = #{member_code} and  myBox_code = #{myBox_code}
+		WHERE myBox_code = #{myBox_code} and member_code = #{member_code}
 	</delete>
 </mapper>
+
+<!-- 	 IN ( Select myBox_code -->
+<!-- 		                       From MyBox -->
+<!-- 		                       Where member_code = #{member_code}; -->

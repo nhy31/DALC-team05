@@ -30,7 +30,7 @@ public class MyBoxDaoImpl implements MyBoxDao {
 	
 	// 보관함에서 삭제하기
 	@Override
-	public void deleteMyBox(int myBox_code, int member_code) {
-		myBoxMapper.deleteMyBox(myBox_code, member_code);
+	public void deleteMyBox(MyBox box) {
+		myBoxMapper.deleteMyBox(box);
 	}
 }

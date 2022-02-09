@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dongduk.dalc05.aah.domain.Community;
+import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Post;
 import dongduk.dalc05.aah.service.CommunityService;
 import dongduk.dalc05.aah.service.MemberService;
@@ -39,23 +40,23 @@ public class PostController {
 			Model model) {
 		
 		HttpSession session = request.getSession();
-		String member_id = (String) session.getAttribute("member_id");
-		String member_nickName = (String) session.getAttribute("member_nickName");	
-		int member_code = memberService.getMemberCode(member_id);
+		Member m = (Member) session.getAttribute("loginMember");
+		int code = m.getMember_code();
+		String nick = m.getMember_nickName();
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("community/postUpload");
-		mav.addObject("nickName", member_nickName);
+		mav.addObject("nickName", nick);
 		
 		Post p = new Post();
 		Date now = new Date();
-		p.setMember_code(member_code);
-		p.setMember_nickName(member_nickName);
+		p.setMember_code(code);
+		p.setMember_nickName(nick);
 		p.setPost_uploadDate(now);
 		mav.addObject("post", p);
 
 		List<Community> list = new ArrayList<>();
-		list = commuService.getMyCommuList(member_code);
+		list = commuService.getMyCommuList(code);
 		mav.addObject("MyCommuList", list);
 		
 		return mav;	
@@ -73,21 +74,19 @@ public class PostController {
 		System.out.println("게시글업로드 test");
 		
 		HttpSession session = request.getSession();
-		String member_id = (String) session.getAttribute("member_id");
-		String member_nickName = (String) session.getAttribute("member_nickName");	
-		
-		int member_code = memberService.getMemberCode(member_id);
+		Member m = (Member) session.getAttribute("loginMember");
+
 		String commu_name = commuService.getCommuName(commu_code);
 		int post_hits = 0;
 		Date now = new Date();
 		
-		Post p = new Post(commu_code, member_code, post_title, post_content, post_hits,
-				now, member_nickName, commu_name);
+		Post p = new Post(commu_code, m.getMember_code(), post_title, post_content, post_hits,
+				now, m.getMember_nickName(), commu_name);
 		commuService.insertPost(p);
 		System.out.println("게시글업로드 SUECESS");
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/main/community");
+		mav.setViewName("redirect:/community");
 		
 		return mav;
 		

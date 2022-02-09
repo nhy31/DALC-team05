@@ -126,8 +126,8 @@ color: #000000;
       <ul class="dalc_menu">
          <li><a href="<c:url value='/main/recipe'/>">레시피 추천</a></li>
          <li><a href="<c:url value='/main/exercise'/>">홈트레이닝 추천</a></li>
-         <li><a href="<c:url value='/main/media'/>">건강 미디어</a></li>
-         <li><a href="<c:url value='/main/community'/>">현대사회 커뮤니티</a></li>
+         <li><a href="<c:url value='/media/crawling1'/>">건강 미디어</a></li>
+         <li><a href="<c:url value='/community'/>">현대사회 커뮤니티</a></li>
       </ul>
    </p>
    </nav>

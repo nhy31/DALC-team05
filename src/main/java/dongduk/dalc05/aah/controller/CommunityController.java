@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dongduk.dalc05.aah.domain.Community;
+import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Post;
 import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.CommunityService;
@@ -33,24 +34,24 @@ public class CommunityController {
    private MemberService memberService;
    
    // 메인에서 커뮤니티로 이동
-   @RequestMapping(value = "/main/community")
+   @RequestMapping(value = "/community")
    public ModelAndView getCommuMain(
 		   HttpServletRequest request,
 		   Model model) {
 	   
 	  HttpSession session = request.getSession();
-	  String member_id = (String) session.getAttribute("member_id");
+	  Member m = (Member) session.getAttribute("loginMember");
 	  
 	  // 로그인 X -> 이용불가
-	  if(member_id == null) {
+	  if(m == null) {
 		  	ModelAndView mav = new ModelAndView();
-		  	mav.setViewName("alert/alert");
+		  	mav.setViewName("alert/error");
 			model.addAttribute("msg", "로그인 후 이용하실 수 있습니다.");
-	        model.addAttribute("url","/main/login");
+	        model.addAttribute("url","/member/login");
 	        return mav;
 	  }
 	  
-	  int member_code = memberService.getMemberCode(member_id);
+	  int member_code = m.getMember_code();
 	  
 	  ModelAndView mav = new ModelAndView();
       mav.setViewName("community/community_main");

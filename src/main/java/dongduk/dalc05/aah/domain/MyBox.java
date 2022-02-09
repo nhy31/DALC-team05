@@ -15,6 +15,12 @@ public class MyBox {
 	
 	public MyBox() {}
 	
+	public MyBox(int myBox_code, int member_code) {
+		super();
+		this.myBox_code = myBox_code;
+		this.member_code = member_code;
+	}
+
 	public MyBox(int member_code, int recipe_code, int exercise_code) {
 		super();
 		this.member_code = member_code;

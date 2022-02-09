@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dongduk.dalc05.aah.domain.Media;
+import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.MemberService;
 import dongduk.dalc05.aah.service.SickService;
@@ -30,11 +31,9 @@ public class MediaController {
 	@Autowired
 	private SickService sickService;
 	
-	@Autowired
-	private MemberService memberService;
  
-    @RequestMapping(value="/main/media")
-    public ModelAndView startCrawl(Model model,
+    @RequestMapping(value="/media/crawling1")
+    public ModelAndView startCrawl(
     		HttpServletRequest request) throws IOException {
 
     	ModelAndView mav = new ModelAndView();
@@ -103,29 +102,24 @@ public class MediaController {
     	// ** 크롤링 2 **
     	// 질병별 건강 미디어
     	HttpSession session = request.getSession();
-    	String member_id = (String) session.getAttribute("member_id");
-    	System.out.println("MediaController startCrawl" + member_id);
-    	
+    	Member member = (Member) session.getAttribute("loginMember");
+
     	// 로그인 안하면 '질병:감기'
-    	int mediaQuery = 0;
+    	String mediaQuery = "감기";
     	
     	// 로그인 상태 O
-    	if(member_id != null) {
-    		int member_code = memberService.getMemberCode(member_id);
-    		System.out.println("MediaContoller test " + member_code);
-        	
-    		mediaQuery = memberService.getMemberInfo(member_code).getSick_code();
-        	if(mediaQuery == 999) { // 기타 질병 선택한 사람도 '감기'
-        		mediaQuery = 0;
+    	if(member != null) {
+    		mediaQuery = member.getSick_name();
+        	if(mediaQuery == "기타질병") { // 기타 질병 선택한 사람도 '감기'
+        		mediaQuery = "감기";
         	}
     	}
     	
-    	String query = sickService.getSickName(mediaQuery);
     	ArrayList<Media> medias2 = new ArrayList<>();
     	
     	int page = 1;
     	while (page < 5) { 
-    		String url2 = "https://search.naver.com/search.naver?where=news&ie=utf8&sm=nws_hty&query=" + query;
+    		String url2 = "https://search.naver.com/search.naver?where=news&ie=utf8&sm=nws_hty&query=" + mediaQuery;
     		System.out.println("기사크롤링 start " + url2);
     		
     		String realURL2 = "";
@@ -185,15 +179,13 @@ public class MediaController {
 
 	    mav.addObject("medias2", medias2);
 	    mav.addObject("sicks", list);
-	    mav.addObject("medias2", medias2);
         
     	return mav;
     }
 
     
-    @RequestMapping(value="/media/crawling")
+    @RequestMapping(value="/media/crawling2")
     public ModelAndView crawl2(
-    		Model model,
     		HttpServletRequest request,
     		@RequestParam int sick_code) throws IOException {
     	
@@ -327,7 +319,6 @@ public class MediaController {
 
  	    mav.addObject("medias2", medias2);
  	    mav.addObject("sicks", list);
- 	    mav.addObject("medias2", medias2);
     	return mav;
     }
 }

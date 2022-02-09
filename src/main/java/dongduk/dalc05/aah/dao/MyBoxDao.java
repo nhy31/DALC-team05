@@ -16,5 +16,5 @@ public interface MyBoxDao {
 	void insertMyBox(MyBox box);
 	
 	// 보관함에서 삭제하기
-	void deleteMyBox(int myBox_code, int member_code);
+	void deleteMyBox(MyBox box);
 }

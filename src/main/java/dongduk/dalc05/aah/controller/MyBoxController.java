@@ -30,9 +30,8 @@ public class MyBoxController {
 		
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
-		
 		int member_code = m.getMember_code();
-		
+	
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("member/myBox");
 		
@@ -51,6 +50,7 @@ public class MyBoxController {
 //		}
 		
 		mav.addObject("myBoxList", list);
+		
 		return mav;
 	}
 		
@@ -97,20 +97,15 @@ public class MyBoxController {
 	public ModelAndView deleteFromBox(
 			HttpServletRequest request,
 			@RequestParam ("myBox_code") int myBox_code) {
-		
-		System.out.println("1");
+
 		HttpSession session = request.getSession();
-		
-		System.out.println("2");
 		Member m = (Member) session.getAttribute("loginMember");
 		
-		System.out.println("3");
 		int member_code = m.getMember_code();
 		
-		System.out.println("4");
-		myBoxService.deleteMyBox(myBox_code, member_code);
+		MyBox del = new MyBox(myBox_code, member_code);
 		
-		System.out.println("5");
+		myBoxService.deleteMyBox(del);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/member/mybox");
