@@ -20,10 +20,28 @@
 
 <title>게시글 자세히..</title>
 게시글 자세히..
+
+<body>
+<!-- 기능test 임시테스트 -->
+
+<div></div>
+<div></div>
+<div></div>
+
+<div></div>
+<div></div>
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+<div></div>
+
+	
+	
+
 </body>
-	
-	
-
-
 
 </html>

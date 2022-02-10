@@ -35,7 +35,11 @@
 			<tr style="cursor:pointer;">
  				<td>${list.commu_name}</td>	 
 				<td>${list.sick_name}</td>	 
-				<td>${list.commu_introduce}</td>	   	
+				<td>${list.commu_introduce}</td>	
+				<td><input class="btn btn-primary" type="button"
+					 		onclick="location.href='<c:url value='/community/posts'>
+					 				<c:param name="commu_code" value="${list.commu_code}"></c:param> 
+					 			</c:url>'" /></td>   	
 			</tr>	
 		</c:forEach> 
 	</table>

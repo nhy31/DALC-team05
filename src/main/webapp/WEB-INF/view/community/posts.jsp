@@ -116,43 +116,6 @@ border-radius: 6px;}
 <body>
 
 <div class="content-start">
-
-	<div align="left">
-		<div class="main_title1">이번 주 인기글</div>
-		<div class="add">매주 업데이트 되는 인기글을 확인하세요.</div>
-		
-		<div align="center" class="bestPosts" >
-			<div class="two-box"> 
-				<ol>
-					<c:forEach var="post" items="${BestPosts}">
-					<li style="cursor:pointer" onclick="location.href='<c:url value='/community/post/detail' />'">${post.post_title} (${post.post_hits})</li>
-					</c:forEach>	
-				</ol> 
-			</div>
-		</div>
-	</div>
-	
-	<div align="left">
-		<div class="main_title2">최신 포스트</div>
-		<input type ="button" value="전체 커뮤니티 보기" onclick="location.href='<c:url value='/community/list' />'"></input> 
-		<input type ="button" value="커뮤니티 만들기" onclick="location.href='<c:url value='/community/create' />'"></input> 
-		
-	</div>
-	
-	<div align="right">
-	나의 커뮤니티 
-	<form action="<c:url value='/community/posts' />">
-		<select name="commu_code">
-			<option value="0" selected>전체</option>
-				<c:forEach var="c" items="${MyCommuList}">
-					<option value="${c.commu_code}">${c.commu_name}</option>
-				</c:forEach>
-		</select>
-		<input type="submit" value="go">
-	</form>	
-   		<input type ="button" value="글쓰기" onclick="location.href='<c:url value='/community/post/upload' />'"></input> 
-	</div>
-	  
    	<table>
    		<c:forEach var="posts" items="${posts}">
 			<tr>
@@ -166,6 +129,6 @@ border-radius: 6px;}
 		</c:forEach>	
    	</table>
 </div>
-</div>
+
 </body>
 </html>

@@ -32,7 +32,7 @@ public class MediaController {
 	private SickService sickService;
 	
  
-    @RequestMapping(value="/media/crawling1")
+    @RequestMapping(value="/media/")
     public ModelAndView startCrawl(
     		HttpServletRequest request) throws IOException {
 
@@ -184,7 +184,7 @@ public class MediaController {
     }
 
     
-    @RequestMapping(value="/media/crawling2")
+    @RequestMapping(value="/media/crawling")
     public ModelAndView crawl2(
     		HttpServletRequest request,
     		@RequestParam int sick_code) throws IOException {

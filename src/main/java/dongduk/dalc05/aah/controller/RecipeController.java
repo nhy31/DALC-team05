@@ -35,9 +35,9 @@ public class RecipeController {
 	private RecipeService recipeService;
 	
     // 메인페이지 -> 레시피페이지 이동
-    @RequestMapping(value = "/main/recipe")
+    @RequestMapping(value = "/recipe")
     public String recipe() {
-		return "recipe/list";
+		return "recipe/recipe_main";
     }
 	
 	@RequestMapping(value="/main/recipe/crawling")
