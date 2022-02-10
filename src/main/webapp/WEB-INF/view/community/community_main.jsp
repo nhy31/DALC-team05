@@ -123,10 +123,13 @@ border-radius: 6px;}
 		
 		<div align="center" class="bestPosts" >
 			<div class="two-box"> 
-				<ol>
+				<ol> 			
 					<c:forEach var="post" items="${BestPosts}">
-					<li style="cursor:pointer" onclick="location.href='<c:url value='/community/post/detail' />'">${post.post_title} (${post.post_hits})</li>
-					</c:forEach>	
+					<li style="cursor:pointer" 
+					onclick="location.href='<c:url value='/community/post/detail'>
+					<c:param name="post_code" value="${post.post_code}"></c:param> </c:url>'" /> 
+					${post.post_title }
+			     	</c:forEach>	
 				</ol> 
 			</div>
 		</div>
@@ -155,7 +158,8 @@ border-radius: 6px;}
 	  
    	<table>
    		<c:forEach var="posts" items="${posts}">
-			<tr>
+			<tr style="cursor:pointer" onclick="location.href='<c:url value='/community/post/detail'>
+					<c:param name="post_code" value="${posts.post_code}"></c:param> </c:url>'">
    				<td>${posts.post_title}</td>
    				<td>${posts.post_uploadDate}</td>
    				<td>${posts.member_nickName}</td>

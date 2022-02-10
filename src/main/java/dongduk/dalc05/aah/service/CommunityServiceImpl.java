@@ -53,4 +53,8 @@ public class CommunityServiceImpl implements CommunityService {
 	// 게시글 업로드
 	@Override
 	public void insertPost(Post p) { commuDao.insertPost(p); }
+
+	// 게시글 자세히 보기
+	@Override
+	public Post postDetail(int post_code) { return commuDao.postDetail(post_code); }
 }

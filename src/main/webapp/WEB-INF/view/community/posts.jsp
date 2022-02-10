@@ -116,6 +116,8 @@ border-radius: 6px;}
 <body>
 
 <div class="content-start">
+
+community 가입<input type="button" >
    	<table>
    		<c:forEach var="posts" items="${posts}">
 			<tr>

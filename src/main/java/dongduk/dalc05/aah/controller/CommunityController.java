@@ -183,31 +183,28 @@ public class CommunityController {
 	}
 	
 	// 게시글 자세히보기
-	@RequestMapping(value = "/community/post/datail")
+	@RequestMapping(value = "/community/post/detail")
 	public ModelAndView postDetail(
 			HttpServletRequest request,
 			Model model,
-			@RequestParam int commu_code,
-			@RequestParam String post_title,
-			@RequestParam String post_content) {
-		
-		System.out.println("게시글업로드 test");
+			@RequestParam ("post_code") int post_code) {
 		
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
-
-		String commu_name = commuService.getCommuName(commu_code);
-		int post_hits = 0;
-		Date now = new Date();
+		String nick = m.getMember_nickName();
 		
-		Post p = new Post(commu_code, m.getMember_code(), post_title, post_content, post_hits,
-				now, m.getMember_nickName(), commu_name);
-		commuService.insertPost(p);
-		System.out.println("게시글업로드 SUECESS");
-		
+		System.out.println("게시글상세보기 test");
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/community/post/detail");
+		mav.setViewName("/community/post/detail");
+		Post p = commuService.postDetail(post_code);
+		String postWriter = memberService.getMemberInfo(p.getMember_code()).getMember_nickName();
 		
+		p.setCommu_name(commuService.getCommuName(p.getCommu_code()));
+		p.setMember_nickName(postWriter);
+		
+		mav.addObject("post", p);
+		mav.addObject("myNick", m.getMember_nickName());
+		mav.setViewName("community/postDetail");
 		return mav;
 		
 	}
@@ -242,6 +239,9 @@ public class CommunityController {
 		return mav;
 		
 	}
+	
+	// 커뮤니티 가입
+	
 
    
    

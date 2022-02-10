@@ -14,6 +14,9 @@ public class Post {
 	private String post_content;
 	private int post_hits;
 	
+	// DB에 추가
+	private String post_img;
+	
 	@DateTimeFormat (pattern ="yyyy/MM/dd HH:mm")
 	private Date post_uploadDate;
 	
