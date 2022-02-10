@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="../main/top_temp.jsp" %>
 
 <!-- 아아현 메인페이지 -->
 <!DOCTYPE html>
@@ -69,6 +70,8 @@ color: #000000;
 
 <body>
 
+<!--나연: 부트스트랩 이용 상단바로 일단 변경해놨음 -> include 이용 (나중에 하윤님 확인 후 필요없음 지워도 됨)
+
 <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
@@ -112,10 +115,10 @@ color: #000000;
           <li>${member_nickName}님 </li>
             <li><a href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
             <li><a href="<c:url value='/member/my'/>">정보수정</a></li>
-            <li><a href="<c:url value="/member/delete.do" />">탈퇴</a></li> <!-- 탈퇴기능만 한번테스트해보려고 잠깐삽입 -->
-            <li><a href="<c:url value="/member/mybox" />">보관함</a></li> <!-- 한번테스트해보려고 잠깐삽입 -->
-            <li><a href="<c:url value="/member/diary" />">나의 기록</a></li> <!--한번테스트해보려고 잠깐삽입 -->
-            <li><a href="member/faq.jsp">FAQ</a></li> <!--한번테스트해보려고 잠깐삽입 -->
+            <li><a href="<c:url value="/member/delete.do" />">탈퇴</a></li>  탈퇴기능만 한번테스트해보려고 잠깐삽입 
+            <li><a href="<c:url value="/member/mybox" />">보관함</a></li>  한번테스트해보려고 잠깐삽입 
+            <li><a href="<c:url value="/member/diary" />">나의 기록</a></li> 한번테스트해보려고 잠깐삽입 
+            <li><a href="member/faq.jsp">FAQ</a></li> 한번테스트해보려고 잠깐삽입
       	</c:if>
       </ul>
    </nav>
@@ -132,6 +135,8 @@ color: #000000;
    </p>
    </nav>
    <hr>
+-->
+  
    
 <!--    <div class="dalc_img" align="center"> -->
 <%--       <img id="mainImg" src="<c:url value='/images/default.jpg'/>" alt="추후 메인 이미지" width="300" height="300"/> --%>

@@ -1,0 +1,33 @@
+body{
+	padding-top: 10px;
+	padding-left: 30px;
+	padding-bottom: 30px;
+	padding-right: 30px;
+}
+
+/*로고 이미지 */
+/*패딩- 안쪽 여백, 마진- 바깥여백 설정 (위오아왼)*/
+.navbar-brand{
+	padding-left: 30px;
+}
+
+/*검색어를 입력하세요.*/
+
+/* 로그인 */
+.collapse navbar-collapse{
+	position: absolute;
+	left: 20px;
+}
+
+.container-fluid{
+	color: black;
+}
+
+.navbar{
+	background: #FFFFFF;
+	color: #000000;
+}
+
+.nav-link active{
+	color: black;
+}
