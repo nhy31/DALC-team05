@@ -15,6 +15,7 @@ public class CommunityServiceImpl implements CommunityService {
 	@Autowired
 	private CommunityDao commuDao; 
 	
+	/* commu 관련*/
 	// 전체 커뮤니티 리스트 
 	@Override
 	public List<Community> getCommuList() { return commuDao.getCommuList(); }
@@ -35,6 +36,8 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public void insertCommu(Community c) { commuDao.insertCommu(c); }
 	
+	
+	/* 게시글 post 관련*/
 	// 전체 게시글 
 	@Override
 	public List<Post> getAllPosts() { return commuDao.getAllPosts(); }
@@ -50,4 +53,8 @@ public class CommunityServiceImpl implements CommunityService {
 	// 게시글 업로드
 	@Override
 	public void insertPost(Post p) { commuDao.insertPost(p); }
+
+	// 게시글 자세히 보기
+	@Override
+	public Post postDetail(int post_code) { return commuDao.postDetail(post_code); }
 }

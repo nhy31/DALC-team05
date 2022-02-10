@@ -31,7 +31,7 @@ public class MemberController {
 	@Autowired
 	private SickService sickService;
 
-	// 완료 // 메인페이지 -> 회원가입페이지 이동
+	// 메인페이지 -> 회원가입페이지 이동
     @RequestMapping(value = "/member/join")
     public ModelAndView join() {
     	
@@ -74,13 +74,13 @@ public class MemberController {
         return "alert/success";
 	}
 	
-	// 완료 // 메인페이지 -> 로그인페이지 이동
+	// 메인페이지 -> 로그인페이지 이동
     @RequestMapping(value = "/member/login")
     public String login() {
 		return "member/login";
     }
     
-	// 완료 // 로그인 시도
+	// 로그인 시도
 	@RequestMapping(value="/member/login.do")
 	public String loginDo(
 			HttpServletRequest request,
@@ -124,7 +124,7 @@ public class MemberController {
         return "alert/error";
 	}
 	
-	// 완료 // 로그아웃(세션제거)
+	// 로그아웃(세션제거)
 	@RequestMapping(value = "/member/logout.do")
 	public String logoutDo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -132,7 +132,7 @@ public class MemberController {
 		return "redirect:/main";
 	}
 	
-	// 완료 // 정보수정(마이페이지)으로 이동
+	// 정보수정(마이페이지)으로 이동
 	@RequestMapping(value="/member/my")
 	public ModelAndView myPage(
 			HttpServletRequest request,

@@ -223,7 +223,7 @@ vertical-align:middle;
 					<c:forEach var="illness" items="${sicks}">
 					 	<th>
 					 		<input class="btn btn-primary" type="button" value="${illness.sick_name}" 
-					 		onclick="location.href='<c:url value='/media/crawling2'>
+					 		onclick="location.href='<c:url value='/community/posts'>
 					 				<c:param name="sick_code" value="${illness.sick_code}"></c:param> 
 					 			</c:url>'" />
 						</th>

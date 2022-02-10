@@ -19,4 +19,5 @@ public interface CommunityService {
 	public List<Post> getBestPosts(); // 전체게시판 게시글 인기순 10개 보여주기
 	public List<Post> getCommuPosts(int commu_code); // 해당 커뮤의 게시글들
 	public void insertPost(Post p); // 게시글 업로드
+	public Post postDetail(int post_code); // 게시글 자세히 보기
 }

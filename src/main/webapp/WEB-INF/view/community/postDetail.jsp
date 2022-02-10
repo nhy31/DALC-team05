@@ -20,10 +20,21 @@
 
 <title>게시글 자세히..</title>
 게시글 자세히..
+</head>
+<body>
+<!-- 기능test 임시테스트 -->
+${post.post_title} <br>
+${post.post_content}<br>
+${post.post_code}<br>
+${post.commu_code}<br> 
+${post.commu_name}<br>
+${post.member_code}
+${post.post_hits}<br>
+${post.post_uploadDate} <br>
+${post.member_nickName} <br>
+${myNick} <br>
+
+$ <br>
+$ <br> 
 </body>
-	
-	
-
-
-
 </html>
