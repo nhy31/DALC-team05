@@ -69,13 +69,13 @@
   		<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample03">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="<c:url value='/main/recipe'/>">레시피 추천</a>
+					<a class="nav-link active" aria-current="page" href="<c:url value='/recipe'/>">레시피 추천</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" href="<c:url value='/main/exercise'/>">홈트레이닝 추천</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="<c:url value='/media/crawling1'/>">건강 미디어</a>
+					<a class="nav-link active" aria-current="page" href="<c:url value='/media/crawling'/>">건강 미디어</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" href="<c:url value='/community'/>">현대사회 커뮤니티</a>
