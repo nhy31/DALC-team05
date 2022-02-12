@@ -9,6 +9,10 @@ ol, ul{
 	list-style: none;
 }
 
+.content {
+	margin: 40px 200px 250px 200px;
+}
+
 .content_container {
 	display: flex;
 	flex-wrap: wrap;

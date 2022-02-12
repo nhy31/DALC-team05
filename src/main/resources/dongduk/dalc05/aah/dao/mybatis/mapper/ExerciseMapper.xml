@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.ExerciseMapper">
+
+	<!-- (조회순으로)일단 모든 홈트데이터 가져오기 -->
+	<select id="getExerciseByViews" resultType="dongduk.dalc05.aah.domain.Exercise">
+		select *
+		from exercise
+	</select>
+	
+	<!-- 질병 별 홈트데이터 가져오기 -->
+	<select id="getExerciseBySick" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Exercise">
+		select *
+		from exercise
+		where sick_code = #{sick_code}
+	</select>
+</mapper>
