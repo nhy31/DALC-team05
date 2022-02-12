@@ -9,10 +9,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width-device-width">
 
 <!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <!-- 내부 스타일 링크 -->
 <link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
@@ -38,50 +40,15 @@
         	<div class="swiper-slide">
         		<table>
         			<tr><td><a href="${list.exercise_url}" >
-        				<img class="today_img" src="<c:url value='${list.exercise_thumb}'/>" alt="thumbnail" ></a>
+        				<img class="today_img" src="${list.exercise_thumb}" alt="thumbnail" ></a>
         			</td></tr>
-        			<tr><td><h2>${list.exercise_title}</h2></td></tr>
+        			<tr><td><h3><a href="${list.exercise_url}">${list.exercise_title}</a></h3></td></tr>
         			<tr><td>${list.exercise_channel}</td></tr>
         			<tr><td>조회수${list.exercise_views}</td></tr>
         		</table>
-            	<button id="btn-mark" type="button">찜하기</button>	
+            	<!-- <button id="btn-mark" type="button">찜하기</button>	-->
             </div>
             </c:forEach>
-            <!-- 
-         	<div class="swiper-slide">
-         	    <table>
-        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-        			<tr><td><h2>홈트레이닝 제목</h2></td></tr>
-        			<tr><td>홈트 출처입니다.</td></tr>
-        			<tr><td>조회수 1.5천회</td></tr>
-        		</table>
-            	<button id="btn-mark" type="button">찜하기</button>
-            </div>
-         	<div class="swiper-slide">
-         	    <table>
-        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-        			<tr><td><h2>홈트레이닝 제목</h2></td></tr>
-        			<tr><td>홈트 출처입니다.</td></tr>
-        			<tr><td>조회수 1.5천회</td></tr>
-        		</table>
-            </div>
-         	<div class="swiper-slide">
-         		<table>
-        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-        			<tr><td><h2>홈트레이닝 제목</h2></td></tr>
-        			<tr><td>홈트 출처입니다.</td></tr>
-        			<tr><td>조회수 1.5천회</td></tr>
-        		</table>
-            </div>
-         	<div class="swiper-slide">
-         		<table>
-        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-        			<tr><td><h2>홈트레이닝 제목</h2></td></tr>
-        			<tr><td>홈트 출처입니다.</td></tr>
-        			<tr><td>조회수 1.5천회</td></tr>
-        		</table>
-         	</div>
-         	-->
       	</div>
       	
       	<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
