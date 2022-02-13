@@ -5,14 +5,15 @@
 
 	<!-- (조회순으로)일단 모든 홈트데이터 가져오기 -->
 	<select id="getExerciseByViews" resultType="dongduk.dalc05.aah.domain.Exercise">
-		select *
-		from exercise
+		SELECT *
+		FROM exercise
+		ORDER BY exercise_views DESC
 	</select>
 	
 	<!-- 질병 별 홈트데이터 가져오기 -->
 	<select id="getExerciseBySick" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Exercise">
-		select *
-		from exercise
-		where sick_code = #{sick_code}
+		SELECT *
+		FROM exercise
+		WHERE sick_code = #{sick_code}
 	</select>
 </mapper>

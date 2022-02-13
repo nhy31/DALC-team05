@@ -24,12 +24,13 @@ public class ExerciseController {
 	
     // 메인페이지 -> 홈트페이지 이동
     @RequestMapping(value = "/main/exercise")
-    public ModelAndView exercise(HttpServletRequest request) {
+    public ModelAndView exerciseBySick(HttpServletRequest request) {
     	System.out.println("Exercise Controller");
     	
     	ModelAndView mav = new ModelAndView();
     	mav.setViewName("exercise/exercise_main");
     	
+    	//로그인 세션
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
 		if (m == null) {
@@ -41,16 +42,40 @@ public class ExerciseController {
 			mav.addObject("member_nickName", m.getMember_nickName());
 		}
 		
+		//조회수 기준 내림차순으로 값 배치
     	List<Exercise> list = new ArrayList<>();
     	list = (List<Exercise>) exerciseService.getExerciseByViews();
-    	System.out.println(list.size());
-    	System.out.println(list.get(0).getExercise_title());
-    	
-    	//db에 썸네일 넣을 때 이미지만 추출하는 작업통해 넣어야 함
-    	list.get(0).setExercise_thumb("https://i.ytimg.com/vi/78SpY4RXPok/hq720.jpg");
+    	for(Exercise e: list) {
+    		int views = Integer.parseInt(e.getExercise_views());
+    		int view = views / 10000;
+    		if(view == 0) {
+    			view = views / 1000;
+    			e.setExercise_views(view + "천 회");
+    		}
+    		else
+    			e.setExercise_views(view + "만 회");
+    	}
     	mav.addObject("today_exercise", list);
     	
 		return mav;
     }
+    
+    /*
+    // 홈트페이지 -> 버튼 클릭
+    @RequestMapping(value = "/main/exercise/sick")
+    public ModelAndView exercise(@Param int sick_code) {
+    	System.out.println("Exercise Button Controller");
+    	
+    	ModelAndView mav = new ModelAndView();
+    	mav.setViewName("exercise/exercise_main");
+		
+		//조회수 기준 내림차순으로 값 배치
+    	List<Exercise> list = new ArrayList<>();
+    	list = (List<Exercise>) exerciseService.getExerciseByViews();
+    	mav.addObject("today_exercise", list);
+    	
+		return mav;
+    }
+    */
     
 }

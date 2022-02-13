@@ -44,7 +44,7 @@
         			</td></tr>
         			<tr><td><h3><a href="${list.exercise_url}">${list.exercise_title}</a></h3></td></tr>
         			<tr><td>${list.exercise_channel}</td></tr>
-        			<tr><td>조회수${list.exercise_views}</td></tr>
+        			<tr><td>조회수 ${list.exercise_views}</td></tr>
         		</table>
             	<!-- <button id="btn-mark" type="button">찜하기</button>	-->
             </div>
@@ -61,11 +61,16 @@
 	
 	<div class="content_header"> <h2>질병 별 추천 홈트레이닝</h2> </div> <br>
 		<div align="left">
-	     	<button name="best_recipe_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
-	      	<button name="best_recipe_pressure" class="disease_btn" onClick=""> 고혈압 </button>
-	      	<button name="best_recipe_pressure" class="disease_btn" onClick=""> 저혈압 </button>
-	      	<button name="best_recipe_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
-	      	<button name="best_recipe_etc" class="disease_btn" onClick=""> 기타 </button>
+	     	<button name="exercise_cold" class="disease_btn" onClick=""> 감기 </button>
+	      	<button name="exercise_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
+	      	<button name="exercise_pressure" class="disease_btn" onClick=""> 고혈압 </button>
+	      	<button name="exercise_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
+	      	<button name="exercise_disc" class="disease_btn" onClick=""> 디스크 </button>
+	      	<button name="exercise_constipation" class="disease_btn" onClick=""> 변비 </button>
+	      	<button name="exercise_indigestion" class="disease_btn" onClick=""> 소화불량 </button>
+	      	<button name="exercise_kidney" class="disease_btn" onClick=""> 신장병 </button>
+	      	<button name="exercise_gastritis" class="disease_btn" onClick=""> 위염 </button>
+	      	<button name="exercise_etc" class="disease_btn" onClick=""> 기타 </button>
 	   	</div>
 	   	<br>
 	   	<div>
