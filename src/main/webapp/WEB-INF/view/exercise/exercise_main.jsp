@@ -6,7 +6,7 @@
 <%@ include file="../main/top_temp.jsp" %>
 
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width-device-width">
@@ -72,58 +72,23 @@
 	
 	<div class="content_header"> <h2>질병 별 추천 홈트레이닝</h2> </div> <br>
 		<div align="left">
-	     	<button name="exercise_cold" class="single_btn" onClick=""> 감기 </button>
-	      	<button name="exercise_hyperlipidemia" class="single_btn" onClick=""> 고지혈증 </button>
-	      	<button name="exercise_pressure" class="single_btn" onClick=""> 고혈압 </button>
-	      	<button name="exercise_diabetes" class="single_btn" onClick=""> 당뇨 </button>
-	      	<button name="exercise_disc" class="single_btn" onClick=""> 디스크 </button>
-	      	<button name="exercise_constipation" class="single_btn" onClick=""> 변비 </button>
-	      	<button name="exercise_indigestion" class="single_btn" onClick=""> 소화불량 </button>
-	      	<button name="exercise_kidney" class="single_btn" onClick=""> 신장병 </button>
-	      	<button name="exercise_gastritis" class="single_btn" onClick=""> 위염 </button>
-	      	<button name="exercise_etc" class="single_btn" onClick=""> 기타 </button>
+	     	<button name="exercise_cold" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=0'/>';"> 감기 </button>
+	      	<button name="exercise_hyperlipidemia" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=1'/>';"> 고지혈증 </button>
+	      	<button name="exercise_pressure" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=2'/>';"> 고혈압 </button>
+	      	<button name="exercise_diabetes" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=3'/>';"> 당뇨 </button>
+	      	<button name="exercise_disc" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=4'/>';"> 디스크 </button>
+	      	<button name="exercise_constipation" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=5'/>';"> 변비 </button>
+	      	<button name="exercise_indigestion" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=6'/>';"> 소화불량 </button>
+	      	<button name="exercise_kidney" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=7'/>';"> 신장병 </button>
+	      	<button name="exercise_gastritis" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=8'/>';"> 위염 </button>
+	      	<button name="exercise_etc" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=9'/>';"> 기타 </button>
 	   	</div>
 	   	<br>
 	   	
 	   	<%@ include file="../exercise/exercise_sick.jsp" %>
-	   	<!-- 테이블 부분 
-	   	<div>
-	   		<table border='0'>
-	   			<tr>
-	   				<td rowspan='4'>
-	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
-	   				</td>
-	   				<th>당뇨에 좋은 유산소 운동</th>
-	   			</tr>
-	   			<tr><td>저혈압, 고지혈증..</td></tr>
-	   			<tr><td>운동에 대한 정보</td></tr>
-	   			<tr><td>운동에 대한 정보</td></tr>
-	   		</table>
-	   		<table border='0'>
-	   			<tr>
-	   				<td rowspan='4'>
-	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
-	   				</td>
-	   				<th>집에서 하는 하체 근력운동</th>
-	   			</tr>
-	   			<tr><td>질병 키워드들</td></tr>
-	   			<tr><td>음식에 대한 정보</td></tr>
-	   			<tr><td>음색에 필요한 재료</td></tr>
-	   		</table>
-	   		<table border='0'>
-	   			<tr>
-	   				<td rowspan='4'>
-	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
-	   				</td>
-	   				<th>홈트 제목</th>
-	   			</tr>
-	   			<tr><td>질병 키워드들</td></tr>
-	   			<tr><td>운동에 대한 정보</td></tr>
-	   			<tr><td>운동에 대한 정보</td></tr>
-	   		</table>
-	   	</div>
-	   	-->
 	</div>
+	   	
+
 	
 	<script>
 	new Swiper('.swiper-container', {

@@ -34,4 +34,24 @@ public class MainController {
 		}
 		return mav;
 	}
+	
+	@RequestMapping(value="/main/search")
+	public ModelAndView searchKeyword(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("main/search");
+		
+		HttpSession session = request.getSession();
+		Member m = (Member) session.getAttribute("loginMember");
+		if (m == null) {
+			mav.addObject("ses", 0);
+		} 
+		else {
+			mav.addObject("ses", 1);
+			System.out.println("MainController - 로그인성공");
+
+			mav.addObject("member_id", m.getMember_id());
+			mav.addObject("member_nickName", m.getMember_nickName());
+		}
+		return mav;
+	}
 }
