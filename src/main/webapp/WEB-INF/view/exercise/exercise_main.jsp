@@ -25,6 +25,17 @@
 .content {
 	margin: 40px 200px 250px 200px;
 }
+
+.single_btn{
+	background-color: #851BD8;
+	border: none;
+	color: #ffffff;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+	padding: 10px 23px;
+	border-radius: 79px;
+}
 </style>
 
 <title>홈트레이닝 메인페이지</title>
@@ -61,18 +72,21 @@
 	
 	<div class="content_header"> <h2>질병 별 추천 홈트레이닝</h2> </div> <br>
 		<div align="left">
-	     	<button name="exercise_cold" class="disease_btn" onClick=""> 감기 </button>
-	      	<button name="exercise_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
-	      	<button name="exercise_pressure" class="disease_btn" onClick=""> 고혈압 </button>
-	      	<button name="exercise_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
-	      	<button name="exercise_disc" class="disease_btn" onClick=""> 디스크 </button>
-	      	<button name="exercise_constipation" class="disease_btn" onClick=""> 변비 </button>
-	      	<button name="exercise_indigestion" class="disease_btn" onClick=""> 소화불량 </button>
-	      	<button name="exercise_kidney" class="disease_btn" onClick=""> 신장병 </button>
-	      	<button name="exercise_gastritis" class="disease_btn" onClick=""> 위염 </button>
-	      	<button name="exercise_etc" class="disease_btn" onClick=""> 기타 </button>
+	     	<button name="exercise_cold" class="single_btn" onClick=""> 감기 </button>
+	      	<button name="exercise_hyperlipidemia" class="single_btn" onClick=""> 고지혈증 </button>
+	      	<button name="exercise_pressure" class="single_btn" onClick=""> 고혈압 </button>
+	      	<button name="exercise_diabetes" class="single_btn" onClick=""> 당뇨 </button>
+	      	<button name="exercise_disc" class="single_btn" onClick=""> 디스크 </button>
+	      	<button name="exercise_constipation" class="single_btn" onClick=""> 변비 </button>
+	      	<button name="exercise_indigestion" class="single_btn" onClick=""> 소화불량 </button>
+	      	<button name="exercise_kidney" class="single_btn" onClick=""> 신장병 </button>
+	      	<button name="exercise_gastritis" class="single_btn" onClick=""> 위염 </button>
+	      	<button name="exercise_etc" class="single_btn" onClick=""> 기타 </button>
 	   	</div>
 	   	<br>
+	   	
+	   	<%@ include file="../exercise/exercise_sick.jsp" %>
+	   	<!-- 테이블 부분 
 	   	<div>
 	   		<table border='0'>
 	   			<tr>
@@ -108,6 +122,7 @@
 	   			<tr><td>운동에 대한 정보</td></tr>
 	   		</table>
 	   	</div>
+	   	-->
 	</div>
 	
 	<script>
