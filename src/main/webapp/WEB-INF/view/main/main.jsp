@@ -64,6 +64,12 @@ line-height: 21px;
 color: #000000;
 }
 
+#main_title {
+font-style: normal;
+font-weight: bold;
+color: #000000;
+}
+
 </style>
 
 </head>
@@ -254,30 +260,27 @@ height: 294px;
 	   
 	   <!-- 건강 미디어 -->
 	   <br>
-	    <h1><font size="5" face="돋움">건강 미디어</font></h1>
-	      <div align="left">
-	      <button name="media_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
-	      <button name="media_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
-	      <button name="media_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
-	      <button name="media_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
-	      <button name="media_etc" class="disease_btn" onClick=""> 기타 </button>
-	   </div>
-	   <br>
-	   
+	    <div  class="fs-4"  id="main_title">오늘의 건강 이슈</div>
+	    
+<!-- 	      <div align="left"> -->
+<!-- 	      <button name="media_diabetes" class="disease_btn" onClick=""> 당뇨 </button> -->
+<!-- 	      <button name="media_high_pressure" class="disease_btn" onClick=""> 고혈압 </button> -->
+<!-- 	      <button name="media_low_pressure" class="disease_btn" onClick=""> 저혈압 </button> -->
+<!-- 	      <button name="media_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button> -->
+<!-- 	      <button name="media_etc" class="disease_btn" onClick=""> 기타 </button> -->
+<!-- 	   	  </div> -->
+
 	   <div class="swiper-container">
 	      <div class="swiper-wrapper">
-	         <div class="swiper-slide">
-	            <a href=""><img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a>
-	         </div>
-	         <div class="swiper-slide">
-	            <a href=""><img src="<c:url value='/images/default.jpg'/>" width="300" height="200" alt="테스트용"></a>
-	         </div>
-	         <div class="swiper-slide"><a href="">
-	            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
-	         <div class="swiper-slide"><a href="">
-	            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
-	         <div class="swiper-slide"><a href="">
-	            <img src="<c:url value='/images/default.jpg'/>" width="300" height="200"></a></div>
+	         <c:forEach var="list" items="${medias}">
+		      		<div class="swiper-slide" >
+			       		<table>
+			        		<tr><td style="text-align: center;"><a href="${list.url}" ><img class="img" src="<c:url value='${list.image}'/>" ></a></td></tr>
+			        		<tr><th style="padding:5px; font-size:1vw;">${list.title}</th></tr>
+			        		<tr><td style="font-size:1vw">${list.source}&nbsp;&nbsp;&nbsp;&nbsp;${list.time}</td></tr>
+			        	</table>
+		      		</div>
+		      	</c:forEach>
 	      </div>
 	      
 	      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
@@ -289,9 +292,9 @@ height: 294px;
    
    <script>
    new Swiper('.swiper-container', {
-      slidesPerView : 3, // 동시에 보여줄 슬라이드 rotn
-      spaceBetween : 30, // 슬라이드 간 간격
-      slidesPerGroup : 3, // 그룹으로 묶는 개수
+      slidesPerView : 4, // 동시에 보여줄 슬라이드 rotn
+      spaceBetween : 10, // 슬라이드 간 간격
+      slidesPerGroup : 4, // 그룹으로 묶는 개수
       
       // 그룹수가 맞지 않을 경우 빈칸으로 메우기
       loopFillGroupWithBlank : true,

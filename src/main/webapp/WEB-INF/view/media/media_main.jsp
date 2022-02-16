@@ -83,7 +83,17 @@ line-height: 16px;
 color: #4E4E4E;
 }
 
-
+.single_btn{
+background-color: #851BD8;
+border: none;
+color: #ffffff;
+font-size: 12px;
+font-weight: bold;
+text-align: center;
+padding: 10px 23px;
+border-radius: 79px;
+}
+      
 </style>
 
 </head>
@@ -127,23 +137,22 @@ color: #4E4E4E;
 						</div>
 
 			 	<div>     
-					<table> 
-						<tr>
+		
+					
 							<c:forEach var="illness" items="${sicks}">
-							 	<th>
-							 		<input checked class="btn btn-primary" type="button" value="${illness.sick_name}" 
+							 
+							 		<button class="single_btn" type="button"
 							 		onclick="location.href='<c:url value='/media/crawling'>
 							 				<c:param name="sick_code" value="${illness.sick_code}"></c:param> 
-							 			</c:url>'" />
-								</th>
+							 			</c:url>'" >${illness.sick_name}</button>
+							
 							</c:forEach>
-						</tr>		
-					</table>
+						
 				</div>
 			
 		    <div class="news-div"> 
 		    	<c:forEach var="list" items="${medias2}"> 
-					<table class="news-one">
+					<table style="margin-right:25px;"class="news-one">
 				        		<tr>
 				        			<td rowspan="3">
 				        				<a href="${list.url}">
