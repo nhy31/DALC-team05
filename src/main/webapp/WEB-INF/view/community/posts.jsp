@@ -129,6 +129,9 @@ ${c.sick_name}<br>
 <button type="button" onclick="location.href='<c:url value='/community/join'>
 <c:param name="commu_code" value="${c.commu_code}"></c:param> </c:url>'">커뮤가입</button>
 
+<button type="button" onclick="location.href='<c:url value='/community/join/cancel'>
+<c:param name="commu_code" value="${c.commu_code}"></c:param> </c:url>'">커뮤가입해지</button>
+
    	<table>
    		<c:forEach var="posts" items="${posts}">
 			<tr>

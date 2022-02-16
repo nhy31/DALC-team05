@@ -3,10 +3,13 @@
 
 <mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.CommunityMapper">
 	
-	<!-- 전체 커뮤니티 리스트  -->
+	<!-- 나의 커뮤가 아닌 전체 커뮤니티 리스트  -->
 	<select id="getCommuList" resultType="dongduk.dalc05.aah.domain.Community">
-		Select *
-		FROM Community
+	  Select *
+      FROM community
+      WHERE commu_code not in  ( Select commu_code
+                       	   FROM cmember
+                           WHERE member_code = #{member_code} ) 
 	</select>
 	
 	<!-- 나의 커뮤니티들 -->
@@ -46,6 +49,12 @@
         (#{commu_code}, #{member_code}); 
     </insert>
     
+    <!-- 커뮤가입 해지 -->
+    <delete id="cancelCmember" parameterType="dongduk.dalc05.aah.domain.cMember">
+		delete from cmember
+		WHERE MEMBER_code = #{member_code} and commu_code= #{commu_code}
+	</delete>
+	
     <!-- 커뮤정보 가져오기 -->
     <select id="getCommuInfo" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Community">
     	select * from community
@@ -87,5 +96,11 @@
       FROM POST
       WHERE post_code = #{post_code}
     </select>
-
+    
+   <!-- 게시글 조회 (조회수증가)  -->
+   <update id="hitsCount" parameterType="Integer">
+		UPDATE Post
+		SET POST_HITS = POST_HITS + 1
+		WHERE post_code = #{post_code}
+   </update>
 </mapper>

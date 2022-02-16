@@ -62,10 +62,7 @@ public class CommunityController {
       bests = commuService.getBestPosts(); // sql 쿼리로 조회순 나열해서 10개 뽑아서 정렬
       mav.addObject("BestPosts", bests);
       
-	  int member_code = m.getMember_code();
-      List<Community> cList = new ArrayList<>();
-      cList = commuService.getMyCommuList(member_code);
-      mav.addObject("MyCommuList", cList);
+	
       
       List<Post> posts = new ArrayList<>(); 
       posts = commuService.getAllPosts(); // 전체 게시글 
@@ -75,17 +72,31 @@ public class CommunityController {
    
    // 전체 커뮤니티 리스트보기
    @RequestMapping(value = "/community/list")
-   public ModelAndView commuList() {
+   public ModelAndView commuList(  HttpServletRequest request) {
 	   
+	  HttpSession session = request.getSession();
+	  Member m = (Member) session.getAttribute("loginMember");
+		  
 	  ModelAndView mav = new ModelAndView();
 	  mav.setViewName("community/list");
+
+      int member_code = m.getMember_code();
+      List<Community> cList = new ArrayList<>();
+      cList = commuService.getMyCommuList(member_code);
+      for(int i=0; i<cList.size(); i++) {
+    	  cList.get(i).setSick_name(sickService.getSickName(cList.get(i).getSick_code()));
+    	  cList.get(i).setMy(1);
+      }
+      mav.addObject("MyCommuList", cList);
+
       List<Community> list = new ArrayList<>();
-      list = commuService.getCommuList(); // 전체 불러오기
+      list = commuService.getCommuList(member_code); // 전체 불러오기
       
       for(int i=0; i<list.size(); i++) {
     	  list.get(i).setSick_name(sickService.getSickName(list.get(i).getSick_code()));
       }
       mav.addObject("CommuList", list);
+      
       return mav;
    }
    
@@ -201,10 +212,12 @@ public class CommunityController {
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
 		
-		
 		System.out.println("게시글상세보기 test");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/community/post/detail");
+		
+		commuService.hitsCount(post_code);
+		
 		Post p = commuService.postDetail(post_code);
 		String postWriter = memberService.getMemberInfo(p.getMember_code()).getMember_nickName();
 		
@@ -270,12 +283,35 @@ public class CommunityController {
 		commuService.insertCmember(cm);
 		
 		ModelAndView mav = new ModelAndView();
-		redirect.addAttribute("commu_code", commu_code); 
-		//mav.setViewName("redirect:/community/posts");
+		//redirect.addAttribute("commu_code", commu_code); 
+	
+		mav.setViewName("redirect:/community/list");
+
+
+        return mav;
+
+	}
+	
+	// 커뮤니티 가입해제
+	@RequestMapping(value = "/community/join/cancel")
+	public ModelAndView cancelJoinCommu (
+			HttpServletRequest request,
+			RedirectAttributes redirect,
+			@RequestParam int commu_code,
+			Model model) {
 		
-		mav.setViewName("alert/success");
-		model.addAttribute("msg", "가입성공");
-        model.addAttribute("url","/community/posts");
+		System.out.println("커뮤가입해지 test");
+		
+		HttpSession session = request.getSession();
+		Member m = (Member) session.getAttribute("loginMember");
+		
+		cMember cm = new cMember(m.getMember_code(), commu_code);
+		
+		commuService.cancelCmember(cm);
+
+		ModelAndView mav = new ModelAndView();
+		
+        mav.setViewName("redirect:/community/list");
 
         return mav;
 

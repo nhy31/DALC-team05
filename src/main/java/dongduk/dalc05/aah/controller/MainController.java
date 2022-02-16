@@ -12,6 +12,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import dongduk.dalc05.aah.domain.Media;
@@ -109,22 +110,15 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/main/search")
-	public ModelAndView searchKeyword(HttpServletRequest request) {
+	public ModelAndView searchKeyword(HttpServletRequest request,
+			@RequestParam ("searchWord") String searchWord) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main/search");
 		
-		HttpSession session = request.getSession();
-		Member m = (Member) session.getAttribute("loginMember");
-		if (m == null) {
-			mav.addObject("ses", 0);
-		} 
-		else {
-			mav.addObject("ses", 1);
-			System.out.println("MainController - 로그인성공");
+	
+		
+		
 
-			mav.addObject("member_id", m.getMember_id());
-			mav.addObject("member_nickName", m.getMember_nickName());
-		}
 		return mav;
 	}
 }

@@ -144,19 +144,19 @@ border-radius: 6px;}
 		
 	</div>
 	
-	<div align="right">
-	나의 커뮤니티 
-	<form action="<c:url value='/community/posts' />">
-		<select name="commu_code">
-			<option value="0" selected>전체</option>
-				<c:forEach var="c" items="${MyCommuList}">
-					<option value="${c.commu_code}">${c.commu_name}</option>
-				</c:forEach>
-		</select>
-		<input type="submit" value="go">
-	</form>	
-   		<input type ="button" value="글쓰기" onclick="location.href='<c:url value='/community/post/upload' />'"></input> 
-	</div>
+<!-- 	<div align="right"> --> <!-- 필요없음 -->
+<!-- 	나의 커뮤니티  -->
+<%-- 	<form action="<c:url value='/community/posts' />"> --%>
+<!-- 		<select name="commu_code"> -->
+<!-- 			<option value="0" selected>전체</option> -->
+<%-- 				<c:forEach var="c" items="${MyCommuList}"> --%>
+<%-- 					<option value="${c.commu_code}">${c.commu_name}</option> --%>
+<%-- 				</c:forEach> --%>
+<!-- 		</select> -->
+<!-- 		<input type="submit" value="go"> -->
+<%-- 	</form>	 --%>
+<%--    		<input type ="button" value="글쓰기" onclick="location.href='<c:url value='/community/post/upload' />'"></input>  --%>
+<!-- 	</div> -->
 	  
    	<table>
    		<c:forEach var="posts" items="${posts}">
