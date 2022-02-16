@@ -59,7 +59,6 @@ public class Community {
 	public void setSick_code(int sick_code) {
 		this.sick_code = sick_code;
 	}
-
 	public String getSick_name() {
 		return sick_name;
 	}

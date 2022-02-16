@@ -13,11 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Post;
 import dongduk.dalc05.aah.domain.Sick;
+import dongduk.dalc05.aah.domain.cMember;
 import dongduk.dalc05.aah.service.CommunityService;
 import dongduk.dalc05.aah.service.MemberService;
 import dongduk.dalc05.aah.service.SickService;
@@ -60,10 +62,7 @@ public class CommunityController {
       bests = commuService.getBestPosts(); // sql 쿼리로 조회순 나열해서 10개 뽑아서 정렬
       mav.addObject("BestPosts", bests);
       
-	  int member_code = m.getMember_code();
-      List<Community> cList = new ArrayList<>();
-      cList = commuService.getMyCommuList(member_code);
-      mav.addObject("MyCommuList", cList);
+	
       
       List<Post> posts = new ArrayList<>(); 
       posts = commuService.getAllPosts(); // 전체 게시글 
@@ -73,13 +72,31 @@ public class CommunityController {
    
    // 전체 커뮤니티 리스트보기
    @RequestMapping(value = "/community/list")
-   public ModelAndView commuList() {
+   public ModelAndView commuList(  HttpServletRequest request) {
 	   
+	  HttpSession session = request.getSession();
+	  Member m = (Member) session.getAttribute("loginMember");
+		  
 	  ModelAndView mav = new ModelAndView();
 	  mav.setViewName("community/list");
+
+      int member_code = m.getMember_code();
+      List<Community> cList = new ArrayList<>();
+      cList = commuService.getMyCommuList(member_code);
+      for(int i=0; i<cList.size(); i++) {
+    	  cList.get(i).setSick_name(sickService.getSickName(cList.get(i).getSick_code()));
+      }
+      
+      mav.addObject("MyCommuList", cList);
+
       List<Community> list = new ArrayList<>();
-      list = commuService.getCommuList(); // 전체 불러오기
+      list = commuService.getCommuList(member_code); // 전체 불러오기
+      
+      for(int i=0; i<list.size(); i++) {
+    	  list.get(i).setSick_name(sickService.getSickName(list.get(i).getSick_code()));
+      }
       mav.addObject("CommuList", list);
+      
       return mav;
    }
    
@@ -103,8 +120,11 @@ public class CommunityController {
 	   }
 	  mav.addObject("posts", list);
 	  
-	 
-
+	  Community c = commuService.getCommuInfo(commu_code);
+	  c.setSick_name(sickService.getSickName(c.getSick_code()));
+	  
+	  mav.addObject("c", c);
+	  
       return mav;
    }
    
@@ -191,11 +211,13 @@ public class CommunityController {
 		
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
-		String nick = m.getMember_nickName();
 		
 		System.out.println("게시글상세보기 test");
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/community/post/detail");
+		
+		commuService.hitsCount(post_code);
+		
 		Post p = commuService.postDetail(post_code);
 		String postWriter = memberService.getMemberInfo(p.getMember_code()).getMember_nickName();
 		
@@ -203,7 +225,7 @@ public class CommunityController {
 		p.setMember_nickName(postWriter);
 		
 		mav.addObject("post", p);
-		mav.addObject("myNick", m.getMember_nickName());
+		mav.addObject("me", m);
 		mav.setViewName("community/postDetail");
 		return mav;
 		
@@ -214,10 +236,11 @@ public class CommunityController {
 	@RequestMapping(value = "/community/post/upload.do")
 	public ModelAndView postUploadDo(
 			HttpServletRequest request,
-			Model model,
+			RedirectAttributes redirect,
 			@RequestParam int commu_code,
 			@RequestParam String post_title,
-			@RequestParam String post_content) {
+			@RequestParam String post_content
+			) {
 		
 		System.out.println("게시글업로드 test");
 		
@@ -234,16 +257,64 @@ public class CommunityController {
 		System.out.println("게시글업로드 SUECESS");
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/community/post/detail");
+		
+		redirect.addAttribute("commu_code", commu_code); 
+		mav.setViewName("redirect:/community/posts");
 		
 		return mav;
 		
 	}
 	
 	// 커뮤니티 가입
+	@RequestMapping(value = "/community/join")
+	public ModelAndView joinCommu (
+			HttpServletRequest request,
+			RedirectAttributes redirect,
+			@RequestParam int commu_code,
+			Model model) {
+		
+		System.out.println("커뮤가입 test");
+		
+		HttpSession session = request.getSession();
+		Member m = (Member) session.getAttribute("loginMember");
+		
+		cMember cm = new cMember(m.getMember_code(), commu_code);
+		
+		commuService.insertCmember(cm);
+		
+		ModelAndView mav = new ModelAndView();
+		//redirect.addAttribute("commu_code", commu_code); 
 	
+		mav.setViewName("redirect:/community/list");
 
-   
-   
-   
+
+        return mav;
+
+	}
+	
+	// 커뮤니티 가입해제
+	@RequestMapping(value = "/community/join/cancel")
+	public ModelAndView cancelJoinCommu (
+			HttpServletRequest request,
+			RedirectAttributes redirect,
+			@RequestParam int commu_code,
+			Model model) {
+		
+		System.out.println("커뮤가입해지 test");
+		
+		HttpSession session = request.getSession();
+		Member m = (Member) session.getAttribute("loginMember");
+		
+		cMember cm = new cMember(m.getMember_code(), commu_code);
+		
+		commuService.cancelCmember(cm);
+
+		ModelAndView mav = new ModelAndView();
+		
+        mav.setViewName("redirect:/community/list");
+
+        return mav;
+
+	}
+
 }

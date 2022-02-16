@@ -6,16 +6,20 @@ import org.apache.ibatis.annotations.Mapper;
 
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
+import dongduk.dalc05.aah.domain.cMember;
 
 @Mapper
 public interface CommunityMapper {
 	
 	/* commu 관련*/
-	List<Community> getCommuList(); // 전체 커뮤니티 리스트
+	List<Community> getCommuList(int member_code); // 나의 커뮤가 아닌 전체 커뮤니티 리스트
 	List<Community> getMyCommuList(int member_code); // 나의 커뮤니티들
 	String getCommuName(int commu_code); // commu_code로 name 가져오기
 	int checkName(String commu_name); // 커뮤 생성시, 이름 중복체크
 	void insertCommu(Community c); // 커뮤니티 생성
+	void insertCmember(cMember cm); // 커뮤 가입
+	void cancelCmember(cMember cm); // 커뮤가입 해지
+	Community getCommuInfo(int commu_code); // 커뮤정보 가져오기
 	
 	/* 게시글 post 관련*/
 	List<Post> getAllPosts(); // 전체 게시글 
@@ -23,4 +27,5 @@ public interface CommunityMapper {
 	List<Post> getCommuPosts(int commu_code); // 해당 커뮤의 게시글들
 	void insertPost(Post p); // 게시글 업로드
 	Post postDetail(int post_code); // 게시글 자세히 보기
+	void hitsCount(int post_code); // 게시글 조회 (조회수증가)
 }

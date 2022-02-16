@@ -32,7 +32,7 @@ public class MediaController {
 	private SickService sickService;
 	
  
-    @RequestMapping(value="/media/")
+    @RequestMapping(value="/media")
     public ModelAndView startCrawl(
     		HttpServletRequest request) throws IOException {
 
@@ -66,6 +66,10 @@ public class MediaController {
             	realIMAGE = option.select("a[class=\"dsc_thumb\"]").select("img[class=\"thumb api_get\"]").attr("src");
             	System.out.println("image " + realIMAGE);
 
+            	if(realIMAGE.equals("")) {
+            		realIMAGE = option.select("a[class=\"dsc_thumb type_video\"]").select("img[class=\"thumb api_get\"]").attr("src");
+            	}
+            	
             	realSOURCE = option.select("a[class=\"info press\"]").toString();
             	realSOURCE = realSOURCE.substring(realSOURCE.indexOf("</span>")+7);
             	realSOURCE = realSOURCE.substring(0, realSOURCE.indexOf("<"));
@@ -82,12 +86,13 @@ public class MediaController {
             	m.setSource(realSOURCE);
             	m.setTime(realTIME);
             	
-             	if(realIMAGE.equals("")) {
+            	if(realIMAGE.equals("")) {
             		m.setImage("/images/noimg.jpg");
             	}
             	else {
             		m.setImage(realIMAGE);
             	}
+
             	medias.add(m);
             	
             	cnt++;
@@ -142,6 +147,10 @@ public class MediaController {
             	realIMAGE2 = option.select("a[class=\"dsc_thumb\"]").select("img[class=\"thumb api_get\"]").attr("src");
             	System.out.println("image2" + realIMAGE2 + "//");
             	
+            	if(realIMAGE2.equals("")) {
+            		realIMAGE2 = option.select("a[class=\"dsc_thumb type_video\"]").select("img[class=\"thumb api_get\"]").attr("src");
+            	}
+            	
             	realSOURCE2 = option.select("a[class=\"info press\"]").toString();
             	realSOURCE2 = realSOURCE2.substring(realSOURCE2.indexOf("</span>")+7);
             	realSOURCE2 = realSOURCE2.substring(0, realSOURCE2.indexOf("<"));
@@ -169,6 +178,7 @@ public class MediaController {
             	else {
             		m.setImage(realIMAGE2);
             	}
+            	
             	medias2.add(m);
             }
             page += 10;
@@ -218,6 +228,10 @@ public class MediaController {
                 
             	realIMAGE = option.select("a[class=\"dsc_thumb\"]").select("img[class=\"thumb api_get\"]").attr("src");
             	System.out.println(realIMAGE);
+
+            	if(realIMAGE.equals("")) {
+            		realIMAGE = option.select("a[class=\"dsc_thumb type_video\"]").select("img[class=\"thumb api_get\"]").attr("src");
+            	}
             	
               	realSOURCE = option.select("a[class=\"info press\"]").toString();
             	realSOURCE = realSOURCE.substring(realSOURCE.indexOf("</span>")+7);
@@ -235,12 +249,13 @@ public class MediaController {
             	m.setSource(realSOURCE);
             	m.setTime(realTIME);
             	
-               	if(realIMAGE.equals("")) {
+            	if(realIMAGE.equals("")) {
             		m.setImage("/images/noimg.jpg");
             	}
             	else {
             		m.setImage(realIMAGE);
             	}
+//         
             	medias.add(m);
             	
             	cnt++;
@@ -281,6 +296,10 @@ public class MediaController {
                 
             	realIMAGE2 = option.select("a[class=\"dsc_thumb\"]").select("img[class=\"thumb api_get\"]").attr("src");
             	System.out.println(realIMAGE2);
+
+            	if(realIMAGE2.equals("")) {
+            		realIMAGE2 = option.select("a[class=\"dsc_thumb type_video\"]").select("img[class=\"thumb api_get\"]").attr("src");
+            	}
             	
               	realSOURCE2 = option.select("a[class=\"info press\"]").toString();
             	realSOURCE2 = realSOURCE2.substring(realSOURCE2.indexOf("</span>")+7);
@@ -302,13 +321,14 @@ public class MediaController {
             	m.setSource(realSOURCE2);
             	m.setTime(realTIME2);
             	m.setContents(realCONTENTS2);
-            	
+
             	if(realIMAGE2.equals("")) {
             		m.setImage("/images/noimg.jpg");
             	}
             	else {
             		m.setImage(realIMAGE2);
             	}
+            	
             	medias2.add(m);
             }
             page += 10;

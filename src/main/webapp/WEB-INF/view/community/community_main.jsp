@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ include file="../main/top.jsp"%>
+<%@ include file="../main/top_temp.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -24,8 +24,6 @@
 <title>아아현 커뮤니티</title>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
 .main_title1 {
 font-family: 'Nanum Gothic', sans-serif;
@@ -67,7 +65,9 @@ box-sizing: border-box;
 border-radius: 6px;
 }
 
-.two-box {
+table, th, tr, td {
+table-layout: fixed;
+border: 0px solid blue;
 }
 
 ol {
@@ -142,19 +142,19 @@ border-radius: 6px;}
 		
 	</div>
 	
-	<div align="right">
-	나의 커뮤니티 
-	<form action="<c:url value='/community/posts' />">
-		<select name="commu_code">
-			<option value="0" selected>전체</option>
-				<c:forEach var="c" items="${MyCommuList}">
-					<option value="${c.commu_code}">${c.commu_name}</option>
-				</c:forEach>
-		</select>
-		<input type="submit" value="go">
-	</form>	
-   		<input type ="button" value="글쓰기" onclick="location.href='<c:url value='/community/post/upload' />'"></input> 
-	</div>
+<!-- 	<div align="right"> --> <!-- 필요없음 -->
+<!-- 	나의 커뮤니티  -->
+<%-- 	<form action="<c:url value='/community/posts' />"> --%>
+<!-- 		<select name="commu_code"> -->
+<!-- 			<option value="0" selected>전체</option> -->
+<%-- 				<c:forEach var="c" items="${MyCommuList}"> --%>
+<%-- 					<option value="${c.commu_code}">${c.commu_name}</option> --%>
+<%-- 				</c:forEach> --%>
+<!-- 		</select> -->
+<!-- 		<input type="submit" value="go"> -->
+<%-- 	</form>	 --%>
+<%--    		<input type ="button" value="글쓰기" onclick="location.href='<c:url value='/community/post/upload' />'"></input>  --%>
+<!-- 	</div> -->
 	  
    	<table>
    		<c:forEach var="posts" items="${posts}">

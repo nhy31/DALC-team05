@@ -5,7 +5,7 @@
 }
 
 .swiper-slide{
-	margin: 25px 0 0 0;  /* 0207 타이틀 밑 스와이퍼 시작하기까지 여백필요 (타이틀 예) 오늘의인기레시피, 오늘의건강이슈*/
+	margin: 23px 0 0 0;  /* 0207 타이틀 밑 스와이퍼 시작하기까지 여백필요 (타이틀 예) 오늘의인기레시피, 오늘의건강이슈*/
 	text-align: center;
 	display: flex;				/* 내용 중앙정렬 */
 	align-items: center;		/* 위아래 기준 중앙정렬 */
@@ -15,7 +15,5 @@
 .swiper-slide img{
 	max-width: 100%;	/* 이미지 최대너비 제한, 슬라이드에 이미지가 여러 개 보여질 때 필요 */
 	max-height: 99%;
-	width: 223px; /* 0207 하윤크기수정 */
-	height: 152px; /* 0207 하윤크기수정 */
-	border-radius: 6px; /* 0207 하윤추가 */
+
 }

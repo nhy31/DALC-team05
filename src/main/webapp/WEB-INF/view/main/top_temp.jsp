@@ -10,6 +10,8 @@
 
 <!-- top CSS -->
 <link rel=stylesheet href="<c:url value='/css/top.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
 
 </head>
 
@@ -75,7 +77,7 @@
 					<a class="nav-link active" aria-current="page" href="<c:url value='/exercise/sick.do'/>">홈트레이닝 추천</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="<c:url value='/media/crawling'/>">건강 미디어</a>
+					<a class="nav-link active" aria-current="page" href="<c:url value='/media'/>">건강 미디어</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" href="<c:url value='/community'/>">현대사회 커뮤니티</a>

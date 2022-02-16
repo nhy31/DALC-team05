@@ -1,0 +1,35 @@
+
+.single_btn{
+background-color: #851BD8;
+border: none;
+color: #ffffff;
+font-size: 17px;
+font-weight: bold;
+text-align: center;
+padding: 10px 23px;
+border-radius: 79px;
+}
+
+.box-radio-input input[type="button"]{
+display: none;
+}
+
+.box-radio-input input[type="radio"] + span{
+display: inline-block;
+background: none;
+border: 1.5px solid #DDDDDD;
+color: #4E4E4E;
+padding: 10px 23px;
+font-family: -apple-system;
+font-size: 17px;
+text-align: center;
+border-radius: 79px;
+cursor: pointer;
+}
+
+.box-radio-input input[type="radio"]:checked + span{
+border:1px solid #851BD8;
+background:#851BD8;
+color:#fff;
+font-weight: bold;
+}

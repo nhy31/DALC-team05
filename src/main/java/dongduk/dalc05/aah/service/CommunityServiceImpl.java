@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import dongduk.dalc05.aah.dao.CommunityDao;
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
+import dongduk.dalc05.aah.domain.cMember;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {
@@ -16,9 +17,9 @@ public class CommunityServiceImpl implements CommunityService {
 	private CommunityDao commuDao; 
 	
 	/* commu 관련*/
-	// 전체 커뮤니티 리스트 
+	// 나의 커뮤가 아닌 전체 커뮤니티 리스트 
 	@Override
-	public List<Community> getCommuList() { return commuDao.getCommuList(); }
+	public List<Community> getCommuList(int member_code) { return commuDao.getCommuList(member_code); }
 	
 	// 나의 커뮤니티들
 	@Override
@@ -36,6 +37,17 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public void insertCommu(Community c) { commuDao.insertCommu(c); }
 	
+	// 커뮤 가입
+	@Override
+	public void insertCmember(cMember cm) { commuDao.insertCmember(cm); }
+	
+	// 커뮤가입 해지
+	@Override
+	public void cancelCmember(cMember cm) { commuDao.cancelCmember(cm); }
+	
+	// 커뮤정보 가져오기
+	@Override
+	public Community getCommuInfo(int commu_code) { return commuDao.getCommuInfo(commu_code); }
 	
 	/* 게시글 post 관련*/
 	// 전체 게시글 
@@ -57,4 +69,9 @@ public class CommunityServiceImpl implements CommunityService {
 	// 게시글 자세히 보기
 	@Override
 	public Post postDetail(int post_code) { return commuDao.postDetail(post_code); }
+
+	// 게시글 조회 (조회수증가)
+	@Override
+	public void hitsCount(int post_code) { commuDao.hitsCount(post_code); }
+
 }
