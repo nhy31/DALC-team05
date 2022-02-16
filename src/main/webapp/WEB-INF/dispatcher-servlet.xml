@@ -8,7 +8,8 @@
        	http://www.springframework.org/schema/context
        	http://www.springframework.org/schema/context/spring-context.xsd
        	http://www.springframework.org/schema/mvc 				
-		http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+	xmlns:beans="http://www.springframework.org/schema/beans">
 
     <context:component-scan base-package="dongduk.dalc05.aah.*" />
 
@@ -38,5 +39,8 @@
 		<constructor-arg value="/view/images" />
 	</bean>
 
-
+	<!-- 네이버 로그인 클래스에 대한 Bean설정 -->
+	<beans:bean id="naverLoginBO" class="dongduk.dalc05.aah.controller.NaverLoginBO" />
+	
 </beans>
+

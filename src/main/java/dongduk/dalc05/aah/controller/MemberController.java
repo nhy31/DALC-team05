@@ -5,6 +5,9 @@ import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.MemberService;
 import dongduk.dalc05.aah.service.SickService;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -12,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.github.scribejava.core.model.OAuth2AccessToken;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +29,10 @@ import java.util.List;
 
 @Controller
 public class MemberController {
+	
+	/* NaverLoginBO*/
+	private NaverLoginBO naverLoginBO;
+	private String apiResult = null;
 	
 	@Autowired
 	private MemberService memberService;
@@ -76,8 +85,35 @@ public class MemberController {
 	
 	// 메인페이지 -> 로그인페이지 이동
     @RequestMapping(value = "/member/login")
-    public String login() {
+    public String login(Model model, HttpSession session) {
+    	//String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+    	//model.addAttribute("NaverUrl", naverAuthUrl);
+    	//System.out.println("네이버인증: " + naverAuthUrl);
 		return "member/login";
+    }
+    
+    
+    // 네이버 로그인 성공 시 콜백메소드
+    @RequestMapping(value="/main/callback")
+    public String callback(Model model, @RequestParam String code, 
+    		@RequestParam String state, HttpSession session) throws IOException, ParseException{
+    	System.out.println("네이버로 로그인 성공했을 시 콜백 메소드");
+    	OAuth2AccessToken oauthToken;
+    	oauthToken = naverLoginBO.getAccessToken(session, code, state);
+    	
+    	//로그인 사용자 정보 읽어오기
+    	apiResult = naverLoginBO.getUserProfile(oauthToken);
+    	JSONParser parser = new JSONParser();
+    	Object obj = parser.parse(apiResult);
+    	JSONObject jsonObj = (JSONObject) obj;
+    	JSONObject response_obj = (JSONObject) jsonObj.get("response");
+    	
+    	String nickName = (String)response_obj.get("nickname");
+    	session.setAttribute("member_nickName", nickName);
+    	System.out.println("네이버 닉네임: " + nickName);
+    	//model.addAttribute("apiResult", apiResult);
+    	
+    	return "main";
     }
     
 	// 로그인 시도
@@ -129,6 +165,10 @@ public class MemberController {
 	public String logoutDo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.removeAttribute("loginMember");
+		
+		//네이버 소셜로그인으로 로그인했을 경우의 로그아웃
+		//session.invalidate();
+		
 		return "redirect:/main";
 	}
 	

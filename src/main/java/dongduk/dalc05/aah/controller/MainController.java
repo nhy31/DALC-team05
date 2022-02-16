@@ -31,7 +31,7 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main/main");
 		
-		HttpSession session = request.getSession();
+		/*HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
 		if (m == null) {
 			mav.addObject("ses", 0);
@@ -42,7 +42,7 @@ public class MainController {
 
 			mav.addObject("member_id", m.getMember_id());
 			mav.addObject("member_nickName", m.getMember_nickName());
-		}
+		}*/
 		
 		int i = 1;
     	ArrayList<Media> medias = new ArrayList<>();

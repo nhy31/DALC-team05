@@ -52,7 +52,11 @@
 				</form>
 			</section>
 			<section class="Easy-sgin-in-wrap">
-				<h2>추후 소셜로그인 자리</h2>
+				<div id="naver_id_login" class="login-button-wrap">
+					<a href="${NaverUrl}">
+					<img width="230"src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/>
+					</a>
+				</div>
 				<p class="forget-msg">
 					회원이 아니신가요?   <a href="<c:url value='/main/join'/>"> 회원가입 </a>
 				</p>
