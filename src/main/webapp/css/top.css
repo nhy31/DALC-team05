@@ -5,15 +5,15 @@ body{
 	padding-right: 30px;
 }
 
-/*로고 이미지 */
-/*패딩- 안쪽 여백, 마진- 바깥여백 설정 (위오아왼)*/
+/*濡쒓퀬 �씠誘몄� */
+/*�뙣�뵫- �븞履� �뿬諛�, 留덉쭊- 諛붽묑�뿬諛� �꽕�젙 (�쐞�삤�븘�쇊)*/
 .navbar-brand{
 	padding-left: 30px;
 }
 
-/*검색어를 입력하세요.*/
+/*寃��깋�뼱瑜� �엯�젰�븯�꽭�슂.*/
 
-/* 로그인 */
+/* 濡쒓렇�씤 */
 .collapse navbar-collapse{
 	position: absolute;
 	left: 20px;

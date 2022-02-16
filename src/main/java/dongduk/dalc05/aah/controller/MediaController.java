@@ -85,12 +85,18 @@ public class MediaController {
             	m.setTitle(realTITLE);
             	m.setSource(realSOURCE);
             	m.setTime(realTIME);
-            	m.setImage(realIMAGE);
-             
+            	
+            	if(realIMAGE.equals("")) {
+            		m.setImage("/images/noimg.jpg");
+            	}
+            	else {
+            		m.setImage(realIMAGE);
+            	}
+
             	medias.add(m);
             	
             	cnt++;
-            	if (cnt == 9)
+            	if (cnt == 8)
             		break;
             }
             i += 10;
@@ -165,7 +171,13 @@ public class MediaController {
             	m.setUrl(realURL2);
             	m.setTitle(realTITLE2);
             	m.setContents(realCONTENTS2);
-            	m.setImage(realIMAGE2);
+            	
+            	if(realIMAGE2.equals("")) {
+            		m.setImage("/images/noimg.jpg");
+            	}
+            	else {
+            		m.setImage(realIMAGE2);
+            	}
             	
             	medias2.add(m);
             }
@@ -236,12 +248,18 @@ public class MediaController {
             	m.setTitle(realTITLE);
             	m.setSource(realSOURCE);
             	m.setTime(realTIME);
-            	m.setImage(realIMAGE);
             	
+            	if(realIMAGE.equals("")) {
+            		m.setImage("/images/noimg.jpg");
+            	}
+            	else {
+            		m.setImage(realIMAGE);
+            	}
+//         
             	medias.add(m);
             	
             	cnt++;
-            	if (cnt == 9)
+            	if (cnt == 8)
             		break;
             } 
             i += 10;
@@ -303,7 +321,13 @@ public class MediaController {
             	m.setSource(realSOURCE2);
             	m.setTime(realTIME2);
             	m.setContents(realCONTENTS2);
-            	m.setImage(realIMAGE2);
+
+            	if(realIMAGE2.equals("")) {
+            		m.setImage("/images/noimg.jpg");
+            	}
+            	else {
+            		m.setImage(realIMAGE2);
+            	}
             	
             	medias2.add(m);
             }

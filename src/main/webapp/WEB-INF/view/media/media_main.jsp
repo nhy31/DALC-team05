@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ include file="../main/top.jsp"%>
+<%@ include file="../main/top_temp.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -29,15 +29,8 @@
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-
-* {
-font-family: 'Nanum Gothic', sans-serif;
-
-}
-
 .content_start {
-padding: 5px 10px 5px 10px;
+padding: 10px 10px 5px 10px;
 }
 
 #main_title {
@@ -46,51 +39,48 @@ font-weight: bold;
 color: #000000;
 }
 
-table, th, tr, td {
-table-layout: fixed;
-border: 0px solid blue;
-}
-
-.news-div {
-margin: 30px 0px 0px 5px;
-}
-
-.news {
-margin: 0px 0px 20px 0px;
-}
-
 .img {
-height: 50%;
+height: 152px;
+width:225px;
 border-radius: 6px;
 }
 
+.news-div {
+margin: 25px 10px 0px 10px;
+}
+
+.news-one {
+margin: 0px 0px 20px 0px;
+}
+
 .news-title {
-padding: 0px 0px 0px 27px;
+padding: 0px 25px 0px 25px;
+
 font-style: normal;
 font-weight: bold;
-font-size: 19px;
+font-size: 18px;
 line-height: 22px;
 color: #4E4E4E;
 }
 
 .news-contents {
-padding: 0px 27px 0px 27px;
+padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: normal;
 font-size: 14px;
 line-height: 16px;
 color: #4E4E4E;
 background: #E1E1E1;
+color: #4E4E4E;
 }
 
 .news-info {
-padding: 0px 0px 0px 27px;
+padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: normal;
 font-size: 14px;
 line-height: 16px;
 color: #4E4E4E;
-background: #E1E1E1;
 }
 
 
@@ -119,7 +109,7 @@ background: #E1E1E1;
 		      	</c:forEach> </div>
 	   
 	   			<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
-	   			<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 --> <br><br>
+	   			<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 --> <br>
 	   			<div align="center" class="swiper-pagination"></div>	<!-- 페이징 -->
  			</div>
  		</div>
@@ -130,49 +120,65 @@ background: #E1E1E1;
 		<div class="col-md-1"></div>
  		<div align="left" class="col-md-10 col-12">
     		<div class="fs-4" id="main_title">질병별 건강뉴스
-    			<div class="btn-group" style="margin-left:15px">
-  					<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> 질병선택 </button>
-  					<ul class="dropdown-menu"></ul>
+    			
+	    				<div class="btn-group" style="margin-left:15px">
+	  					<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> 질병선택 </button>
+	  					<ul class="dropdown-menu"></ul>
+						</div>
+
+			 	<div>     
+					<table> 
+						<tr>
+							<c:forEach var="illness" items="${sicks}">
+							 	<th>
+							 		<input checked class="btn btn-primary" type="button" value="${illness.sick_name}" 
+							 		onclick="location.href='<c:url value='/media/crawling'>
+							 				<c:param name="sick_code" value="${illness.sick_code}"></c:param> 
+							 			</c:url>'" />
+								</th>
+							</c:forEach>
+						</tr>		
+					</table>
 				</div>
+			
+		    <div class="news-div"> 
+		    	<c:forEach var="list" items="${medias2}"> 
+					<table class="news-one">
+				        		<tr>
+				        			<td rowspan="3">
+				        				<a href="${list.url}">
+				        				<img class="img" src="<c:url value='${list.image}'/>" ></a>
+				        			</td>
+				            		<td class="news-title">
+				            			${list.title}
+				            		</td>
+				            	<tr>
+				            		<td class="news-contents">
+				            			${list.contents}
+				            		</td>
+				            	</tr>
+				            	<tr>
+				            		<td align="right" class="news-info" >
+				            			${list.source} 	${list.time}
+				            		</td>     
+				            	</tr>
+				      </table>
+				</c:forEach>
 			</div>
-			<div style="margin-top:30px;"> 
-     			<c:forEach var="list" items="${medias2}">
-      				
-      				<div class="row">
-    
-      					<div class="col-sm-4"><a href="${list.url}"><img src="<c:url value='${list.image}'/>" ></a></div>
-      
-      					<div class="col-sm-8" style="background-color:red;"> </div>
-      				</div>
-      				<table> 
-       					<tr>
-        					<td  rowspan="3"><a href="${list.url}"><img class="img" src="<c:url value='${list.image}'/>" ></a></td>
-       						<td  style="font-size:1vw" class="news-title">${list.title}</td>
-      					</tr>
-      					<tr>
-       						<td  style="font-size:1vw" class="news-contents">${list.contents}</td>
-      					</tr>
-      					<tr>
-       						<td  style="font-size:1vw" class="news-info" >${list.source}    ${list.time}</td>     
-      					</tr>
-     				</table> <br><br>
-     			</c:forEach>   
-     		</div>
-  		</div>
+		</div>
   		<div class="col-md-1"></div>
-  	</div></div>
+	</div>
 
-
-        
+</div>
 
 
 
    <script>
    
    new Swiper('.swiper-container', {
-      slidesPerView : 3, // 동시에 보여줄 슬라이드 rotn
+      slidesPerView : 4, // 동시에 보여줄 슬라이드 rotn
       spaceBetween : 10, // 슬라이드 간 간격
-      slidesPerGroup : 3, // 그룹으로 묶는 개수
+      slidesPerGroup : 4, // 그룹으로 묶는 개수
       
  
       // 그룹수가 맞지 않을 경우 빈칸으로 메우기

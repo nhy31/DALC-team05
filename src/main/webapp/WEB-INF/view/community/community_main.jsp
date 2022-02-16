@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ include file="../main/top.jsp"%>
+<%@ include file="../main/top_temp.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -67,7 +67,9 @@ box-sizing: border-box;
 border-radius: 6px;
 }
 
-.two-box {
+table, th, tr, td {
+table-layout: fixed;
+border: 0px solid blue;
 }
 
 ol {
