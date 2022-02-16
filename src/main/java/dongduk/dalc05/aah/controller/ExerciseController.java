@@ -34,18 +34,6 @@ public class ExerciseController {
         	ModelAndView mav = new ModelAndView();
         	mav.setViewName("exercise/exercise_main");
         	
-        	//로그인 세션
-    		HttpSession session = request.getSession();
-    		Member m = (Member) session.getAttribute("loginMember");
-    		if (m == null) {
-    			mav.addObject("ses", 0);
-    		} 
-    		else {
-    			mav.addObject("ses", 1);
-    			mav.addObject("member_id", m.getMember_id());
-    			mav.addObject("member_nickName", m.getMember_nickName());
-    		}
-        	
     		//조회수 기준 내림차순으로 값 배치
         	List<Exercise> list = new ArrayList<>();
         	list = (List<Exercise>) exerciseService.getExerciseByViews();

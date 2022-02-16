@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" 
+	pageEncoding="UTF-8" session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="dongduk.dalc05.aah.domain.Member" %>
 
 <!DOCTYPE html>
 <html>
@@ -29,6 +31,18 @@
 			<input class="form-control" type="text" placeholder="검색어를 입력하세요" aria-label="Search"/>
 		</form>
 	</div>
+	
+	<% 
+		HttpSession ss = request.getSession();
+		Member m = (Member) session.getAttribute("loginMember");
+		if(m == null)
+			ss.setAttribute("ses", 0);
+		else{
+			ss.setAttribute("ses", 1);
+			ss.setAttribute("member_id", m.getMember_id());
+			ss.setAttribute("member_nickName", m.getMember_nickName());
+		}
+	%>
 	
 	<!-- 비로그인 경우 -->
 	<c:if test="${ses == 0}">
