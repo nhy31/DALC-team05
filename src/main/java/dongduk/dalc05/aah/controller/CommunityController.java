@@ -85,8 +85,8 @@ public class CommunityController {
       cList = commuService.getMyCommuList(member_code);
       for(int i=0; i<cList.size(); i++) {
     	  cList.get(i).setSick_name(sickService.getSickName(cList.get(i).getSick_code()));
-    	  cList.get(i).setMy(1);
       }
+      
       mav.addObject("MyCommuList", cList);
 
       List<Community> list = new ArrayList<>();

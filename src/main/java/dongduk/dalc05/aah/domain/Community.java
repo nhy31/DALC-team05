@@ -10,7 +10,6 @@ public class Community {
 	
 	// only domain
 	private String sick_name;
-	private int my;
 	
 	public Community() {}
 	
@@ -66,12 +65,5 @@ public class Community {
 
 	public void setSick_name(String sick_name) {
 		this.sick_name = sick_name;
-	}
-	public int getMy() {
-		return my;
-	}
-
-	public void setMy(int my) {
-		this.my = my;
 	}
 }
