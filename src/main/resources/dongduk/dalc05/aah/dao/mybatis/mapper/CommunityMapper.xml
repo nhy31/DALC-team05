@@ -39,6 +39,19 @@
         (#{sick_code}, #{commu_name}, #{commu_introduce}); 
     </insert>
     
+    <!-- 커뮤 가입 -->
+    <insert id="insertCmember" parameterType="dongduk.dalc05.aah.domain.cMember">
+        insert into cMember(commu_code, member_code) 
+        values 
+        (#{commu_code}, #{member_code}); 
+    </insert>
+    
+    <!-- 커뮤정보 가져오기 -->
+    <select id="getCommuInfo" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Community">
+    	select * from community
+    	where commu_code = #{commu_code}
+    </select>
+    
     <!-- 전체 게시글  -->
 	<select id="getAllPosts" resultType="dongduk.dalc05.aah.domain.Post">
 		Select *

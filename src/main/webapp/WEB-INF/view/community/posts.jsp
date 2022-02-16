@@ -117,7 +117,18 @@ border-radius: 6px;}
 
 <div class="content-start">
 
-community 가입<input type="button" >
+<div>커뮤 정보<br>
+
+${c.commu_name}<br>
+${c.commu_introduce}<br>
+${c.sick_code}<br>
+${c.sick_name}<br>
+</div>
+
+					
+<button type="button" onclick="location.href='<c:url value='/community/join'>
+<c:param name="commu_code" value="${c.commu_code}"></c:param> </c:url>'">커뮤가입</button>
+
    	<table>
    		<c:forEach var="posts" items="${posts}">
 			<tr>

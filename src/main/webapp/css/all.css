@@ -1,7 +1,0 @@
-@charset "UTF-8";
-
-/* 상단메뉴바 밑에 컨텐스 시작하는 부분 : 모든걸 담고있는 div의 class */
-.content-start {
- margin: 44px 245px 280px 245px;
-}
-

@@ -9,6 +9,7 @@ import dongduk.dalc05.aah.dao.CommunityDao;
 import dongduk.dalc05.aah.dao.mybatis.mapper.CommunityMapper;
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
+import dongduk.dalc05.aah.domain.cMember;
 
 @Repository
 public class CommunityDaoImpl implements CommunityDao {
@@ -36,6 +37,14 @@ public class CommunityDaoImpl implements CommunityDao {
 	@Override
 	public void insertCommu(Community c) { communityMapper.insertCommu(c); }
 	
+	// 커뮤 가입
+	@Override
+	public void insertCmember(cMember cm) { communityMapper.insertCmember(cm); }
+	
+	// 커뮤정보 가져오기
+	@Override
+	public Community getCommuInfo(int commu_code) { return communityMapper.getCommuInfo(commu_code); }
+	
 	// 전체 게시글 
 	@Override
 	public List<Post> getAllPosts() { return communityMapper.getAllPosts(); }
@@ -55,4 +64,7 @@ public class CommunityDaoImpl implements CommunityDao {
 	// 게시글 자세히 보기
 	@Override
 	public Post postDetail(int post_code) { return communityMapper.postDetail(post_code); }
+
+	
 }
+

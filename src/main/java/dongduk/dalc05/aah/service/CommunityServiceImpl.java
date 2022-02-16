@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import dongduk.dalc05.aah.dao.CommunityDao;
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
+import dongduk.dalc05.aah.domain.cMember;
 
 @Service
 public class CommunityServiceImpl implements CommunityService {
@@ -36,6 +37,13 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public void insertCommu(Community c) { commuDao.insertCommu(c); }
 	
+	// 커뮤 가입
+	@Override
+	public void insertCmember(cMember cm) { commuDao.insertCmember(cm); }
+	
+	// 커뮤정보 가져오기
+	@Override
+	public Community getCommuInfo(int commu_code) { return commuDao.getCommuInfo(commu_code); }
 	
 	/* 게시글 post 관련*/
 	// 전체 게시글 
@@ -57,4 +65,5 @@ public class CommunityServiceImpl implements CommunityService {
 	// 게시글 자세히 보기
 	@Override
 	public Post postDetail(int post_code) { return commuDao.postDetail(post_code); }
+
 }

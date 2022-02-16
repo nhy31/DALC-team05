@@ -34,7 +34,27 @@ ${post.post_uploadDate} <br>
 ${post.member_nickName} <br>
 ${myNick} <br>
 
-$ <br>
-$ <br> 
+
+
+<div>댓글</div>
+
+<!-- 기능test 임시로쓴거 table -->
+<div> 나의댓글창
+<form action="">
+<table style="border: 1px solid blue;">
+<tr >
+<td style="border: 1px solid blue;" rowspan="2">${me.member_image}d</td>
+<td style="border: 1px solid blue;">${me.member_nickName}</td>
+</tr>
+<tr>
+<td style="border: 1px solid blue;" ><input type="text" name="comment_content">
+<input type="submit" value="댓글업로드" onclick=""></td>
+</tr>
+</table>
+</form>
+</div>
+<div>
+
+</div>
 </body>
 </html>

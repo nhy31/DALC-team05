@@ -16,6 +16,7 @@
 		<form name="form" action="<c:url value='/community/post/upload.do' />" enctype="multipart/form-data">
 			게시판 선택
 			<select name="commu_code"> 
+				<option value="0">전체</option>
 				<c:forEach var="c" items="${MyCommuList}">
 					<option value="${c.commu_code}">${c.commu_name}</option>
 				</c:forEach>

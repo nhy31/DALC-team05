@@ -13,11 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Post;
 import dongduk.dalc05.aah.domain.Sick;
+import dongduk.dalc05.aah.domain.cMember;
 import dongduk.dalc05.aah.service.CommunityService;
 import dongduk.dalc05.aah.service.MemberService;
 import dongduk.dalc05.aah.service.SickService;
@@ -79,6 +81,10 @@ public class CommunityController {
 	  mav.setViewName("community/list");
       List<Community> list = new ArrayList<>();
       list = commuService.getCommuList(); // 전체 불러오기
+      
+      for(int i=0; i<list.size(); i++) {
+    	  list.get(i).setSick_name(sickService.getSickName(list.get(i).getSick_code()));
+      }
       mav.addObject("CommuList", list);
       return mav;
    }
@@ -103,8 +109,11 @@ public class CommunityController {
 	   }
 	  mav.addObject("posts", list);
 	  
-	 
-
+	  Community c = commuService.getCommuInfo(commu_code);
+	  c.setSick_name(sickService.getSickName(c.getSick_code()));
+	  
+	  mav.addObject("c", c);
+	  
       return mav;
    }
    
@@ -191,7 +200,7 @@ public class CommunityController {
 		
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
-		String nick = m.getMember_nickName();
+		
 		
 		System.out.println("게시글상세보기 test");
 		ModelAndView mav = new ModelAndView();
@@ -203,7 +212,7 @@ public class CommunityController {
 		p.setMember_nickName(postWriter);
 		
 		mav.addObject("post", p);
-		mav.addObject("myNick", m.getMember_nickName());
+		mav.addObject("me", m);
 		mav.setViewName("community/postDetail");
 		return mav;
 		
@@ -214,10 +223,11 @@ public class CommunityController {
 	@RequestMapping(value = "/community/post/upload.do")
 	public ModelAndView postUploadDo(
 			HttpServletRequest request,
-			Model model,
+			RedirectAttributes redirect,
 			@RequestParam int commu_code,
 			@RequestParam String post_title,
-			@RequestParam String post_content) {
+			@RequestParam String post_content
+			) {
 		
 		System.out.println("게시글업로드 test");
 		
@@ -234,16 +244,41 @@ public class CommunityController {
 		System.out.println("게시글업로드 SUECESS");
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/community/post/detail");
+		
+		redirect.addAttribute("commu_code", commu_code); 
+		mav.setViewName("redirect:/community/posts");
 		
 		return mav;
 		
 	}
 	
 	// 커뮤니티 가입
-	
+	@RequestMapping(value = "/community/join")
+	public ModelAndView joinCommu (
+			HttpServletRequest request,
+			RedirectAttributes redirect,
+			@RequestParam int commu_code,
+			Model model) {
+		
+		System.out.println("커뮤가입 test");
+		
+		HttpSession session = request.getSession();
+		Member m = (Member) session.getAttribute("loginMember");
+		
+		cMember cm = new cMember(m.getMember_code(), commu_code);
+		
+		commuService.insertCmember(cm);
+		
+		ModelAndView mav = new ModelAndView();
+		redirect.addAttribute("commu_code", commu_code); 
+		//mav.setViewName("redirect:/community/posts");
+		
+		mav.setViewName("alert/success");
+		model.addAttribute("msg", "가입성공");
+        model.addAttribute("url","/community/posts");
 
-   
-   
-   
+        return mav;
+
+	}
+
 }

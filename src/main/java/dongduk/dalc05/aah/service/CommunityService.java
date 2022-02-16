@@ -4,6 +4,7 @@ import java.util.List;
 
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
+import dongduk.dalc05.aah.domain.cMember;
 
 public interface CommunityService {
 
@@ -13,6 +14,8 @@ public interface CommunityService {
 	public String getCommuName(int commu_code); // commu_code로 name 가져오기
 	public int checkName(String commu_name); // 커뮤 생성시, 이름 중복체크
 	public void insertCommu(Community c); // 커뮤니티 생성
+	public void insertCmember(cMember cm); // 커뮤 가입
+	public Community getCommuInfo(int commu_code); // 커뮤정보 가져오가기
 	
 	/* 게시글 post 관련*/
 	public List<Post> getAllPosts(); // 전체 게시글 
