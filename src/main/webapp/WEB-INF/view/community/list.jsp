@@ -26,6 +26,7 @@
 
 <title>아아현 커뮤니티</title>
 <style>
+
 .content_start {
 padding: 10px 10px 5px 10px;
 }
@@ -50,51 +51,55 @@ border: 1px solid black;
 		<div class="col-md-1"></div>
 		<div class="col-md-10 col-12">
 			<div align="left" class="fs-4" id="main_title">나의 커뮤니티</div>
-				<div align="center"><table style="width:80%">
+				<div style="margin-top:20px; margin-bottom:20px;" align="center"><table style="text-align:center; width:80%; font-size:1vw;">
 					<tr>
-			 			<th>커뮤니티 이름</th>	 
-						<th>관련질병</th>	 
-			 			<th>소개한줄</th>	 
-			 			<th>커뮤들어가기</th>	 
+			 			<th style="width:5%">가입</th>	 
+			 			<th style="width:30%">커뮤니티 이름</th>	 
+						<th style="width:10%">관련질병</th>	 
+			 			<th style="width:50%">소개한줄</th> 
+			 			<th style="width:5%">go</th> 
 					</tr>
 				
 					<c:forEach var="my" items="${MyCommuList}">
 					<tr style="cursor:pointer;">
+						<td><button type="button" onclick="location.href='<c:url value='/community/join/cancel'>
+							<c:param name="commu_code" value="${my.commu_code}"></c:param> </c:url>'">해지</button></td>
 		 				<td>${my.commu_name} 
-		 					<button type="button" onclick="location.href='<c:url value='/community/join/cancel'>
-							<c:param name="commu_code" value="${my.commu_code}"></c:param> </c:url>'">가입해지</button></td>	 
+		 					</td>	 
 						<td>${my.sick_name}</td>	 
 						<td>${my.commu_introduce}</td>	
 						<td><input class="btn btn-primary" type="button"
 							 		onclick="location.href='<c:url value='/community/posts'>
 							 				<c:param name="commu_code" value="${my.commu_code}"></c:param> 
-							 			</c:url>'" /></td>  
+							 			</c:url>'" /></td>
 					</tr>	
 					</c:forEach> 
-				</table>
+				</table></div>
 				
-				<hr>
+				<hr style="margin-top:20px; margin-bottom:20px;">
 				
 			<div align="left" class="fs-4" id="main_title">전체 커뮤니티</div>
-				<table style="width:80%">		
+				<div style="margin-top:20px; margin-bottom:20px;" align="center"><table style="text-align:center; width:80%; font-size:1vw;">		
 					<tr>
-			 			<th>커뮤니티 이름</th>	 
-						<th>관련질병</th>	 
-			 			<th>소개한줄</th>	 
-			 			<th>커뮤들어가기</th>	  	
+						<th style="width:5%">가입</th>	 
+			 			<th style="width:30%">커뮤니티 이름</th>	 
+						<th style="width:10%">관련질병</th>	 
+			 			<th style="width:50%">소개한줄</th>	
+			 			<th style="width:5%">go</th> 
 					</tr>
 					<c:forEach var="list" items="${CommuList}">
 					<tr style="cursor:pointer;">
-		 				<td>${list.commu_name}<button type="button" onclick="location.href='<c:url value='/community/join'>
-							<c:param name="commu_code" value="${list.commu_code}"></c:param> </c:url>'">가입</button></td>	 
+						<td><button type="button" onclick="location.href='<c:url value='/community/join'>
+							<c:param name="commu_code" value="${list.commu_code}"></c:param> </c:url>'">가입</button></td>
+		 				<td>${list.commu_name}</td>	 
 						<td>${list.sick_name}</td>	 
-						<td>${list.commu_introduce}</td>	
+						<td>${list.commu_introduce}</td>
 						<td><input class="btn btn-primary" type="button"
 							 		onclick="location.href='<c:url value='/community/posts'>
 							 				<c:param name="commu_code" value="${list.commu_code}"></c:param> 
-							 			</c:url>'" /></td>   
+							 			</c:url>'" /></td>	
 					</tr>	
-					</c:forEach> 
+					</c:forEach>
 				</table></div>
 		</div>
 		<div class="col-md-1"></div>
