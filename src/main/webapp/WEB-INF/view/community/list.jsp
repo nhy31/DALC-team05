@@ -23,7 +23,6 @@
 <!-- 내부 스타일 링크 -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 
-
 <title>아아현 커뮤니티</title>
 <style>
 

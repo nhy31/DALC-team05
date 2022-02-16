@@ -2,6 +2,7 @@ package dongduk.dalc05.aah.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dongduk.dalc05.aah.domain.Media;
 import dongduk.dalc05.aah.domain.Member;
+import dongduk.dalc05.aah.domain.Recipe;
 
 @Controller
 public class MainController {
@@ -115,9 +117,14 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main/search");
 		
-	
-		
-		
+//		List<Recipe> list1 = new ArrayList<>();
+//		list1= recipeService.search(searchWord);
+//		
+//		List<Exercise> list2 = new ArrayList<>();
+//		list2 = exerciseSerice.search(searchWord);
+//		
+//		mav.addObject("recipes", list1);
+//		mav.addObject("exercises", list2);
 
 		return mav;
 	}

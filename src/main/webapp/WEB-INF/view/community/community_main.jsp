@@ -25,8 +25,6 @@
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-
 .main_title1 {
 font-family: 'Nanum Gothic', sans-serif;
 font-style: normal;
