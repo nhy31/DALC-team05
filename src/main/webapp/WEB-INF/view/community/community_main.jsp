@@ -140,7 +140,7 @@
 				<col width="*"/>
 				<col width="4%"/>
 				<col width="48%"/>
-			</colgroup> 
+			</colgroup>  
 			<c:forEach var="i" begin="0" end="4">
 			<tr>
 				<td class="rank_num"  style="cursor:pointer;" onclick="location.href='<c:url value='/community/post/detail'>
