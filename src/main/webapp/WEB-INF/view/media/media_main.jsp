@@ -25,8 +25,7 @@
 
 <title>아아현 건강미디어</title>
 
-<style>
-
+<style  type="text/css">
 .content_start {
 padding: 10px 10px 5px 10px;
 }
@@ -58,8 +57,8 @@ border-radius: 6px;
 }
 
 .img2 {
-height: 100%;
-width:100%;
+max-height: 100%;
+max-width:100%;
 border-radius: 6px;
 }
 
@@ -68,29 +67,28 @@ margin:10px 0px 0px 10px;
 }
 
 .news-div {
-margin: 25px 10px 0px 10px;
+margin: 10px 10px 0px 10px;
 }
 
-.news-one {
-margin: 0px 10px 25px 10px;
+#news-one {
+margin: 0px 10px 25px 0px;
 }
 
 .news-title {
 padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: bold;
-font-size: 1.3vw;
+font-size: 1.2vw;
 color: #4E4E4E;
 }
 
-.news-contents {
+#news-contents {
 padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: normal;
 font-size: 0.9vw;
 color: #4E4E4E;
 background: #E1E1E1;
-color: #4E4E4E;
 }
 
 .news-info {
@@ -112,18 +110,45 @@ padding: 7px 15px;
 border-radius: 79px;
 }
 
+
+.box-radio-input input[type="radio"]{
+        display: none;
+      }
+
+      .box-radio-input input[type="radio"] + span{
+        display: inline-block;
+        background: none;
+        border: 1.5px solid #DDDDDD;
+        color: #4E4E4E;
+        padding: 7px 15px;
+        font-family: -apple-system;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 79px;
+        cursor: pointer;
+      }
+
+      .box-radio-input input[type="radio"]:checked + span{
+        border:1px solid #851BD8;
+        background:#851BD8;
+        color:#fff;
+        font-weight: bold;
+      }
+      
 </style>
 
 </head>
 
 <body>
+<!-- 임시 -->
+<input type ="button" value="커뮤니티 만들기" onclick="location.href='<c:url value='/community/create' />'"></input> 
+
 <div class="content_start">
 	<div class="row">
 		<div class="col-lg-2 col-md-1 col-1"></div>
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">오늘의 건강 이슈</div>
-			<div class="swiper-container" >
-	    		
+			<div class="swiper-container" >	
 	    		<div class="swiper-wrapper"> <c:forEach var="list" items="${medias}">
 		      		<div class="swiper-slide" >
 			       		<table>
@@ -133,23 +158,25 @@ border-radius: 79px;
 			        	</table>
 		      		</div>
 		      	</c:forEach> </div>
-	   
+
 	   			<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
 	   			<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 --> <br>
 	   			<div align="center" class="swiper-pagination"></div>	<!-- 페이징 -->
-	   
+
  			</div>
  			<div class="fs-4" id="main_title">질병별 건강뉴스</div>
 			 	<div class="sick_btns">     
 					<c:forEach var="illness" items="${sicks}">
-						<button class="single_btn" type="button" onclick="location.href='<c:url value='/media/crawling'>
-							<c:param name="sick_code" value="${illness.sick_code}"></c:param></c:url>'" >
-							${illness.sick_name}</button>
+							<label class="box-radio-input">
+							<input type="radio" onclick="location.href='<c:url value='/media/crawling'>
+							<c:param name="sick_code" value="${illness.sick_code}"></c:param></c:url>'" 
+							name="sick_code" value="${illness.sick_code}" <c:if test="${illness.checked == 1}"> checked="checked"</c:if>>
+							<span>${illness.sick_name}</span></label>
 					</c:forEach>	
 				</div>
 		    <div class="news-div"> 
 		    	<c:forEach var="list" items="${medias2}"> 
-					<table class="news-one">
+					<table id="news-one">
 				        		<tr>
 				        			<td rowspan="3" style="width:22%; height:100%">
 				        				<a href="${list.url}">
@@ -159,7 +186,7 @@ border-radius: 79px;
 				            			${list.title}
 				            		</td>
 				            	<tr>
-				            		<td class="news-contents">
+				            		<td id="news-contents">
 				            			${list.contents}
 				            		</td>
 				            	</tr>
@@ -175,13 +202,7 @@ border-radius: 79px;
  		<div class="col-lg-2 col-md-1 col-1"></div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-1"></div>
- 		<div align="left" class="col-md-10 col-12">
-    		
-		</div>
-  		<div class="col-md-1"></div>
-	</div>
+
 </div>
 
    <script>

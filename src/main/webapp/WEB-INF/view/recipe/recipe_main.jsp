@@ -20,137 +20,178 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 
+<title>아아현 레시피추천</title>
+
 <!-- 내부 스타일 링크 -->
-<link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
 
 <style type="text/css">
+.content_start {
+padding: 10px 10px 5px 10px;
+}
 
-.content {
-	margin: 40px 200px 250px 200px;
+#main_title {
+font-style: normal;
+font-weight: bold;
+color: #000000;
+}
+
+.issue-title {
+font-style: normal;
+font-size: 0.95vw;
+color: #4E4E4E;
+padding: 5px 10px 0px 10px;
+}
+
+.issue-info {
+font-style: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+padding: 0px 10px 0px 10px;
+}
+
+.img1 {
+height: 100%;
+width:100%;
+border-radius: 6px;
+}
+
+.img2 {
+height: 100%;
+width:100%;
+border-radius: 6px;
+}
+
+.sick_btns {
+margin:10px 0px 0px 10px;
+}
+
+.news-div {
+margin: 25px 10px 0px 10px;
+}
+
+#news-one {
+margin: 0px 10px 25px 10px;
+}
+
+.news-title {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: bold;
+font-size: 1.3vw;
+color: #4E4E4E;
+}
+
+#news-contents {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+}
+
+#news-info {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+}
+
+.single_btn{
+background-color: #851BD8;
+border: none;
+color: #ffffff;
+font-size: 12px;
+font-weight: bold;
+text-align: center;
+padding: 7px 15px;
+border-radius: 79px;
 }
 </style>
-
-<title>레시피 메인페이지</title>
 </head>
 
 <body>
-	
-	<div class="content">
-   	<div class="content_header">	<h2>오늘의 인기 레시피</h2>	</div>
-   		<div class="swiper-container">
-   		<div class="swiper-wrapper">
-        	<div class="swiper-slide">
-        		<table>
-        			<tr><td><a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a></td></tr>
-        			<tr><td><h2>레시피 제목</h2></td></tr>
-        			<tr><td>레시피 출처입니다.</td></tr>
-        			<tr><td>조회수 1.5천회</td></tr>
-        		</table>
-            	<button id="btn-mark" type="button">찜하기</button>	
-            </div>
-         	<div class="swiper-slide">
-         	    <table>
-        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-        			<tr><td><h2>레시피 제목</h2></td></tr>
-        			<tr><td>레시피 출처입니다.</td></tr>
-        			<tr><td>조회수 1.5천회</td></tr>
-        		</table>
-            	<button id="btn-mark" type="button">찜하기</button>
-            </div>
-         	<div class="swiper-slide">
-         	    <table>
-        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-        			<tr><td><h2>레시피 제목</h2></td></tr>
-        			<tr><td>레시피 출처입니다.</td></tr>
-        			<tr><td>조회수 1.5천회</td></tr>
-        		</table>
-            </div>
-         	<div class="swiper-slide">
-         		<table>
-        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-        			<tr><td><h2>레시피 제목</h2></td></tr>
-        			<tr><td>레시피 출처입니다.</td></tr>
-        			<tr><td>조회수 1.5천회</td></tr>
-        		</table>
-            </div>
-         	<div class="swiper-slide">
-         		<table>
-        			<tr><td><a href=""><img class="today_img" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-        			<tr><td><h2>레시피 제목</h2></td></tr>
-        			<tr><td>레시피 출처입니다.</td></tr>
-        			<tr><td>조회수 1.5천회</td></tr>
-        		</table>
-         	</div>
-      	</div>
-      	
-      	<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
-      	<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 -->
-      	<br><br>
-      	<div class="swiper-pagination"></div>	<!-- 페이징 -->
-   	 </div>
-	
-	<br><br>
-	
-	<div class="content_header"> <h2>질병 별 추천 레시피</h2> </div> <br>
-		<div align="left">
-	     	<button name="best_recipe_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
-	      	<button name="best_recipe_pressure" class="disease_btn" onClick=""> 고혈압 </button>
-	      	<button name="best_recipe_pressure" class="disease_btn" onClick=""> 저혈압 </button>
-	      	<button name="best_recipe_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
-	      	<button name="best_recipe_etc" class="disease_btn" onClick=""> 기타 </button>
-	   	</div>
-	   	<br>
-	   	<div>
-	   		<table border='0'>
-	   			<tr>
-	   				<td rowspan='4'>
-	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
-	   				</td>
-	   				<th>두부 김치찜</th>
-	   			</tr>
-	   			<tr><td>저혈압, 고지혈증..</td></tr>
-	   			<tr><td>음식에 대한 정보</td></tr>
-	   			<tr><td>음색에 필요한 재료</td></tr>
-	   		</table>
-	   		<table border='0'>
-	   			<tr>
-	   				<td rowspan='4'>
-	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
-	   				</td>
-	   				<th>레시피 제목</th>
-	   			</tr>
-	   			<tr><td>질병 키워드들</td></tr>
-	   			<tr><td>음식에 대한 정보</td></tr>
-	   			<tr><td>음색에 필요한 재료</td></tr>
-	   		</table>
-	   		<table border='0'>
-	   			<tr>
-	   				<td rowspan='4'>
-	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
-	   				</td>
-	   				<th>레시피 제목</th>
-	   			</tr>
-	   			<tr><td>질병 키워드들</td></tr>
-	   			<tr><td>음식에 대한 정보</td></tr>
-	   			<tr><td>음색에 필요한 재료</td></tr>
-	   		</table>
-	   	</div>
-   <!-- 
-   <c:forEach var="best" items="${BestRecipes}">
-   	<tr>
-   		<td>${best.recipe_img}</td>	 썸넬 클릭하면 상세페이지  
- 		<td>${best.recipe_name}</td>	
-		<td>${best.recipe_length}</td>	 
-	<tr>
-	</c:forEach>	
-	-->
+<div class="content_start">
+	<div class="row">
+		<div class="col-lg-2 col-md-1 col-1"></div>
+		<div align="left" class="col-lg-8 col-md-10 col-10">
+			<div class="fs-4" id="main_title">오늘의 인기 레시피</div>
+			<div class="swiper-container" >
+	   			<div class="swiper-wrapper"> <!-- 포이치반복문 들어갈곳 -->
+		        	<div class="swiper-slide">
+		        		<table>
+		        			<tr><td style="text-align: center;"><a href=""><img class="img1" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
+		        			<tr><th class="issue-title">레시피 제목이 들어갈 자리입니다.</th></tr>
+		        			<tr><td class="issue-info">레시피에 대한 내용(조회수)</td></tr>
+		        			<tr><td class="issue-info">(조리시간 + 몇인분)</td></tr>
+		        		</table>
+		            </div>
+		            <div class="swiper-slide">
+		        		<table>
+		        			<tr><td style="text-align: center;"><a href=""><img class="img1" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
+		        			<tr><th class="issue-title">레시피 제목1</th></tr>
+		        			<tr><td class="issue-info">레시피에 대한 내용</td></tr>
+		        		</table>
+		            </div>
+		            <div class="swiper-slide">
+		        		<table>
+		        			<tr><td style="text-align: center;"><a href=""><img class="img1" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
+		        			<tr><th class="issue-title">레시피 제목1</th></tr>
+		        			<tr><td class="issue-info">레시피에 대한 내용</td></tr>
+		        		</table>
+		            </div>
+		            <div class="swiper-slide">
+		        		<table>
+		        			<tr><td style="text-align: center;"><a href=""><img class="img1" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
+		        			<tr><th class="issue-title">레시피 제목1</th></tr>
+		        			<tr><td class="issue-info">레시피에 대한 내용</td></tr>
+		        		</table>
+		            </div>   
+		        </div>
+				<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
+      			<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 --> <br>
+      			<div class="swiper-pagination"></div>	<!-- 페이징 -->
+   	 		</div>
+			<div class="fs-4" id="main_title">질병별 추천레시피</div>
+			 	<div class="sick_btns">     
+					<c:forEach var="illness" items="${sicks}">
+						<button class="single_btn" type="button" onclick="location.href='<c:url value=''>
+							<c:param name="sick_code" value="${illness.sick_code}"></c:param></c:url>'" >
+							${illness.sick_name}</button>
+					</c:forEach>	
+				</div>
+		    <div class="news-div"> 
+		    	<!-- 포이치 들어갈 곳 -->
+					<table class="table" id="news-one">
+				        		<tr>
+				        			<td rowspan="3" style="width:22%; height:100%">
+				        				<a href="">
+				        				<img class="img2" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a>
+				        			</td>
+				            		<th class="news-title" >
+				            			레시피 제목입니다
+				            		</th>
+				            	<tr>
+				            		<td class="table-secondary" id="news-contents">
+				            			음싱 정보입니다
+				            		</td>
+				            	</tr>
+				            	<tr>
+				            		<td class="table-secondary"  id="news-info" >
+				            			재료 정보입니다
+				            		</td>     
+				            	</tr>
+				      </table>
+			</div>
+ 		</div>
+ 		<div class="col-lg-2 col-md-1 col-1"></div>
 	</div>
+</div>			
    <script>
    new Swiper('.swiper-container', {
       slidesPerView : 4, // 동시에 보여줄 슬라이드 rotn
-      spaceBetween : 30, // 슬라이드 간 간격
+      spaceBetween : 10, // 슬라이드 간 간격
       slidesPerGroup : 4, // 그룹으로 묶는 개수
       
       // 그룹수가 맞지 않을 경우 빈칸으로 메우기

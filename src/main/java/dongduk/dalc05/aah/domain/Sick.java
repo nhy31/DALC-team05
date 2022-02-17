@@ -2,8 +2,12 @@ package dongduk.dalc05.aah.domain;
 
 public class Sick {
 	
+	// DB
 	private int sick_code; // pk
 	private String sick_name;
+	
+	// only domain
+	private int checked ;
 	
 	public Sick() {}
 	
@@ -25,4 +29,12 @@ public class Sick {
 	public void setSick_name(String sick_name) {
 		this.sick_name = sick_name;
 	}
+	public int getChecked() {
+		return checked;
+	}
+
+	public void setChecked(int checked) {
+		this.checked = checked;
+	}
 }
+

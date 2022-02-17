@@ -64,6 +64,10 @@ public class CommunityDaoImpl implements CommunityDao {
 	// 게시글 업로드
 	@Override
 	public void insertPost(Post p) { communityMapper.insertPost(p); }
+	
+	// 게시글 삭제
+	@Override
+	public void deletePost(int post_code) { communityMapper.deletePost(post_code); }
 
 	// 게시글 자세히 보기
 	@Override

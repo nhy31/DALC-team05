@@ -103,7 +103,6 @@ public class CommunityController {
    // 리스트에서 클릭하면 커뮤니티에 대한 글을 모두 볼 수 있음
    @RequestMapping(value = "/community/posts")
    public ModelAndView commuPosts(
-
 		   @RequestParam("commu_code") int commu_code) {
 
 		  
@@ -138,6 +137,9 @@ public class CommunityController {
 	   
 	   List<Sick> list = new ArrayList<>();
 	   list = sickService.getSickList();
+	  
+	   list.get(0).setChecked(1);
+	   
 	   mav.addObject("sicks", list);
 	   return mav;
    }
@@ -264,7 +266,27 @@ public class CommunityController {
 		return mav;
 		
 	}
-	
+		
+	// 게시글 삭제
+	@RequestMapping(value = "/community/post/delete")
+	public ModelAndView postDelete(
+			HttpServletRequest request,
+			RedirectAttributes redirect,
+			@RequestParam int post_code,
+			@RequestParam int commu_code
+			) {
+		
+		ModelAndView mav = new ModelAndView();
+		System.out.println("게시글삭제 test");
+
+		commuService.deletePost(post_code);
+		
+		redirect.addAttribute("commu_code", commu_code); 
+		mav.setViewName("redirect:/community/posts");
+		return mav;
+		
+	}		
+		
 	// 커뮤니티 가입
 	@RequestMapping(value = "/community/join")
 	public ModelAndView joinCommu (

@@ -65,6 +65,10 @@ public class CommunityServiceImpl implements CommunityService {
 	// 게시글 업로드
 	@Override
 	public void insertPost(Post p) { commuDao.insertPost(p); }
+	
+	// 게시글 삭제
+	@Override
+	public void deletePost(int post_code) { commuDao.deletePost(post_code); }
 
 	// 게시글 자세히 보기
 	@Override
