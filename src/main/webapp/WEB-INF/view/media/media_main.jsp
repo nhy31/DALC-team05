@@ -39,33 +39,40 @@ color: #000000;
 
 .issue-info {
 font-style: normal;
-font-size: 1vw;
+font-size: 0.95vw;
 color: #4E4E4E;
 padding: 5px 10px 0px 10px;
 }
 
-.img {
-height: 152px;
-width:225px;
+.img1 {
+height: 100%;
+width:100%;
+border-radius: 6px;
+}
+
+.img2 {
+height: 100%;
+width:100%;
 border-radius: 6px;
 }
 
 .sick_btns {
 margin:10px 0px 0px 10px;
 }
+
 .news-div {
 margin: 25px 10px 0px 10px;
 }
 
 .news-one {
-margin: 0px 0px 20px 0px;
+margin: 0px 10px 25px 10px;
 }
 
 .news-title {
 padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: bold;
-font-size: 1.4vw;
+font-size: 1.3vw;
 color: #4E4E4E;
 }
 
@@ -73,7 +80,7 @@ color: #4E4E4E;
 padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: normal;
-font-size: 1vw;
+font-size: 0.9vw;
 color: #4E4E4E;
 background: #E1E1E1;
 color: #4E4E4E;
@@ -103,18 +110,18 @@ border-radius: 79px;
 </head>
 
 <body>
-
+</div>
 <div class="content_start">
 	<div class="row">
-		<div class="col-md-1"></div>
-		<div align="left" class="col-md-10 col-12">
+		<div class="col-lg-2 col-md-1 col-1"></div>
+		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">오늘의 건강 이슈</div>
 			<div class="swiper-container" >
 	    		
 	    		<div class="swiper-wrapper"> <c:forEach var="list" items="${medias}">
 		      		<div class="swiper-slide" >
 			       		<table>
-			        		<tr><td style="text-align: center;"><a href="${list.url}" ><img class="img" src="<c:url value='${list.image}'/>" ></a></td></tr>
+			        		<tr><td style="text-align: center;"><a href="${list.url}" ><img class="img1" src="<c:url value='${list.image}'/>" ></a></td></tr>
 			        		<tr><th class="issue-info ">${list.title}</th></tr>
 			        		<tr><td class="issue-info ">${list.source}&nbsp;&nbsp;&nbsp;&nbsp;${list.time}</td></tr>
 			        	</table>
@@ -124,15 +131,9 @@ border-radius: 79px;
 	   			<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
 	   			<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 --> <br>
 	   			<div align="center" class="swiper-pagination"></div>	<!-- 페이징 -->
+	   
  			</div>
- 		</div>
- 		<div class="col-md-1"></div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-1"></div>
- 		<div align="left" class="col-md-10 col-12">
-    		<div class="fs-4" id="main_title">질병별 건강뉴스</div>
+ 			<div class="fs-4" id="main_title">질병별 건강뉴스</div>
 			 	<div class="sick_btns">     
 					<c:forEach var="illness" items="${sicks}">
 						<button class="single_btn" type="button" onclick="location.href='<c:url value='/media/crawling'>
@@ -142,11 +143,11 @@ border-radius: 79px;
 				</div>
 		    <div class="news-div"> 
 		    	<c:forEach var="list" items="${medias2}"> 
-					<table style="margin-right:25px;"class="news-one">
+					<table class="news-one">
 				        		<tr>
-				        			<td rowspan="3">
+				        			<td rowspan="3" style="width:22%; height:100%">
 				        				<a href="${list.url}">
-				        				<img class="img" src="<c:url value='${list.image}'/>" ></a>
+				        				<img class="img2" src="<c:url value='${list.image}'/>" ></a>
 				        			</td>
 				            		<td class="news-title">
 				            			${list.title}
@@ -164,11 +165,18 @@ border-radius: 79px;
 				      </table>
 				</c:forEach>
 			</div>
+ 		</div>
+ 		<div class="col-lg-2 col-md-1 col-1"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-1"></div>
+ 		<div align="left" class="col-md-10 col-12">
+    		
 		</div>
   		<div class="col-md-1"></div>
 	</div>
 </div>
-
 
    <script>
    new Swiper('.swiper-container', {
