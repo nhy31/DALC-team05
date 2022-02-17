@@ -23,8 +23,8 @@
 <!-- 내부 스타일 링크 -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 
-
 <title>아아현 건강미디어</title>
+
 <style>
 
 .content_start {
@@ -37,12 +37,22 @@ font-weight: bold;
 color: #000000;
 }
 
+.issue-info {
+font-style: normal;
+font-size: 1vw;
+color: #4E4E4E;
+padding: 5px 10px 0px 10px;
+}
+
 .img {
 height: 152px;
 width:225px;
 border-radius: 6px;
 }
 
+.sick_btns {
+margin:10px 0px 0px 10px;
+}
 .news-div {
 margin: 25px 10px 0px 10px;
 }
@@ -53,11 +63,9 @@ margin: 0px 0px 20px 0px;
 
 .news-title {
 padding: 0px 25px 0px 25px;
-
 font-style: normal;
 font-weight: bold;
-font-size: 18px;
-line-height: 22px;
+font-size: 1.4vw;
 color: #4E4E4E;
 }
 
@@ -65,8 +73,7 @@ color: #4E4E4E;
 padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: normal;
-font-size: 14px;
-line-height: 16px;
+font-size: 1vw;
 color: #4E4E4E;
 background: #E1E1E1;
 color: #4E4E4E;
@@ -76,8 +83,7 @@ color: #4E4E4E;
 padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: normal;
-font-size: 14px;
-line-height: 16px;
+font-size: 1vw;
 color: #4E4E4E;
 }
 
@@ -99,7 +105,6 @@ border-radius: 79px;
 <body>
 
 <div class="content_start">
-	
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div align="left" class="col-md-10 col-12">
@@ -110,8 +115,8 @@ border-radius: 79px;
 		      		<div class="swiper-slide" >
 			       		<table>
 			        		<tr><td style="text-align: center;"><a href="${list.url}" ><img class="img" src="<c:url value='${list.image}'/>" ></a></td></tr>
-			        		<tr><th style="padding:5px; font-size:1vw;">${list.title}</th></tr>
-			        		<tr><td style="font-size:1vw">${list.source}&nbsp;&nbsp;&nbsp;&nbsp;${list.time}</td></tr>
+			        		<tr><th class="issue-info ">${list.title}</th></tr>
+			        		<tr><td class="issue-info ">${list.source}&nbsp;&nbsp;&nbsp;&nbsp;${list.time}</td></tr>
 			        	</table>
 		      		</div>
 		      	</c:forEach> </div>
@@ -127,27 +132,14 @@ border-radius: 79px;
 	<div class="row">
 		<div class="col-md-1"></div>
  		<div align="left" class="col-md-10 col-12">
-    		<div class="fs-4" id="main_title">질병별 건강뉴스
-    			
-	    				<div class="btn-group" style="margin-left:15px">
-	  					<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"> 질병선택 </button>
-	  					<ul class="dropdown-menu"></ul>
-						</div>
-
-			 	<div>     
-		
-					
-							<c:forEach var="illness" items="${sicks}">
-							 
-							 		<button class="single_btn" type="button"
-							 		onclick="location.href='<c:url value='/media/crawling'>
-							 				<c:param name="sick_code" value="${illness.sick_code}"></c:param> 
-							 			</c:url>'" >${illness.sick_name}</button>
-							
-							</c:forEach>
-						
+    		<div class="fs-4" id="main_title">질병별 건강뉴스</div>
+			 	<div class="sick_btns">     
+					<c:forEach var="illness" items="${sicks}">
+						<button class="single_btn" type="button" onclick="location.href='<c:url value='/media/crawling'>
+							<c:param name="sick_code" value="${illness.sick_code}"></c:param></c:url>'" >
+							${illness.sick_name}</button>
+					</c:forEach>	
 				</div>
-			
 		    <div class="news-div"> 
 		    	<c:forEach var="list" items="${medias2}"> 
 					<table style="margin-right:25px;"class="news-one">
@@ -175,19 +167,15 @@ border-radius: 79px;
 		</div>
   		<div class="col-md-1"></div>
 	</div>
-
 </div>
 
 
-
    <script>
-   
    new Swiper('.swiper-container', {
       slidesPerView : 4, // 동시에 보여줄 슬라이드 rotn
       spaceBetween : 10, // 슬라이드 간 간격
       slidesPerGroup : 4, // 그룹으로 묶는 개수
-      
- 
+
       // 그룹수가 맞지 않을 경우 빈칸으로 메우기
       loopFillGroupWithBlank : true,
       loop : true, // 무한 반복
@@ -204,7 +192,5 @@ border-radius: 79px;
    });
    </script>   	
    	
-	
 </body>
-
 </html>
