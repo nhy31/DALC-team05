@@ -173,6 +173,17 @@
 			</colgroup>
 		</table>
 	</div>	
+	
+	<div class="main_title1">전체 커뮤니티 </div>
+	<div  class="bestPosts">		
+		<table>
+			<colgroup>
+				<col width="30%"/>
+				<col width="40%"/>
+				<col width="50"/>
+			</colgroup>
+		</table>
+	</div>	
 
 </body>
 </html>
