@@ -35,18 +35,7 @@
 	font-size: 22px;
 	line-height: 26px;
 	color: #000000;
-	margin: 30px auto 5px auto;
-	/* width: 60%; */
-	}
-
-	.main_title2 {
-	font-family: 'Nanum Gothic', sans-serif;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 22px;
-	line-height: 26px;
-	color: #000000;
-	margin: 50px auto 0px auto;
+	margin: 30px auto 8px auto;
 	/* width: 60%; */
 	}
 
@@ -78,6 +67,13 @@
 		font-weight: 600;
 	}
 
+	table{
+		table-layout: auto; 
+		width: 100%; 
+		table-layout: fixed; 
+		word-break:break-all;
+	}
+
 	td {
 	/* margin: 12px;
 	font-family: 'Nanum Gothic', sans-serif;
@@ -88,43 +84,10 @@
 	font-size: 15px;
 	text-align: -webkit-auto;
 	}
-
-	.post_table{
-	border: 3;
-	bordercolor: blue;
-	frame: void;
-	rules: rows;
+	
+	.commu{
+		padding: 10px 20px 10px 0;
 	}
-
-	.post_tr{
-		margin: 30px;
-		padding: 30px;
-	}
-
-	.sick_box {
-	width: 70px;
-	height: 31px;
-	background: #851BD8;
-	border-radius: 79px;
-	float: left; "
-	}
-
-	.sick_box_font {
-	font-family: Roboto;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 15px;
-	line-height: 20px;
-	text-align: center;
-	color: #FFFFFF;
-	}
-
-	.img {
-	width: 223px;
-	height: 152px;
-	border-radius: 6px;}
-
-
 
 	</style>
 </head>
@@ -132,7 +95,7 @@
 <body style="width: 70%; margin: 0 auto 50px auto;" >
 	<div class="main_title1">이번 주 인기글</div>
 	<div class="add">매주 업데이트 되는 인기글을 확인하세요.</div>
-		<div  class="bestPosts">
+		<div class="bestPosts">
 		<table>
 			<colgroup>
 				<col width="4%"/>
@@ -164,15 +127,76 @@
 
 	<div class="main_title1">나의 커뮤니티 </div>
 	<div class="add">관심있는 커뮤니티를 편집하세요.</div>
-	<div  class="bestPosts">
+		<div class="bestPosts">
 		<table>
 			<colgroup>
-				<col width="30%"/>
-				<col width="40%"/>
-				<col width="50"/>
+				<col width="15%"/>
+				<col width="*"/>
+				<col width="50%"/>
 			</colgroup>
+			
+			<c:forEach var="my" items="${MyCommuList}">
+				<tr style="cursor:pointer;">
+					<td><button type="button" onclick="location.href='<c:url value='/community/join/cancel'>
+							<c:param name="commu_code" value="${my.commu_code}"></c:param> </c:url>'">해지</button></td>
+		 			<td>커뮤이름 ${my.commu_name} </td>	 
+					<td>질병이름 ${my.sick_name}</td>	 
+					<td>커뮤소 ${my.commu_introduce}</td>	
+					<td><input class="btn btn-primary" type="button" onclick="location.href='<c:url value='/community/posts'>
+						<c:param name="commu_code" value="${my.commu_code}"></c:param></c:url>'" /></td>
+				</tr>
+			</c:forEach>
+			
+			<tr>
+				<td class="commu">
+					<button type="button" class="single_round_btn" style="font-size: 13px; "
+					onMouseOver='this.innerHTML="삭제 "; this.style.backgroundColor="#757575"' 
+					onMouseOut='this.innerHTML="고지혈증 "; this.style.backgroundColor=""'>
+					고지혈증 	</button> </td>
+				<td class="commu" style="font-size: 16px">커뮤이름 와라라라라라라라라랄 </td>
+				<td class="commu" style="font-size: 15px">커뮤소개 우리커뮤 어쩌구 저쩌구 건강에 좋은 어쩌꾸 저꺼 </td>
+			</tr>	
 		</table>
 	</div>
+				
+	
+	<div class="main_title1">전체 커뮤니티 </div>
+		<div class="bestPosts">
+		<table>
+			<colgroup>
+				<col width="15%"/>
+				<col width="*%"/>
+				<col width="50%"/>
+			</colgroup>
+			
+			<c:forEach var="list" items="${CommuList}">
+				<tr style="cursor:pointer;">
+					<td><button type="button" onclick="location.href='<c:url value='/community/join'>
+						<c:param name="commu_code" value="${list.commu_code}"></c:param> </c:url>'">가입</button></td>
+		 			<td>${list.commu_name}</td>	 
+					<td>${list.sick_name}</td>	 
+					<td>${list.commu_introduce}</td>
+					<td><input class="btn btn-primary" type="button"
+					 		onclick="location.href='<c:url value='/community/posts'>
+							<c:param name="commu_code" value="${list.commu_code}"></c:param> </c:url>'" /></td>	
+				</tr>	
+			</c:forEach>
+					
+			<tr style="cursor:pointer;">
+				<td class="commu">
+					<button type="button" class="single_round_btn" style="font-size: 13px; ">
+					고지혈증 	</button> </td>
+				<td class="commu" style="font-size: 16px">커뮤이름 와라라라라라라라라랄 </td>
+				<td class="commu" style="font-size: 15px">커뮤소개 우리커뮤 어쩌구 저쩌구 건강에 좋은 어쩌꾸 저꺼 </td>
+			</tr>	
+		</table>
+	</div>
+	
+	<div style="cursor:pointer;">
+		<div class="main_title1" onclick="location.href='<c:url value='/community/create' />'">커뮤니티 생성 &nbsp; ></div>
+		<div class="add" onclick="location.href='<c:url value='/community/create' />'">관심있는 커뮤니티를 직접 생성하세요. </div>
+	</div>
+
 
 </body>
 </html>
