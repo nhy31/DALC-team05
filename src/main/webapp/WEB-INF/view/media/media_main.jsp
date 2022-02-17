@@ -37,9 +37,16 @@ font-weight: bold;
 color: #000000;
 }
 
-.issue-info {
+.issue-title {
 font-style: normal;
 font-size: 0.95vw;
+color: #4E4E4E;
+padding: 5px 10px 0px 10px;
+}
+
+.issue-info {
+font-style: normal;
+font-size: 0.9vw;
 color: #4E4E4E;
 padding: 5px 10px 0px 10px;
 }
@@ -90,7 +97,7 @@ color: #4E4E4E;
 padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: normal;
-font-size: 1vw;
+font-size: 0.9vw;
 color: #4E4E4E;
 }
 
@@ -104,13 +111,12 @@ text-align: center;
 padding: 7px 15px;
 border-radius: 79px;
 }
-      
+
 </style>
 
 </head>
 
 <body>
-</div>
 <div class="content_start">
 	<div class="row">
 		<div class="col-lg-2 col-md-1 col-1"></div>
@@ -122,7 +128,7 @@ border-radius: 79px;
 		      		<div class="swiper-slide" >
 			       		<table>
 			        		<tr><td style="text-align: center;"><a href="${list.url}" ><img class="img1" src="<c:url value='${list.image}'/>" ></a></td></tr>
-			        		<tr><th class="issue-info ">${list.title}</th></tr>
+			        		<tr><th class="issue-title">${list.title}</th></tr>
 			        		<tr><td class="issue-info ">${list.source}&nbsp;&nbsp;&nbsp;&nbsp;${list.time}</td></tr>
 			        	</table>
 		      		</div>
