@@ -172,7 +172,7 @@
 				<col width="50"/>
 			</colgroup>
 		</table>
-	</div>	
+	</div>	 
 	
 	<div class="main_title1">전체 커뮤니티 </div>
 	<div  class="bestPosts">		
