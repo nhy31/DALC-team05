@@ -136,17 +136,24 @@
 			</colgroup>
 			
 			<c:forEach var="my" items="${MyCommuList}">
+			<tr>
 				<td class="commu">
 					<button onclick="location.href='<c:url value='/community/join/cancel'>
 							<c:param name="commu_code" value="${my.commu_code}"></c:param> </c:url>'"
 					type="button" class="single_round_btn" style="font-size: 13px; "
 					onMouseOver='this.innerHTML="삭제 "; this.style.backgroundColor="#757575"' 
 					onMouseOut='this.innerHTML="${my.sick_name}"; this.style.backgroundColor=""'>
-						 ${my.sick_name}</button> </td>
-				<td class="commu" style="font-size: 16px">${my.commu_name}  </td>
-				<td class="commu" style="font-size: 15px">${my.commu_introduce} </td>
-				<td><input class="btn btn-primary" type="button" onclick="location.href='<c:url value='/community/posts'>
-					<c:param name="commu_code" value="${my.commu_code}"></c:param></c:url>'" /></td>
+					${my.sick_name}</button> </td>
+						 
+				<td class="commu" style="font-size: 16px; cursor:pointer;" 
+					onclick="location.href='<c:url value='/community/posts'>
+					<c:param name="commu_code" value="${my.commu_code}"></c:param></c:url>'">
+					${my.commu_name}  </td>
+				
+				<td class="commu" style="font-size: 15px; cursor:pointer;"
+					onclick="location.href='<c:url value='/community/posts'>
+					<c:param name="commu_code" value="${my.commu_code}"></c:param></c:url>'">
+					${my.commu_introduce} </td>
 			</tr>	
 			</c:forEach>
 			
@@ -170,13 +177,20 @@
 				<td class="commu">
 					<button onclick="location.href='<c:url value='/community/join'>
 						<c:param name="commu_code" value="${list.commu_code}"></c:param> </c:url>'"
-						type="button" class="single_round_btn" style="font-size: 13px; ">
+						type="button" class="single_round_btn" style="font-size: 13px; background-color:#757575 !important;"
+						onMouseOver='this.innerHTML="가입"; this.style.backgroundColor=""' 
+						onMouseOut='this.innerHTML="${list.sick_name}"; this.style.backgroundColor="#757575"'>
 					${list.sick_name}	</button> </td>
-				<td class="commu" style="font-size: 16px">${list.commu_name}</td>
-				<td class="commu" style="font-size: 15px">${list.commu_introduce}</td>
-				<td><input class="btn btn-primary" type="button"
-					 		onclick="location.href='<c:url value='/community/posts'>
-							<c:param name="commu_code" value="${list.commu_code}"></c:param> </c:url>'" /></td>	
+					
+				<td class="commu" style="font-size: 16px"
+					onclick="location.href='<c:url value='/community/posts'>
+					<c:param name="commu_code" value="${list.commu_code}"></c:param></c:url>'">
+					${list.commu_name}</td>
+				
+				<td class="commu" style="font-size: 15px"
+					onclick="location.href='<c:url value='/community/posts'>
+					<c:param name="commu_code" value="${list.commu_code}"></c:param></c:url>'">
+					${list.commu_introduce}</td>
 			</tr>	
 			</c:forEach>
 		
