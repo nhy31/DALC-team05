@@ -26,6 +26,13 @@
 <title>아아현 건강미디어</title>
 
 <style  type="text/css">
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+* {
+font-family: 'Nanum Gothic', sans-serif;
+}
+
 .content_start {
 padding: 10px 10px 5px 10px;
 }

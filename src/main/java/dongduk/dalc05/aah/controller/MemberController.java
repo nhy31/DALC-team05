@@ -91,31 +91,31 @@ public class MemberController {
 	}
 	
 	// 프론트 연결전
-//	// 아이디 중복확인
-//	@RequestMapping(value="/member/join/check/id")
-//	public ModelAndView chdekId (
-//			HttpServletRequest request,
-//			Model model,
-//			@RequestParam ("member_id") String member_id) {
-//			
-//		ModelAndView mav = new ModelAndView();
-//		
-//		String name = request.getParameter("member_name");
-//		mav.addObject("nameOk", name);
-//		
-//		if (memberService.checkId(member_id) == null) {
-//			mav.setViewName("alert/success");
-//			mav.addObject("idOk", member_id);
-//			model.addAttribute("msg", "사용가능한 이메일입니다.");
-//	        model.addAttribute("url","/member/join");
-//	        return mav;
-//		}
-//        
-//		mav.setViewName("alert/error");
-//		model.addAttribute("msg", "존재하는 이메일입니다.");
-//        model.addAttribute("url","/member/join");
-//        return mav;
-//	}
+	// 아이디 중복확인
+	@RequestMapping(value="/member/join/check/id")
+	public ModelAndView chdekId (
+			HttpServletRequest request,
+			Model model,
+			@RequestParam ("member_id") String member_id) {
+			
+		ModelAndView mav = new ModelAndView();
+		
+		String name = request.getParameter("member_name");
+		mav.addObject("nameOk", name);
+		
+		if (memberService.checkId(member_id) == null) {
+			mav.setViewName("alert/success");
+			mav.addObject("idOk", member_id);
+			model.addAttribute("msg", "사용가능한 이메일입니다.");
+	        model.addAttribute("url","/member/join");
+	        return mav;
+		}
+        
+		mav.setViewName("alert/error");
+		model.addAttribute("msg", "존재하는 이메일입니다.");
+        model.addAttribute("url","/member/join");
+        return mav;
+	}
 //	
 //	// 닉네임 중복확인
 //	@RequestMapping(value="/member/join/check/nick")

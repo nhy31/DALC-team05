@@ -23,7 +23,7 @@ public class Post {
 	// only domain
 	private String member_nickName;
 	private String commu_name;
-	
+
 	public Post() {}
 	
 	public Post(int commu_code, int member_code, String post_title, String post_content, int post_hits,

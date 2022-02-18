@@ -86,6 +86,7 @@
       Select *
       FROM POST
       WHERE commu_code = #{commu_code}
+      ORDER BY post_uploadDate DESC
     </select>
    
 	<!-- 게시글 업로드 -->

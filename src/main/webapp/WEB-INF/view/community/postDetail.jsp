@@ -130,7 +130,7 @@
 
 	<div class="post_border">
 		<div>
-			<button class="single_round_btn" style="font-size: 14px;" disabled>${post.commu_code}</button>
+			<button class="single_round_btn" style="font-size: 14px;" disabled>${sick}</button>
 			<font style="color: #B0B0B0">&nbsp; > &nbsp;</font> <font style="font-size: 14px; font-weight: 600">${post.commu_name}</font>
 		</div>
 

@@ -127,13 +127,23 @@ public class CommunityController {
 	   else {
 		   list = commuService.getCommuPosts(commu_code);
 	   }
+	   
+	   for(int i=0; i<list.size(); i++) {
+		   int code = list.get(i).getMember_code();
+		   list.get(i).setMember_nickName(memberService.getMemberInfo(code).getMember_nickName());
+	   }
 	  mav.addObject("posts", list);
+	  
 	  System.out.print("0218 확인0" + list.size());
 	  
 	  Community c = commuService.getCommuInfo(commu_code);
 	  c.setSick_name(sickService.getSickName(c.getSick_code()));
 	  
 	  mav.addObject("c", c);
+	  
+	  List<Post> bests = new ArrayList<>();
+      bests = commuService.getBestPosts(); // sql 쿼리로 조회순 나열해서 10개 뽑아서 정렬
+      mav.addObject("BestPosts", bests);
 	  
       return mav;
    }
@@ -242,6 +252,10 @@ public class CommunityController {
 		
 		p.setCommu_name(commuService.getCommuName(p.getCommu_code()));
 		p.setMember_nickName(postWriter);
+		
+		String sick = sickService.getSickName(commuService.getCommuInfo(p.getCommu_code()).getSick_code());
+		
+		mav.addObject("sick", sick);
 		
 		mav.addObject("post", p);
 		mav.addObject("me", m);
@@ -361,32 +375,34 @@ public class CommunityController {
 //	public ModelAndView uploadComment (
 //			HttpServletRequest request,
 //			RedirectAttributes redirect,
-//			@RequestParam int post_code,
+//			@RequestParam ("post_code") int post_code,
+//			@RequestParam ("comment_content") String comment_content,
 //			Model model) {
 //		
 //		HttpSession session = request.getSession();
 //		Member m = (Member) session.getAttribute("loginMember");
 //		
+//		Comment
 //		cMember cm = new cMember(m.getMember_code(), commu_code);
 //		
 //		commuService.cancelCmember(cm);
 //
 //		ModelAndView mav = new ModelAndView();
 //		
-//        mav.setViewName("redirect:/community/list");
+//        mav.setViewName("redirect:/community/detail");
 //
 //        return mav;
 //
 //	}
-
-//	// 댓글 삭제
-//	@RequestMapping(value = "/community/post/comment/delete")
-//	public ModelAndView deleteComment (
-//			HttpServletRequest request,
-//			RedirectAttributes redirect,
-//			@RequestParam int commu_code,
-//			Model model) {
 //
-//
-//	}
+////	// 댓글 삭제
+////	@RequestMapping(value = "/community/post/comment/delete")
+////	public ModelAndView deleteComment (
+////			HttpServletRequest request,
+////			RedirectAttributes redirect,
+////			@RequestParam int commu_code,
+////			Model model) {
+////
+////
+////	}
 }
