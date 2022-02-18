@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import dongduk.dalc05.aah.domain.Comment;
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Post;
@@ -370,30 +371,32 @@ public class CommunityController {
 
 	}
 	
-//	// 댓글 업로드
-//	@RequestMapping(value = "/community/post/comment/upload")
-//	public ModelAndView uploadComment (
-//			HttpServletRequest request,
-//			RedirectAttributes redirect,
-//			@RequestParam ("post_code") int post_code,
-//			@RequestParam ("comment_content") String comment_content,
-//			Model model) {
-//		
-//		HttpSession session = request.getSession();
-//		Member m = (Member) session.getAttribute("loginMember");
-//		
-//		Comment
-//		cMember cm = new cMember(m.getMember_code(), commu_code);
-//		
-//		commuService.cancelCmember(cm);
-//
-//		ModelAndView mav = new ModelAndView();
-//		
-//        mav.setViewName("redirect:/community/detail");
-//
-//        return mav;
-//
-//	}
+	// 모댓글 업로드
+	@RequestMapping(value = "/community/post/comment/upload")
+	public ModelAndView uploadComment (
+			HttpServletRequest request,
+			RedirectAttributes redirect,
+			@RequestParam ("post_code") int post_code,
+			@RequestParam ("comment_content") String comment_content,
+			Model model) {
+		
+		HttpSession session = request.getSession();
+		Member m = (Member) session.getAttribute("loginMember");
+		
+		Date now = new Date();
+		
+		Comment c = new Comment(post_code, m.getMember_code(), comment_content,
+				now, m.getMember_nickName(), m.getMember_image());
+		
+		// commuService.insertComment(c);
+
+		ModelAndView mav = new ModelAndView();
+		
+        mav.setViewName("redirect:/community/detail");
+
+        return mav;
+
+	}
 //
 ////	// 댓글 삭제
 ////	@RequestMapping(value = "/community/post/comment/delete")

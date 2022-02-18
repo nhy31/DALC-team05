@@ -15,16 +15,18 @@ public class Comment {
 	
 	// only domain
 	private String member_nickName;
+	private String member_image;
 	
 	public Comment() {}
 	
-	public Comment(int post_code, int member_code, String comment_content, Date comment_date, String member_nickName) {
+	public Comment(int post_code, int member_code, String comment_content, Date comment_date, String member_nickName, String member_image) {
 		super();
 		this.post_code = post_code;
 		this.member_code = member_code;
 		this.comment_content = comment_content;
 		this.comment_date = comment_date;
 		this.member_nickName = member_nickName;
+		this.member_image = member_image;
 	}
 
 	public int getPost_code() {

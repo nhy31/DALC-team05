@@ -37,6 +37,7 @@
 	
 	<form name="form" method="POST" action="<c:url value='/member/my/update.do' />" enctype="multipart/form-data">
 		<table>
+		<tr><th><img src="<c:url value='${me.member_image}'/>"></th></tr>
 			<tr>
 				<th> 이름 </th>
 				<td> <input type="text" name="member_name" value="${me.member_name}" readonly>  </td>

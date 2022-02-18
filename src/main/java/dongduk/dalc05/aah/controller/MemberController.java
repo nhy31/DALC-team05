@@ -81,6 +81,10 @@ public class MemberController {
 		
 		String member_image = imageUtil.uploadImage(request, img_file);
 		
+		if(member_image == null) {
+			member_image = "/images/userImg.jpg";
+		}
+		
 		Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone,
 				member_birth, sick_code, member_allergy, member_image, member_sex);
 		memberService.insertMember(member);
