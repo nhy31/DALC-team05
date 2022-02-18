@@ -167,12 +167,13 @@
 				<td><div class="main_title1">${c.commu_name}</div>
 					<div class="add">${c.commu_introduce} </div></td>
 					
-				<td><input type ="button" value="여기에서 글쓰기" onclick="location.href='<c:url value='/community/post/upload'>
-<c:param name="commu_code" value="${c.commu_code}"></c:param>
-</c:url>'"></td>	
-				<td style="text-align: right"><input class="single_square_btn" style="margin-left: 30%;" type ="button" value="글쓰기" onclick="location.href='<c:url value='/community/post/upload' />'"> </td>
+				<td style="text-align: right"><input type ="button" value="글쓰기" class="single_square_btn" style="margin-left: 30%;"
+					onclick="location.href='<c:url value='/community/post/upload'>
+					<c:param name="commu_code" value="${c.commu_code}"></c:param>
+					</c:url>'"></td>
 			</tr>
 		</table>
+		
 
 		<table class="post_table">
 			<colgroup>
@@ -183,27 +184,16 @@
 	   		<c:forEach var="posts" items="${posts}">
 				<tr class="post_tr" style="cursor:pointer" onclick="location.href='<c:url value='/community/post/detail'>
 						<c:param name="post_code" value="${posts.post_code}"></c:param> </c:url>'">
-	   				<td>${posts.post_title}</td>
-	   				<td>${posts.post_uploadDate}</td>
-	   				<td>${posts.member_nickName}</td>
-	   				<td>${posts.post_content}</td>
-	   				<td>${posts.post_hits}</td>
-	   				<td>댓글 </td>
-	   			</tr>
+					<td ><img class="post_img" src="../images/default.jpg"/>  </td>	
+					<td>
+   					<div class="post_title">${posts.post_title}</div>
+   					<font class="post_add">${posts.member_nickName} </font>
+	   				<font class="post_add"><fmt:formatDate pattern="yyyy.MM.dd" value="${posts.post_uploadDate}"/></font>
+	   				<font class="post_add">조회수 ${posts.post_hits} </font></td>
+   					<td style="font-size: 18px; font-weight: 600;">댓글 &nbsp; <font class="post_comment_num">00</font></td>
+   				</tr>
+   				<tr><td colspan="3"><hr></td></tr>
 			</c:forEach>
-			
-<%-- 	<tr class="post_tr" style="cursor:pointer" onclick="location.href='<c:url value='/community/post/detail'> --%>
-<%-- 					<c:param name="post_code" value="${posts.post_code}"></c:param> </c:url>'"> --%>
-<!--    				<td ><img class="post_img" src="../images/default.jpg"/>  </td> -->
-<!--    				<td> -->
-<!--    					<div class="post_title">겨울철 조심해야 하는 음식이 있다? 계절별 유의 해야 할 음식 알아보기.</div> -->
-<!-- 	   				<font class="post_add">2022.01.10</font> -->
-<!-- 	   				<font class="post_add">유저닉네임 </font> -->
-<!-- 	   				<font class="post_add">조회수 00 </font></td> -->
-<!--    				<td style="font-size: 18px; font-weight: 600;">댓글 &nbsp; <font class="post_comment_num">00</font></td> -->
-<!--    			</tr> -->
-<!--    			<tr><td colspan="3"><hr></td></tr> -->
-		
    	</table>
 
 
