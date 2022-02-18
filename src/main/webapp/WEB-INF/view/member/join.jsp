@@ -29,62 +29,159 @@
 </head>
 
 <body>
-	
 <!-- 부트스트랩 input group, dropdown (이메일) 등 필요 -->
 <!-- 카카오, 네이버 연동 추가해야함  -->
 <div class = "content">
-	<h2> 회원 가입 </h2>
-	<p class="hr_write">필수정보</p>
+	<div class="col-md-12">
+	<h2 class="mb-3"> 회원 가입 </h2>
 	
-	<form name="form" method="POST" action="<c:url value='/member/join.do' />" enctype="multipart/form-data">
-		<table>
-			<tr>
-				<th> 이름 </th>
-				<td> <input type="text" name="member_name" placeholder="이름" required="required"> </td>
-			</tr>
-			<tr>
-				<th> 아이디(이메일) </th>
-				<td> <input type="email" name="member_id" placeholder="이메일" required="required">
-					 <input type="button" onclick="<c:url value='/member/checkId' /> " value="중복확인" >
+	<form class="needs-validation" name="form" method="POST" action="<c:url value='/member/join.do' />" enctype="multipart/form-data" novalidate>
+	<div class="row">
+		<h6 class="hr_write">필수정보</h6>
+		<p/>
+		<p/>
+	
+		<div class="col-sm-12">
+              <label for="name" class="form-label">이름</label>
+              <input type="text" class="form-control"  name="member_name" id="firstName" placeholder="홍길동" value="" required>
+              <div class="invalid-feedback">
+              	이름을 입력해주세요
+              </div>
+         </div>
+         
+         <p/>
+         <div class="col-sm-10">
+         	  <input type="email" class="form-control"  name="member_id" id="email" placeholder="you@example.com(이메일 입력)" value="" required>
+              <div class="invalid-feedback">
+              	email을 입력해주세요
+              </div>
+         </div>
+         <div class="col-sm-2">
+   			 <input type="button" class="w-100 btn btn-primary sm-2" onclick="<c:url value='/member/checkId' /> " value="중복확인" >
 					 <input type="hidden" name="idDulipcate" value="idDulipcate">
-				</td>
-			</tr>
-			<tr>
-				<th> 닉네임 </th>
-				<td> <input type="text" name="member_nickName" placeholder="닉네임" required="required"> 
-					 <input type="button" onclick="<c:url value='/member/checkNickName' /> " value="중복확인" > 
-					 <input type="hidden" name="idDulipcate" value="idDulipcate">
-				</td>
-			</tr>
-			<tr>
-				<th> 비밀번호 </th>
-				<td> <input type="password" name="member_pw" placeholder="비밀번호" required="required"> </td>
-			</tr>
-			<tr>
-				<th> 비밀번호 확인 </th> <!-- js 함수필요 -->
-				<td> <input type="text" placeholder="비밀번호 확인" required="required"> </td>
-			</tr>
-			<tr>
-				<th>핸드폰</th>
-				<td> <input type="text" name="member_phone" placeholder="휴대폰(-없이 숫자만 입력)" required="required"></td>				
-			</tr>
-			<tr>
-				<th>생년월일</th>
-				<td> <input type="date" name="member_birth" placeholder="생년월일" required="required">	</td>
-			</tr>
-			<tr>
-				<th>현재 질환 및 관심 질병</th> <!-- 수정사항 선택입력 -> 필수정보 -> 제공안하거나 기타질병을 default 감기로 -->
-				<td> 
-					<select name="sick_code">
-						<option selected value="0">정보미제공</option>
-							<c:forEach var="illness" items="${sicks}">
+		 </div>
+		 
+		<p/>
+		 <div class="col-sm-10">
+              <input type="text" class="form-control"  name="member_nickName" id="nickName" placeholder="닉네임" value="" required>
+              <div class="invalid-feedback">
+              	닉네임을 입력해주세요
+              </div>
+         </div>
+         <div class="col-sm-2">
+   			 <input type="button" class="w-100 btn btn-primary sm-2" onclick="<c:url value='/member/checkNickName' /> " value="중복확인" > 
+					 <input type="hidden" name="idDulipcate" value="idDulipcate"> 
+		 </div>
+		 <p/>
+		 
+		  <div class="mb-3 row">
+   			 <label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
+   			 <div class="col-sm-10">
+    		  <input type="password" name="member_pw"  class="form-control" placeholder="비밀번호" id="inputPassword" value="" required>
+  			  </div>
+		  </div>
+		  
+		  <div class="mb-3 row">
+   			 <label for="inputPassword2" class="col-sm-2 col-form-label">비밀번호 확인 </label>
+   			 <div class="col-sm-10">
+    		  <input type="password" name="member_pw2"  class="form-control" placeholder="비밀번호 확인" id="inputPassword2" value="" required>
+  			  </div>
+		  </div>
+		  
+		   <div class="mb-3 row">
+   			 <label for="phone" class="col-sm-2 col-form-label">휴대전화 번호 </label>
+   			 <div class="col-sm-10">
+    		  <input type="text" name="member_phone"  class="form-control" placeholder="휴대폰(-없이 숫자만 입력)" id="phone" value="" required>
+  			  </div>
+		  </div>
+		  
+		  <div class="mb-3 row">
+   			 <label for="birthday" class="col-sm-2 col-form-label">생년월일</label>
+   			 <div class="col-sm-10">
+    		  <input type="date" name="member_birth"  class="form-control" placeholder="생년월일" id="birthday" value="" required>
+  			  </div>
+		  </div>
+		  
+		  <div class="mb-3 row">
+   			 <label for="sick" class="col-sm-2 col-form-label">현재 질환 및 관심 질병</label>
+   			 <div class="col-sm-10">
+    		 <select class="form-select" aria-label="Default select example" name="sick_code">
+    		 	<option selected value="0">정보 미제공</option>
+    		 		<c:forEach var="illness" items="${sicks}">
 								<option value="${illness.sick_code}">${illness.sick_name}</option>
 							</c:forEach>
-					</select>
-				</td>			
-			</tr>
-		</table>
+			 </select>
+  			  </div>
+		  </div>
+		  <hr/>
+		  
+		  <h6 class="hr_write">추가정보</h6>
+		  <p/>
+		  <p/>
 		
+		<div class="col-sm-2">
+		 <label for="member_sex" class="form-label">성별</label>
+		</div>
+		
+		<div class="col-sm-10">
+			<div class="form-check">
+		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault1" checked>
+		  <label class="form-check-label" for="flexRadioDefault1">
+		    정보 미제공
+		  </label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault2">
+		  <label class="form-check-label" for="flexRadioDefault2">
+		   남성
+		  </label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault3">
+		  <label class="form-check-label" for="flexRadioDefault3">
+		   여성
+		  </label>
+		</div>
+		</div>
+		
+		<p/>
+		 <div class="mb-3 row">
+		 <div class="col-sm-2">
+		 <label for="photo" class="form-label">이미지</label>
+		</div>
+		<div class="col-sm-10">
+		<div class="input-group">
+		  <input type="file" class="form-control" name="member_image" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+		</div>
+		</div>
+		 </div>
+		
+		<div class="mb-3 row">
+			<div class="col-sm-2">
+	              <label for="member_allergy" class="form-label">음식 알레르기</label>
+	        </div>
+	        <div class="col-sm-10">
+	              <input type="text" class="form-control"  name="member_allergy" id="allergy" placeholder="가지고 있는 알러지" value="">
+	         </div>
+		</div>		
+            
+		<p class="hr_last"/>
+		<div>
+			전체동의 <input type="text"> <br>
+			서비스 이용약관 동의(필수) <input type="checkbox">
+			<input type="text">
+			<input type="text">
+		</div>
+		
+		<input class="w-100 btn btn-primary" type="submit" value="회원가입">
+	</form>
+	</div>
+</div>
+			
+</body>
+</html>
+			
+	
 		<!-- 테이블 미사용(기존 코드) -->
 		<!--  
 				<div>
@@ -117,33 +214,3 @@
 				</div>
 			</div>
 			-->
-			
-			<p class="hr_write">추가정보</p>
-			<div>
-				<div>성별  :      
-					정보 미제공 <input type="radio" name="member_sex" checked />  
-                	남성 <input type="radio" name="member_sex" />
-                	여성 <input type="radio" name="member_sex" />
-				</div>
-				<div>음식 알레르기
-					<input type="text" name="member_allergy">
-				
-				<div>사진등록
-					<input type="text" name="member_image">
-				</div>	
-			</div>
-	
-			<p class="hr_last"/>
-			<div>
-				전체동의 <input type="text"> <br>
-				서비스 이용약관 동의(필수) <input type="checkbox">
-				<input type="text">
-				<input type="text">
-			</div>
-		</div>	
-		<input type="submit" value="회원가입">
-	</form>
-</div>
-			
-</body>
-</html>
