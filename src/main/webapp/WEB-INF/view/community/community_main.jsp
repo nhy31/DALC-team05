@@ -136,26 +136,21 @@
 			</colgroup>
 			
 			<c:forEach var="my" items="${MyCommuList}">
-				<tr style="cursor:pointer;">
-					<td><button type="button" onclick="location.href='<c:url value='/community/join/cancel'>
-							<c:param name="commu_code" value="${my.commu_code}"></c:param> </c:url>'">해지</button></td>
-		 			<td>커뮤이름 ${my.commu_name} </td>	 
-					<td>질병이름 ${my.sick_name}</td>	 
-					<td>커뮤소 ${my.commu_introduce}</td>	
-					<td><input class="btn btn-primary" type="button" onclick="location.href='<c:url value='/community/posts'>
-						<c:param name="commu_code" value="${my.commu_code}"></c:param></c:url>'" /></td>
-				</tr>
+				<td class="commu">
+					<button onclick="location.href='<c:url value='/community/join/cancel'>
+							<c:param name="commu_code" value="${my.commu_code}"></c:param> </c:url>'"
+					type="button" class="single_round_btn" style="font-size: 13px; "
+					onMouseOver='this.innerHTML="삭제 "; this.style.backgroundColor="#757575"' 
+					onMouseOut='this.innerHTML="${my.sick_name}"; this.style.backgroundColor=""'>
+						 ${my.sick_name}</button> </td>
+				<td class="commu" style="font-size: 16px">${my.commu_name}  </td>
+				<td class="commu" style="font-size: 15px">${my.commu_introduce} </td>
+				<td><input class="btn btn-primary" type="button" onclick="location.href='<c:url value='/community/posts'>
+					<c:param name="commu_code" value="${my.commu_code}"></c:param></c:url>'" /></td>
+			</tr>	
 			</c:forEach>
 			
-			<tr>
-				<td class="commu">
-					<button type="button" class="single_round_btn" style="font-size: 13px; "
-					onMouseOver='this.innerHTML="삭제 "; this.style.backgroundColor="#757575"' 
-					onMouseOut='this.innerHTML="고지혈증 "; this.style.backgroundColor=""'>
-					고지혈증 	</button> </td>
-				<td class="commu" style="font-size: 16px">커뮤이름 와라라라라라라라라랄 </td>
-				<td class="commu" style="font-size: 15px">커뮤소개 우리커뮤 어쩌구 저쩌구 건강에 좋은 어쩌꾸 저꺼 </td>
-			</tr>	
+			
 		</table>
 	</div>
 				
@@ -170,25 +165,21 @@
 			</colgroup>
 			
 			<c:forEach var="list" items="${CommuList}">
-				<tr style="cursor:pointer;">
-					<td><button type="button" onclick="location.href='<c:url value='/community/join'>
-						<c:param name="commu_code" value="${list.commu_code}"></c:param> </c:url>'">가입</button></td>
-		 			<td>${list.commu_name}</td>	 
-					<td>${list.sick_name}</td>	 
-					<td>${list.commu_introduce}</td>
-					<td><input class="btn btn-primary" type="button"
-					 		onclick="location.href='<c:url value='/community/posts'>
-							<c:param name="commu_code" value="${list.commu_code}"></c:param> </c:url>'" /></td>	
-				</tr>	
-			</c:forEach>
-					
+							
 			<tr style="cursor:pointer;">
 				<td class="commu">
-					<button type="button" class="single_round_btn" style="font-size: 13px; ">
-					고지혈증 	</button> </td>
-				<td class="commu" style="font-size: 16px">커뮤이름 와라라라라라라라라랄 </td>
-				<td class="commu" style="font-size: 15px">커뮤소개 우리커뮤 어쩌구 저쩌구 건강에 좋은 어쩌꾸 저꺼 </td>
+					<button onclick="location.href='<c:url value='/community/join'>
+						<c:param name="commu_code" value="${list.commu_code}"></c:param> </c:url>'"
+						type="button" class="single_round_btn" style="font-size: 13px; ">
+					${list.sick_name}	</button> </td>
+				<td class="commu" style="font-size: 16px">${list.commu_name}</td>
+				<td class="commu" style="font-size: 15px">${list.commu_introduce}</td>
+				<td><input class="btn btn-primary" type="button"
+					 		onclick="location.href='<c:url value='/community/posts'>
+							<c:param name="commu_code" value="${list.commu_code}"></c:param> </c:url>'" /></td>	
 			</tr>	
+			</c:forEach>
+		
 		</table>
 	</div>
 	

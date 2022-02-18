@@ -62,36 +62,16 @@ public class CommunityController {
       bests = commuService.getBestPosts(); // sql 쿼리로 조회순 나열해서 10개 뽑아서 정렬
       mav.addObject("BestPosts", bests);
       
-	
-      
-      List<Post> posts = new ArrayList<>(); 
-      posts = commuService.getAllPosts(); // 전체 게시글 
-      mav.addObject("posts", posts);
-      return mav;
-   }
-   
-   // 전체 커뮤니티 리스트보기
-   @RequestMapping(value = "/community/list")
-   public ModelAndView commuList(  HttpServletRequest request) {
-	   
-	  HttpSession session = request.getSession();
-	  Member m = (Member) session.getAttribute("loginMember");
-		  
-	  ModelAndView mav = new ModelAndView();
-	  mav.setViewName("community/list");
-
       int member_code = m.getMember_code();
       List<Community> cList = new ArrayList<>();
       cList = commuService.getMyCommuList(member_code);
       for(int i=0; i<cList.size(); i++) {
     	  cList.get(i).setSick_name(sickService.getSickName(cList.get(i).getSick_code()));
       }
-      
       mav.addObject("MyCommuList", cList);
 
       List<Community> list = new ArrayList<>();
       list = commuService.getCommuList(member_code); // 전체 불러오기
-      
       for(int i=0; i<list.size(); i++) {
     	  list.get(i).setSick_name(sickService.getSickName(list.get(i).getSick_code()));
       }
@@ -99,6 +79,36 @@ public class CommunityController {
       
       return mav;
    }
+   
+//   // 전체 커뮤니티 리스트보기 -> 메인으로 이동
+//   @RequestMapping(value = "/community/list")
+//   public ModelAndView commuList(  HttpServletRequest request) {
+//	   
+//	  HttpSession session = request.getSession();
+//	  Member m = (Member) session.getAttribute("loginMember");
+//		  
+//	  ModelAndView mav = new ModelAndView();
+//	  mav.setViewName("community/list");
+//
+//      int member_code = m.getMember_code();
+//      List<Community> cList = new ArrayList<>();
+//      cList = commuService.getMyCommuList(member_code);
+//      for(int i=0; i<cList.size(); i++) {
+//    	  cList.get(i).setSick_name(sickService.getSickName(cList.get(i).getSick_code()));
+//      }
+//      
+//      mav.addObject("MyCommuList", cList);
+//
+//      List<Community> list = new ArrayList<>();
+//      list = commuService.getCommuList(member_code); // 전체 불러오기
+//      
+//      for(int i=0; i<list.size(); i++) {
+//    	  list.get(i).setSick_name(sickService.getSickName(list.get(i).getSick_code()));
+//      }
+//      mav.addObject("CommuList", list);
+//      
+//      return mav;
+//   }
    
    // 리스트에서 클릭하면 커뮤니티에 대한 글을 모두 볼 수 있음
    @RequestMapping(value = "/community/posts")
@@ -118,6 +128,7 @@ public class CommunityController {
 		   list = commuService.getCommuPosts(commu_code);
 	   }
 	  mav.addObject("posts", list);
+	  System.out.print("0218 확인0" + list.size());
 	  
 	  Community c = commuService.getCommuInfo(commu_code);
 	  c.setSick_name(sickService.getSickName(c.getSick_code()));
@@ -179,7 +190,10 @@ public class CommunityController {
 	@RequestMapping(value = "/community/post/upload")
 	public ModelAndView postUpload(
 			HttpServletRequest request,
-			Model model) {
+			Model model,
+			@RequestParam ("commu_code") int commu_code) {
+		
+		System.out.print("0218확인" + commu_code);
 		
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
@@ -195,12 +209,10 @@ public class CommunityController {
 		p.setMember_code(code);
 		p.setMember_nickName(nick);
 		p.setPost_uploadDate(now);
+		p.setCommu_code(commu_code);
+		p.setCommu_name(commuService.getCommuName(commu_code));
 		mav.addObject("post", p);
 
-		List<Community> list = new ArrayList<>();
-		list = commuService.getMyCommuList(code);
-		mav.addObject("MyCommuList", list);
-		
 		return mav;	
 	}
 	
@@ -307,7 +319,7 @@ public class CommunityController {
 		ModelAndView mav = new ModelAndView();
 		//redirect.addAttribute("commu_code", commu_code); 
 	
-		mav.setViewName("redirect:/community/list");
+		mav.setViewName("redirect:/community");
 
 
         return mav;
@@ -333,10 +345,43 @@ public class CommunityController {
 
 		ModelAndView mav = new ModelAndView();
 		
-        mav.setViewName("redirect:/community/list");
+        mav.setViewName("redirect:/community");
 
         return mav;
 
 	}
+	
+//	// 댓글 업로드
+//	@RequestMapping(value = "/community/post/comment/upload")
+//	public ModelAndView uploadComment (
+//			HttpServletRequest request,
+//			RedirectAttributes redirect,
+//			@RequestParam int post_code,
+//			Model model) {
+//		
+//		HttpSession session = request.getSession();
+//		Member m = (Member) session.getAttribute("loginMember");
+//		
+//		cMember cm = new cMember(m.getMember_code(), commu_code);
+//		
+//		commuService.cancelCmember(cm);
+//
+//		ModelAndView mav = new ModelAndView();
+//		
+//        mav.setViewName("redirect:/community/list");
+//
+//        return mav;
+//
+//	}
 
+//	// 댓글 삭제
+//	@RequestMapping(value = "/community/post/comment/delete")
+//	public ModelAndView deleteComment (
+//			HttpServletRequest request,
+//			RedirectAttributes redirect,
+//			@RequestParam int commu_code,
+//			Model model) {
+//
+//
+//	}
 }

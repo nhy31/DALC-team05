@@ -96,6 +96,7 @@
 	<hr>
 	<div class="post_border">
 		<form name="form" action="<c:url value='/community/post/upload.do' />" enctype="multipart/form-data">
+		<input type="text" name="commu_code" value="${post.commu_code}" readonly>
 			<table>
 				<tr>
 					<td><input class="post_title" type="text" name="post_title" required="required" placeholder="제목을 입력해주세요.">  </td> 
