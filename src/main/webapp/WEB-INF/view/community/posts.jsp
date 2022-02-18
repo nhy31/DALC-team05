@@ -4,175 +4,200 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ include file="../main/top_temp.jsp"%>
+<%@ include file="../main/top_temp.jsp" %>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 
-<!-- 부트스트랩 css -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<!-- 부트스트랩 js -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
 <!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 
 <!-- 내부 스타일 링크 -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+<link rel=stylesheet href="<c:url value='/css/all.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/btns.css'/>" type="text/css">
 
-<title>아아현 커뮤니티</title>
-<style>
+	<title>아아현 커뮤니티</title>
 
-#main_title {
-font-style: normal;
-font-weight: bold;
-color: #000000;
-}
+	<style>
+	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
-.main_title1 {
-font-family: 'Nanum Gothic', sans-serif;
-font-style: normal;
-font-weight: bold;
-font-size: 22px;
-line-height: 26px;
-color: #000000;
-}
+	.main_title1 {
+	font-family: 'Nanum Gothic', sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 22px;
+	line-height: 26px;
+	color: #000000;
+	margin: 30px auto 8px auto;
+	/* width: 60%; */
+	}
 
-.main_title2 {
-margin: 50px 0 25 0; /*hr존재x, 60-> 50으로 수정*/
-font-family: 'Nanum Gothic', sans-serif;
-font-style: normal;
-font-weight: bold;
-font-size: 22px;
-line-height: 26px;
-color: #000000;
-}
+	.add {
+	margin: 0px auto 15px auto;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 15px;
+	color: #8E8E8E;
+	/* width: 60%; */
+	}
 
-.add {
-margin: 6px 0 0 3px;
-font-family: 'Nanum Gothic', sans-serif;
-font-style: normal;
-font-weight: 500;
-font-size: 13px;
-line-height: 15px;
-color: #8E8E8E;
-}
+	.bestPosts {
+	text-align:-webkit-auto;
+	margin: 0px auto 0px auto;
+	padding: 30px;
+	background: #FFFFFF;
+	border: 1.5px solid #E7E7E7;
+	box-sizing: border-box;
+	border-radius: 6px;
+	align: center;
+	/* width: 60%; */
+	}
 
-.bestPosts {
-align: left;
-margin: 16px;
-width: 100%;
-height: 200px;
-background: #FFFFFF;
-border: 2px solid #E7E7E7;
-box-sizing: border-box;
-border-radius: 6px;
-}
+	.rank_num{
+		font-size: 17px;
+		font-weight: 600;
+	}
 
-.two-box {
-}
+	table{
+		table-layout: auto;
+		width: 100%;
+		table-layout: fixed;
+		word-break:break-all;
+	}
 
-ol {
-list-style-type: decimal;
-padding: 35px 30px 35px 30px;
-}
+	td {
+	/* margin: 12px;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 18px;
+	color: #000000; */
+	font-size: 15px;
+	text-align: -webkit-auto;
+	}
 
-li {
-margin: 12px;
-font-family: 'Nanum Gothic', sans-serif;
-font-style: normal;
-font-weight: normal;
-font-size: 15px;
-line-height: 18px;
-color: #000000;
-}
+	.post_tr{
+	}
 
-.sick_box {
-width: 70px;
-height: 31px;
-background: #851BD8;
-border-radius: 79px; 
-float: left; "
-}
+	.post_img{
+	max-width: 80%;
+	height: auto;
+	border-radius: 6px;
+	margin: 10px auto 10px auto;
+	}
 
-.sick_box_font {
-font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 15px;
-line-height: 20px;
-text-align: center;
-color: #FFFFFF;
-}
+	.post_title{
+	margin: 10px 20px 10px auto;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 15px;
+	color: #8E8E8E;
+	}
 
-.img {
-width: 223px;
-height: 152px;
-border-radius: 6px;}
+	.post_add{
+	margin: 10px 20px 0px auto;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 15px;
+	color: #8E8E8E;
+	}
 
-   .sick_box {
-        background-color: #851BD8;
-        border: none;
-        color: #ffffff;
-        font-size: 12px;
-        font-weight: bold;
-        text-align: center;
-        padding: 7px 13px;
-        border-radius: 79px;
-      }
+	.post_comment_num{
+	color: #FF0000;
+	font-weight: 600;
+	}
 
-.commu_box {
-align: left;
-background: #FFFFFF;
-border: 2px solid #E7E7E7;
-box-sizing: border-box;
-border-radius: 6px;
-padding: 15px 20px 15px 20px;
-}
-</style>
+	</style>
 </head>
 
-<body>
+<body style="width: 70%; margin: 0 auto 50px auto;" >
+	<div class="main_title1">이번 주 인기글</div>
+	<div class="add">매주 업데이트 되는 인기글을 확인하세요.</div>
+		<div class="bestPosts">
+		<table>
+			<colgroup>
+				<col width="4%"/>
+				<col width="48%"/>
+				<col width="*"/>
+				<col width="4%"/>
+				<col width="48%"/>
+			</colgroup>
+			<c:forEach var="i" begin="0" end="4">
+			<tr>
+				<td class="rank_num"  style="cursor:pointer;" onclick="location.href='<c:url value='/community/post/detail'>
+					<c:param name="post_code" value="${BestPosts[i].post_code}"></c:param> </c:url>'">${i+1 } &nbsp;</td>
+				<td style="cursor:pointer;" onclick="location.href='<c:url value='/community/post/detail'>
+					<c:param name="post_code" value="${BestPosts[i].post_code}"></c:param> </c:url>'">
+					${BestPosts[i].post_title}</td>
 
-<div class="content-start">
+				<td >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 
-	<div class="row">
-	
-		<div class="col-md-2"></div>
-		<div class="col-md-8 col-12">
-			<div class="commu_box">
-				<div align="left" class="fs-4" id="main_title">${c.commu_name}</div>
-				<div style="margin-top:10px; margin-left:20px;">소개글 : ${c.commu_introduce}</div>
-				<div style="margin-top:10px; margin-left:20px;">관련질병 : 
-					<span style="background-color: #851BD8; border: none; color: #ffffff; font-size: 12px; font-weight: bold; text-align: center; padding: 7px 14px; border-radius: 79px;">${c.sick_name}</span>
-				</div>
-			</div>
-				
-				<table>
-   					<c:forEach var="posts" items="${posts}">
-						<tr>
-			   				<td>${posts.post_title}</td>
-			   				<td>${posts.post_uploadDate}</td>
-			   				<td>${posts.member_nickName}</td>
-			   				<td>${posts.post_content}</td>
-			   				<td>${posts.post_hits}</td>
-			   				<td>댓글수</td>
-	   					</tr>
-					</c:forEach>	
-   				</table>
-		
-		<div class="col-md-2"></div>
-
-	</div>
-</div>
-					
+				<td class="rank_num" style="cursor:pointer;" onclick="location.href='<c:url value='/community/post/detail'>
+					<c:param name="post_code" value="${BestPosts[i].post_code}"></c:param> </c:url>'">${i+6 } &nbsp;</td>
+				<td style="cursor:pointer;" onclick="location.href='<c:url value='/community/post/detail'>
+					<c:param name="post_code" value="${BestPosts[i+5].post_code}"></c:param> </c:url>'">
+					${BestPosts[i+5].post_title}</td>
+			</tr>
+			</c:forEach>
+		</table>
+		</div>
 
 
-   	
-</div>
+		<table>
+			<colgroup>
+				<col width="50%"/>
+				<col width="50%"/>
+			</colgroup>
+			<tr>
+				<td><div class="main_title1">${c.commu_name}</div>
+					<div class="add">${c.commu_introduce} </div></td>
+				<td style="text-align: right"><input class="single_square_btn" style="margin-left: 30%;" type ="button" value="글쓰기" onclick="location.href='<c:url value='/community/post/upload' />'"> </td>
+			</tr>
+		</table>
+
+		<table class="post_table">
+			<colgroup>
+				<col width="20%"/>
+				<col width="70%"/>
+				<col width="*"/>
+			</colgroup>
+	   		<c:forEach var="posts" items="${posts}">
+				<tr class="post_tr" style="cursor:pointer" onclick="location.href='<c:url value='/community/post/detail'>
+						<c:param name="post_code" value="${posts.post_code}"></c:param> </c:url>'">
+	   				<td>${posts.post_title}</td>
+	   				<td>${posts.post_uploadDate}</td>
+	   				<td>${posts.member_nickName}</td>
+	   				<td>${posts.post_content}</td>
+	   				<td>${posts.post_hits}</td>
+	   				<td>댓글 </td>
+	   			</tr>
+			</c:forEach>
+
+			<tr class="post_tr" style="cursor:pointer" onclick="location.href='<c:url value='/community/post/detail'>
+					<c:param name="post_code" value="${posts.post_code}"></c:param> </c:url>'">
+   				<td ><img class="post_img" src="../images/default.jpg"/>  </td>
+   				<td>
+   					<div class="post_title">겨울철 조심해야 하는 음식이 있다? 계절별 유의 해야 할 음식 알아보기.</div>
+	   				<font class="post_add">2022.01.10</font>
+	   				<font class="post_add">유저닉네임 </font>
+	   				<font class="post_add">조회수 00 </font></td>
+   				<td style="font-size: 18px; font-weight: 600;">댓글 &nbsp; <font class="post_comment_num">00</font></td>
+   			</tr>
+   			<tr><td colspan="3"><hr></td></tr>
+   	</table>
+
 
 </body>
 </html>
