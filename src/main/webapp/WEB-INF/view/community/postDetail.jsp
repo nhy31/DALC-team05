@@ -35,7 +35,6 @@
 	line-height: 26px;
 	color: #000000;
 	margin: 30px auto 8px auto;
-	/* width: 60%; */
 	}
 
 	.post_border {
@@ -46,7 +45,6 @@
 	border: 1.5px solid #E7E7E7;
 	box-sizing: border-box;
 	align: center;
-	/* width: 60%; */
 	}
 
 	table{
@@ -83,6 +81,48 @@
 		overflow-y:scroll;
 		cols: 10;
 	}
+	
+	.member_nickname{
+		font-size: 17px; 
+		font-weight: 600;
+	}
+	
+	.member_img{
+ 	max-width: 50%;
+	height: auto;
+	border-radius: 50%;
+	margin: 10px auto 10px auto;
+	}
+	
+	.reply_border{
+	text-align:-webkit-auto;
+	margin: 20px auto 0px auto;
+	padding: 30px;
+	background: #FFFFFF;
+	border: 1.5px solid #E7E7E7;
+	box-sizing: border-box;
+	align: center;
+	width: 90%;
+	border-radius: 6px;
+	}
+	
+	.reply_content{
+		border:none;
+		font-size: 16px;
+		width: 100%;
+		padding: 10px 0 10px 0;
+		resize: none;
+		overflow-y:scroll;
+		cols: 10;
+	}
+	
+	input::placeholder {color:#727272;}
+	input::-webkit-input-placeholder {color:#727272;}
+	input:-ms-input-placeholder {color:#727272;}
+ 
+	textarea::placeholder {color:#727272;}
+	textarea::-webkit-input-placeholder {color:#727272;}
+	textarea:-ms-input-placeholder {color:#727272;}
 	</style>
 </head>
 
@@ -90,20 +130,22 @@
 
 	<div class="post_border">
 		<div>
-			<button class="single_round_btn" style="font-size: 14px;">${post.commu_code}</button>
+			<button class="single_round_btn" style="font-size: 14px;" disabled>${post.commu_code}</button>
 			<font style="color: #B0B0B0">&nbsp; > &nbsp;</font> <font style="font-size: 14px; font-weight: 600">${post.commu_name}</font>
 		</div>
 
+		<!-- 게시글 내용  -->
 		<table>
 			<colgroup>
 				<col width="50%"/>
 				<col width="50%"/>
+			</colgroup>	
 			<tr>
 				<td class="post_title" colspan="2">${post.post_title}</td>
 			</tr>
 			<tr><td colspan="2"><hr></td></tr>
 			<tr>
-				<td colspan="2" style="font-size: 17px; font-weight: 600;">${post.member_nickName}</td>
+				<td colspan="2" class="member_nickname">${post.member_nickName}</td>
 			</tr>
 			<tr>
 				<td><font class="post_add_left"><fmt:formatDate pattern="yyyy.MM.dd" value="${post.post_uploadDate}"/> </font>
@@ -120,19 +162,43 @@
 			</tr>
 		</table>
 
+		<!-- 남이 쓴 댓글들   -->
 		<hr>
 		<div style="font-size: 22px;">댓글 </div>
-		<table>
-			<tr>
-				<td rowspan="3">이미지 </td>
-				<td>유저 닉네임  </td>
-				<td rowspan="3">신고 </td>
+		<table style="margin-top: 10px;">
+			<colgroup>
+				<col width="10%"/>
+				<col width="80%"/>
+				<col width="10%"/>
+			</colgroup>
+			<tr style="vertical-align:top; padding-top: 5px;">
+				<td rowspan="3" style="margin: 5px;"><img class="member_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Grey_background.jpg/1200px-Grey_background.jpg.jpg"/>  </td>
+				<td class="member_nickname">유저 닉네임  </td>
+				<td rowspan="3" style="text-align:right; padding-right: 30px;">신고 </td>
 			</tr>
 			<tr>
-				<td>댓글 내용  </td>
+				<td style="font-size: 16px; margin-top: 5px;">댓글 내용  </td>
 			</tr>
 			<tr>
-				<td>날짜  </td>
+				<td class="post_add_left" style="margin-top: 10px;"><font style="margin-right: 8px;">날짜</font>  
+					<font>답글쓰기 </font>
+				</td>
+			</tr>
+		</table>
+	
+		<hr>
+	
+		<!--  내가 댓글 쓰기  -->
+		<table class="reply_border">
+			<tr>
+				<td class="member_nickname" style="padding: 30px 10px 5px 30px;">${me.member_nickName} </td>
+			</tr>		
+			<tr>
+				<td style="padding: 5px 30px 10px 30px;">	<!-- input type textarea로 바꿔야할듯  -->
+					<input class="reply_content" type="text" name="comment_content" placeholder="댓글을 남겨주세요."></td>
+			</tr>
+			<tr>
+				<td style="text-align: right; padding: 10px 30px 30px 30px"><input class="single_square_btn" type="submit" value="등록" onclick=""></td>
 			</tr>
 		</table>
 	</div>
