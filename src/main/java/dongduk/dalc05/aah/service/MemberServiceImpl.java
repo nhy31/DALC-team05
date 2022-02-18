@@ -30,6 +30,12 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.checkId(member_id);
 	}
 	
+	// 닉네임 중복확인
+	@Override
+	public Member checkNick(String member_nickName) {
+		return memberDao.checkId(member_nickName);
+	}
+	
 	// 탈퇴
 	@Override
 	public void deleteMember(int member_code) {

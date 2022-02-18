@@ -55,9 +55,7 @@ public class MemberController {
 	
 	// 회원가입
     /* <개발미완>
-    1. 이메일 중복확인
-    2. 이메일 인증
-    3. 닉네임 중복확인 */
+    2. 이메일 인증 */
 	@RequestMapping(value="/member/join.do")
 	public String joinDo(
 			HttpServletRequest request,
@@ -83,6 +81,61 @@ public class MemberController {
         return "alert/success";
 	}
 	
+	// 프론트 연결전
+//	// 아이디 중복확인
+//	@RequestMapping(value="/member/join/check/id")
+//	public ModelAndView chdekId (
+//			HttpServletRequest request,
+//			Model model,
+//			@RequestParam ("member_id") String member_id) {
+//			
+//		ModelAndView mav = new ModelAndView();
+//		
+//		String name = request.getParameter("member_name");
+//		mav.addObject("nameOk", name);
+//		
+//		if (memberService.checkId(member_id) == null) {
+//			mav.setViewName("alert/success");
+//			mav.addObject("idOk", member_id);
+//			model.addAttribute("msg", "사용가능한 이메일입니다.");
+//	        model.addAttribute("url","/member/join");
+//	        return mav;
+//		}
+//        
+//		mav.setViewName("alert/error");
+//		model.addAttribute("msg", "존재하는 이메일입니다.");
+//        model.addAttribute("url","/member/join");
+//        return mav;
+//	}
+//	
+//	// 닉네임 중복확인
+//	@RequestMapping(value="/member/join/check/nick")
+//	public ModelAndView chdekNick (
+//			HttpServletRequest request,
+//			Model model,
+//			@RequestParam ("member_nickName") String member_nickName) {
+//					
+//		ModelAndView mav = new ModelAndView();
+//		
+//		String name = request.getParameter("member_name");
+//		String id = request.getParameter("member_id");
+//		mav.addObject("nameOk", name);
+//		mav.addObject("idOk", name);
+//		
+//		if (memberService.checkNick(member_nickName) == null) {
+//			mav.setViewName("alert/success");
+//			mav.addObject("idOk", member_nickName);
+//			model.addAttribute("msg", "사용가능한 닉네임입니다");
+//	        model.addAttribute("url","/member/join");
+//	        return mav;
+//		}
+//        
+//		mav.setViewName("alert/error");
+//		model.addAttribute("msg", "존재하는 닉네임입니다.");
+//      model.addAttribute("url","/member/join");
+//        return mav;
+//	}
+//	
 	// 메인페이지 -> 로그인페이지 이동
     @RequestMapping(value = "/member/login")
     public String login(Model model, HttpSession session) {

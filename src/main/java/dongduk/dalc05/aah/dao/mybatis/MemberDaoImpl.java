@@ -29,6 +29,12 @@ public class MemberDaoImpl implements MemberDao {
 	public Member checkId(String member_id) {
 		return memberMapper.checkId(member_id);
 	}
+	
+	// 닉네임 중복확인
+	@Override
+	public Member checkNick(String member_nickName) {
+		return memberMapper.checkId(member_nickName);
+	}
 
 	// 탈퇴
 	@Override

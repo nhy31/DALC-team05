@@ -90,6 +90,11 @@
        values (#{commu_code}, #{member_code}, #{post_title}, #{post_content}, #{post_hits}, #{post_uploadDate});
     </insert>
     
+    <delete id="deletePost" parameterType="Integer">
+		delete from post
+		WHERE post_code = #{post_code}
+	</delete>
+	
     <!-- 게시글 자세히 보기 -->
     <select id="postDetail" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Post">
       Select *
@@ -103,4 +108,5 @@
 		SET POST_HITS = POST_HITS + 1
 		WHERE post_code = #{post_code}
    </update>
+   
 </mapper>

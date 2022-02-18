@@ -142,6 +142,8 @@ border-radius: 79px;
 <body>
 <!-- 임시 -->
 <input type ="button" value="커뮤니티 만들기" onclick="location.href='<c:url value='/community/create' />'"></input> 
+<input type ="button" value="커뮤니티 리스트" onclick="location.href='<c:url value='/community/list' />'"></input> 
+<input type ="button" value="커뮤안에서 글쓰기" onclick="location.href='<c:url value='/community/post/upload' />'"></input> 
 
 <div class="content_start">
 	<div class="row">

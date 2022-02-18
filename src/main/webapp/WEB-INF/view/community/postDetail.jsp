@@ -23,6 +23,10 @@
 게시글 자세히..
 </head>
 <body>
+<input type ="button" value="이 게시글 삭제" onclick="location.href='<c:url value='/community/post/delete'>
+<c:param name="post_code" value="${post.post_code}"></c:param>
+<c:param name="commu_code" value="${post.commu_code}"></c:param> </c:url>'"></input> 
+
 <!-- 기능test 임시테스트 -->
 ${post.post_title} <br>
 ${post.post_content}<br>
