@@ -4,6 +4,7 @@ import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.MemberService;
 import dongduk.dalc05.aah.service.SickService;
+import dongduk.dalc05.aah.util.ImageUtil;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
@@ -39,6 +41,9 @@ public class MemberController {
 	
 	@Autowired
 	private SickService sickService;
+	
+	@Autowired
+    private ImageUtil imageUtil; // image 파일 저장용
 
 	// 메인페이지 -> 회원가입페이지 이동
     @RequestMapping(value = "/member/join")
@@ -69,8 +74,12 @@ public class MemberController {
     		@RequestParam ("sick_code") int sick_code,
     		@RequestParam (value="member_sex") String member_sex,
     		@RequestParam (value="member_allergy", required = false) String member_allergy ,
-    		@RequestParam (value="member_image", required = false) String member_image
+    		MultipartFile img_file
 			) {
+		
+		System.out.print("이미지확인");
+		
+		String member_image = imageUtil.uploadImage(request, img_file);
 		
 		Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone,
 				member_birth, sick_code, member_allergy, member_image, member_sex);

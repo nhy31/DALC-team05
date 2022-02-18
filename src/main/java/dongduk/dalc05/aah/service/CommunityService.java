@@ -17,6 +17,7 @@ public interface CommunityService {
 	public void insertCmember(cMember cm); // 커뮤 가입
 	void cancelCmember(cMember cm); // 커뮤가입 해지 
 	public Community getCommuInfo(int commu_code); // 커뮤정보 가져오가기
+	public int getCommuCode(String commu_name); // 방금 생성된 커뮤코드 가져오기위한 메소드
 	
 	/* 게시글 post 관련*/
 	public List<Post> getAllPosts(); // 전체 게시글 

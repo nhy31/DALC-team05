@@ -159,6 +159,7 @@ public class CommunityController {
    @RequestMapping(value = "/community/create.do")
    public ModelAndView commuCreateDo(
 		   Model model,
+		   RedirectAttributes redirect,
 		   @RequestParam int sick_code,
 		   @RequestParam String commu_name,
 		   @RequestParam String commu_introduce
@@ -180,9 +181,13 @@ public class CommunityController {
 	   c.setSick_code(sick_code);
 	   c.setSick_name(sickService.getSickName(sick_code));
     
-	   commuService.insertCommu(c);      
+	   commuService.insertCommu(c);  
+	   
+	   int commu_code = commuService.getCommuCode(commu_name);
+	   
+	   redirect.addAttribute("commu_code", commu_code); 
 
-	   mav.setViewName("redirect:/community/list");
+	   mav.setViewName("redirect:/community/posts");
 	   return mav;
    }
    

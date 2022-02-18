@@ -61,6 +61,11 @@
     	where commu_code = #{commu_code}
     </select>
     
+    <select id="getCommuCode" parameterType="String" resultType="Integer">
+    	select commu_code from community
+    	where commu_name = #{commu_name}
+    </select>
+    
     <!-- 전체 게시글  -->
 	<select id="getAllPosts" resultType="dongduk.dalc05.aah.domain.Post">
 		Select *

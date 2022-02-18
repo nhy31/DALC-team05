@@ -43,7 +43,7 @@
 	
 		<div class="col-sm-12">
               <label for="name" class="form-label">이름</label>
-              <input type="text" class="form-control"  name="member_name" id="firstName" placeholder="홍길동" value="" required>
+              <input type="text" class="form-control"  name="member_name" id="firstName" placeholder="홍길동" required>
               <div class="invalid-feedback">
               	이름을 입력해주세요
               </div>
@@ -51,7 +51,7 @@
          
          <p/>
          <div class="col-sm-10">
-         	  <input type="email" class="form-control"  name="member_id" id="email" placeholder="you@example.com(이메일 입력)" value="" required>
+         	  <input type="email" class="form-control"  name="member_id" id="email" placeholder="you@example.com(이메일 입력)" required>
               <div class="invalid-feedback">
               	email을 입력해주세요
               </div>
@@ -63,7 +63,7 @@
 		 
 		<p/>
 		 <div class="col-sm-10">
-              <input type="text" class="form-control"  name="member_nickName" id="nickName" placeholder="닉네임" value="" required>
+              <input type="text" class="form-control"  name="member_nickName" id="nickName" placeholder="닉네임" required>
               <div class="invalid-feedback">
               	닉네임을 입력해주세요
               </div>
@@ -77,28 +77,28 @@
 		  <div class="mb-3 row">
    			 <label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
    			 <div class="col-sm-10">
-    		  <input type="password" name="member_pw"  class="form-control" placeholder="비밀번호" id="inputPassword" value="" required>
+    		  <input type="password" name="member_pw"  class="form-control" id="inputPassword" required>
   			  </div>
 		  </div>
 		  
 		  <div class="mb-3 row">
    			 <label for="inputPassword2" class="col-sm-2 col-form-label">비밀번호 확인 </label>
    			 <div class="col-sm-10">
-    		  <input type="password" name="member_pw2"  class="form-control" placeholder="비밀번호 확인" id="inputPassword2" value="" required>
+    		  <input type="password" name="member_pw2"  class="form-control" id="inputPassword2" value="" required>
   			  </div>
 		  </div>
 		  
 		   <div class="mb-3 row">
    			 <label for="phone" class="col-sm-2 col-form-label">휴대전화 번호 </label>
    			 <div class="col-sm-10">
-    		  <input type="text" name="member_phone"  class="form-control" placeholder="휴대폰(-없이 숫자만 입력)" id="phone" value="" required>
+    		  <input type="text" name="member_phone"  class="form-control" placeholder="휴대폰(-없이 숫자만 입력)" id="phone" required>
   			  </div>
 		  </div>
 		  
 		  <div class="mb-3 row">
    			 <label for="birthday" class="col-sm-2 col-form-label">생년월일</label>
    			 <div class="col-sm-10">
-    		  <input type="date" name="member_birth"  class="form-control" placeholder="생년월일" id="birthday" value="" required>
+    		  <input type="date" name="member_birth"  class="form-control" placeholder="생년월일" id="birthday" required>
   			  </div>
 		  </div>
 		  
@@ -109,7 +109,7 @@
     		 	<option selected value="0">정보 미제공</option>
     		 		<c:forEach var="illness" items="${sicks}">
 								<option value="${illness.sick_code}">${illness.sick_name}</option>
-							</c:forEach>
+					</c:forEach>
 			 </select>
   			  </div>
 		  </div>
@@ -137,7 +137,7 @@
 		  </label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault3">
+		  <input class="form-check-input" type="radio" name="member_sex"   id="flexRadioDefault3">
 		  <label class="form-check-label" for="flexRadioDefault3">
 		   여성
 		  </label>
@@ -151,7 +151,7 @@
 		</div>
 		<div class="col-sm-10">
 		<div class="input-group">
-		  <input type="file" class="form-control" name="member_image" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+		  <input type="file" class="form-control" name="img_file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
 		</div>
 		</div>
 		 </div>

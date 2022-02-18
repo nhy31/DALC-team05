@@ -140,10 +140,6 @@ border-radius: 79px;
 </head>
 
 <body>
-<!-- 임시 -->
-<input type ="button" value="커뮤니티 만들기" onclick="location.href='<c:url value='/community/create' />'"></input> 
-<input type ="button" value="커뮤니티 리스트" onclick="location.href='<c:url value='/community/list' />'"></input> 
-
 <div class="content_start">
 	<div class="row">
 		<div class="col-lg-2 col-md-1 col-1"></div>
