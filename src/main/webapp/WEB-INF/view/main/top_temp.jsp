@@ -26,8 +26,8 @@
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	
-	<div class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-		<form action="<c:url value='/main/search'/>" method="post">
+	<div class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" >
+		<form action="<c:url value='/main/search'><c:param name="keyword" value="${keyword}"></c:param></c:url>" method="post">
 			<input class="form-control" type="text" placeholder="검색어를 입력하세요" aria-label="Search"/>
 		</form>
 	</div>
@@ -87,7 +87,7 @@
 					<a class="nav-link active" aria-current="page" href="<c:url value='/recipe'/>">레시피 추천</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="<c:url value='/exercise/sick.do'/>">홈트레이닝 추천</a>
+					<a class="nav-link active" aria-current="page" href="<c:url value='/exercise/sick'/>">홈트레이닝 추천</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" href="<c:url value='/media'/>">건강 미디어</a>

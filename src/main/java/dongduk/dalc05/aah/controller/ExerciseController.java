@@ -17,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dongduk.dalc05.aah.domain.Exercise;
 import dongduk.dalc05.aah.domain.Member;
+import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.ExerciseService;
+import dongduk.dalc05.aah.service.SickService;
 
 // 홈트관련컨트롤러
 @Controller
@@ -26,7 +28,10 @@ public class ExerciseController {
 	@Autowired
 	private ExerciseService exerciseService;
 	
-    @RequestMapping(value="/exercise/sick.do")
+	@Autowired
+	private SickService sickService;
+	
+    @RequestMapping(value="/exercise/sick")
     public ModelAndView exerciseBySick(HttpServletRequest request,
     		@RequestParam(value="sick_code", defaultValue="0") int sick_code) {
     		System.out.println("넘어온 sick_code: " + sick_code);
@@ -49,6 +54,7 @@ public class ExerciseController {
         	}
         	mav.addObject("today_exercise", list);
         	
+        	
     		List<Exercise> list2 = new ArrayList<>();
     		list2 = exerciseService.getExerciseBySick(sick_code);
         	for(Exercise e: list2) {
@@ -61,7 +67,18 @@ public class ExerciseController {
         		else
         			e.setExercise_views(view + "만 회");
         	}
+        	
+        	//sick_code 파라미터
+        	List<Sick> sickList = new ArrayList<>();
+        	sickList = sickService.getSickList();
+        	for(int i = 0; i < sickList.size(); i++)
+        		if(sickList.get(i).getSick_code() == sick_code) {
+        			sickList.get(i).setChecked(1);
+        			break;
+        		}
+        	mav.addObject("sickList", sickList);
     		mav.addObject("sick_exercise", list2);
+    		
     		return mav;
     }
     

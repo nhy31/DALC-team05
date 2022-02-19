@@ -13,84 +13,192 @@
 
 <!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-<!-- 내부 스타일 링크 -->
-<link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
+
 
 <style type="text/css">
-.content {
-	margin: 40px 200px 250px 200px;
+
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
+
+.content_start {
+padding: 10px 10px 5px 10px;
+}
+
+#main_title {
+font-style: normal;
+font-weight: bold;
+color: #000000;
+}
+
+.issue-title {
+font-style: normal;
+font-size: 0.95vw;
+color: #4E4E4E;
+padding: 5px 10px 0px 10px;
+}
+
+.issue-info {
+font-style: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+padding: 5px 10px 0px 10px;
+}
+
+.img1 {
+height: 100%;
+width:100%;
+border-radius: 6px;
+}
+
+.img2 {
+max-height: 100%;
+max-width:100%;
+border-radius: 6px;
+}
+
+.sick_btns {
+margin:10px 0px 0px 10px;
+}
+
+.news-div {
+margin: 10px 10px 0px 10px;
+}
+
+#news-one {
+margin: 0px 10px 25px 0px;
+}
+
+.news-title {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: bold;
+font-size: 1.2vw;
+color: #4E4E4E;
+}
+
+#news-contents {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+background: #E1E1E1;
+}
+
+.news-info {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
 }
 
 .single_btn{
-	background-color: #851BD8;
-	border: none;
-	color: #ffffff;
-	font-size: 10px;
-	font-weight: bold;
-	text-align: center;
-	padding: 10px 23px;
-	border-radius: 79px;
+background-color: #851BD8;
+border: none;
+color: #ffffff;
+font-size: 12px;
+font-weight: bold;
+text-align: center;
+padding: 7px 15px;
+border-radius: 79px;
 }
+
+.box-radio-input input[type="radio"]{
+display: none;
+}
+
+.box-radio-input input[type="radio"] + span{
+display: inline-block;
+background: none;
+border: 1.5px solid #DDDDDD;
+color: #4E4E4E;
+padding: 7px 15px;
+font-family: -apple-system;
+font-size: 12px;
+text-align: center;
+border-radius: 79px;
+cursor: pointer;
+}
+
+.box-radio-input input[type="radio"]:checked + span{
+border:1px solid #851BD8;
+background:#851BD8;
+color:#fff;
+font-weight: bold;
+}
+
 </style>
 
 <title>홈트레이닝 메인페이지</title>
 </head>
 
 <body>
+<div class="content_start">
+	<div class="row">
+		<div class="col-lg-2 col-md-1 col-1"></div>
+		<div align="left" class="col-lg-8 col-md-10 col-10">
+			<div class="fs-4" id="main_title">오늘의 인기 홈트레이닝</div>
+			<div class="swiper-container" >	
+	    		<div class="swiper-wrapper"> 
+	    		<c:forEach var="list" items="${today_exercise}">
+		      		<div class="swiper-slide" >
+			       		<table>
+			        		<tr><td style="text-align: center;"><a href="${list.exercise_url}" ><img class="img1" src="<c:url value='${list.exercise_thumb}'/>" ></a></td></tr>
+			        		<tr><th class="issue-title">${list.exercise_title}</th></tr>
+			        		<tr><td class="issue-info ">${list.exercise_channel} </td></tr>
+			        		<tr><td class="issue-info"> 조회수 ${list.exercise_views} </td></tr>
+			        	</table>
+		      		</div>
+		      	</c:forEach> 
+		      	</div>
+	   			<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
+	   			<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 --> <br>
+	   			<div align="center" class="swiper-pagination"></div>	<!-- 페이징 -->
+ 			</div>
+	
+			<br><br>
+			<div class="fs-4" id="main_title"> 질병 별 추천 홈트레이닝 </div>
+			<div class="sick_btns">
+				<c:forEach var="illness" items="${sickList}">
+					<label class="box-radio-input">
+						<input type="radio" onclick="location.href='<c:url value='/exercise/sick'>
+						<c:param name="sick_code" value="${illness.sick_code}"></c:param></c:url>'" 
+						name="sick_code" value="${illness.sick_code}" <c:if test="${illness.checked == 1}"> checked="checked"</c:if>>
+						<span>${illness.sick_name}</span></label>
+				</c:forEach>
+			</div>
 
-	<div class="content">
-   	<div class="content_header">	<h2>오늘의 인기 홈트레이닝</h2>	</div>
-   		<div class="swiper-container">
-   		<div class="swiper-wrapper">
-   			<c:forEach var="list" items="${today_exercise}">
-        	<div class="swiper-slide">
-        		<table>
-        			<tr><td><a href="${list.exercise_url}" >
-        				<img class="today_img" src="${list.exercise_thumb}" alt="thumbnail" ></a>
-        			</td></tr>
-        			<tr><td><h3><a href="${list.exercise_url}">${list.exercise_title}</a></h3></td></tr>
-        			<tr><td>${list.exercise_channel}</td></tr>
-        			<tr><td>조회수 ${list.exercise_views}</td></tr>
-        		</table>
-            	<!-- <button id="btn-mark" type="button">찜하기</button>	-->
-            </div>
-            </c:forEach>
-      	</div>
-      	
-      	<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
-      	<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 -->
-      	<br><br>
-      	<div class="swiper-pagination"></div>	<!-- 페이징 -->
-   	 </div>
-	
-	<br><br>
-	
-	<div class="content_header"> <h2>질병 별 추천 홈트레이닝</h2> </div> <br>
-		<div align="left">
-	     	<button name="exercise_cold" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=0'/>';"> 감기 </button>
-	      	<button name="exercise_hyperlipidemia" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=1'/>';"> 고지혈증 </button>
-	      	<button name="exercise_pressure" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=2'/>';"> 고혈압 </button>
-	      	<button name="exercise_diabetes" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=3'/>';"> 당뇨 </button>
-	      	<button name="exercise_disc" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=4'/>';"> 디스크 </button>
-	      	<button name="exercise_constipation" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=5'/>';"> 변비 </button>
-	      	<button name="exercise_indigestion" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=6'/>';"> 소화불량 </button>
-	      	<button name="exercise_kidney" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=7'/>';"> 신장병 </button>
-	      	<button name="exercise_gastritis" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=8'/>';"> 위염 </button>
-	      	<button name="exercise_etc" class="single_btn" onClick="location.href='<c:url value='/exercise/sick.do?sick_code=9'/>';"> 기타 </button>
-	   	</div>
-	   	<br>
-	   	
-	   	<%@ include file="../exercise/exercise_sick.jsp" %>
+			<div class="news-div">
+				<c:forEach var = "list" items="${sick_exercise}">
+				<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+					<div class="col-auto d-none d-lg-block" align="center">
+						<img class="today_img" src="${list.exercise_thumb}" alt="thumbnail" />
+					</div>
+					<div class="col p-4 d-flex flex-column position-static">
+						<strong class="d-inline-block mb-2 text-primary">${list.exercise_length}</strong>
+						<div class="fs-4" id="main_title">${list.exercise_title}</div>
+						<div class="mb-1 text-muted">${list.exercise_views}</div>
+						<!-- <p class="card-text mb-auto">운동에 대한 정보</p> -->
+						<a href="${list.exercise_url}" class="stretched-link">홈트레이닝 하러가기</a>
+					</div>
+				</div>
+				</c:forEach>
+			</div>
+			
+		</div>
+	<div class="col-lg-2 col-md-1 col-1"></div>
 	</div>
+</div>
+<!-- < % @ include file="../exercise/exercise_sick.jsp" % > -->
 	   	
-
-	
-	<script>
+<script>
 	new Swiper('.swiper-container', {
       slidesPerView : 4, // 동시에 보여줄 슬라이드 rotn
       spaceBetween : 30, // 슬라이드 간 간격
@@ -110,7 +218,7 @@
          prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
       },   
    });
-   </script>
+</script>
    
 </body>
 </html>

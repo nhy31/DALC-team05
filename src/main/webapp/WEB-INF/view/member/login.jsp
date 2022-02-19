@@ -8,7 +8,9 @@
 <meta charset="UTF-8">
 <link rel=stylesheet href="<c:url value='/css/login.css'/>" type="text/css">
 <script src="https://kit.fontawesome.com/51db22a717.js" crossorigin="anonymous"></script>
+<style type="text/css">
 
+</style>
 <title>로그인</title>
 </head>
 
@@ -31,7 +33,7 @@
 			<header>
 				<div class="logo-wrap">
 					현대인의 간편한 건강 관리, <br>
-					<img src = "" alt="바쁘다 바빠 현대사회 로고">
+					<img src = "<c:url value='/main'/>" alt="바쁘다 바빠 현대사회 로고">
 				</div>
 			</header>
 			<section class="login-input-section-wrap">
@@ -47,7 +49,8 @@
 					</div>
 					<div class="login-stay-sign-in">
 						<input type="checkbox" id="checkbox" class="keepLogin" name="saveId" <%=cookieVal!=""?"checked" : ""%> >
-						<label class="keepLogin">아이디 저장</label>
+						<label class="keepLogin"> &nbsp;아이디 저장 </label>
+						<span><a href="<c:url value='/member/findPW'/>">비밀번호 찾기</a></span>
 					</div>
 				</form>
 			</section>

@@ -172,6 +172,10 @@ public class MemberController {
 		return "member/login";
     }
     
+    @RequestMapping(value="/member/findPW")
+    public String findPassword(Model model, HttpSession session) {
+    	return "member/findPW";
+    }
     
     // 네이버 로그인 성공 시 콜백메소드
     @RequestMapping(value="/main/callback")
