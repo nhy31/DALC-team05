@@ -55,6 +55,7 @@
 
   <dependencies>
   
+
   	<!-- Naver Login API -->
   	<dependency>
   		<groupId>com.github.scribejava</groupId>

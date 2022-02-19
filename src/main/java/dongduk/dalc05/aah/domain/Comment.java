@@ -12,14 +12,15 @@ public class Comment {
 	private int member_code;
 	private String comment_content;
 	@DateTimeFormat (pattern ="yyyy/MM/dd HH:mm") private Date comment_date;
+	private int comment_depth; // 0 or 1
 	
 	// only domain
 	private String member_nickName;
 	private String member_image;
-	
+
 	public Comment() {}
 	
-	public Comment(int post_code, int member_code, String comment_content, Date comment_date, String member_nickName, String member_image) {
+	public Comment(int post_code, int member_code, String comment_content, Date comment_date, String member_nickName, String member_image, int comment_depth) {
 		super();
 		this.post_code = post_code;
 		this.member_code = member_code;
@@ -27,6 +28,7 @@ public class Comment {
 		this.comment_date = comment_date;
 		this.member_nickName = member_nickName;
 		this.member_image = member_image;
+		this.comment_depth = comment_depth;
 	}
 
 	public int getPost_code() {
@@ -76,4 +78,21 @@ public class Comment {
 	public void setMember_nickName(String member_nickName) {
 		this.member_nickName = member_nickName;
 	}
+	
+	public int getComment_depth() {
+		return comment_depth;
+	}
+
+	public void setComment_depth(int comment_depth) {
+		this.comment_depth = comment_depth;
+	}
+
+	public String getMember_image() {
+		return member_image;
+	}
+
+	public void setMember_image(String member_image) {
+		this.member_image = member_image;
+	}
+
 }

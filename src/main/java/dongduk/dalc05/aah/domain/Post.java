@@ -23,6 +23,7 @@ public class Post {
 	// only domain
 	private String member_nickName;
 	private String commu_name;
+	private int commentNum;
 
 	public Post() {}
 	
@@ -110,4 +111,12 @@ public class Post {
 	public void setCommu_name(String commu_name) {
 		this.commu_name = commu_name;
 	}
+	public int getCommentNum() {
+		return commentNum;
+	}
+
+	public void setCommentNum(int commentNum) {
+		this.commentNum = commentNum;
+	}
+
 }

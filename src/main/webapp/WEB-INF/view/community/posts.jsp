@@ -190,7 +190,7 @@
    					<font class="post_add">${posts.member_nickName} </font>
 	   				<font class="post_add"><fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${posts.post_uploadDate}"/></font>
 	   				<font class="post_add">조회수 ${posts.post_hits} </font></td>
-   					<td style="font-size: 18px; font-weight: 600;">댓글 &nbsp; <font class="post_comment_num">00</font></td>
+   					<td style="font-size: 18px; font-weight: 600;">댓글 &nbsp; <font class="post_comment_num">${posts.commentNum}</font></td>
    				</tr>
    				<tr><td colspan="3"><hr></td></tr>
 			</c:forEach>

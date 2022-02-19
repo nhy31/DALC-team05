@@ -125,17 +125,20 @@ public class CommunityController {
 	   if(commu_code == 0) {
 		   list = commuService.getAllPosts();
 	   }
-	   else {
+	   else {   
 		   list = commuService.getCommuPosts(commu_code);
 	   }
 	   
 	   for(int i=0; i<list.size(); i++) {
 		   int code = list.get(i).getMember_code();
+		   int post = list.get(i).getPost_code();
 		   list.get(i).setMember_nickName(memberService.getMemberInfo(code).getMember_nickName());
+		   list.get(i).setCommentNum(commuService.countComment(post));
+		   System.out.println("0219 댓글수" + list.get(i).getCommentNum());
 	   }
 	  mav.addObject("posts", list);
 	  
-	  System.out.print("0218 확인0" + list.size());
+	 
 	  
 	  Community c = commuService.getCommuInfo(commu_code);
 	  c.setSick_name(sickService.getSickName(c.getSick_code()));
@@ -260,6 +263,18 @@ public class CommunityController {
 		
 		mav.addObject("post", p);
 		mav.addObject("me", m);
+		
+		List<Comment> comments = new ArrayList<>();
+		comments = commuService.getComments(post_code);
+		
+		for(int i=0; i<comments.size(); i++) {
+			Member writer = memberService.getMemberInfo(comments.get(i).getMember_code());
+			comments.get(i).setMember_nickName(writer.getMember_nickName());
+			comments.get(i).setMember_image(writer.getMember_image());
+		
+		}
+		mav.addObject("comments", comments);
+		
 		mav.setViewName("community/postDetail");
 		return mav;
 		
@@ -380,32 +395,50 @@ public class CommunityController {
 			@RequestParam ("comment_content") String comment_content,
 			Model model) {
 		
+		System.out.println("댓글업로드");
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
 		
 		Date now = new Date();
 		
 		Comment c = new Comment(post_code, m.getMember_code(), comment_content,
-				now, m.getMember_nickName(), m.getMember_image());
+				now, m.getMember_nickName(), m.getMember_image(), 0);
 		
-		// commuService.insertComment(c);
+		commuService.insertComment(c);
 
+		
+		
 		ModelAndView mav = new ModelAndView();
 		
-        mav.setViewName("redirect:/community/detail");
+		redirect.addAttribute("post_code", post_code);
+		
+        mav.setViewName("redirect:/community/post/detail");
 
         return mav;
 
 	}
-//
-////	// 댓글 삭제
-////	@RequestMapping(value = "/community/post/comment/delete")
-////	public ModelAndView deleteComment (
-////			HttpServletRequest request,
-////			RedirectAttributes redirect,
-////			@RequestParam int commu_code,
-////			Model model) {
-////
-////
-////	}
+
+	// 모댓글 삭제
+	@RequestMapping(value = "/community/post/comment/delete")
+	public ModelAndView deleteComment (
+			HttpServletRequest request,
+			RedirectAttributes redirect,
+			@RequestParam ("post_code") int post_code,
+			@RequestParam ("comment_code") int comment_code,
+			Model model) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		commuService.deleteComment(comment_code);
+		
+		
+		redirect.addAttribute("post_code", post_code);
+		
+        mav.setViewName("redirect:/community/post/detail");
+
+        
+		return mav;
+
+
+	}
 }
