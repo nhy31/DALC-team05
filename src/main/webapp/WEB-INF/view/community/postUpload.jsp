@@ -27,6 +27,10 @@
 	
 	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
+	@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+	* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
+
+
 	.main_title1 {
 	font-family: 'Nanum Gothic', sans-serif;
 	font-style: normal;
@@ -71,10 +75,13 @@
 		border:none;
 		font-size: 18px;
 		width: 100%;
-		padding: 10px 0 10px 0;
+		padding: 10px;
 		resize: none;
-		overflow-y:scroll;
-		cols: 10;
+	/* 	overflow-y:scroll; */
+		word-wrap: break-word;
+		word-break: break-word;
+	
+		overflow: hidden;
 	}
 	
 	input:focus {outline:none;}
@@ -89,21 +96,27 @@
 
 	
 	</style>
+	<script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
 </head>
 
 <body style="width: 70%; margin: 0 auto 50px auto;" >
 	<div class="main_title1"> 커뮤니티 글쓰기 </div>
 	<hr>
 	<div class="post_border">
+		<div>
+			<button class="single_round_btn" style="font-size: 14px;" disabled>${sick}</button>
+			<font style="color: #B0B0B0">&nbsp; > &nbsp;</font> <font style="font-size: 14px; font-weight: 600">${post.commu_name}</font>
+		</div>
 		<form name="form" action="<c:url value='/community/post/upload.do' />" enctype="multipart/form-data">
-		<input type="text" name="commu_code" value="${post.commu_code}" readonly>
+		<input type="hidden" name="commu_code" value="${post.commu_code}" readonly>
 			<table>
 				<tr>
 					<td><input class="post_title" type="text" name="post_title" required="required" placeholder="제목을 입력해주세요.">  </td> 
 				</tr>
 				<tr><td><hr></td></tr>
-				<tr> <!-- post_content부분 text대신 textarea로 바꾼 뒤에 세로 길이 조정해야함 -->
-					<td><input class="post_content" type="text" name="post_content" required="required" placeholder="내용을 입력하세요. "> </td>
+				<tr>
+					<td><!-- <input class="post_content" type="text" name="post_content" required="required" placeholder="내용을 입력하세요. ">  -->
+						<textarea rows="" cols="" class="post_content" name="post_content" required="required" placeholder="내용을 입력하세요. "></textarea></td>
 				</tr>
 				<tr>
 					<td style="text-align: center;"><input type="submit" class="single_square_btn" value="등록" onclick="">	</td>
@@ -112,7 +125,16 @@
 		</form>
 	</div>
 
-
-
 </body>
+
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+		  var $textarea = document.querySelector("textarea");
+		  $textarea.addEventListener('keyup', function(e) {
+		    this.style.height = "auto";
+		    this.style.height = this.scrollHeight + "px";
+		  });$textarea.dispatchEvent(new Event('keyup'));
+		});
+</script>
+
 </html>

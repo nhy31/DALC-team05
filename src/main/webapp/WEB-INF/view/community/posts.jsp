@@ -27,6 +27,9 @@
 	<style>
 	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
+	@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+	* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
+
 	.main_title1 {
 	font-family: 'Nanum Gothic', sans-serif;
 	font-style: normal;
@@ -167,10 +170,11 @@
 				<td><div class="main_title1">${c.commu_name}</div>
 					<div class="add">${c.commu_introduce} </div></td>
 					
-				<td style="text-align: right"><input type ="button" value="글쓰기" class="single_square_btn" style="margin-left: 30%;"
+				<td style="text-align: right"> <!-- 내가 가입한 커뮤니티가 아니라면 글쓰기 버튼이 안보여야 할 듯  -->
+					<%-- <c:if test="${}"> --%> <!-- 내가 가입한 커뮤니티일 경우 true 반환해서 글쓰기 버튼 보임  -->
+					<input type ="button" value="글쓰기" class="single_square_btn" style="margin-left: 30%;"
 					onclick="location.href='<c:url value='/community/post/upload'>
-					<c:param name="commu_code" value="${c.commu_code}"></c:param>
-					</c:url>'"></td>
+					<c:param name="commu_code" value="${c.commu_code}"></c:param></c:url>'"> <%-- </c:if> --%></td>
 			</tr>
 		</table>
 		
