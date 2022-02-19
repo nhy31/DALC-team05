@@ -21,6 +21,7 @@ import dongduk.dalc05.aah.domain.Exercise;
 import dongduk.dalc05.aah.domain.Media;
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Recipe;
+import dongduk.dalc05.aah.service.ExerciseService;
 import dongduk.dalc05.aah.service.RecipeService;
 
 @Controller
@@ -28,6 +29,8 @@ public class MainController {
 	
 	@Autowired
 	private RecipeService recipeService;
+	@Autowired
+	private ExerciseService exerciseService;
 	
 	
 	
@@ -122,18 +125,41 @@ public class MainController {
 	@RequestMapping(value="/main/search")
 	public ModelAndView searchKeyword(HttpServletRequest request,
 			@RequestParam ("keyword") String keyword) {
+		System.out.println("넘어온 키워드:" + keyword);
+		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("keyword", keyword);
 		mav.setViewName("main/search");
 		
-//		List<Recipe> recipeList = new ArrayList<>();
-//		recipeList = recipeService.search(keyword);
-//		
-//		List<Exercise> exerciseList = new ArrayList<>();
-//		list2 = exerciseSerice.search(searchWord);
-//		
-//		mav.addObject("recipes", list1);
-//		mav.addObject("exercises", list2);
+		//레시피 키워드 검색정보
+		List<Recipe> recipeList = new ArrayList<>();
+		recipeList = recipeService.getRecipeByKeyword(keyword);
+		mav.addObject("recipeByKeyword", recipeList);
+		
+		//홈트 키워드 검색정보
+		List<Exercise> exerciseList = new ArrayList<>();
+		exerciseList = exerciseService.getExerciseByKeyword(keyword);
+    	for(Exercise e: exerciseList) {
+    		int views = Integer.parseInt(e.getExercise_views());
+    		int view = views / 10000;
+    		if(view == 0) {
+    			view = views / 1000;
+    			e.setExercise_views(view + "천 회");
+    		}
+    		else
+    			e.setExercise_views(view + "만 회");
+    	}
+		mav.addObject("exerciseByKeyword", exerciseList);
+		
+		//미디어 키워드 검색정보
 
+		//커뮤 키워드 검색정보
+		
+		
+		//총 검색 개수
+		int sum = recipeList.size() + exerciseList.size();
+		mav.addObject("sum", sum);
+		
 		return mav;
 	}
 }

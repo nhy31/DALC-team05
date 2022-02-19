@@ -36,5 +36,10 @@ public class RecipeServiceImpl implements RecipeService {
 	@Override
 	public void insertOrder(rOrder order) {
 		recipeDao.insertOrder(order);
+	}
+
+	@Override
+	public List<Recipe> getRecipeByKeyword(String keyword) {
+		return recipeDao.getRecipeByKeyword(keyword);
 	};
 }

@@ -40,4 +40,9 @@ public class RecipeDaoImpl implements RecipeDao {
 		
 	}
 
+	@Override
+	public List<Recipe> getRecipeByKeyword(String keyword) {
+		return recipeMapper.getRecipeByKeyword(keyword);
+	}
+
 }

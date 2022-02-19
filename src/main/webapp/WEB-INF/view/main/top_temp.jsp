@@ -27,8 +27,8 @@
 	</button>
 	
 	<div class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" >
-		<form action="<c:url value='/main/search'><c:param name="keyword" value="${keyword}"></c:param></c:url>" method="post">
-			<input class="form-control" type="text" placeholder="검색어를 입력하세요" aria-label="Search"/>
+		<form action="<c:url value='/main/search'/>" method="post">
+			<input class="form-control" name="keyword" value="${keyword}" placeholder="검색어를 입력하세요" aria-label="Search"/>
 		</form>
 	</div>
 	

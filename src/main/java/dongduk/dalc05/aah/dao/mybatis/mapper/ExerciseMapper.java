@@ -15,4 +15,6 @@ public interface ExerciseMapper {
 	//질병 별로 데이터 불러오기
 	List<Exercise> getExerciseBySick(int sick_code);
 	
+	//키워드로 데이터 불러오기
+	List<Exercise> getExerciseByKeyword(String keyword);
 }

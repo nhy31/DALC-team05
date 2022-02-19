@@ -16,4 +16,11 @@
 		FROM exercise
 		WHERE sick_code = #{sick_code}
 	</select>
+	
+	<!-- 키워드 포함 홈트데이터 가져오기 -->
+	<select id="getExerciseByKeyword" parameterType="String" resultType="dongduk.dalc05.aah.domain.Exercise">
+		SELECT *
+		FROM exercise
+		WHERE exercise_title LIKE CONCAT('%',#{keyword},'%')
+	</select> 
 </mapper>

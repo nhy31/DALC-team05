@@ -18,5 +18,7 @@ public interface RecipeMapper {
 	void insertUse(rUse use);
 	
 	void insertOrder(rOrder order);
+	
+	List<Recipe> getRecipeByKeyword(String keyword);
 
 }

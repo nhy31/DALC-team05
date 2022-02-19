@@ -91,7 +91,11 @@ color: #4E4E4E;
 
 <body>
 <div class="content_start">
-	<div class="row"> 총 47 건의 검색결과가 있습니다. </div>
+	<div class="row"> 
+		<div class="col-lg-2 col-md-1 col-1"></div>
+		<div align="left" class="col-lg-8 col-md-10 col-10"> 총 ${sum}건의 검색결과가 있습니다.</div>
+	</div>
+	<br><br>
 	
 	<div class="row">
 		<div class="col-lg-2 col-md-1 col-1"></div>
@@ -101,12 +105,17 @@ color: #4E4E4E;
 				<c:forEach var="list" items="${recipeByKeyword}">
 				<table id="news-one">
 					<tr>
-					<td rowspan="3" style="width:22%; height:100%">
-						<a href=""><img class="img2" src="<c:url value='${list.url}'/>" ></a>
-					</td>
-					<td class="news-title">${list.title }</td>
-					<td class="news-contents">음식정보</td>
-					<td class="news-contents">음식정보</td>
+						<td rowspan="3" style="width:22%; height:100%">
+							<a href=""><img class="img2" src="<c:url value=''/>" ></a>
+						</td>
+						<td class="news-title"></td>
+					</tr>
+					<tr>
+						<td id="news-contents">채널명: 
+						</td>
+					</tr>
+					<tr>
+						<td class="news-info" align="right">분</td>
 					</tr>
 				</table>
 				</c:forEach>
@@ -122,12 +131,18 @@ color: #4E4E4E;
 				<c:forEach var="list" items="${exerciseByKeyword}">
 				<table id="news-one">
 					<tr>
-					<td rowspan="3" style="width:22%; height:100%">
-						<a href=""><img class="img2" src="<c:url value='${list.url}'/>" ></a>
-					</td>
-					<td class="news-title">${list.title }</td>
-					<td class="news-contents">음식정보</td>
-					<td class="news-contents">음식정보</td>
+						<td rowspan="3" style="width:22%; height:100%">
+							<a href=""><img class="img2" src="<c:url value='${list.exercise_thumb}'/>" ></a>
+						</td>
+						<td class="news-title">${list.exercise_title}</td>
+					</tr>
+					<tr>
+						<td id="news-contents">채널명: ${list.exercise_channel} <br>
+							조회수: ${list.exercise_views}
+						</td>
+					</tr>
+					<tr>
+						<td class="news-info" align="right">${list.exercise_length}분</td>
 					</tr>
 				</table>
 				</c:forEach>

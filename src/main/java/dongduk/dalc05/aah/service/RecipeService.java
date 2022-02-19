@@ -13,8 +13,9 @@ public interface RecipeService {
 	public void insertUse(rUse use);
 	
 	public void insertRecipe(Recipe recipe);
-	
 
 	public void insertOrder(rOrder order);
+	
+	public List<Recipe> getRecipeByKeyword(String keyword);
 
 }

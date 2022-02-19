@@ -14,4 +14,7 @@ public interface ExerciseDao {
 	
 	//질병 별로 정보 가져오기
 	List<Exercise> getExerciseBySick(int sick_code);
+	
+	//키워드로 정보 가져오기
+	List<Exercise> getExerciseByKeyword(String keyword);
 }

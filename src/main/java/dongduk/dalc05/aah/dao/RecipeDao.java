@@ -18,4 +18,6 @@ public interface RecipeDao {
 	void insertRecipe(Recipe recipe);
 	
 	void insertOrder(rOrder order);
+	
+	List<Recipe> getRecipeByKeyword(String keyword);
 }

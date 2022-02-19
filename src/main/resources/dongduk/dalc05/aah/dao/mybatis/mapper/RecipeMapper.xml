@@ -35,4 +35,10 @@
 		VALUES
 		(#{recipe_code}, #{rOrder_num}, #{rOrder_content})
 	</insert>
+	
+	<select id="getRecipeByKeyword" parameterType="String" resultType="dongduk.dalc05.aah.domain.Recipe">
+		SELECT *
+		FROM recipe
+		WHERE recipe_title LIKE CONCAT('%',#{keyword},'%')
+	</select> 
 </mapper>

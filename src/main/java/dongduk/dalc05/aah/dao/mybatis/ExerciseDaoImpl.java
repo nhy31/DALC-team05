@@ -27,4 +27,11 @@ public class ExerciseDaoImpl implements ExerciseDao{
 		return exerciseMapper.getExerciseBySick(sick_code);
 	}
 
+	//홈트 키워드 검색
+	@Override
+	public List<Exercise> getExerciseByKeyword(String keyword) {
+		return exerciseMapper.getExerciseByKeyword(keyword);
+	}
+	
+
 }
