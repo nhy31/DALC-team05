@@ -1,11 +1,3 @@
-:root{
-	--body-background-color: #f5f6f7;
-	--font-color: #4e4e4e;
-	--border-gray-color : #dadada;
-	--naver-green-color: #04c75a;
-	--naver-green-border-color: #06b350;
-}
-
 *{
 	margin: 0;
 	padding: 0;
@@ -80,7 +72,6 @@ body{
 .login-stay-sign-in{
 	width: 465px;
 	height: 52px;
-	
 	display: flex;
 	font-size: 15px;
 	color: #4e4e4e;
@@ -88,13 +79,15 @@ body{
 	justify-content: flex-start;
 	border-bottom: solid 1px var(--border-gray-color);
 }
-.login-stay-sign-in i{
-	font-size: 25px;
-	color: #9ba1a3;
-}
 
 .login-stay-sign-in span{
-	padding-left: 5px;
+	display:flex;	
+	position:absolute;
+	text-align:right;
+	align-items: right;
+	padding-right:5px;
+	
+	margin-right: 5px;
 	line-height: 25px;
 }
 

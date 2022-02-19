@@ -11,17 +11,25 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import dongduk.dalc05.aah.domain.Exercise;
 import dongduk.dalc05.aah.domain.Media;
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Recipe;
+import dongduk.dalc05.aah.service.RecipeService;
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	private RecipeService recipeService;
+	
+	
 	
 	// 완료 // 홈 메인페이지 시작
 	@RequestMapping(value="/main")
@@ -113,14 +121,14 @@ public class MainController {
 	
 	@RequestMapping(value="/main/search")
 	public ModelAndView searchKeyword(HttpServletRequest request,
-			@RequestParam ("searchWord") String searchWord) {
+			@RequestParam ("keyword") String keyword) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main/search");
 		
-//		List<Recipe> list1 = new ArrayList<>();
-//		list1= recipeService.search(searchWord);
+//		List<Recipe> recipeList = new ArrayList<>();
+//		recipeList = recipeService.search(keyword);
 //		
-//		List<Exercise> list2 = new ArrayList<>();
+//		List<Exercise> exerciseList = new ArrayList<>();
 //		list2 = exerciseSerice.search(searchWord);
 //		
 //		mav.addObject("recipes", list1);

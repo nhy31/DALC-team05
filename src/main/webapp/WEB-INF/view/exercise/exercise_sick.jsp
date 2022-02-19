@@ -27,44 +27,6 @@
 		</div>
 	</div>
 </c:forEach>
-
-	   	<!-- 테이블 부분 
-	   	<div>
-	   		<table border='0'>
-	   			<tr>
-	   				<td rowspan='4'>
-	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
-	   				</td>
-	   				<th>당뇨에 좋은 유산소 운동</th>
-	   			</tr>
-	   			<tr><td>저혈압, 고지혈증..</td></tr>
-	   			<tr><td>운동에 대한 정보</td></tr>
-	   			<tr><td>운동에 대한 정보</td></tr>
-	   		</table>
-	   		<table border='0'>
-	   			<tr>
-	   				<td rowspan='4'>
-	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
-	   				</td>
-	   				<th>집에서 하는 하체 근력운동</th>
-	   			</tr>
-	   			<tr><td>질병 키워드들</td></tr>
-	   			<tr><td>음식에 대한 정보</td></tr>
-	   			<tr><td>음색에 필요한 재료</td></tr>
-	   		</table>
-	   		<table border='0'>
-	   			<tr>
-	   				<td rowspan='4'>
-	   					<a href=""><img class="today_img" src="https://via.placeholder.com/210x120" alt="테스트용" ></a>
-	   				</td>
-	   				<th>홈트 제목</th>
-	   			</tr>
-	   			<tr><td>질병 키워드들</td></tr>
-	   			<tr><td>운동에 대한 정보</td></tr>
-	   			<tr><td>운동에 대한 정보</td></tr>
-	   		</table>
-	   	</div>
-	   	-->
       
 </body>
 </html>
