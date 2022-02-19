@@ -12,6 +12,9 @@ public interface MemberService{
 	// 아이디 중복확인
 	public Member checkId(String member_id);
 	
+	// 닉네임 중복확인
+	public Member checkNick(String member_nickName);
+	
 	// 탈퇴
 	public void deleteMember(int member_code);
 	

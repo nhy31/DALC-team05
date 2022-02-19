@@ -58,7 +58,7 @@
 					</a>
 				</div>
 				<p class="forget-msg">
-					회원이 아니신가요?   <a href="<c:url value='/main/join'/>"> 회원가입 </a>
+					회원이 아니신가요?   <a href="<c:url value='/member/join'/>"> 회원가입 </a>
 				</p>
 			</section>
 		</div>

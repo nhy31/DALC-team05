@@ -17,6 +17,9 @@ public interface MemberDao {
 	// 아이디 중복확인
 	Member checkId(String member_id);
 	
+	// 닉네임 중복확인
+	Member checkNick(String member_nickName);
+	
 	// 탈퇴
 	void deleteMember(int member_code);
 	

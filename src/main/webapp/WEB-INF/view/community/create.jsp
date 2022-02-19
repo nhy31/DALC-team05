@@ -36,20 +36,117 @@ font-weight: bold;
 color: #000000;
 }
 
-table, th, tr, td {
-border: 1px solid black;
+.issue-title {
+font-style: normal;
+font-size: 0.95vw;
+color: #4E4E4E;
+padding: 5px 10px 0px 10px;
 }
 
-.single_btn {
-        background-color: #851BD8;
-        border: none;
-        color: #ffffff;
-        font-size: 17px;
-        font-weight: bold;
-        text-align: center;
-        padding: 10px 23px;
-        border-radius: 79px;
+.issue-info {
+font-style: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+padding: 5px 10px 0px 10px;
+}
+
+.img1 {
+height: 100%;
+width:100%;
+border-radius: 6px;
+}
+
+.img2 {
+height: 100%;
+width:100%;
+border-radius: 6px;
+}
+
+.sick_btns {
+margin:10px 0px 0px 0px;
+}
+
+.news-div {
+margin: 25px 10px 0px 10px;
+}
+
+#news-one {
+margin: 0px 10px 25px 10px;
+}
+
+.news-title {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: bold;
+font-size: 1.3vw;
+color: #4E4E4E;
+}
+
+#news-contents {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+}
+
+.news-info {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+}
+
+.single_btn{
+margin: 0 0px 0 0;
+background-color: #851BD8;
+border: none;
+color: #ffffff;
+font-size: 12px;
+font-weight: bold;
+text-align: center;
+padding: 7px 15px;
+border-radius: 6px;
+}
+	
+.add {
+font-family: 'Nanum Gothic', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 13px;
+line-height: 15px;
+color: #8E8E8E;
+/* width: 60%; */
+}
+.create_form {
+margin: 20px 10px 100px 10px;
+}
+
+ .box-radio-input input[type="radio"]{
+        display: none;
       }
+
+      .box-radio-input input[type="radio"] + span{
+        display: inline-block;
+        background: none;
+        border: 1.5px solid #DDDDDD;
+        color: #4E4E4E;
+        padding: 7px 15px;
+        font-family: -apple-system;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 79px;
+        cursor: pointer;
+      }
+
+      .box-radio-input input[type="radio"]:checked + span{
+        border:1px solid #851BD8;
+        background:#851BD8;
+        color:#fff;
+        font-weight: bold;
+      }
+      
 
 
 </style>
@@ -58,31 +155,39 @@ border: 1px solid black;
     
 </head>
 
-<body >
+<body>
 <div class="content-start">
 	<div class="row">
-		<div class="col-md-1"></div>
-		<div align="center" class="col-md-10 col-12">
-			<div style="margin:20px 10px 20px 10px;" align="center" class="fs-4" id="main_title">커뮤니티 만들기</div>
-			<div style="margin-top:20px">
+		<div class="col-lg-2 col-md-1 col-1"></div>
+		<div align="left" class="col-lg-8 col-md-10 col-10">
+		<div class="fs-4" id="main_title">커뮤니티 생성하기</div>
+			<div class="add">관심있는 커뮤니티를 직접 생성하세요.</div>
+			<div class="create_form">
 				<form action="<c:url value='/community/create.do' />" enctype="multipart/form-data">
+					<div align="right"> <input class="single_btn" type="submit" value="완료"> </div>
 					<div class="mb-3">
-						<label class="form-label">관련질병 선택</label><br>
-						<select name="sick_code">
+						<label class="form-label">관심질병 선택</label>
+						<div class="sick_btns">     
 							<c:forEach var="illness" items="${sicks}">
-								<option value="${illness.sick_code}">${illness.sick_name}</option>
-							</c:forEach>
-						</select>
+							<label class="box-radio-input">
+							<input type="radio" name="sick_code" value="${illness.sick_code}" 
+								<c:if test="${illness.checked == 1}"> checked="checked"</c:if>>
+							<span>${illness.sick_name}</span></label>
+							</c:forEach>	
+						</div>
 					</div>
+
 					<div class="mb-3">
-						<label class="form-label">커뮤니티 이름</label><br>
-						<input style="width:40%;" type="text" name="commu_name" required="required">
+ 						<label for="exampleFormControlInput1" class="form-label">커뮤니티 이름</label>
+  						<input type="text" name="commu_name" required="required" class="form-control" id="exampleFormControlInput1" style="width:40%">
 					</div>
+			
+					
 					<div class="mb-3">
-						<label class="form-label">소개글</label><br>
-						<input  style="width:40%; height:100px" type="text" name="commu_introduce" required="required">
+  					<label for="exampleFormControlTextarea1" class="form-label">소개글</label>
+  					<textarea name="commu_introduce"  required="required" style="width:70%" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
 					</div>
-					<input class="single_btn" type="submit" value="완료">
+				
 				</form>
 			</div>
 		</div>

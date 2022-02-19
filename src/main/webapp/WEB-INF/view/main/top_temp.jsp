@@ -65,10 +65,9 @@
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">${member_nickName}님</a>
 				<ul class="dropdown-menu" aria-labelledby="dropdown03">
-				<li><a class="dropdown-item" href="<c:url value='/member/mypage'/>">정보수정</a></li>
+				<li><a class="dropdown-item" href="<c:url value='/member/my'/>">마이페이지</a></li>
               	<li><a class="dropdown-item" href="<c:url value="/member/diary" />">질병 캘린더</a></li>
               	<li><a class="dropdown-item" href="<c:url value="/member/mybox" />">보관함</a></li>
-              	<li><a class="dropdown-item" href="#">마이페이지</a></li>
               	<li><a class="dropdown-item" href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
               	<li><a class="dropdown-item" href="<c:url value="/member/delete.do" />">탈퇴</a></li>
             	</ul>

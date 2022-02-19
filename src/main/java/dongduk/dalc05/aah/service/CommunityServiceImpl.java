@@ -49,6 +49,10 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public Community getCommuInfo(int commu_code) { return commuDao.getCommuInfo(commu_code); }
 	
+	// 방금 생성된 커뮤코드 가져오기위한 메소드
+	@Override
+	public int getCommuCode(String commu_name) { return commuDao.getCommuCode(commu_name); }
+	
 	/* 게시글 post 관련*/
 	// 전체 게시글 
 	@Override
@@ -65,6 +69,10 @@ public class CommunityServiceImpl implements CommunityService {
 	// 게시글 업로드
 	@Override
 	public void insertPost(Post p) { commuDao.insertPost(p); }
+	
+	// 게시글 삭제
+	@Override
+	public void deletePost(int post_code) { commuDao.deletePost(post_code); }
 
 	// 게시글 자세히 보기
 	@Override

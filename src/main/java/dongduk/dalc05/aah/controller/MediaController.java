@@ -87,7 +87,7 @@ public class MediaController {
             	m.setTime(realTIME);
             	
             	if(realIMAGE.equals("")) {
-            		m.setImage("/images/noimg.jpg");
+            		m.setImage("/images/naver-news.png");
             	}
             	else {
             		m.setImage(realIMAGE);
@@ -108,18 +108,31 @@ public class MediaController {
     	// 질병별 건강 미디어
     	HttpSession session = request.getSession();
     	Member member = (Member) session.getAttribute("loginMember");
-
+    	
     	// 로그인 안하면 '질병:감기'
     	String mediaQuery = "감기";
+    	int mSickCode = 0;
     	
     	// 로그인 상태 O
     	if(member != null) {
     		mediaQuery = member.getSick_name();
+    		mSickCode = member.getSick_code();
         	if(mediaQuery == "기타질병") { // 기타 질병 선택한 사람도 '감기'
         		mediaQuery = "감기";
         	}
     	}
     	
+    	List<Sick> list = new ArrayList<>();
+  	    list = sickService.getSickList();
+    	for(int k=0; k<list.size(); k++) {
+    		if(list.get(k).getSick_code() ==  mSickCode) {
+    			list.get(k).setChecked(1);
+    			break;
+    		}
+    		
+    	}
+    	mav.addObject("sicks", list);
+    	 
     	ArrayList<Media> medias2 = new ArrayList<>();
     	
     	int page = 1;
@@ -173,7 +186,7 @@ public class MediaController {
             	m.setContents(realCONTENTS2);
             	
             	if(realIMAGE2.equals("")) {
-            		m.setImage("/images/noimg.jpg");
+            		m.setImage("/images/naver-news.png");
             	}
             	else {
             		m.setImage(realIMAGE2);
@@ -184,12 +197,7 @@ public class MediaController {
             page += 10;
     	}
             
-	    List<Sick> list = new ArrayList<>();
-	    list = sickService.getSickList();
-
 	    mav.addObject("medias2", medias2);
-	    mav.addObject("sicks", list);
-        
     	return mav;
     }
 
@@ -201,7 +209,7 @@ public class MediaController {
     	
     	ModelAndView mav = new ModelAndView();
   	    mav.setViewName("media/media_main");
-  	
+  	 
     	// ** 크롤링 1 **
     	// 오늘의 건강 이슈 8개 크롤링 -> 검색키워드 : 건강
     	int i = 1;
@@ -250,7 +258,7 @@ public class MediaController {
             	m.setTime(realTIME);
             	
             	if(realIMAGE.equals("")) {
-            		m.setImage("/images/noimg.jpg");
+            		m.setImage("/images/naver-news.png");
             	}
             	else {
             		m.setImage(realIMAGE);
@@ -271,6 +279,16 @@ public class MediaController {
     	// 질병별 건강 미디어
     	String query = sickService.getSickName(sick_code);
     	ArrayList<Media> medias2 = new ArrayList<>();
+    	
+  	    List<Sick> list = new ArrayList<>();
+	    list = sickService.getSickList();
+	    for(int k=0; k<list.size(); k++) {
+	    	if(list.get(k).getSick_code() ==  sick_code) {
+	    		list.get(k).setChecked(1);
+	    		break;
+	    	}	
+	    }
+	    mav.addObject("sicks", list);
     	
     	int page = 1;
     	while (page < 5) { 	
@@ -323,7 +341,7 @@ public class MediaController {
             	m.setContents(realCONTENTS2);
 
             	if(realIMAGE2.equals("")) {
-            		m.setImage("/images/noimg.jpg");
+            		m.setImage("/images/naver-news.png");
             	}
             	else {
             		m.setImage(realIMAGE2);
@@ -334,11 +352,7 @@ public class MediaController {
             page += 10;
     	}
             
- 	    List<Sick> list = new ArrayList<>();
- 	    list = sickService.getSickList();
-
  	    mav.addObject("medias2", medias2);
- 	    mav.addObject("sicks", list);
     	return mav;
     }
 }

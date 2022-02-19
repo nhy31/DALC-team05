@@ -49,6 +49,10 @@ public class CommunityDaoImpl implements CommunityDao {
 	@Override
 	public Community getCommuInfo(int commu_code) { return communityMapper.getCommuInfo(commu_code); }
 	
+	// 방금 생성된 커뮤코드 가져오기위한 메소드
+	@Override
+	public int getCommuCode(String commu_name) { return communityMapper.getCommuCode(commu_name); }
+	
 	// 전체 게시글 
 	@Override
 	public List<Post> getAllPosts() { return communityMapper.getAllPosts(); }
@@ -64,6 +68,10 @@ public class CommunityDaoImpl implements CommunityDao {
 	// 게시글 업로드
 	@Override
 	public void insertPost(Post p) { communityMapper.insertPost(p); }
+	
+	// 게시글 삭제
+	@Override
+	public void deletePost(int post_code) { communityMapper.deletePost(post_code); }
 
 	// 게시글 자세히 보기
 	@Override

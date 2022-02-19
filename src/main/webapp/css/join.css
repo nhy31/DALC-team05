@@ -39,3 +39,10 @@ table, td{
 	height: 1px;
 	margin: 30px 60px;
 }
+
+div.col-sm-10 i{
+    position: absolute;
+    left: 75%;
+    top: 27px;
+    color: orange;
+}

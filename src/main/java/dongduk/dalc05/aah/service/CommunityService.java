@@ -17,12 +17,14 @@ public interface CommunityService {
 	public void insertCmember(cMember cm); // 커뮤 가입
 	void cancelCmember(cMember cm); // 커뮤가입 해지 
 	public Community getCommuInfo(int commu_code); // 커뮤정보 가져오가기
+	public int getCommuCode(String commu_name); // 방금 생성된 커뮤코드 가져오기위한 메소드
 	
 	/* 게시글 post 관련*/
 	public List<Post> getAllPosts(); // 전체 게시글 
 	public List<Post> getBestPosts(); // 전체게시판 게시글 인기순 10개 보여주기
 	public List<Post> getCommuPosts(int commu_code); // 해당 커뮤의 게시글들
 	public void insertPost(Post p); // 게시글 업로드
+	public void deletePost(int post_code); // 게시글 삭제
 	public Post postDetail(int post_code); // 게시글 자세히 보기
 	void hitsCount(int post_code); // 게시글 조회 (조회수증가)
 }
