@@ -31,6 +31,7 @@ public interface CommunityMapper {
 	void deletePost(int post_code); // 게시글 삭제
 	Post postDetail(int post_code); // 게시글 자세히 보기
 	void hitsCount(int post_code); // 게시글 조회 (조회수증가)
+	int countComment(int post_code); // 게시글의 댓글수 카운트
 	
 	/* 댓글 comment 관련 */
 	void insertComment(Comment c); // 댓글 업로드

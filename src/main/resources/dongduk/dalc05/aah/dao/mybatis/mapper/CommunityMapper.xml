@@ -115,6 +115,13 @@
 		WHERE post_code = #{post_code}
    </update>
    
+   <!-- 게시글의 댓글수 카운트 -->
+   <select id="countComment" parameterType="Integer" resultType="Integer">
+      Select count(*)
+      FROM comment
+      WHERE post_code = #{post_code}
+    </select>
+   
    	<!-- 댓글 업로드 -->
     <insert id="insertComment" parameterType="dongduk.dalc05.aah.domain.Comment"> 
        insert into comment

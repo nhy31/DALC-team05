@@ -28,6 +28,7 @@ public interface CommunityService {
 	public void deletePost(int post_code); // 게시글 삭제
 	public Post postDetail(int post_code); // 게시글 자세히 보기
 	void hitsCount(int post_code); // 게시글 조회 (조회수증가)
+	int countComment(int post_code); // 게시글의 댓글수 카운트
 	
 	/* 댓글 comment 관련 */
 	public void insertComment(Comment c); // 댓글 업로드

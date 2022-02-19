@@ -14,11 +14,10 @@ public class Comment {
 	@DateTimeFormat (pattern ="yyyy/MM/dd HH:mm") private Date comment_date;
 	private int comment_depth; // 0 or 1
 	
-	
 	// only domain
 	private String member_nickName;
 	private String member_image;
-	
+
 	public Comment() {}
 	
 	public Comment(int post_code, int member_code, String comment_content, Date comment_date, String member_nickName, String member_image, int comment_depth) {

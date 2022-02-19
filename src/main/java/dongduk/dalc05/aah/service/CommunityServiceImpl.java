@@ -82,6 +82,10 @@ public class CommunityServiceImpl implements CommunityService {
 	// 게시글 조회 (조회수증가)
 	@Override
 	public void hitsCount(int post_code) { commuDao.hitsCount(post_code); }
+	
+	// 게시글의 댓글수 카운트
+	@Override
+	public int countComment(int post_code) { return commuDao.countComment(post_code); }
 
 	// 댓글 업로드
 	@Override

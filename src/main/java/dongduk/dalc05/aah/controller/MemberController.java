@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -77,8 +78,7 @@ public class MemberController {
     		MultipartFile img_file
 			) {
 		
-		System.out.print("이미지확인");
-		
+		// DB에 기본정보 insert -> memberService.signUp(memberDTO);
 		String member_image = imageUtil.uploadImage(request, img_file);
 		
 		if(member_image == null) {
@@ -88,6 +88,20 @@ public class MemberController {
 		Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone,
 				member_birth, sick_code, member_allergy, member_image, member_sex);
 		memberService.insertMember(member);
+
+//        //임의의 authKey 생성 & 이메일 발송
+//        String authKey = mss.sendAuthMail(memberDTO.getEmail());
+//        memberDTO.setAuthKey(authKey);
+//
+//        Map<String, String> map = new HashMap<String, String>();
+//        map.put("email", memberDTO.getEmail());
+//        map.put("authKey", memberDTO.getAuthKey());
+//        System.out.println(map);
+//
+//        //DB에 authKey 업데이트
+//        memberService.updateAuthKey(map);
+//		
+
 		
 		model.addAttribute("msg", "가입을 축하합니다! 로그인을 해주세요");
         model.addAttribute("url","/member/login");

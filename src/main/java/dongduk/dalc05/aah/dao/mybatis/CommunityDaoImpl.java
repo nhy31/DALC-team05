@@ -94,6 +94,10 @@ public class CommunityDaoImpl implements CommunityDao {
 	@Override
 	public  List<Comment> getComments(int post_code) { return communityMapper.getComments(post_code); }
 
+	// 게시글의 댓글수 카운트
+	@Override
+	public int countComment(int post_code) { return communityMapper.countComment(post_code); }
+
 
 }
 

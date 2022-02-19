@@ -125,17 +125,20 @@ public class CommunityController {
 	   if(commu_code == 0) {
 		   list = commuService.getAllPosts();
 	   }
-	   else {
+	   else {   
 		   list = commuService.getCommuPosts(commu_code);
 	   }
 	   
 	   for(int i=0; i<list.size(); i++) {
 		   int code = list.get(i).getMember_code();
+		   int post = list.get(i).getPost_code();
 		   list.get(i).setMember_nickName(memberService.getMemberInfo(code).getMember_nickName());
+		   list.get(i).setCommentNum(commuService.countComment(post));
+		   System.out.println("0219 댓글수" + list.get(i).getCommentNum());
 	   }
 	  mav.addObject("posts", list);
 	  
-	  System.out.print("0218 확인0" + list.size());
+	 
 	  
 	  Community c = commuService.getCommuInfo(commu_code);
 	  c.setSick_name(sickService.getSickName(c.getSick_code()));
