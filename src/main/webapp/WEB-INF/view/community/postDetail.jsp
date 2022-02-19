@@ -10,6 +10,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- 부트스트랩 css -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!-- 부트스트랩 js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 <!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
@@ -164,80 +169,54 @@
 
 		<!-- 남이 쓴 댓글들   -->
 		<hr>
-		<div style="font-size: 22px;">댓글 </div>
-		<table style="margin-top: 10px;">
-			<colgroup>
-				<col width="10%"/>
-				<col width="80%"/>
-				<col width="10%"/>
-			</colgroup>
-			<tr style="vertical-align:top; padding-top: 5px;">
-				<td rowspan="3" style="margin: 5px;"><img class="member_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Grey_background.jpg/1200px-Grey_background.jpg.jpg"/>  </td>
-				<td class="member_nickname">유저 닉네임  </td>
-				<td rowspan="3" style="text-align:right; padding-right: 30px;">신고 </td>
-			</tr>
-			<tr>
-				<td style="font-size: 16px; margin-top: 5px;">댓글 내용  </td>
-			</tr>
-			<tr>
-				<td class="post_add_left" style="margin-top: 10px;"><font style="margin-right: 8px;">날짜</font>  
-					<font>답글쓰기 </font>
-				</td>
-			</tr>
-		</table>
-	
+		<div style="font-size: 22px;">댓글</div>
+			<c:forEach var="m" items="${comments}">
+				<table style="margin-top: 10px;">
+				
+					<colgroup>
+						<col width="10%"/>
+						<col width="80%"/>
+						<col width="10%"/>
+					</colgroup>
+					<tr style="vertical-align:top; padding-top: 5px;">
+						<td rowspan="3" style="margin: 5px;"><img class="member_img" src="<c:url value='${m.member_image}'/>"/>  </td>
+						<td class="member_nickname">${m.member_nickName}</td>
+						<td rowspan="3" style="text-align:right; padding-right: 30px;">신고 
+					</tr>
+					<tr>
+						<td style="font-size: 16px; margin-top: 5px;">${m.comment_content}</td>
+					</tr>
+					<tr>
+						<td class="post_add_left" style="margin-top: 10px;"><font style="margin-right: 8px;">
+						<fmt:formatDate value="${m.comment_date}" pattern="yy/MM/dd HH:mm"/></font>  
+							<font>답글쓰기${m.comment_depth} </font>
+							
+					
+						</td>
+					</tr>
+				</table>
+			</c:forEach>
 		<hr>
 	
 		<!--  내가 댓글 쓰기  -->
-		<table class="reply_border">
-			<tr>
-				<td class="member_nickname" style="padding: 30px 10px 5px 30px;">${me.member_nickName} </td>
-			</tr>		
-			<tr>
-				<td style="padding: 5px 30px 10px 30px;">	<!-- input type textarea로 바꿔야할듯  -->
-					<input class="reply_content" type="text" name="comment_content" placeholder="댓글을 남겨주세요."></td>
-			</tr>
-			<tr>
-				<td style="text-align: right; padding: 10px 30px 30px 30px"><input class="single_square_btn" type="submit" value="등록" onclick=""></td>
-			</tr>
-		</table>
+		<form action="<c:url value='/community/post/comment/upload' />">
+			<table class="reply_border">
+				<tr>
+					<td class="member_nickname" style="padding: 30px 10px 5px 30px;">${me.member_nickName}
+						<input type="hidden" name="post_code" value="${post.post_code}"> </td>
+				</tr>		
+				<tr>
+					<td style="padding: 5px 30px 10px 30px;">	<!-- input type textarea로 바꿔야할듯  -->
+						<input class="reply_content" type="text" name="comment_content" placeholder="댓글을 남겨주세요." required></td>
+				</tr>
+				<tr>
+					<td style="text-align: right; padding: 10px 30px 30px 30px"><input class="single_square_btn" type="submit" value="등록" ></td>
+				</tr>
+			</table>
+		</form>
 	</div>
 
 
-	<br>==============<br>
-	<!-- 기능test 임시테스트 -->
-	post.post_title: ${post.post_title} <br>
-	post.post_title: ${post.post_title}<br>
-	post.post_title: ${post.post_title}<br>
-	post.commu_code:: ${post.commu_code}<br>
-	post.commu_name: ${post.commu_name}<br>
-	post.member_code: ${post.member_code}
-	post.post_hits: ${post.post_hits}<br>
-	post.post_uploadDate: ${post.post_uploadDate} <br>
-	post.member_nickName: ${post.member_nickName} <br>
-	myNick: ${myNick} <br>
 
-
-
-	<div>댓글</div>
-
-	<!-- 기능test 임시로쓴거 table -->
-	<div> 나의댓글창
-	<form action="">
-	<table style="border: 1px solid blue;">
-	<tr >
-	<td style="border: 1px solid blue;" rowspan="2">내 프로필 이미지: ${me.member_image}</td>
-	<td style="border: 1px solid blue;">내 닉네임: ${me.member_nickName}</td>
-	</tr>
-	<tr>
-	<td style="border: 1px solid blue;" ><input type="text" name="comment_content">
-	<input type="submit" value="댓글업로드" onclick=""></td>
-	</tr>
-	</table>
-	</form>
-	</div>
-	<div>
-
-	</div>
 </body>
 </html>

@@ -115,4 +115,25 @@
 		WHERE post_code = #{post_code}
    </update>
    
+   	<!-- 댓글 업로드 -->
+    <insert id="insertComment" parameterType="dongduk.dalc05.aah.domain.Comment"> 
+       insert into comment
+       (post_code, member_code, comment_content,
+				comment_date, comment_depth)
+       values (#{post_code}, #{member_code}, #{comment_content},
+				#{comment_date}, #{comment_depth});
+    </insert>
+    
+    <!-- 댓글 삭제 -->
+    <delete id="deleteComment" parameterType="Integer">
+    	delete from comment
+		WHERE comment_code = #{comment_code}
+    </delete>
+    
+    <!-- 댓글 모두 가져오기 -->
+    <select id="getComments" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Comment">
+      Select *
+      FROM comment
+    </select>
+  
 </mapper>

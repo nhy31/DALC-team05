@@ -254,7 +254,7 @@ public class MemberController {
         List<Sick> list = new ArrayList<>();
     	list = sickService.getSickList();
     	
-    	// 수정 : jstl이나 jQuery 더 알아보고 바꿀수 있으면 바꾸기 
+    	// 
     	for(int i=0; i<list.size(); i++) {
     		if(list.get(i).getSick_code() == m.getSick_code()) {
     			list.remove(i);

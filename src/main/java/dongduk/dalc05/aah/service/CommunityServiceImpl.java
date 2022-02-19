@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dongduk.dalc05.aah.dao.CommunityDao;
+import dongduk.dalc05.aah.domain.Comment;
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
 import dongduk.dalc05.aah.domain.cMember;
@@ -81,5 +82,17 @@ public class CommunityServiceImpl implements CommunityService {
 	// 게시글 조회 (조회수증가)
 	@Override
 	public void hitsCount(int post_code) { commuDao.hitsCount(post_code); }
+
+	// 댓글 업로드
+	@Override
+	public void insertComment(Comment c) { commuDao.insertComment(c); }
+	
+	// 댓글 삭제
+	@Override
+	public void deleteComment(int comment_code) { commuDao.deleteComment(comment_code); } 
+	
+	// 댓글 모두 가져오기
+	@Override
+	public  List<Comment> getComments(int post_code) { return commuDao.getComments(post_code); } 
 
 }

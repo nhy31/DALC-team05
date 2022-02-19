@@ -2,6 +2,7 @@ package dongduk.dalc05.aah.service;
 
 import java.util.List;
 
+import dongduk.dalc05.aah.domain.Comment;
 import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Post;
 import dongduk.dalc05.aah.domain.cMember;
@@ -27,4 +28,9 @@ public interface CommunityService {
 	public void deletePost(int post_code); // 게시글 삭제
 	public Post postDetail(int post_code); // 게시글 자세히 보기
 	void hitsCount(int post_code); // 게시글 조회 (조회수증가)
+	
+	/* 댓글 comment 관련 */
+	public void insertComment(Comment c); // 댓글 업로드
+	public void deleteComment(int comment_code); // 댓글 삭제
+	public List<Comment> getComments(int post_code); // 댓글 모두 가져오기
 }
