@@ -32,6 +32,10 @@
 
 	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
+	@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+	* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
+
+
 	.main_title1 {
 	font-family: 'Nanum Gothic', sans-serif;
 	font-style: normal;
@@ -115,7 +119,7 @@
 		border:none;
 		font-size: 16px;
 		width: 100%;
-		padding: 10px 0 10px 0;
+		padding: 10px;
 		resize: none;
 		overflow-y:scroll;
 		cols: 10;
@@ -163,7 +167,7 @@
 					<font class="post_add_right">URL 복사</font> </td>
 			</tr>
 			<tr>
-				<td colspan="2"><div style="font-size: 18px; margin-top: 20px;">${post.post_content}</div></td>
+				<td colspan="2"><div style="font-size: 18px; margin-top: 20px; white-space:pre;">${post.post_content}</div></td>
 			</tr>
 		</table>
 
