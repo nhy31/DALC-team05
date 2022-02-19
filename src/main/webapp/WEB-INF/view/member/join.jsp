@@ -246,19 +246,19 @@
 		
 		<div class="col-sm-10">
 			<div class="form-check">
-		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault1" checked>
+		  <input class="form-check-input" type="radio" name="member_sex" value="정보 미제공" id="flexRadioDefault1" checked>
 		  <label class="form-check-label" for="flexRadioDefault1">
 		    정보 미제공
 		  </label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault2">
+		  <input class="form-check-input" type="radio" name="member_sex" value="남성" id="flexRadioDefault2">
 		  <label class="form-check-label" for="flexRadioDefault2">
 		   남성
 		  </label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault3">
+		  <input class="form-check-input" type="radio" name="member_sex" value="여성" id="flexRadioDefault3">
 		  <label class="form-check-label" for="flexRadioDefault3">
 		   여성
 		  </label>

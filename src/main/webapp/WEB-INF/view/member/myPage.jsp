@@ -226,19 +226,19 @@
 		
 		<div class="col-sm-10">
 			<div class="form-check">
-		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault1"	<c:if test="${me.member_sex == '정보 미제공'}"> checked</c:if>>
+		  <input class="form-check-input" type="radio" value="정보 미제공" name="member_sex" id="flexRadioDefault1"	<c:if test="${me.member_sex == '정보 미제공'}"> checked</c:if>>
 		  <label class="form-check-label" for="flexRadioDefault1">
 		    정보 미제공
 		  </label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault2" <c:if test="${me.member_sex == '남자'}">checked</c:if>>
+		  <input class="form-check-input" type="radio" value="남성" name="member_sex" id="flexRadioDefault2" <c:if test="${me.member_sex == '남성'}">checked</c:if>>
 		  <label class="form-check-label" for="flexRadioDefault2">
 		   남성
 		  </label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault3" <c:if test="${me.member_sex == '여자'}">checked</c:if>>
+		  <input class="form-check-input" type="radio" value="여성" name="member_sex" id="flexRadioDefault3" <c:if test="${me.member_sex == '여성'}">checked</c:if>>
 		  <label class="form-check-label" for="flexRadioDefault3">
 		   여성
 		  </label>

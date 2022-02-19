@@ -327,10 +327,10 @@ public class MemberController {
 			Model model) {
 					
 		HttpSession session = request.getSession();
-		String member_id = (String) session.getAttribute("member_id");
+		Member m = (Member) session.getAttribute("loginMember");
 		
 		// DB에서 삭제 
-		memberService.deleteMember(memberService.getMemberCode(member_id));
+		memberService.deleteMember(m.getMember_code());
 		
 		// session.removeAttribute("member_code");
 		session.removeAttribute("member_id");
@@ -339,6 +339,6 @@ public class MemberController {
 		model.addAttribute("msg", "탈퇴되었습니다.");
         model.addAttribute("url","/");
   
-		return "alert/alert";
+		return "alert/success";
 	}	
 }
