@@ -26,6 +26,108 @@
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
 
+<script language="javascript">
+	function checkAll() {
+	    if (!checkExistData(form.member_name.value, "이름")) {
+	        return false;
+	    }
+	    if (!checkPassword(form.member_pw.value, form.member_pw2.value)) {
+	        return false;
+	    }
+	    if (!checkMail(form.member_id.value)) {
+	        return false;
+	    }
+	    if (!checkExistData(form.member_nickName.value, "닉네임")) {
+	        return false;
+	    }
+	    if (!checkExistData(form.member_birth.value, "생일")) {
+	        return false;
+	    }
+	    if (!checkExistData(form.member_phone, "전화번호")) {
+	        return false;
+	    }
+	    if (!checkIntro()) {
+	        return false;
+	    }
+	
+	    return true;
+	}
+
+	function checkMail(mail) {
+        //mail이 입력되었는지 확인하기
+        if (!checkExistData(mail, "이메일을"))
+            return false;
+ 
+        var emailRegExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
+        if (!emailRegExp.test(mail)) {
+            alert("이메일 형식이 올바르지 않습니다!");
+            form.mail.value = "";
+            form.mail.focus();
+            return false;
+        }
+        return true; //확인이 완료되었을 때
+    }
+
+	function checkExistData(value, dataName) {
+    	if (value == "") {
+            alert(dataName + " 입력해주세요!");
+            return false;
+        }
+        return true;
+    }
+
+	function checkPassword(password1, password2){
+
+		if (!checkExistData(password1, "비밀번호를"))
+            return false;
+        //비밀번호 확인이 입력되었는지 확인하기
+        if (!checkExistData(password2, "비밀번호 확인을"))
+            return false;
+	
+		var pw = password1;
+
+			
+		var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,32}$/;
+		var hangulcheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+		 
+		if(false === reg.test(pw)) {
+			alert('비밀번호는 8자 이상 32자 이하 이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
+			form.member_pw.focus();
+			return false;
+		}else if(/(\w)\1\1\1/.test(pw)){
+		 	alert('같은 문자를 4번 이상 사용하실 수 없습니다.');
+			form.member_pw.focus();
+		 	return false;
+		 }else if(pw.search(/\s/) != -1){
+		 	alert("비밀번호는 공백 없이 입력해주세요.");
+			form.member_pw.focus();
+		 	return false;
+		 }else if(hangulcheck.test(pw)){
+			 alert("비밀번호에 한글을 사용 할 수 없습니다.");
+			form.member_pw.focus();
+			return false; 
+		 }else if(!checkIt(password1, password2)){
+		 	return false;
+		 }else{
+			return true;
+		}
+		return true;
+	}
+	
+	function checkIt(password1, password2){
+		
+		if (password1 != password2) {
+			alert("비밀번호가 일치하지 않습니다");
+			return false;
+		}
+		if(form.member_pw.value.length <8 || form.member_pw.value.length > 32){
+			alert("비밀번호를 8~32자 사이로 입력하세요");
+			return false;
+		}
+		
+		return true;
+	}
+</script>
 <title>회원정보 수정</title>  
 </head>
 
@@ -124,19 +226,19 @@
 		
 		<div class="col-sm-10">
 			<div class="form-check">
-		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault1"	<c:if test="${me.member_sex == '정보 미제공'}"> checked</c:if>>
+		  <input class="form-check-input" type="radio" value="정보 미제공" name="member_sex" id="flexRadioDefault1"	<c:if test="${me.member_sex == '정보 미제공'}"> checked</c:if>>
 		  <label class="form-check-label" for="flexRadioDefault1">
 		    정보 미제공
 		  </label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault2" <c:if test="${me.member_sex == '남자'}">checked</c:if>>
+		  <input class="form-check-input" type="radio" value="남성" name="member_sex" id="flexRadioDefault2" <c:if test="${me.member_sex == '남성'}">checked</c:if>>
 		  <label class="form-check-label" for="flexRadioDefault2">
 		   남성
 		  </label>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="radio" name="member_sex" id="flexRadioDefault3" <c:if test="${me.member_sex == '여자'}">checked</c:if>>
+		  <input class="form-check-input" type="radio" value="여성" name="member_sex" id="flexRadioDefault3" <c:if test="${me.member_sex == '여성'}">checked</c:if>>
 		  <label class="form-check-label" for="flexRadioDefault3">
 		   여성
 		  </label>
