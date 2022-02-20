@@ -209,8 +209,8 @@ public class MemberController {
     	model.addAttribute("apiResult", apiResult);
     	
 		// 로그인 세션 처리 
-		session.setAttribute("loginMember", nickName);
-		//memberService.insertMember(new Member(naverId, "", name, nickName, phone,"", null, null, null, 1));
+    	session.setAttribute("naverName", nickName);
+		//memberService.insertMember(new Member(naverId, "1234", name, nickName, phone,"", null, null, null, 1));
 		model.addAttribute("msg", nickName + "님 방문을 환영합니다");
         model.addAttribute("url","/");
     	
@@ -266,6 +266,7 @@ public class MemberController {
 	public String logoutDo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.removeAttribute("loginMember");
+		session.removeAttribute("naverName");
 		
 		//네이버 소셜로그인으로 로그인했을 경우의 로그아웃
 		//session.invalidate();

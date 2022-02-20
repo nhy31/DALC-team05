@@ -38,6 +38,7 @@
 	
 	<% 
 		HttpSession ss = request.getSession();
+		
 		Member m = (Member) session.getAttribute("loginMember");
 		if(m == null)
 			ss.setAttribute("ses", 0);
@@ -46,6 +47,16 @@
 			ss.setAttribute("member_id", m.getMember_id());
 			ss.setAttribute("member_nickName", m.getMember_nickName());
 		}
+		
+		String n = (String) session.getAttribute("naverName");
+		if(n != null){
+			System.out.println("넘어온 n:" + n);
+			ss.setAttribute("ses", 1);
+			ss.setAttribute("member_id", "temp");
+			ss.setAttribute("member_nickName", n);
+		}
+		else
+			ss.setAttribute("ses", 0);
 	%>
 	
 	<!-- 비로그인 경우 -->
@@ -62,7 +73,7 @@
 		</div>
 	</c:if>
 	
-	<!-- 로그인한 경우 -->
+	<!-- 로그인한 경우 --> 
 	<c:if test="${ses == 1}">
 		<div class="col-md-3 text-end" id="navbarsExample03">
 			<ul class="navbar-nav me-auto mb-2 mb-sm-0 justify-content-center">
