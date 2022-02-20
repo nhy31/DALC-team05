@@ -72,13 +72,13 @@ public class MainController {
     	    int cnt = 0; 
             for (Element option : contents) {
                 realURL = option.select("a[class=\"news_tit\"]").select("a").attr("href");
-                System.out.println("url " + realURL);
+                //System.out.println("url " + realURL);
 
                 realTITLE = option.select("a[class=\"news_tit\"]").select("a").attr("title");
-                System.out.println("title " + realTITLE);
+                //System.out.println("title " + realTITLE);
                 
             	realIMAGE = option.select("a[class=\"dsc_thumb\"]").select("img[class=\"thumb api_get\"]").attr("src");
-            	System.out.println("image " + realIMAGE);
+            	//System.out.println("image " + realIMAGE);
 
             	if(realIMAGE.equals("")) {
             		realIMAGE = option.select("a[class=\"dsc_thumb type_video\"]").select("img[class=\"thumb api_get\"]").attr("src");
@@ -87,12 +87,12 @@ public class MainController {
             	realSOURCE = option.select("a[class=\"info press\"]").toString();
             	realSOURCE = realSOURCE.substring(realSOURCE.indexOf("</span>")+7);
             	realSOURCE = realSOURCE.substring(0, realSOURCE.indexOf("<"));
-            	System.out.println("source " + realSOURCE);
+            	//System.out.println("source " + realSOURCE);
             	
             	realTIME = option.select("div[class=\"info_group\"]").select("span[class=\"info\"]").toString();
             	realTIME = realTIME.substring(realTIME.indexOf(">")+1);
             	realTIME = realTIME.substring(0, realTIME.indexOf("<"));
-            	System.out.println("time " + realTIME);	
+            	//System.out.println("time " + realTIME);	
             			
             	Media md = new Media();
             	md.setUrl(realURL);

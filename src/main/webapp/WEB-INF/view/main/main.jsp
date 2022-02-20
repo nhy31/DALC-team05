@@ -30,7 +30,12 @@
 <title>아프다 아파, 현대사회</title>
 
 <style type="text/css">
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
+
 .content {
+ padding: 10px 10px 5px 10px;
  margin: 40px 200px 250px 200px;
 }
 
@@ -76,42 +81,36 @@ color: #000000;
 
 <body>
 
-     <div class="row" style="height: 294px;">
-     <div class="col-md-2"></div>
-    <div class="col-md-8" style="height: 294px; border:1px solid yellow;" >
-   <div  id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"   style="height: 294px; border:1px solid orange;">
-  <div class="carousel-indicators"  style="height: 294px; border:1pb blue;">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<div class="row" style="height: 300px;">
+	<div class="col-md-2"></div>
+    <div class="col-md-8" style="height: 300px;" >
+   		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height:300px;">
+  			<div class="carousel-inner"style="height: 300px;">
+    			<div class="carousel-item active"  style="height: 300px;">
+      				<img style="height: 300px; align: center;" src="<c:url value='/images/mainImage1.jpg'/>" class="d-block w-100" alt="...">
+    			</div>
+    			<div class="carousel-item">
+     				<img src="<c:url value='/images/mainImage2.jpg'/>" class="d-block w-100" alt="...">
+   			 	</div>
+    			<div class="carousel-item">
+      				<img src="<c:url value='/images/mainImage3.jpg'/>" class="d-block w-100" alt="...">
+    			</div>
+ 	 		</div>
+  			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    			<span class="visually-hidden">Previous</span>
+  			</button>
+  			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+  				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+  				<span class="visually-hidden">Next</span>
+  			</button>
+  	</div>
+  	<div class="col-md-2"></div>
   </div>
-  <div class="carousel-inner"  style="height: 294px; border:1px solid blue;">
-    <div class="carousel-item active"  style="height: 294px; border:1px solid black;">
-      <img style="height: 294px;" src="<c:url value='/images/main1.jpg'/>" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="<c:url value='/images/default.jpg'/>" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="<c:url value='/images/default.jpg'/>" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-  </div>
-  <div class="col-md-2"></div>
-  </div>
-  
 </div>
 
    <!-- 추천 레시피 부분 -->
-	<div class="content">
+	<div class="content"> 
 	   <br>
 	   <h1><font size="5" face="돋움">질병 별 추천 레시피</font></h1>
 	      <div align="left">

@@ -36,6 +36,8 @@ public class MemberController {
 	/* NaverLoginBO*/
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
+	@Autowired
+	private void setNaverLoginBO(NaverLoginBO naverLoginBO) { this.naverLoginBO = naverLoginBO;	}
 	
 	@Autowired
 	private MemberService memberService;
@@ -166,9 +168,9 @@ public class MemberController {
 	// 메인페이지 -> 로그인페이지 이동
     @RequestMapping(value = "/member/login")
     public String login(Model model, HttpSession session) {
-    	//String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-    	//model.addAttribute("NaverUrl", naverAuthUrl);
-    	//System.out.println("네이버인증: " + naverAuthUrl);
+    	String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+    	model.addAttribute("NaverUrl", naverAuthUrl);
+    	System.out.println("네이버인증: " + naverAuthUrl);
 		return "member/login";
     }
     
@@ -193,11 +195,26 @@ public class MemberController {
     	JSONObject response_obj = (JSONObject) jsonObj.get("response");
     	
     	String nickName = (String)response_obj.get("nickname");
-    	session.setAttribute("member_nickName", nickName);
-    	System.out.println("네이버 닉네임: " + nickName);
-    	//model.addAttribute("apiResult", apiResult);
+    	String naverId = (String)response_obj.get("email");
+    	String phone = (String)response_obj.get("mobile");
+    	String name = (String)response_obj.get("name");
     	
-    	return "main";
+    	System.out.println(apiResult);
+    	System.out.println("네이버 닉네임: " + nickName);
+    	System.out.println("네이버 아이디: " + naverId);
+    	System.out.println("네이버 폰넘버: " + phone);
+    	System.out.println("네이버 이름: " + name);
+    	
+    	session.setAttribute("sessionNaverId", nickName);
+    	model.addAttribute("apiResult", apiResult);
+    	
+		// 로그인 세션 처리 
+		session.setAttribute("loginMember", nickName);
+		//memberService.insertMember(new Member(naverId, "", name, nickName, phone,"", null, null, null, 1));
+		model.addAttribute("msg", nickName + "님 방문을 환영합니다");
+        model.addAttribute("url","/");
+    	
+        return "alert/success";
     }
     
 	// 로그인 시도

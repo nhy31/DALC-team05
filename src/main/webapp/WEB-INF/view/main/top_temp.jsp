@@ -15,6 +15,10 @@
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
 
+<style type="text/css">
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
+</style>
 </head>
 
 <body>
@@ -26,9 +30,9 @@
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	
-	<div class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0" >
+	<div class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
 		<form action="<c:url value='/main/search'/>" method="post">
-			<input class="form-control" name="keyword" value="${keyword}" placeholder="검색어를 입력하세요" aria-label="Search"/>
+			<input class="form-control input-lg" name="keyword" value="${keyword}" width="100%" placeholder="검색어를 입력하세요"/>
 		</form>
 	</div>
 	
@@ -81,18 +85,18 @@
   <hr>
   <nav class="navbar navbar-expand-sm navbar-white bg-white" aria-label="Third navbar example">
   	<div class="container-fluid">
-  		<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample03">
+  		<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample03" style="margin:0 auto;">
 			<ul class="navbar-nav">
-				<li class="nav-item">
+				<li class="nav-item" style="margin-right:150px;">
 					<a class="nav-link active" aria-current="page" href="<c:url value='/recipe'/>">레시피 추천</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" style="margin-right:150px;">
 					<a class="nav-link active" aria-current="page" href="<c:url value='/exercise/sick'/>">홈트레이닝 추천</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" style="margin-right:150px;">
 					<a class="nav-link active" aria-current="page" href="<c:url value='/media'/>">건강 미디어</a>
 				</li>
-				<li class="nav-item">
+				<li class="nav-item" style="margin-right:150px;">
 					<a class="nav-link active" aria-current="page" href="<c:url value='/community'/>">현대사회 커뮤니티</a>
 				</li>
 			</ul>

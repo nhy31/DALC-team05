@@ -50,7 +50,7 @@
 					<div class="login-stay-sign-in">
 						<input type="checkbox" id="checkbox" class="keepLogin" name="saveId" <%=cookieVal!=""?"checked" : ""%> >
 						<label class="keepLogin"> &nbsp;아이디 저장 </label>
-						<span><a href="<c:url value='/member/findPW'/>">비밀번호 찾기</a></span>
+						<span style="margin-left:250px; margin-right:0px;"><a href="<c:url value='/member/findPW'/>">비밀번호 찾기</a></span>
 					</div>
 				</form>
 			</section>

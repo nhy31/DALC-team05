@@ -16,9 +16,9 @@ import com.github.scribejava.core.oauth.OAuth20Service;
 
 public class NaverLoginBO {
 	//인증 요청문을 구성하는 파라미터
-	private final static String CLIENT_ID = "클라이언트 id";
-	private final static String CLIENT_SECRET = "클라이언트 secret";
-	private final static String REDIRECT_URI = "콜백 주소";
+	private final static String CLIENT_ID = "f8C_gBinqIlwJxrsCMdT";
+	private final static String CLIENT_SECRET = "LsW44IKQGg";
+	private final static String REDIRECT_URI = "http://localhost:8081/aah/main/callback";
 	private final static String SESSION_STATE = "oauth_state";
 	
 	//프로필
