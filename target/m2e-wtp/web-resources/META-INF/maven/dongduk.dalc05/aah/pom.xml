@@ -54,7 +54,13 @@
   </properties>
 
   <dependencies>
-  
+	
+	<!--이메일 -->
+	<dependency>
+    	<groupId>javax.mail</groupId>
+    	<artifactId>mail</artifactId>
+    	<version>1.4</version>
+	</dependency>
 
   	<!-- Naver Login API -->
   	<dependency>

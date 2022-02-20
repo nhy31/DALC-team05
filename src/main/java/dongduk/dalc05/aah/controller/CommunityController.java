@@ -121,6 +121,7 @@ public class CommunityController {
 	   mav.setViewName("community/posts");
 	   
 	   List<Post> list = new ArrayList<>();
+	   
 	   // 전체 게시판 선택 
 	   if(commu_code == 0) {
 		   list = commuService.getAllPosts();
@@ -137,8 +138,6 @@ public class CommunityController {
 		   System.out.println("0219 댓글수" + list.get(i).getCommentNum());
 	   }
 	  mav.addObject("posts", list);
-	  
-	 
 	  
 	  Community c = commuService.getCommuInfo(commu_code);
 	  c.setSick_name(sickService.getSickName(c.getSick_code()));
@@ -266,6 +265,7 @@ public class CommunityController {
 		
 		List<Comment> comments = new ArrayList<>();
 		comments = commuService.getComments(post_code);
+		System.out.print("0220확인" + post_code);
 		
 		for(int i=0; i<comments.size(); i++) {
 			Member writer = memberService.getMemberInfo(comments.get(i).getMember_code());

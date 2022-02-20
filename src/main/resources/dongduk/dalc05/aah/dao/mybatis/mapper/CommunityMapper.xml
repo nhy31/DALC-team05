@@ -141,6 +141,7 @@
     <select id="getComments" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Comment">
       Select *
       FROM comment
+      WHERE post_code = #{post_code}
     </select>
   
 </mapper>
