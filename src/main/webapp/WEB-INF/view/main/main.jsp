@@ -34,39 +34,8 @@
 
 * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
 
-.content {
- padding: 10px 10px 5px 10px;
- margin: 40px 200px 250px 200px;
-}
-
-.sick_box {
-width: 70px;
-height: 31px;
-background: #851BD8;
-border-radius: 79px; 
-float: left; "
-}
-
-.sick_box_font {
-font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 15px;
-line-height: 20px;
-text-align: center;
-color: #FFFFFF;
-}
-
-.container {
-margin-top: 30px;
-}
-
-.category {
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 21px;
-color: #000000;
+.content_start {
+padding: 10px 10px 5px 10px;
 }
 
 #main_title {
@@ -75,13 +44,112 @@ font-weight: bold;
 color: #000000;
 }
 
+.issue-title {
+font-style: normal;
+font-size: 0.95vw;
+color: #4E4E4E;
+padding: 5px 10px 0px 10px;
+}
+
+.issue-info {
+font-style: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+padding: 5px 10px 0px 10px;
+}
+
+.img1 {
+height: 100%;
+width:100%;
+border-radius: 6px;
+}
+
+.img2 {
+max-height: 100%;
+max-width:100%;
+border-radius: 6px;
+}
+
+.sick_btns {
+margin:10px 0px 0px 10px;
+}
+
+.news-div {
+margin: 10px 10px 0px 10px;
+}
+
+#news-one {
+margin: 0px 10px 25px 0px;
+}
+
+.news-title {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: bold;
+font-size: 1.2vw;
+color: #4E4E4E;
+}
+
+#news-contents {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+background: #E1E1E1;
+}
+
+.news-info {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+}
+
+.single_btn{
+background-color: #851BD8;
+border: none;
+color: #ffffff;
+font-size: 12px;
+font-weight: bold;
+text-align: center;
+padding: 7px 15px;
+border-radius: 79px;
+}
+
+.box-radio-input input[type="radio"]{
+display: none;
+}
+
+.box-radio-input input[type="radio"] + span{
+display: inline-block;
+background: none;
+border: 1.5px solid #DDDDDD;
+color: #4E4E4E;
+padding: 7px 15px;
+font-family: -apple-system;
+font-size: 12px;
+text-align: center;
+border-radius: 79px;
+cursor: pointer;
+}
+
+.box-radio-input input[type="radio"]:checked + span{
+border:1px solid #851BD8;
+background:#851BD8;
+color:#fff;
+font-weight: bold;
+}
+
+
 </style>
 
 </head>
 
 <body>
 
-<div class="row" style="height: 300px;">
+<div class="row" style="height: 300px; width:100%">
 	<div class="col-md-2"></div>
     <div class="col-md-8" style="height: 300px;" >
    		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height:300px;">
@@ -109,113 +177,112 @@ color: #000000;
   </div>
 </div>
 
-   <!-- 추천 레시피 부분 -->
-	<div class="content"> 
-	   <br>
-	   <h1><font size="5" face="돋움">질병 별 추천 레시피</font></h1>
-	      <div align="left">
-	      <button name="recipe_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
-	      <button name="recipe_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
-	      <button name="recipe_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
-	      <button name="recipe_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
-	      <button name="recipe_etc" class="disease_btn" onClick=""> 기타 </button>
-	   </div>
-	   <br>
-	   
-	   <!-- swiper : 위 버튼 누른거에 따라서 링크 구현필요할듯 -->
-	   <div class="swiper-container">
-	      <div class="swiper-wrapper">
-	         <div class="swiper-slide">
+
+<div class="content"> <br><br><br>
+
+	<!-- 질병 별 추천 레시피 -->
+	<div class="fs-4" id="main_title"> 질병 별 추천 레시피 </div>
+	<div class="sick_btns">
+		<c:forEach var="illness" items="${sickList}">
+			<label class="box-radio-input">
+			<input type="radio" onclick="location.href='<c:url value='/main'>
+			<c:param name="sick_code" value="${illness.sick_code}"></c:param></c:url>'" 
+			name="sick_code" value="${illness.sick_code}" <c:if test="${illness.checked == 1}"> checked="checked"</c:if>>
+			<span>${illness.sick_name}</span></label>
+		</c:forEach>
+	</div>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
 	            <a href=""><img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200" alt="테스트용" ></a>
 	         </div>
 	         <div class="swiper-slide">
 	            <a href=""><img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a>
 	         </div>
 	         <div class="swiper-slide"><a href="">
-	            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
+	            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a>
+	         </div>
 	         <div class="swiper-slide"><a href="">
-	            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
+	            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a>
+	         </div>
 	         <div class="swiper-slide"><a href="">
-	            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a></div>
+	            <img src="<c:url value='/images/testImg.jpg'/>" width="300" height="200"></a>
+	         </div>
 	      </div>
 	      
-	      <!-- 네비게이션 -->
 	      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
 	      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
-	      
-	      <!-- 페이징 -->
 	      <div class="swiper-pagination"></div>
-   		</div>
-   		<hr>
+    </div>
+   	<hr><br><br>
    
-	   <!-- 질병 별 추천 홈트레이닝 -->
-	    <br>
-	    <h1><font size="5" face="돋움">질병 별 추천 홈트레이닝</font></h1>
-	      <div align="left">
-	      <button name="training_diabetes" class="disease_btn" onClick=""> 당뇨 </button>
-	      <button name="training_high_pressure" class="disease_btn" onClick=""> 고혈압 </button>
-	      <button name="training_low_pressure" class="disease_btn" onClick=""> 저혈압 </button>
-	      <button name="training_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button>
-	      <button name="training_etc" class="disease_btn" onClick=""> 기타 </button>
-	   </div>
-	   <br>
-	   
-	   <div class="swiper-container">
-	      <div class="swiper-wrapper">
+	<!-- 질병 별 추천 홈트레이닝 -->
+	<div class="fs-4" id="main_title"> 질병 별 추천 홈트레이닝 </div>
+	<div class="sick_btns">
+		<c:forEach var="illness" items="${sickList}">
+			<label class="box-radio-input">
+			<input type="radio" onclick="location.href='<c:url value='/main'>
+			<c:param name="sick_code" value="${illness.sick_code}"></c:param></c:url>'" 
+			name="sick_code" value="${illness.sick_code}" <c:if test="${illness.checked == 1}"> checked="checked"</c:if>>
+			<span>${illness.sick_name}</span></label>
+		</c:forEach>
+	</div>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+	            <a href=""><img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200" alt="테스트용" ></a>
+	         </div>
 	         <div class="swiper-slide">
 	            <a href=""><img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a>
 	         </div>
-	         <div class="swiper-slide">
-	            <a href=""><img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200" alt="테스트용"></a>
+	         <div class="swiper-slide"><a href="">
+	            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a>
 	         </div>
 	         <div class="swiper-slide"><a href="">
-	            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
+	            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a>
+	         </div>
 	         <div class="swiper-slide"><a href="">
-	            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
-	         <div class="swiper-slide"><a href="">
-	            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a></div>
+	            <img src="<c:url value='/images/testImg2.jpg'/>" width="300" height="200"></a>
+	         </div>
 	      </div>
 	      
-	      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+	      <div class="swiper-button-next"></div><!-- 다음 버튼 -->
 	      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
-	      
 	      <div class="swiper-pagination"></div>
-	   </div>
-	   <hr>
-	   
-	   <!-- 건강 미디어 -->
-	   <br>
-	    <div  class="fs-4"  id="main_title">오늘의 건강 이슈</div>
-	    
-<!-- 	      <div align="left"> -->
-<!-- 	      <button name="media_diabetes" class="disease_btn" onClick=""> 당뇨 </button> -->
-<!-- 	      <button name="media_high_pressure" class="disease_btn" onClick=""> 고혈압 </button> -->
-<!-- 	      <button name="media_low_pressure" class="disease_btn" onClick=""> 저혈압 </button> -->
-<!-- 	      <button name="media_hyperlipidemia" class="disease_btn" onClick=""> 고지혈증 </button> -->
-<!-- 	      <button name="media_etc" class="disease_btn" onClick=""> 기타 </button> -->
-<!-- 	   	  </div> -->
-
-	   <div class="swiper-container">
-	      <div class="swiper-wrapper">
-	         <c:forEach var="list" items="${medias}">
-		      		<div class="swiper-slide" >
-			       		<table>
-			        		<tr><td style="text-align: center;"><a href="${list.url}" ><img class="img" src="<c:url value='${list.image}'/>" ></a></td></tr>
-			        		<tr><th style="padding:5px; font-size:1vw;">${list.title}</th></tr>
-			        		<tr><td style="font-size:1vw">${list.source}&nbsp;&nbsp;&nbsp;&nbsp;${list.time}</td></tr>
-			        	</table>
-		      		</div>
-		      	</c:forEach>
-	      </div>
-	      
-	      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-	      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
-	      
-	      <div class="swiper-pagination"></div>
-		</div>
-	</div>   
-   
-   <script>
+    </div>
+   	<hr><br><br>
+   	
+   	<!-- 건강 미디어 -->
+   	<div class="fs-4" id="main_title"> 오늘의 건강 이슈 </div>
+	<div class="sick_btns">
+		<c:forEach var="illness" items="${sickList}">
+			<label class="box-radio-input">
+			<input type="radio" onclick="location.href='<c:url value='/main'>
+			<c:param name="sick_code" value="${illness.sick_code}"></c:param></c:url>'" 
+			name="sick_code" value="${illness.sick_code}" <c:if test="${illness.checked == 1}"> checked="checked"</c:if>>
+			<span>${illness.sick_name}</span></label>
+		</c:forEach>
+	</div>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<c:forEach var="list" items="${medias}">
+				<div class="swiper-slide" >
+					<table>
+						<tr><td style="text-align: center;"><a href="${list.url}" ><img class="img" src="<c:url value='${list.image}'/>" ></a></td></tr>
+			        	<tr><th style="padding:5px; font-size:1vw;">${list.title}</th></tr>
+			        	<tr><td style="font-size:1vw">${list.source}&nbsp;&nbsp;&nbsp;&nbsp;${list.time}</td></tr>
+			        </table>
+		      	</div>
+		      </c:forEach>
+		</div> <br><br>
+		<div class="swiper-button-next"></div><!-- 다음 버튼 -->
+	    <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+	    <div class="swiper-pagination"></div>
+    </div>
+   	<br>
+</div> 
+	
+<script>
    new Swiper('.swiper-container', {
       slidesPerView : 4, // 동시에 보여줄 슬라이드 rotn
       spaceBetween : 10, // 슬라이드 간 간격
@@ -235,7 +302,7 @@ color: #000000;
          prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
       },   
    });
-   </script>
+</script>
    
 </body>
 </html>

@@ -21,8 +21,10 @@ import dongduk.dalc05.aah.domain.Exercise;
 import dongduk.dalc05.aah.domain.Media;
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Recipe;
+import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.ExerciseService;
 import dongduk.dalc05.aah.service.RecipeService;
+import dongduk.dalc05.aah.service.SickService;
 
 @Controller
 public class MainController {
@@ -31,13 +33,15 @@ public class MainController {
 	private RecipeService recipeService;
 	@Autowired
 	private ExerciseService exerciseService;
+	@Autowired
+	private SickService sickService;
 	
 	
 	
 	// 완료 // 홈 메인페이지 시작
 	@RequestMapping(value="/main")
-	public ModelAndView main(
-			HttpServletRequest request) throws IOException {
+	public ModelAndView main(HttpServletRequest request,
+			@RequestParam(value="sick_code",defaultValue="0")int sick_code) throws IOException {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("main/main");
@@ -118,7 +122,17 @@ public class MainController {
     	
   	    mav.addObject("medias", medias);
 		
-		
+  	    //sick버튼
+    	List<Sick> sickList = new ArrayList<>();
+    	sickList = sickService.getSickList(); 	    
+    	for(int j = 0; j < sickList.size(); j++) {
+    		if(sickList.get(j).getSick_code() == sick_code) {
+    			sickList.get(j).setChecked(1);
+    			break;
+    		}
+    	}
+    	mav.addObject("sickList", sickList);
+    	
 		return mav;
 	}
 	

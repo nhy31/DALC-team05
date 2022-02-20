@@ -93,25 +93,29 @@ color: #4E4E4E;
 <div class="content_start">
 	<div class="row"> 
 		<div class="col-lg-2 col-md-1 col-1"></div>
-		<div align="left" class="col-lg-8 col-md-10 col-10"> 총 ${sum}건의 검색결과가 있습니다.</div>
+		<div align="left" class="col-lg-8 col-md-10 col-10"> 
+			총 <font color="red">${sum}</font>건의 검색결과가 있습니다.
+		</div>
 	</div>
 	<br><br>
 	
+	<!-- 레시피 부분 -->
 	<div class="row">
 		<div class="col-lg-2 col-md-1 col-1"></div>
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">레시피 추천</div>
 			<div class="news-div">
-				<c:forEach var="list" items="${recipeByKeyword}">
+				<c:forEach var="list" items="${recipeByKeyword}" begin="1" end="3" step="1" varStatus="status">
 				<table id="news-one">
 					<tr>
 						<td rowspan="3" style="width:22%; height:100%">
-							<a href=""><img class="img2" src="<c:url value=''/>" ></a>
+							<a href=""><img class="img2" src="<c:url value=''/>" >이미지</a>
 						</td>
-						<td class="news-title"></td>
+						<td class="news-title">레시지 제목</td>
 					</tr>
 					<tr>
-						<td id="news-contents">채널명: 
+						<td id="news-contents">
+							레시피에 대한 설명들
 						</td>
 					</tr>
 					<tr>
@@ -119,60 +123,72 @@ color: #4E4E4E;
 					</tr>
 				</table>
 				</c:forEach>
+				<div class="fs-4" align="right">
+					<a href="<c:url value='/recipe'/>" >검색결과 더보기</a>
+				</div>
 			</div>
 		</div>
 	</div>
+	<br>
 	
+	<!-- 홈트 부분 -->
 	<div class="row">
 		<div class="col-lg-2 col-md-1 col-1"></div>
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">홈트레이닝 추천</div>
 			<div class="news-div">
-				<c:forEach var="list" items="${exerciseByKeyword}">
+				<c:forEach var="list" items="${exerciseByKeyword}" begin="1" end="3" step="1" varStatus="status">
 				<table id="news-one">
 					<tr>
 						<td rowspan="3" style="width:22%; height:100%">
-							<a href=""><img class="img2" src="<c:url value='${list.exercise_thumb}'/>" ></a>
+							<a href="<c:url value='${list.exercise_url}'/>">
+							<img class="img2" src="<c:url value='${list.exercise_thumb}'/>" ></a>
 						</td>
 						<td class="news-title">${list.exercise_title}</td>
 					</tr>
 					<tr>
 						<td id="news-contents">채널명: ${list.exercise_channel} <br>
-							조회수: ${list.exercise_views}
+							조회수: ${list.exercise_views} <br>
 						</td>
 					</tr>
 					<tr>
-						<td class="news-info" align="right">${list.exercise_length}분</td>
+						<td class="news-info" align="right"> ${list.exercise_length}분</td>
 					</tr>
 				</table>
 				</c:forEach>
+				<div class="fs-4" align="right">
+					<a href="<c:url value='/exercise/sick'/>" >검색결과 더보기</a>
+				</div>
 			</div>
 		</div>
 	</div>
+	<br>
 	
+	<!-- 현대 사회 -->
 	<div class="row">
 		<div class="col-lg-2 col-md-1 col-1"></div>
 		<div align="left" class="col-lg-8 col-md-10 col-10">
-			<div class="fs-4" id="main_title">건강 미디어</div>
+			<div class="fs-4" id="main_title">현대 사회</div>
 			<div class="news-div">
-				<c:forEach var="list" items="${mediaByKeyword}">
+				<c:forEach var="list" items="${commuByKeyword}" begin="1" end="3" step="1" varStatus="status">
 				<table id="news-one">
 					<tr>
 					<td rowspan="3" style="width:22%; height:100%">
-						<a href=""><img class="img2" src="<c:url value='${list.url}'/>" ></a>
+						<a href=""><img class="img2" src="<c:url value=''/>" ></a>
 					</td>
-					<td class="news-title">${list.title }</td>
+					<td class="news-title">커뮤니티 글 제목</td>
 					<td class="news-contents">음식정보</td>
 					<td class="news-contents">음식정보</td>
 					</tr>
 				</table>
 				</c:forEach>
+				<div class="fs-4" align="right">
+					<a href="<c:url value='/community'/>" >검색결과 더보기</a>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div class="row">
-	</div>
+	<br>
 	
 </div>
 
