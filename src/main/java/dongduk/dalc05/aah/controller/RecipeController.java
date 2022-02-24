@@ -13,6 +13,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.python.core.PyFunction;
+import org.python.core.PyObject;
+import org.python.util.PythonInterpreter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,11 +36,84 @@ public class RecipeController {
 	
 	@Autowired
 	private RecipeService recipeService;
-	
+
+	private static PythonInterpreter interpreter;
     // 메인페이지 -> 레시피페이지 이동
     @RequestMapping(value = "/recipe")
     public String recipe() {
+    	
 		return "recipe/recipe_main";
+    }
+    
+    @RequestMapping(value="/recipe/recipe_detail")
+    public String getTest() {
+    	// 받아오는 input 데이터 
+    	String[] inputData = {"195453", "fry", "normal", "3", "30"};
+    	
+        interpreter = new PythonInterpreter();
+        
+        // 자카드 유사도 함수
+        interpreter.exec("def jaccard_similarity(s1, s2):\n"+
+        				"	s1 = set(s1)\n"+
+        				"	s2 = set(s2)\n"+
+        				"	return float(len(s1 & s2)) / float(len(s1 | s2))");
+        
+        interpreter.exec("import csv");
+        
+        // input: 현재 보고있는 레시피
+        interpreter.exec("input = ['" + inputData[0] + "', '" + inputData[1] + "', '" + inputData[2] + "', '"
+        		+ inputData[3] + "', '" + inputData[4] + "']");
+        
+        // 파일 read
+//      interpreter.exec("f = open('./src/main/resources/csv/recipes.csv', 'r')"); //상대경로 (상대경로 안되면 절대경로로 한번 바꿔서 해보세요)
+        interpreter.exec("f = open('/Users/taeyeon/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
+        interpreter.exec("reader = csv.reader(f)");
+    	interpreter.exec("header = next(reader)");
+    	
+    	// recipe_list: recipe csv파일에 있는 레시피들에 대한 리스트
+    	// sim_list: 각 레시피에 대한 자카드 유사도를 담은 리스트
+    	interpreter.exec("recipe_list = list()");
+        interpreter.exec("sim_list = list()");
+        
+        // csv파일을 한줄씩 읽은 뒤 자카드 유사도 계산 후 리스트에 저장
+   		interpreter.exec("i = 0");
+   		interpreter.exec("for row in reader:\n" +
+   						"	recipe_list.append(row)\n" +
+   						"#	print(recipe_list[i])\n" +
+   						"	sim_list.append(jaccard_similarity(row, input))\n" +
+   						"#	print(sim_list[i])\n"+
+   						"	i+=1");
+   		
+   		interpreter.exec("f.close()");
+   		
+   		// 유사도 상위 5개 (본인 포함 6개) 인덱스 추출
+   		interpreter.exec("top = sorted(range(len(sim_list)), key=lambda i: sim_list[i])[-6:]");
+   		interpreter.exec("#print(top)");
+   		
+   		
+   		// 본인을 제외한 유사도 상위 레시피 5개
+   		interpreter.exec("result = []\n");
+   		
+   		interpreter.exec("for k in top:\n"
+   						+"	if recipe_list[k][0] != input[0]:\n"
+   						+"#		print(recipe_list[k])\n"
+   						+"		result.append(recipe_list[k][0])\n"
+   						+"#		print(recipe_list[k][0])\n");
+ 
+   		
+   		//obj에 들어있는 list가 추천 된 레시피코드
+   		PyObject obj = interpreter.eval("result");
+   		//		System.out.println("result: "+obj.toString());
+		
+   		//recipeCode는 5가지 유사한 recipecode가 들어있는 배열 
+		String[] recipeCode = obj.toString().split("', '");
+		recipeCode[0] = recipeCode[0].split("'")[1];
+		recipeCode[4] = recipeCode[4].split("'")[0];
+		for (String code : recipeCode ){
+			System.out.println(code);
+		}
+    	
+		return null;
     }
 	
 	@RequestMapping(value="/main/recipe/crawling")
