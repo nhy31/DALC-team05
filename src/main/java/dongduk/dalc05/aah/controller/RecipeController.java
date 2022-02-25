@@ -47,8 +47,8 @@ public class RecipeController {
     
     @RequestMapping(value="/recipe/recipe_detail")
     public String getTest() {
-    	// 받아오는 input 데이터 
-    	String[] inputData = {"195453", "fry", "normal", "3", "30"};
+    	//입력받은 recipecode 
+    	String inputData = "195453"; 
     	
         interpreter = new PythonInterpreter();
         
@@ -59,16 +59,23 @@ public class RecipeController {
         				"	return float(len(s1 & s2)) / float(len(s1 | s2))");
         
         interpreter.exec("import csv");
-        
-        // input: 현재 보고있는 레시피
-        interpreter.exec("input = ['" + inputData[0] + "', '" + inputData[1] + "', '" + inputData[2] + "', '"
-        		+ inputData[3] + "', '" + inputData[4] + "']");
-        
+
         // 파일 read
 //      interpreter.exec("f = open('./src/main/resources/csv/recipes.csv', 'r')"); //상대경로 (상대경로 안되면 절대경로로 한번 바꿔서 해보세요)
         interpreter.exec("f = open('/Users/taeyeon/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
         interpreter.exec("reader = csv.reader(f)");
     	interpreter.exec("header = next(reader)");
+    	
+    	// recipecode로 해당 내용 찾아서 input배열로 만듦 
+    	interpreter.exec("input = list()");
+    	interpreter.exec("i = 0");
+   		interpreter.exec("for row in reader:\n" +
+   						"#	print(row)\n"+
+   						"	if row[0] == str(" + inputData + "): \n" +
+   						"		input = row \n" + 
+   						"		break\n" +
+						"	i+=1");
+   		interpreter.exec("#print(input)");
     	
     	// recipe_list: recipe csv파일에 있는 레시피들에 대한 리스트
     	// sim_list: 각 레시피에 대한 자카드 유사도를 담은 리스트
@@ -87,7 +94,7 @@ public class RecipeController {
    		interpreter.exec("f.close()");
    		
    		// 유사도 상위 5개 (본인 포함 6개) 인덱스 추출
-   		interpreter.exec("top = sorted(range(len(sim_list)), key=lambda i: sim_list[i])[-6:]");
+   		interpreter.exec("top = sorted(range(len(sim_list)), key=lambda i: sim_list[i])[-5:]");
    		interpreter.exec("#print(top)");
    		
    		
