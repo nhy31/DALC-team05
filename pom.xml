@@ -54,7 +54,14 @@
   </properties>
 
   <dependencies>
-	
+  
+  	<!-- jython -->
+  	<dependency>
+   		<groupId>org.python</groupId>
+   		<artifactId>jython-standalone</artifactId>
+  		<version>2.7.2</version>
+ 	</dependency>
+
 	<!--이메일 -->
 	<dependency>
     	<groupId>javax.mail</groupId>

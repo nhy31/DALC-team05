@@ -19,13 +19,16 @@
 <!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 
 <title>아아현 레시피추천</title>
 
-<!-- 내부 스타일 링크 -->
-<link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
-
 <style type="text/css">
+
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 .content_start {
 padding: 10px 10px 5px 10px;
 }
@@ -38,22 +41,23 @@ color: #000000;
 
 .issue-title {
 font-style: normal;
-font-size: 0.95vw;
+font-size: 1.12vw;
 color: #4E4E4E;
-padding: 5px 10px 0px 10px;
+padding: 10px 10px 0px 12px;
 }
 
 .issue-info {
 font-style: normal;
-font-size: 0.9vw;
+font-size: 1vw;
 color: #4E4E4E;
-padding: 0px 10px 0px 10px;
+padding: 5px 10px 0px 12px;
 }
 
 .img1 {
 height: 100%;
-width:100%;
 border-radius: 6px;
+width: 100%;
+
 }
 
 .img2 {
@@ -67,7 +71,7 @@ margin:10px 0px 0px 10px;
 }
 
 .news-div {
-margin: 25px 10px 0px 10px;
+margin: 10px 10px 0px 10px;
 }
 
 #news-one {
@@ -78,16 +82,25 @@ margin: 0px 10px 25px 10px;
 padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: bold;
-font-size: 1.3vw;
+font-size: 1.2vw;
 color: #4E4E4E;
 }
 
-#news-contents {
+#news-contents1 {
 padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: normal;
 font-size: 0.9vw;
 color: #4E4E4E;
+}
+
+#news-contents2 {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+background: #E1E1E1;
 }
 
 #news-info {
@@ -99,14 +112,39 @@ color: #4E4E4E;
 }
 
 .single_btn{
-background-color: #851BD8;
-border: none;
-color: #ffffff;
-font-size: 12px;
+margin-top: 10px;
+background-color:#ffffff;;
+border: 1px solid #DDDDDD;
+color:#4E4E4E;
+font-size: 0.7vw;
 font-weight: bold;
 text-align: center;
-padding: 7px 15px;
+padding: 3px 9px;
 border-radius: 79px;
+}
+
+.box-radio-input input[type="radio"] {
+display: none;
+}
+
+.box-radio-input input[type="radio"] + span{
+display: inline-block;
+background: none;
+border: 1.5px solid #DDDDDD;
+color: #4E4E4E;
+padding: 7px 15px;
+font-family: -apple-system;
+font-size: 12px;
+text-align: center;
+border-radius: 79px;
+cursor: pointer;
+}
+
+.box-radio-input input[type="radio"]:checked + span{
+border:1px solid #851BD8;
+background:#851BD8;
+color:#fff;
+font-weight: bold;
 }
 </style>
 </head>
@@ -118,82 +156,89 @@ border-radius: 79px;
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">오늘의 인기 레시피</div>
 			<div class="swiper-container" >
-	   			<div class="swiper-wrapper"> <!-- 포이치반복문 들어갈곳 -->
-		        	<div class="swiper-slide">
-		        		<table>
-		        			<tr><td style="text-align: center;"><a href=""><img class="img1" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-		        			<tr><th class="issue-title">레시피 제목이 들어갈 자리입니다.</th></tr>
-		        			<tr><td class="issue-info">레시피에 대한 내용(조회수)</td></tr>
-		        			<tr><td class="issue-info">(조리시간 + 몇인분)</td></tr>
+	   			<div class="swiper-wrapper"> 
+		        	<c:forEach var="r" items="${bests}">
+		        		<div class="swiper-slide">
+		        		<table style="text-align:left;">
+		        			<tr><td style="text-align: center;"><a href="adsasasd">
+		        			<img class="img1" src="<c:url value='${r.recipe_img}'/>"></a></td></tr>
+		        			<tr><th class="issue-title">${r.recipe_title}</th></tr>
+		        			<tr><td class="issue-info">조회수 ${r.recipe_hits}회</td></tr>
 		        		</table>
 		            </div>
-		            <div class="swiper-slide">
-		        		<table>
-		        			<tr><td style="text-align: center;"><a href=""><img class="img1" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-		        			<tr><th class="issue-title">레시피 제목1</th></tr>
-		        			<tr><td class="issue-info">레시피에 대한 내용</td></tr>
-		        		</table>
-		            </div>
-		            <div class="swiper-slide">
-		        		<table>
-		        			<tr><td style="text-align: center;"><a href=""><img class="img1" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-		        			<tr><th class="issue-title">레시피 제목1</th></tr>
-		        			<tr><td class="issue-info">레시피에 대한 내용</td></tr>
-		        		</table>
-		            </div>
-		            <div class="swiper-slide">
-		        		<table>
-		        			<tr><td style="text-align: center;"><a href=""><img class="img1" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a></td></tr>
-		        			<tr><th class="issue-title">레시피 제목1</th></tr>
-		        			<tr><td class="issue-info">레시피에 대한 내용</td></tr>
-		        		</table>
-		            </div>   
+		            </c:forEach>
 		        </div>
+		        
 				<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
-      			<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 --> <br>
+      			<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 --> <br><br>
       			<div class="swiper-pagination"></div>	<!-- 페이징 -->
    	 		</div>
+   	 		
 			<div class="fs-4" id="main_title">질병별 추천레시피</div>
 			 	<div class="sick_btns">     
 					<c:forEach var="illness" items="${sicks}">
-						<button class="single_btn" type="button" onclick="location.href='<c:url value=''>
-							<c:param name="sick_code" value="${illness.sick_code}"></c:param></c:url>'" >
-							${illness.sick_name}</button>
+							<label class="box-radio-input">
+							<input type="radio" onclick="location.href='<c:url value='/recipe/sick'>
+							<c:param name="sick_code" value="${illness.sick_code}"></c:param></c:url>'" 
+							name="sick_code" value="${illness.sick_code}" <c:if test="${illness.checked == 1}"> checked="checked"</c:if>>
+							<span>${illness.sick_name}</span></label>
 					</c:forEach>	
 				</div>
-		    <div class="news-div"> 
-		    	<!-- 포이치 들어갈 곳 -->
-					<table class="table" id="news-one">
+			<div class="news-div"> 
+			    <c:forEach var="list" items="${recipes}"> 
+					<div>
+						<table id="news-one">
 				        		<tr>
-				        			<td rowspan="3" style="width:22%; height:100%">
+				        			<td rowspan="5" style="width:22%; height:100%">
 				        				<a href="">
-				        				<img class="img2" src="<c:url value='/images/testImg.jpg'/>" alt="테스트용" ></a>
+				        				<img class="img2" src="<c:url value='${list.recipe_img}'/>" ></a> 
+				        				
 				        			</td>
-				            		<th class="news-title" >
-				            			레시피 제목입니다
-				            		</th>
-				            	<tr>
-				            		<td class="table-secondary" id="news-contents">
-				            			음싱 정보입니다
+				            		<td class="news-title">
+				            			${list.recipe_title}
+				            			
+				            		</td>
+				     			</tr>
+				     			<tr>
+				     				<td class="news-title"><button type="button" 
+				     				onclick="location.href='<c:url value="/recipe/recipe_detail"><c:param name="recipe_code" value="${list.recipe_code}"></c:param></c:url>'" class="single_btn">레시피 보러가기</button>
 				            		</td>
 				            	</tr>
 				            	<tr>
-				            		<td class="table-secondary"  id="news-info" >
-				            			재료 정보입니다
-				            		</td>     
+				            		<td id="news-contents2">
+				            			${list.recipe_memo}
+				            		</td>
 				            	</tr>
-				      </table>
+				            		<tr>
+				            		<td id="news-info">
+				            			${list.recipe_memo}
+				            		</td>
+				            	</tr>
+				            		<tr>
+				            		<td id="news-contents2">
+				            			${list.recipe_memo}
+				            		</td>
+				            	</tr>
+				            	
+				            	
+				            
+				          
+				           				       		
+						</table>
+					</div>
+				</c:forEach>
 			</div>
  		</div>
  		<div class="col-lg-2 col-md-1 col-1"></div>
 	</div>
-</div>			
+</div>		
+	
    <script>
    new Swiper('.swiper-container', {
       slidesPerView : 4, // 동시에 보여줄 슬라이드 rotn
       spaceBetween : 10, // 슬라이드 간 간격
       slidesPerGroup : 4, // 그룹으로 묶는 개수
-      
+
       // 그룹수가 맞지 않을 경우 빈칸으로 메우기
       loopFillGroupWithBlank : true,
       loop : true, // 무한 반복
@@ -208,7 +253,7 @@ border-radius: 79px;
          prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
       },   
    });
-   </script>
+   </script>   	
    
 </body>
 </html>

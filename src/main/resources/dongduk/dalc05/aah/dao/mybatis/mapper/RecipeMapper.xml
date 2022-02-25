@@ -3,39 +3,44 @@
 
 <mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.RecipeMapper">
 	
-	<select id="getIngredients" resultType="String">
-		Select ingredient_name
+	<!-- 레시피 메인페이지 상단 인기레시피들 16위까지 (조회수) -->
+	<select id="getTop16" resultType="dongduk.dalc05.aah.domain.Recipe">
+		Select *
+		FROM recipe
+		ORDER BY recipe_hits DESC
+		limit 16;
+	</select>
+	
+	<select id="getIngredients" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Ingredient">
+		Select *
 		FROM ingredient
 		where sick_code = #{sick_code}
 	</select>
 	
-	<select id="getRecipeCode" resultType="Integer">
-		Select recipe_name
+	<!-- 재료가 들어가는 레시피 가져오기  -->
+	<select id="getRecipes"  parameterType="String" resultType="dongduk.dalc05.aah.domain.Recipe">
+		Select *
 		FROM recipe
-		where recipe_name = #{recipe_name}
+		where recipe_code IN ( Select recipe_code
+                       	   	   FROM rUse
+                               WHERE rUse_name = #{ingredient_name})
 	</select>
-	
-	<insert id="insertRecipe" parameterType="dongduk.dalc05.aah.domain.Recipe">	
-		Insert Into RECIPE
-		(recipe_code, recipe_title, recipe_length, sick_code, recipe_img)
-		VALUES
-		(#{recipe_code}, #{recipe_title}, #{recipe_length}, #{sick_code}, #{recipe_img})
-	</insert>
-	
-	<insert id="insertUse" parameterType="dongduk.dalc05.aah.domain.rUse">	
-		Insert Into rUse
-		(recipe_code, rUse_use)
-		VALUES
-		(#{recipe_code}, #{rUse_use})
-	</insert>
-	
-	<insert id="insertOrder" parameterType="dongduk.dalc05.aah.domain.rOrder">	
-		Insert Into rOrder
-		(recipe_code, rOrder_num, rOrder_content)
-		VALUES
-		(#{recipe_code}, #{rOrder_num}, #{rOrder_content})
-	</insert>
-	
+
+	<!-- 코드에 해당하는 레시피 가져오기  -->
+	<select id="getRecipeFromCode"  parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Recipe">
+		Select *
+		FROM recipe
+		where recipe_code = #{recipe_code}
+	</select>
+
+	<!-- 레시피 조회 (조회수증가) -->
+	<update id="hitsCount" parameterType="Integer">
+		UPDATE recipe
+		SET recipe_HITS = recipe_hits + 1
+		WHERE recipe_code = #{recipe_code}
+    </update>
+   
+
 	<select id="getRecipeByKeyword" parameterType="String" resultType="dongduk.dalc05.aah.domain.Recipe">
 		SELECT *
 		FROM recipe

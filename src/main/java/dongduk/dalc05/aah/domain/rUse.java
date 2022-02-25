@@ -2,6 +2,45 @@ package dongduk.dalc05.aah.domain;
 
 public class rUse {
 	
-	private String rUse_use;
-	private int recipe_code;
+	// DB
+	private int recipe_code; // pk, fk
+	private String rUse_name;
+	private int rUse_volume;
+	private String rUse_type;
+	
+	public rUse() {}
+
+	public int getRecipe_code() {
+		return recipe_code;
+	}
+
+	public void setRecipe_code(int recipe_code) {
+		this.recipe_code = recipe_code;
+	}
+
+	public String getrUse_name() {
+		return rUse_name;
+	}
+
+	public void setrUse_name(String rUse_name) {
+		this.rUse_name = rUse_name;
+	}
+
+	public int getrUse_volume() {
+		return rUse_volume;
+	}
+
+	public void setrUse_volume(int rUse_volume) {
+		this.rUse_volume = rUse_volume;
+	}
+
+	public String getrUse_type() {
+		return rUse_type;
+	}
+
+	public void setrUse_type(String rUse_type) {
+		this.rUse_type = rUse_type;
+	};
+	
+	
 }

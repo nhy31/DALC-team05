@@ -20,12 +20,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import dongduk.dalc05.aah.domain.Ingredient;
+import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Recipe;
+import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.domain.rOrder;
 import dongduk.dalc05.aah.domain.rUse;
 import dongduk.dalc05.aah.service.CommunityService;
 import dongduk.dalc05.aah.service.RecipeService;
+import dongduk.dalc05.aah.service.SickService;
 import dongduk.dalc05.aah.service.MemberService;
 
 @Controller
@@ -37,18 +43,107 @@ public class RecipeController {
 	@Autowired
 	private RecipeService recipeService;
 
+	@Autowired
+	private SickService sickService;
+	
 	private static PythonInterpreter interpreter;
+	
     // 메인페이지 -> 레시피페이지 이동
     @RequestMapping(value = "/recipe")
-    public String recipe() {
+    public ModelAndView recipe(
+    		HttpServletRequest request) {
     	
-		return "recipe/recipe_main";
+    	ModelAndView mav = new ModelAndView();
+  	    mav.setViewName("recipe/recipe_main");
+  	    
+  	   HttpSession session = request.getSession();
+ 	    Member member = (Member) session.getAttribute("loginMember");
+ 	    
+ 	    int mSickCode = 0;
+ 	    
+ 	    if(member != null) {
+ 	    	mSickCode = member.getSick_code();
+ 	    }
+ 	    
+  	    List<Sick> sicks = sickService.getSickList();
+  		for(int i=0; i<sicks.size(); i++) {
+    		if(sicks.get(i).getSick_code() ==  mSickCode) {
+    			sicks.get(i).setChecked(1);
+    			break;
+    		}	
+    	}
+  	    mav.addObject("sicks", sicks);
+  	    
+  	    List<Recipe> bests = recipeService.getTop16();
+  	    mav.addObject("bests", bests);
+
+  	    List<Ingredient> list = recipeService.getIngredients(mSickCode);
+  	    List<Recipe> recipes = new ArrayList<>();
+  	    for(int i=0; i<list.size(); i++) {
+  	    	System.out.println("재료명" + list.get(i).getIngredient_name());
+  	    	List<Recipe> r = recipeService.getRecipes(list.get(i).getIngredient_name());
+  	    	if(r != null) {
+  	    		for(int j=0; j<r.size(); j++) {
+  	  	    		System.out.println("레시피명" + r.get(j).getRecipe_title());
+  	  	    		recipes.add(r.get(j));
+  	  	    	}
+  	  	    }
+  	    }
+  	    	
+  	    mav.addObject("recipes", recipes);
+		return mav;
+    }
+    
+    // 메인페이지 -> 레시피페이지 이동
+    @RequestMapping(value = "/recipe/sick")
+    public ModelAndView sickChoice(
+    		HttpServletRequest request,
+    		@RequestParam ("sick_code") int sick_code) {
+    	
+    	ModelAndView mav = new ModelAndView();
+  	    mav.setViewName("recipe/recipe_main");
+  	    
+ 	    
+  	    List<Sick> sicks = sickService.getSickList();
+  		for(int i=0; i<sicks.size(); i++) {
+    		if(sicks.get(i).getSick_code() ==  sick_code) {
+    			sicks.get(i).setChecked(1);
+    			break;
+    		}	
+    	}
+  	    mav.addObject("sicks", sicks);
+  	    
+  	    List<Recipe> bests = recipeService.getTop16();
+  	    mav.addObject("bests", bests);
+
+  	    List<Ingredient> list = recipeService.getIngredients(sick_code);
+  	    List<Recipe> recipes = new ArrayList<>();
+  	    for(int i=0; i<list.size(); i++) {
+  	    	System.out.println("재료명" + list.get(i).getIngredient_name());
+  	    	List<Recipe> r = recipeService.getRecipes(list.get(i).getIngredient_name());
+  	    	if(r != null) {
+  	    		for(int j=0; j<r.size(); j++) {
+  	  	    		System.out.println("레시피명" + r.get(j).getRecipe_title());
+  	  	    		recipes.add(r.get(j));
+  	  	    	}
+  	  	    }
+  	    }
+  	    	
+  	    mav.addObject("recipes", recipes);
+		return mav;
     }
     
     @RequestMapping(value="/recipe/recipe_detail")
-    public String getTest() {
-    	//입력받은 recipecode 
-    	String inputData = "195453"; 
+    public ModelAndView getTest(
+    		@RequestParam ("recipe_code") int recipe_code) {
+    	
+    	ModelAndView mav = new ModelAndView();
+    	recipeService.hitsCount(recipe_code);
+    	Recipe clickRecipe = recipeService.getRecipeFromCode(recipe_code);
+    	mav.addObject("clickRecipe", clickRecipe);
+    	
+    	//입력받은 recipecode -> 하윤 toString으로 변환 추가
+    	String inputData = Integer.toString(recipe_code); 
     	
         interpreter = new PythonInterpreter();
         
@@ -62,7 +157,7 @@ public class RecipeController {
 
         // 파일 read
 //      interpreter.exec("f = open('./src/main/resources/csv/recipes.csv', 'r')"); //상대경로 (상대경로 안되면 절대경로로 한번 바꿔서 해보세요)
-        interpreter.exec("f = open('/Users/taeyeon/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
+        interpreter.exec("f = open('/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
         interpreter.exec("reader = csv.reader(f)");
     	interpreter.exec("header = next(reader)");
     	
@@ -116,11 +211,21 @@ public class RecipeController {
 		String[] recipeCode = obj.toString().split("', '");
 		recipeCode[0] = recipeCode[0].split("'")[1];
 		recipeCode[4] = recipeCode[4].split("'")[0];
+		
+		List<Recipe> relatedList = new ArrayList<>();
+		int i=0;
+		// 하윤추가 WEB띄우기
 		for (String code : recipeCode ){
+			
 			System.out.println(code);
+			int realCode = Integer.parseInt(code);
+			relatedList.add(recipeService.getRecipeFromCode(realCode));
+			System.out.println("0226확인 " + relatedList.get(i).getRecipe_title());
+			i++;
+			
 		}
-    	
-		return null;
+		mav.addObject("relatedList", relatedList);
+		return mav;
     }
 	
 	@RequestMapping(value="/main/recipe/crawling")
@@ -138,7 +243,7 @@ public class RecipeController {
 			
 		}
 		
-		List<String> q = recipeService.getIngredients(sick_code);
+		List<Ingredient> q = recipeService.getIngredients(sick_code);
 		  
 		ArrayList<Recipe> recipes = new ArrayList<>();
 		
