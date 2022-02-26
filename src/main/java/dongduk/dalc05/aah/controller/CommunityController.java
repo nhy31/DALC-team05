@@ -84,11 +84,30 @@ public class CommunityController {
    // 리스트에서 클릭하면 커뮤니티에 대한 글을 모두 볼 수 있음
    @RequestMapping(value = "/community/posts")
    public ModelAndView commuPosts(
+		   HttpServletRequest request,
 		   @RequestParam("commu_code") int commu_code) {
-
-		  
+	   
+	   HttpSession session = request.getSession();
+	   Member m = (Member) session.getAttribute("loginMember");
 	   ModelAndView mav = new ModelAndView();
 	   mav.setViewName("community/posts");
+	   
+	   int writeOk = 0; // 내 게시판이 아님 -> 글쓰기 못함
+	   List<Community> Mylist = commuService.getMyCommuList(m.getMember_code());
+	   System.out.println("글쓰기버튼 존재유무 확인 넘어온 커뮤코드 " + commu_code);
+	   System.out.println("글쓰기버튼 존재유무 확인 멤버코드 " + m.getMember_code());
+	   System.out.println(Mylist.size());
+	   
+	   for(int i=0; i<Mylist.size(); i++) {
+		   System.out.println("글쓰기버튼 존재유무 확인 " + Mylist.get(i).getCommu_name());
+		   if(commu_code == Mylist.get(i).getCommu_code()) {
+			   writeOk = 1;
+	           mav.addObject("writeOk", writeOk);
+		   }
+	   }
+	 
+
+	   System.out.println("글쓰기버튼 존재유무 확인 " + writeOk);
 	   
 	   List<Post> list = new ArrayList<>();
 	   

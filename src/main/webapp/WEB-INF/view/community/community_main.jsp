@@ -151,12 +151,12 @@
 				<td class="commu" style="font-size: 16px; cursor:pointer;" 
 					onclick="location.href='<c:url value='/community/posts'>
 					<c:param name="commu_code" value="${my.commu_code}"></c:param></c:url>'">
-					${my.commu_name}  </td>
+					${my.commu_name}  ${my.commu_code} </td> ${my.commu_code}
 				
 				<td class="commu" style="font-size: 15px; cursor:pointer;"
 					onclick="location.href='<c:url value='/community/posts'>
 					<c:param name="commu_code" value="${my.commu_code}"></c:param></c:url>'">
-					${my.commu_introduce} </td>
+					${my.commu_introduce} ${my.commu_code}</td>
 			</tr>	
 			</c:forEach>
 			

@@ -171,10 +171,10 @@
 					<div class="add">${c.commu_introduce} </div></td>
 					
 				<td style="text-align: right"> <!-- 내가 가입한 커뮤니티가 아니라면 글쓰기 버튼이 안보여야 할 듯  -->
-					<%-- <c:if test="${}"> --%> <!-- 내가 가입한 커뮤니티일 경우 true 반환해서 글쓰기 버튼 보임  -->
+					<c:if test="${writeOk == 1}">  <!-- 내가 가입한 커뮤니티일 경우 true 반환해서 글쓰기 버튼 보임  -->
 					<input type ="button" value="글쓰기" class="single_square_btn" style="margin-left: 30%;"
 					onclick="location.href='<c:url value='/community/post/upload'>
-					<c:param name="commu_code" value="${c.commu_code}"></c:param></c:url>'"> <%-- </c:if> --%></td>
+					<c:param name="commu_code" value="${c.commu_code}"></c:param></c:url>'"> </c:if> </td>
 			</tr>
 		</table>
 		
