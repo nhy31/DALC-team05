@@ -11,17 +11,11 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- 하윤 0208 부트스트랩 하는중 -->
-<!-- 부트스트랩 css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<!-- 부트스트랩 js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-<!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 
-<!-- 내부 스타일 링크 -->
 <link rel=stylesheet href="<c:url value='/css/all.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css"> 
@@ -146,6 +140,7 @@
 	    });
 	});
 </script>
+<title>아아현 회원가입</title>
 </head>
 
 <body>
@@ -218,10 +213,9 @@
 			   <div class="col-sm-12">
 	   			 <label for="name" class="form-label">현재 질환 및 관심 질병</label><br>
 	    		 <select class="form-select" aria-label="Default select example" name="sick_code">
-	    		 	<option selected value="0">정보 미제공</option>
 	    		 		<c:forEach var="illness" items="${sicks}">
-									<option value="${illness.sick_code}">${illness.sick_name}</option>
-								</c:forEach>
+								<option value="${illness.sick_code}">${illness.sick_name}</option>
+						</c:forEach>
 				 </select>
 			  </div>
 			  <p/>
@@ -287,8 +281,6 @@
 </div>
 	</div>
 	<div class="col-md-3">
-</div>
-</div>
 </div>
 </body>
 </html>

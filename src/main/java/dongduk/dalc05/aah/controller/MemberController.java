@@ -141,40 +141,10 @@ public class MemberController {
 //        //DB에 authKey 업데이트
 //        memberService.updateAuthKey(map);
 //		
-
-		
-
 	}
 	
 
-//	// 닉네임 중복확인
-//	@RequestMapping(value="/member/join/check/nick")
-//	public ModelAndView chdekNick (
-//			HttpServletRequest request,
-//			Model model,
-//			@RequestParam ("member_nickName") String member_nickName) {
-//					
-//		ModelAndView mav = new ModelAndView();
-//		
-//		String name = request.getParameter("member_name");
-//		String id = request.getParameter("member_id");
-//		mav.addObject("nameOk", name);
-//		mav.addObject("idOk", name);
-//		
-//		if (memberService.checkNick(member_nickName) == null) {
-//			mav.setViewName("alert/success");
-//			mav.addObject("idOk", member_nickName);
-//			model.addAttribute("msg", "사용가능한 닉네임입니다");
-//	        model.addAttribute("url","/member/join");
-//	        return mav;
-//		}
-//        
-//		mav.setViewName("alert/error");
-//		model.addAttribute("msg", "존재하는 닉네임입니다.");
-//      model.addAttribute("url","/member/join");
-//        return mav;
-//	}
-//	
+
 	// 메인페이지 -> 로그인페이지 이동
     @RequestMapping(value = "/member/login")
     public String login(Model model, HttpSession session) {
@@ -321,8 +291,14 @@ public class MemberController {
     		@RequestParam ("member_phone") String member_phone,
     		@RequestParam ("sick_code") int sick_code,
     		@RequestParam (value="member_allergy", required = false) String member_allergy,
-    		@RequestParam (value="member_image", required = false) String member_image,
-    		@RequestParam (value="member_sex") String member_sex) {
+    		@RequestParam (value="member_sex") String member_sex,
+    		MultipartFile img_file) {
+		
+		String member_image = imageUtil.uploadImage(request, img_file);
+		
+		if(member_image == null) {
+			member_image = "/images/userImg.jpg";
+		}
 		
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("loginMember"); // 세션으로 멤버정보 가져와서

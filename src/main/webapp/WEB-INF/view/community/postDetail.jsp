@@ -157,12 +157,12 @@
 				<td colspan="2" class="member_nickname">${post.member_nickName}</td>
 			</tr>
 			<tr>
-				<td><font class="post_add_left"><fmt:formatDate pattern="yyyy.MM.dd" value="${post.post_uploadDate}"/> </font>
+				<td><font class="post_add_left"><fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${post.post_uploadDate}"/> </font>
 					<font style="margin-right: 10px; margin-left: 10px; color: #DBDBDB;"> | </font>
 					<font class="post_add_left">조회수 ${post.post_hits}</font></td>
 				<td style="text-align:right;"><font class="post_add_right">신고</font>
 					<font style="margin-right: 10px; margin-left: 10px; color: #DBDBDB;"> | </font>
-					<font class="post_add_right">댓글 ( n )</font>
+					<font class="post_add_right">댓글 ( ${post.commentNum}  )</font>
 					<font style="margin-right: 10px; margin-left: 10px; color: #DBDBDB;"> | </font>
 					<font class="post_add_right">URL 복사</font> </td>
 			</tr>
@@ -193,7 +193,7 @@
 					<tr>
 						<td class="post_add_left" style="margin-top: 10px;"><font style="margin-right: 8px;">
 						<fmt:formatDate value="${m.comment_date}" pattern="yy/MM/dd HH:mm"/></font>  
-							<font>답글쓰기${m.comment_depth} </font>
+							&nbsp;&nbsp;&nbsp;&nbsp;<font>답글쓰기</font>
 							
 					
 						</td>

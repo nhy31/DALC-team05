@@ -219,6 +219,9 @@ public class CommunityController {
 		p.setCommu_code(commu_code);
 		p.setCommu_name(commuService.getCommuName(commu_code));
 		mav.addObject("post", p);
+		
+		String sick = sickService.getSickName(commuService.getCommuInfo(p.getCommu_code()).getSick_code());
+		mav.addObject("sick", sick);
 
 		return mav;	
 	}
@@ -244,6 +247,7 @@ public class CommunityController {
 		
 		p.setCommu_name(commuService.getCommuName(p.getCommu_code()));
 		p.setMember_nickName(postWriter);
+		p.setCommentNum(commuService.countComment(post_code));
 		
 		String sick = sickService.getSickName(commuService.getCommuInfo(p.getCommu_code()).getSick_code());
 		
