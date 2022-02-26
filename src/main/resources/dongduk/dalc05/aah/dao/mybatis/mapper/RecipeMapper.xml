@@ -11,6 +11,13 @@
 		limit 16;
 	</select>
 	
+	<!-- 모든레시피 불러오기 -->
+	<select id="getAllRecipes" resultType="dongduk.dalc05.aah.domain.Recipe">
+		Select *
+		FROM recipe	
+	</select>
+	
+	
 	<select id="getIngredients" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Ingredient">
 		Select *
 		FROM ingredient
@@ -46,4 +53,22 @@
 		FROM recipe
 		WHERE recipe_title LIKE CONCAT('%',#{keyword},'%')
 	</select> 
+
+	<!-- 레시피에 사용된 재료들 -->
+	<select id="getUses" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.rUse">
+		SELECT *
+		FROM rUse
+		WHERE recipe_code = #{recipe_code}
+	</select>
+	
+	<!-- 레시피 과정  -->
+	<select id="getOrders" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.rOrder">
+		SELECT *
+		FROM rOrder
+		WHERE recipe_code = #{recipe_code}
+		ORDER BY rOrder_num 
+	</select>
+	
+	
+
 </mapper>

@@ -65,7 +65,7 @@ public class MemberController {
     /* <개발미완>
     2. 이메일 인증 */
 	@RequestMapping(value="/member/join.do")
-	public String joinDo(
+	public ModelAndView joinDo(
 			HttpServletRequest request,
 			Model model,
 			@RequestParam ("member_id") String member_id,
@@ -80,6 +80,8 @@ public class MemberController {
     		MultipartFile img_file
 			) {
 		
+		ModelAndView mav = new ModelAndView();
+		
 		// DB에 기본정보 insert -> memberService.signUp(memberDTO);
 		String member_image = imageUtil.uploadImage(request, img_file);
 		
@@ -87,10 +89,46 @@ public class MemberController {
 			member_image = "/images/userImg.jpg";
 		}
 		
-		Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone,
-				member_birth, sick_code, member_allergy, member_image, member_sex);
-		memberService.insertMember(member);
-
+		if (memberService.checkId(member_id) == null && memberService.checkNick(member_nickName) == null) {
+			Member member = new Member(member_id, member_pw, member_name, member_nickName, member_phone,
+					member_birth, sick_code, member_allergy, member_image, member_sex);
+			memberService.insertMember(member);
+			mav.setViewName("alert/success");
+			model.addAttribute("msg", "가입을 축하합니다! 로그인을 해주세요");
+	        model.addAttribute("url","/member/login");
+	        return mav;
+		}
+        
+		else if(memberService.checkId(member_id) != null && memberService.checkNick(member_nickName) == null) {
+			Member member = new Member(null, member_pw, member_name, member_nickName, member_phone,
+					member_birth, sick_code, member_allergy, member_image, member_sex);
+			mav.setViewName("alert/error");
+			mav.addObject("member", member);
+			model.addAttribute("msg", "존재하는 이메일입니다.");
+	        model.addAttribute("url","/member/join");
+	        return mav;
+		}
+		
+		else if(memberService.checkId(member_id) == null && memberService.checkNick(member_nickName) != null) {
+			Member member = new Member(member_id, member_pw, member_name, null, member_phone,
+					member_birth, sick_code, member_allergy, member_image, member_sex);
+			mav.setViewName("alert/error");
+			mav.addObject("member", member);
+			model.addAttribute("msg", "존재하는 닉네임입니다.");
+	        model.addAttribute("url","/member/join");
+	        return mav;
+		}
+		
+		else {
+			Member member = new Member(null, member_pw, member_name, null, member_phone,
+					member_birth, sick_code, member_allergy, member_image, member_sex);
+			mav.setViewName("alert/error");
+			mav.addObject("member", member);
+			model.addAttribute("msg", "존재하는 이메일과 닉네임입니다.");
+	        model.addAttribute("url","/member/join");
+	        return mav;
+		}
+		
 //        //임의의 authKey 생성 & 이메일 발송
 //        String authKey = mss.sendAuthMail(memberDTO.getEmail());
 //        memberDTO.setAuthKey(authKey);
@@ -105,38 +143,10 @@ public class MemberController {
 //		
 
 		
-		model.addAttribute("msg", "가입을 축하합니다! 로그인을 해주세요");
-        model.addAttribute("url","/member/login");
-        return "alert/success";
+
 	}
 	
-	// 프론트 연결전
-	// 아이디 중복확인
-	@RequestMapping(value="/member/join/check/id")
-	public ModelAndView chdekId (
-			HttpServletRequest request,
-			Model model,
-			@RequestParam ("member_id") String member_id) {
-			
-		ModelAndView mav = new ModelAndView();
-		
-		String name = request.getParameter("member_name");
-		mav.addObject("nameOk", name);
-		
-		if (memberService.checkId(member_id) == null) {
-			mav.setViewName("alert/success");
-			mav.addObject("idOk", member_id);
-			model.addAttribute("msg", "사용가능한 이메일입니다.");
-	        model.addAttribute("url","/member/join");
-	        return mav;
-		}
-        
-		mav.setViewName("alert/error");
-		model.addAttribute("msg", "존재하는 이메일입니다.");
-        model.addAttribute("url","/member/join");
-        return mav;
-	}
-//	
+
 //	// 닉네임 중복확인
 //	@RequestMapping(value="/member/join/check/nick")
 //	public ModelAndView chdekNick (

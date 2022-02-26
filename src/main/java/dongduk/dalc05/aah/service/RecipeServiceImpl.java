@@ -10,6 +10,7 @@ import dongduk.dalc05.aah.domain.Ingredient;
 import dongduk.dalc05.aah.domain.Recipe;
 import dongduk.dalc05.aah.domain.rOrder;
 import dongduk.dalc05.aah.domain.rUse;
+import dongduk.dalc05.aah.util.PagingVO;
 
 @Service
 public class RecipeServiceImpl implements RecipeService {
@@ -20,6 +21,10 @@ public class RecipeServiceImpl implements RecipeService {
 	// 레시피 메인페이지 상단 인기레시피들 16위까지 (조회수)
 	@Override
 	public List<Recipe> getTop16() { return recipeDao.getTop16(); }
+	
+	// 모든 레시피 불러오기
+	@Override
+	public List<Recipe> getAllRecipes()  { return recipeDao.getAllRecipes(); }
 
 	// 질병에 해당하는 식재료 5개 가져오기
 	@Override
@@ -42,5 +47,14 @@ public class RecipeServiceImpl implements RecipeService {
 		return recipeDao.getRecipeByKeyword(keyword);
 	}
 
+	// 레시피에 사용된 재료들
+	@Override
+	public List<rUse> getUses(int recipe_code) { return recipeDao.getUses(recipe_code);}
+
+	// 레시피 과정
+	@Override
+	public List<rOrder> getOrders(int recipe_code) { return recipeDao.getOrders(recipe_code); }
+	
+	
 
 }

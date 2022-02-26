@@ -21,10 +21,13 @@ public class MyBox {
 		this.member_code = member_code;
 	}
 
-	public MyBox(int member_code, int recipe_code, int exercise_code) {
-		super();
+	public void MyBoxRecipe(int member_code, int recipe_code) {
 		this.member_code = member_code;
 		this.recipe_code = recipe_code;
+	}
+	
+	public void MyBoxExercise(int member_code, int  exercise_code) {
+		this.member_code = member_code;
 		this.exercise_code = exercise_code;
 	}
 	

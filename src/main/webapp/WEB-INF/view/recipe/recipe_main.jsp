@@ -11,22 +11,18 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- 부트스트랩 css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<!-- 부트스트랩 js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-<!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+
 
 <title>아아현 레시피추천</title>
 
 <style type="text/css">
 
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-
 
 * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
 .content_start {
@@ -41,28 +37,27 @@ color: #000000;
 
 .issue-title {
 font-style: normal;
-font-size: 1.12vw;
+font-size: 0.95vw;
 color: #4E4E4E;
-padding: 10px 10px 0px 12px;
+padding: 5px 10px 0px 10px;
 }
 
 .issue-info {
 font-style: normal;
-font-size: 1vw;
+font-size: 0.9vw;
 color: #4E4E4E;
-padding: 5px 10px 0px 12px;
+padding: 5px 10px 0px 10px;
 }
 
 .img1 {
 height: 100%;
+width:100%;
 border-radius: 6px;
-width: 100%;
-
 }
 
 .img2 {
-height: 100%;
-width:100%;
+max-height: 100%;
+max-width:100%;
 border-radius: 6px;
 }
 
@@ -75,7 +70,7 @@ margin: 10px 10px 0px 10px;
 }
 
 #news-one {
-margin: 0px 10px 25px 10px;
+margin: 0px 10px 25px 0px;
 }
 
 .news-title {
@@ -86,15 +81,7 @@ font-size: 1.2vw;
 color: #4E4E4E;
 }
 
-#news-contents1 {
-padding: 0px 25px 0px 25px;
-font-style: normal;
-font-weight: normal;
-font-size: 0.9vw;
-color: #4E4E4E;
-}
-
-#news-contents2 {
+#news-contents {
 padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: normal;
@@ -103,7 +90,7 @@ color: #4E4E4E;
 background: #E1E1E1;
 }
 
-#news-info {
+.news-info {
 padding: 0px 25px 0px 25px;
 font-style: normal;
 font-weight: normal;
@@ -117,35 +104,36 @@ background-color:#ffffff;;
 border: 1px solid #DDDDDD;
 color:#4E4E4E;
 font-size: 0.7vw;
-font-weight: bold;
 text-align: center;
 padding: 3px 9px;
 border-radius: 79px;
 }
 
-.box-radio-input input[type="radio"] {
-display: none;
-}
 
-.box-radio-input input[type="radio"] + span{
-display: inline-block;
-background: none;
-border: 1.5px solid #DDDDDD;
-color: #4E4E4E;
-padding: 7px 15px;
-font-family: -apple-system;
-font-size: 12px;
-text-align: center;
-border-radius: 79px;
-cursor: pointer;
-}
+.box-radio-input input[type="radio"]{
+        display: none;
+      }
 
-.box-radio-input input[type="radio"]:checked + span{
-border:1px solid #851BD8;
-background:#851BD8;
-color:#fff;
-font-weight: bold;
-}
+      .box-radio-input input[type="radio"] + span{
+        display: inline-block;
+        background: none;
+        border: 1.5px solid #DDDDDD;
+        color: #4E4E4E;
+        padding: 7px 15px;
+        font-family: -apple-system;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 79px;
+        cursor: pointer;
+      }
+
+      .box-radio-input input[type="radio"]:checked + span{
+        border:1px solid #851BD8;
+        background:#851BD8;
+        color:#fff;
+        font-weight: bold;
+      }
+      
 </style>
 </head>
 
@@ -156,25 +144,28 @@ font-weight: bold;
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">오늘의 인기 레시피</div>
 			<div class="swiper-container" >
-	   			<div class="swiper-wrapper"> 
-		        	<c:forEach var="r" items="${bests}">
-		        		<div class="swiper-slide">
-		        		<table style="text-align:left;">
-		        			<tr><td style="text-align: center;"><a href="adsasasd">
-		        			<img class="img1" src="<c:url value='${r.recipe_img}'/>"></a></td></tr>
-		        			<tr><th class="issue-title">${r.recipe_title}</th></tr>
-		        			<tr><td class="issue-info">조회수 ${r.recipe_hits}회</td></tr>
-		        		</table>
+	   			<div class="swiper-wrapper"> <c:forEach var="r" items="${bests}">
+		        	<div class="swiper-slide">
+			        	<table style="text-align:left;">
+			        		<tr><td style="text-align: center;">
+			        		<a href="<c:url value="/recipe/recipe_detail"><c:param name="recipe_code" value="${r.recipe_code}">
+				     				</c:param></c:url>"><img class="img1" src="<c:url value='${r.recipe_img}'/>"></a></td></tr>
+			        		<tr><th class="issue-title">${r.recipe_title}</th></tr>
+			        		<tr><td class="issue-info">조회수 ${r.recipe_hits}회</td></tr>
+			        	</table>
 		            </div>
-		            </c:forEach>
-		        </div>
+		        </c:forEach></div>
 		        
 				<div class="swiper-button-next"></div>	<!-- 오른쪽 버튼 -->
       			<div class="swiper-button-prev"></div>	<!-- 왼쪽 버튼 --> <br><br>
       			<div class="swiper-pagination"></div>	<!-- 페이징 -->
    	 		</div>
    	 		
-			<div class="fs-4" id="main_title">질병별 추천레시피</div>
+			<div class="fs-4" id="main_title">질병별 추천레시피 &nbsp;&nbsp;
+			<a href="<c:url value='/recipe/all'/>" ><font style="font-size: 0.8vw; color: #4E4E4E; font-weight: normal;">레시피 모두보기 click!</font></a></div>
+				<div class="news-info" align="right">
+					
+				</div>
 			 	<div class="sick_btns">     
 					<c:forEach var="illness" items="${sicks}">
 							<label class="box-radio-input">
@@ -189,35 +180,30 @@ font-weight: bold;
 					<div>
 						<table id="news-one">
 				        		<tr>
-				        			<td rowspan="5" style="width:22%; height:100%">
+				        			<td rowspan="3" style="width:22%; height:100%">
 				        				<a href="">
 				        				<img class="img2" src="<c:url value='${list.recipe_img}'/>" ></a> 
 				        				
 				        			</td>
 				            		<td class="news-title">
-				            			${list.recipe_title}
+				            			${list.recipe_title}&nbsp;&nbsp;<button type="button" 
+				     				onclick="location.href='<c:url value="/recipe/recipe_detail"><c:param name="recipe_code" value="${list.recipe_code}">
+				     				</c:param></c:url>'" class="single_btn">레시피 보러가기</button>
+				            		</td>
 				            			
-				            		</td>
+				            		
 				     			</tr>
-				     			<tr>
-				     				<td class="news-title"><button type="button" 
-				     				onclick="location.href='<c:url value="/recipe/recipe_detail"><c:param name="recipe_code" value="${list.recipe_code}"></c:param></c:url>'" class="single_btn">레시피 보러가기</button>
-				            		</td>
-				            	</tr>
+				     		
 				            	<tr>
-				            		<td id="news-contents2">
-				            			${list.recipe_memo}
+				            		<td id="news-contents">
+				            			[레시피 한줄소개] ${list.recipe_memo}
 				            		</td>
 				            	</tr>
-				            		<tr>
-				            		<td id="news-info">
-				            			${list.recipe_memo}
-				            		</td>
-				            	</tr>
-				            		<tr>
-				            		<td id="news-contents2">
-				            			${list.recipe_memo}
-				            		</td>
+				            
+				            	<tr>
+				     				<td class="news-info">
+				     					<div>약 ${list.recipe_person}</div>
+				     					<div>소요시간 : ${list.recipe_time} 예상</div>  
 				            	</tr>
 				            	
 				            	
@@ -225,9 +211,11 @@ font-weight: bold;
 				          
 				           				       		
 						</table>
+						
 					</div>
 				</c:forEach>
 			</div>
+			
  		</div>
  		<div class="col-lg-2 col-md-1 col-1"></div>
 	</div>

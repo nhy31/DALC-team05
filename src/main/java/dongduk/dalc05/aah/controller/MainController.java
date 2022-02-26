@@ -59,6 +59,13 @@ public class MainController {
 			mav.addObject("member_nickName", m.getMember_nickName());
 		}*/
 		
+	  	List<Exercise> list = new ArrayList<>();
+    	list = (List<Exercise>) exerciseService.getExerciseByViews();
+    	mav.addObject("bestsE", list);
+    	
+		List<Recipe> bestsR = recipeService.getTop16();
+  	    mav.addObject("bestsR", bestsR);
+  	    
 		int i = 1;
     	ArrayList<Media> medias = new ArrayList<>();
     	

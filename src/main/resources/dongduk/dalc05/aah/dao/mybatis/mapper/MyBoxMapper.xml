@@ -12,9 +12,9 @@
 	<!-- 보관함에 저장하기 -->
 	<insert id="insertMyBox" parameterType="dongduk.dalc05.aah.domain.MyBox">	
 		Insert Into MyBox
-		(mybox_code, member_code, recipe_code, exercise_code) 
+		(myBox_code, member_code, recipe_code, exercise_code) 
 		values
-		(#{mybox_code}, #{member_code}, #{recipe_code}, #{exercise_code}) 
+		(#{myBox_code}, #{member_code}, #{recipe_code}, #{exercise_code}) 
 	</insert>
 	
 	<!-- 보관함에서 삭제하기 -->

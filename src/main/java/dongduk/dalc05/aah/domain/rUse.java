@@ -5,7 +5,7 @@ public class rUse {
 	// DB
 	private int recipe_code; // pk, fk
 	private String rUse_name;
-	private int rUse_volume;
+	private String rUse_volume;
 	private String rUse_type;
 	
 	public rUse() {}
@@ -26,11 +26,11 @@ public class rUse {
 		this.rUse_name = rUse_name;
 	}
 
-	public int getrUse_volume() {
+	public String getrUse_volume() {
 		return rUse_volume;
 	}
 
-	public void setrUse_volume(int rUse_volume) {
+	public void setrUse_volume(String rUse_volume) {
 		this.rUse_volume = rUse_volume;
 	}
 

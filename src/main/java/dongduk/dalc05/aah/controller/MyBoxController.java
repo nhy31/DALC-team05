@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,18 +59,30 @@ public class MyBoxController {
 	@RequestMapping(value = "/mybox/recipe/add")
 	public ModelAndView recipeAdd(
 			HttpServletRequest request,
-			@RequestParam ("recipe_code") int recipe_code
+			@RequestParam ("recipe_code") int recipe_code,
+			Model model
 			) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:/member/mybox");
 		
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
+		
+		// 로그인 X -> 이용불가
+		if(m == null) {
+			mav.setViewName("alert/error");
+			model.addAttribute("msg", "로그인 후 이용하실 수 있습니다.");
+	        model.addAttribute("url","/member/login");
+	        return mav;	
+		}
+		
+		
 		int member_code = m.getMember_code();
 		
-		MyBox add = new MyBox(member_code, recipe_code, -1);
+		MyBox add = new MyBox();
+		add.MyBoxRecipe(member_code, recipe_code);
 		myBoxService.insertMyBox(add);
 		
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/member/mybox");
 		return mav;
 	}
 	
@@ -77,18 +90,30 @@ public class MyBoxController {
 	@RequestMapping(value = "/mybox/exercise/add")
 	public ModelAndView exerciseAdd(
 			HttpServletRequest request,
-			@RequestParam ("exercise_code") int exercise_code
+			@RequestParam ("exercise_code") int exercise_code,
+			Model model
 			) {
 		
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
 		int member_code = m.getMember_code();
 		
-		MyBox add = new MyBox(member_code, -1, exercise_code);
-		myBoxService.insertMyBox(add);
-		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("redirect:/member/mybox");
+		
+		// 로그인 X -> 이용불가
+		if(m == null) {
+			mav.setViewName("alert/error");
+			model.addAttribute("msg", "로그인 후 이용하실 수 있습니다.");
+	        model.addAttribute("url","/member/login");
+	        return mav;	
+		}
+		
+		
+		MyBox add = new MyBox();
+		add.MyBoxExercise(member_code, exercise_code);
+		myBoxService.insertMyBox(add);
+		
 		return mav;
 	}
 	

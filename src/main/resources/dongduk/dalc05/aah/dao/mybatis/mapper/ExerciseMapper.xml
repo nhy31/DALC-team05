@@ -8,6 +8,7 @@
 		SELECT *
 		FROM exercise
 		ORDER BY exercise_views DESC
+		limit 16;
 	</select>
 	
 	<!-- 질병 별 홈트데이터 가져오기 -->
