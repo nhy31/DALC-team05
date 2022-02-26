@@ -40,10 +40,12 @@
 		HttpSession ss = request.getSession();
 		
 		Member m = (Member) session.getAttribute("loginMember");
+		
 		if(m == null)
 			ss.setAttribute("ses", 0);
 		else{
 			ss.setAttribute("ses", 1);
+			ss.setAttribute("CODE", m.getMember_code());
 			ss.setAttribute("member_id", m.getMember_id());
 			ss.setAttribute("member_nickName", m.getMember_nickName());
 		}

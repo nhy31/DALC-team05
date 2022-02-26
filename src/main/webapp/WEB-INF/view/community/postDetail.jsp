@@ -164,7 +164,12 @@
 					<font style="margin-right: 10px; margin-left: 10px; color: #DBDBDB;"> | </font>
 					<font class="post_add_right">댓글 ( ${post.commentNum}  )</font>
 					<font style="margin-right: 10px; margin-left: 10px; color: #DBDBDB;"> | </font>
-					<font class="post_add_right">URL 복사</font> </td>
+					<font class="post_add_right">URL 복사 </font> 
+					<font style="margin-right: 10px; margin-left: 10px; color: #DBDBDB;"> | </font>
+					<font class="post_add_right"><a href="<c:url value="/community/post/delete">
+						<c:param name='post_code' value='${post.post_code}'></c:param>
+						<c:param name='commu_code' value='${post.commu_code}'></c:param></c:url>">삭제</a></font></td>
+
 			</tr>
 			
 			<tr>
@@ -188,7 +193,17 @@
 						<td rowspan="3" style="margin: 5px;">
 						<img class="member_img" src="<c:url value="/images/"/>${m.member_image}"/></td>
 						<td class="member_nickname">${m.member_nickName}</td>
-						<td rowspan="3" style="text-align:right; padding-right: 30px;">신고 
+						<td rowspan="3" style="text-align:right; padding-right: 30px;">
+						
+						<c:if test = "${m.member_code == CODE}" >
+						<a href="<c:url value="/community/post/comment/delete">
+						<c:param name='post_code' value='${m.post_code}'></c:param>
+						<c:param name='comment_code' value='${m.comment_code}'></c:param></c:url>">삭제</a>
+						</c:if>
+						<c:if test = "${m.member_code != CODE}">
+						신고
+						</c:if>
+				
 					</tr>
 					<tr>
 						<td style="font-size: 16px; margin-top: 5px;">${m.comment_content}</td>
