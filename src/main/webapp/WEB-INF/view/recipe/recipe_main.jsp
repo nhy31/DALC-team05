@@ -193,8 +193,6 @@ border-radius: 79px;
 				     				onclick="location.href='<c:url value="/recipe/recipe_detail"><c:param name="recipe_code" value="${list.recipe_code}">
 				     				</c:param></c:url>'" class="single_btn">레시피 보러가기</button>
 				            		</td>
-				            			
-				            		
 				     			</tr>
 				     		
 				            	<tr>
@@ -207,14 +205,8 @@ border-radius: 79px;
 				     				<td class="news-info">
 				     					<div>약 ${list.recipe_person}</div>
 				     					<div>소요시간 : ${list.recipe_time} 예상</div>  
-				            	</tr>
-				            	
-				            	
-				            
-				          
-				           				       		
-						</table>
-						
+				            	</tr>			       		
+						</table>					
 					</div>
 				</c:forEach>
 			</div>
