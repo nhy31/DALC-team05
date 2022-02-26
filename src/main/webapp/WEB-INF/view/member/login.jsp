@@ -44,7 +44,7 @@
 						<input type="text" name="member_id" placeholder="이메일" required="required" value="<%=cookieVal !="" ? cookieVal : "" %>">
 					</div>
 					<div class="login-input-wrap password-wrap">
-						<input type="text" name="member_pw" placeholder="비밀번호" required="required" >
+						<input type="password" name="member_pw" placeholder="비밀번호" required="required" >
 					</div>
 					<div class="login-button-wrap">
 						<button> 로그인 </button>
