@@ -9,9 +9,9 @@ public class MyBox {
 	private int exercise_code; // fk
 	
 	// only domain
-	private String image;
-	private String sick_code;
-	private String sick_name;
+	private String img; // 레시피나 홈트의 이미지
+	private String title; // 레시피나 홈트의 제목
+	private String memo; // 레시피나 홈트의 한줄소개 저장
 	
 	public MyBox() {}
 	
@@ -55,22 +55,29 @@ public class MyBox {
 	public void setExercise_code(int exercise_code) {
 		this.exercise_code = exercise_code;
 	}
-	public String getImage() {
-		return image;
+
+	public String getImg() {
+		return img;
 	}
-	public void setImage(String image) {
-		this.image = image;
+
+	public void setImg(String img) {
+		this.img = img;
 	}
-	public String getSick_code() {
-		return sick_code;
+
+	public String getTitle() {
+		return title;
 	}
-	public void setSick_code(String sick_code) {
-		this.sick_code = sick_code;
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public String getSick_name() {
-		return sick_name;
+
+	public String getMemo() {
+		return memo;
 	}
-	public void setSick_name(String sick_name) {
-		this.sick_name = sick_name;
+
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
+	
 }

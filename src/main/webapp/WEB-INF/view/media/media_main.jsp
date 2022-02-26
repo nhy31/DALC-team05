@@ -27,7 +27,8 @@
 
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
-* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+} 
 .content_start {
 padding: 10px 10px 5px 10px;
 }
@@ -139,16 +140,20 @@ border-radius: 79px;
       
 </style>
 
-</head>
-<c:forEach var="illness" items="${sicks}">
-<button class="single_btn">${illness.sick_name}</button>
-</c:forEach>	
+</head>	
 <body>
+
+
 <div class="content_start">
 	<div class="row">
 		<div class="col-lg-2 col-md-1 col-1"></div>
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">오늘의 건강 이슈</div>
+				<c:forEach var="illness" items="${sicks}">
+				
+<button class="single_btn">${illness.sick_name}</button>
+					</c:forEach>
+					
 			<div class="swiper-container" >	
 	    		<div class="swiper-wrapper"> <c:forEach var="list" items="${medias}">
 		      		<div class="swiper-slide" >

@@ -59,6 +59,9 @@ public class RecipeController {
   	    
   	    List<Recipe> list = recipeService.getAllRecipes();
   	    mav.addObject("list", list);
+  	    
+  	    System.out.println("0227확인 " + list.size());
+  	    
   	    return mav;
     }
 	
@@ -199,9 +202,9 @@ public class RecipeController {
 
         // 파일 read
 //      interpreter.exec("f = open('./src/main/resources/csv/recipes.csv', 'r')"); //상대경로 (상대경로 안되면 절대경로로 한번 바꿔서 해보세요)
-        interpreter.exec("f = open('/Users/user/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
+//       interpreter.exec("f = open('/Users/user/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
 //      interpreter.exec("f = open('/Users/shpar/git/DALC-team05//src/main/resources/csv/recipes.csv', 'r')"); //상대경로 (상대경로 안되면 절대경로로 한번 바꿔서 해보세요)
-//        interpreter.exec("f = open('/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
+        interpreter.exec("f = open('/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
 
         interpreter.exec("reader = csv.reader(f)");
     	interpreter.exec("header = next(reader)");
@@ -221,8 +224,8 @@ public class RecipeController {
    		interpreter.exec("f.close()");
    		
    	// 파일 read
-        interpreter.exec("f = open('/Users/shpar/git/DALC-team05//src/main/resources/csv/recipes.csv', 'r')"); //상대경로 (상대경로 안되면 절대경로로 한번 바꿔서 해보세요)
-//          interpreter.exec("f = open('/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
+        //interpreter.exec("f = open('/Users/shpar/git/DALC-team05//src/main/resources/csv/recipes.csv', 'r')"); //상대경로 (상대경로 안되면 절대경로로 한번 바꿔서 해보세요)
+          interpreter.exec("f = open('/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
         
    		interpreter.exec("reader = csv.reader(f)");
     	interpreter.exec("header = next(reader)");

@@ -125,28 +125,26 @@
 <div class="album py-5 bg-light">
 <div class="container">
 <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3">
-      <c:forEach var="list" items="${myBoxList}">
+      <c:forEach var="list" items="${list}">
         <div class="col">
           <div class="card shadow-sm">
-         <label for="id-of-input" class="custom-checkbox">
-            <input type="checkbox" id="id-of-input"/>
-            <i class="bi bi-heart"></i>
-            <i class="bi bi-heart-fill"></i>
-         </label>
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-             focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">
-            
-            Thumbnail</text>
-            </svg>
+<!--          <label for="id-of-input" class="custom-checkbox"> -->
+<!--             <input type="checkbox" id="id-of-input" /> -->
+<!--             <i class="bi bi-heart"></i> -->
+<!--             <i class="bi bi-heart-fill"></i> -->
+<!--          </label> -->
+            <img src="<c:url value=' ${list.recipe_img}'/>" >
             <div class="card-body">
-              <p class="card-text"> 콘텐츠 이름 ${list.myBox_code} </p>
+              <p class="card-text"> 레시피명 : ${list.recipe_title} </p>
+              <p class="card-text"> ${list.recipe_memo} </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" 
-                  onclick="location.href='<c:url value='/member/mybox/delete'> <c:param name="myBox_code" value="${list.myBox_code}"></c:param> 
-                </c:url>'">삭제</button>
+                	   <button type="button" class="btn btn-sm btn-outline-secondary" 
+                  onclick="location.href='<c:url value='/recipe/recipe_detail'> <c:param name="recipe_code" value="${list.recipe_code}"></c:param> 
+                </c:url>'">more...</button>
+
                 </div>
-                <small class="text-muted">날짜</small>
+                <small class="text-muted">${list.recipe_person}, ${list.recipe_time} </small>
               </div>
             </div>
           </div>

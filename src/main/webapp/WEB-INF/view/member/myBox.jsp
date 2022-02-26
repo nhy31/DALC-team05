@@ -129,24 +129,25 @@
         <div class="col">
           <div class="card shadow-sm">
          <label for="id-of-input" class="custom-checkbox">
-            <input type="checkbox" id="id-of-input"/>
-            <i class="bi bi-heart"></i>
-            <i class="bi bi-heart-fill"></i>
+            <input onClick="return false;" type="checkbox" id="id-of-input" checked/>
+            <i class="bi bi-heart-fill" ></i>
          </label>
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-             focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">
-            
-            Thumbnail</text>
-            </svg>
+            <img src="<c:url value=' ${list.img}'/>" >
             <div class="card-body">
-              <p class="card-text"> 콘텐츠 이름 ${list.myBox_code} </p>
+              <p class="card-text"> 레시피명 ${list.title} </p>
+              <p class="card-text"> ${list.memo} </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
+                   <button type="button" class="btn btn-sm btn-outline-secondary" 
+                  onclick="location.href='<c:url value='/recipe/recipe_detail'> <c:param name="recipe_code" value="${list.recipe_code}"></c:param> 
+                </c:url>'">more...</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary" 
                   onclick="location.href='<c:url value='/member/mybox/delete'> <c:param name="myBox_code" value="${list.myBox_code}"></c:param> 
-                </c:url>'">삭제</button>
+                </c:url>'">delete</button>
+                                  <button type="button" class="btn btn-sm btn-outline-secondary" 
+                  onclick="location.href='<c:url value='/member/diary'></c:url>'">diary</button>
                 </div>
-                <small class="text-muted">날짜</small>
+                
               </div>
             </div>
           </div>

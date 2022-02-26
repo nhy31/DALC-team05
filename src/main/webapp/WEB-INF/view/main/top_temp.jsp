@@ -56,7 +56,7 @@ width:60%;
 
 	<!-- border는 확인용.. -->
 	<div style="border: 0px solid gold; float: left; width: 30%;">
-	<a href="<c:url value='/main'/>"><img class="logo" src="<c:url value='/images/aah-logo.png'/>"></a>
+	<a href="<c:url value='/main'/>"><img class="logo" src="<c:url value='/images/small-logo.png'/>"></a>
 	</div>
 	
 	<div style="border: 0px solid gold; float: left; width: 40%;">
@@ -97,7 +97,7 @@ width:60%;
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">
 					<li><a class="dropdown-item" href="<c:url value='/member/my'/>">마이페이지</a></li>
-	              	<li><a class="dropdown-item" href="<c:url value="/member/diary" />">질병 캘린더</a></li>
+	              	<li><a class="dropdown-item" href="<c:url value="/member/diary" />">다이어리</a></li>
 	              	<li><a class="dropdown-item" href="<c:url value="/member/mybox" />">보관함</a></li>
 	              	<li><a class="dropdown-item" href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
 	              	<li><a class="dropdown-item" href="<c:url value="/member/delete.do" />">탈퇴</a></li>
