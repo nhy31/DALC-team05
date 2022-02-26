@@ -13,7 +13,9 @@
 
 <!-- 외부 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <!-- 내부 스타일 링크 -->
 <link rel=stylesheet href="<c:url value='/css/all.css'/>" type="text/css">
@@ -95,7 +97,8 @@
 	</style>
 </head>
 
-<body style="width: 70%; margin: 0 auto 50px auto;" >
+<body>
+<div style="width: 70%; margin: 0 auto 50px auto;">
 	<div class="main_title1">이번 주 인기글</div>
 	<div class="add">매주 업데이트 되는 인기글을 확인하세요.</div>
 		<div class="bestPosts">
@@ -205,6 +208,6 @@
 		<div class="add" onclick="location.href='<c:url value='/community/create' />'">관심있는 커뮤니티를 직접 생성하세요. </div>
 	</div>
 
-
+</div>
 </body>
 </html>

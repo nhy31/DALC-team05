@@ -17,6 +17,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 
+<!-- 내부 스타일 링크 -->
+<link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
 
 <title>아아현 레시피추천</title>
 

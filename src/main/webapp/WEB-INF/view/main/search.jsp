@@ -105,21 +105,20 @@ color: #4E4E4E;
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">레시피 추천</div>
 			<div class="news-div">
-				<c:forEach var="list" items="${recipeByKeyword}" begin="1" end="3" step="1" varStatus="status">
+				<c:forEach var="list" items="${recipeByKeyword}" begin="0" end="2" step="1" varStatus="status">
 				<table id="news-one">
 					<tr>
 						<td rowspan="3" style="width:22%; height:100%">
-							<a href=""><img class="img2" src="<c:url value=''/>" >이미지</a>
+							<a href=""><img class="img2" src="<c:url value='${list.recipe_img}'/>" ></a>
 						</td>
-						<td class="news-title">레시지 제목</td>
+						<td class="news-title">${list.recipe_title}</td>
 					</tr>
 					<tr>
-						<td id="news-contents">
-							레시피에 대한 설명들
+						<td id="news-contents">${list.recipe_memo}
 						</td>
 					</tr>
 					<tr>
-						<td class="news-info" align="right">분</td>
+						<td class="news-info" align="right">조회수 ${list.recipe_hits}회</td>
 					</tr>
 				</table>
 				</c:forEach>
@@ -137,7 +136,7 @@ color: #4E4E4E;
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">홈트레이닝 추천</div>
 			<div class="news-div">
-				<c:forEach var="list" items="${exerciseByKeyword}" begin="1" end="3" step="1" varStatus="status">
+				<c:forEach var="list" items="${exerciseByKeyword}" begin="0" end="2" step="1" varStatus="status">
 				<table id="news-one">
 					<tr>
 						<td rowspan="3" style="width:22%; height:100%">
@@ -170,15 +169,11 @@ color: #4E4E4E;
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">현대 사회</div>
 			<div class="news-div">
-				<c:forEach var="list" items="${commuByKeyword}" begin="1" end="3" step="1" varStatus="status">
+				<c:forEach var="list" items="${commuByKeyword}" begin="0" end="2" step="1" varStatus="status">
 				<table id="news-one">
 					<tr>
-					<td rowspan="3" style="width:22%; height:100%">
-						<a href=""><img class="img2" src="<c:url value=''/>" ></a>
-					</td>
-					<td class="news-title">커뮤니티 글 제목</td>
-					<td class="news-contents">음식정보</td>
-					<td class="news-contents">음식정보</td>
+					<td class="news-title">${list.commu_name }</td>
+					<td class="news-contents">${list.commu_introduce }</td>
 					</tr>
 				</table>
 				</c:forEach>
