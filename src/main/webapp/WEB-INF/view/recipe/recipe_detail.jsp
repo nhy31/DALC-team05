@@ -10,11 +10,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
 <title>아아현 레시피 상세보기</title>
+
 <style type="text/css">
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 * { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+
 .content_start {
 padding: 10px 10px 5px 10px;
 }
@@ -126,7 +132,93 @@ border-radius: 79px;
 </style>
 </head>
 
-<body> <!-- 테스트 임시 삽입 -->
+<body> 
+
+<div class="content_start">
+	<div class="row">
+		<div class="col-lg-2 col-md-1 col-1"></div>
+		<div align="left" class="col-lg-8 col-md-10 col-10">
+			<div class="fs-4" id="main_title">${clickRecipe.recipe_title}</div> <br>
+			<table id="news-one">
+				<tr>
+					<td rowspan="9" style="width:22%; height:100%">
+						<img class="img2" src="<c:url value='${clickRecipe.recipe_img}'/>" >
+					</td>
+				</tr>
+				<tr><td class="news-info"> 주재료 </td></tr>
+				<tr><td class="news-info">
+					<c:forEach var="uses" items="${clickRecipe.uses}">
+						<c:if test="${uses.rUse_type eq '주재료'}">
+						<button type="button" class="single_btn" style="vertical-align:top;">${uses.rUse_name} ${uses.rUse_volume}</button>
+						</c:if>
+					</c:forEach>
+				</td></tr>
+				<tr><td class="news-info" style="margin-top:10px;"> 부재료 </td></tr>
+				<tr><td style="vertical-align:top;" class="news-info">
+					<c:forEach var="uses" items="${clickRecipe.uses}">
+						<c:if test="${uses.rUse_type eq '부재료'}">
+						<button type="button" class="single_btn">${uses.rUse_name} ${uses.rUse_volume}</button>
+						</c:if>
+					</c:forEach>
+				</td></tr>
+				<tr><td class="news-info"> 양념 재료 </td></tr>
+				<tr><td class="news-info" style="vertical-align:text-top;">
+					<c:forEach var="uses" items="${clickRecipe.uses}">
+						<c:if test="${uses.rUse_type eq '양념'}">
+						<button type="button" class="single_btn">${uses.rUse_name} ${uses.rUse_volume}</button>
+						</c:if>
+					</c:forEach>
+				</td></tr>
+				<tr><td class="news-info">시간</td></tr>
+				<tr><td class="news-info"><button type="button" class="single_btn">${clickRecipe.recipe_time}</button></td></tr>
+			</table>
+			<br>
+			<hr>
+			
+			<div class="fs-4" id="main_title">만드는 방법</div>
+			<div class="swiper-container-order" >	
+	    		<div class="swiper-wrapper"> 
+	    		<c:forEach var="orders" items="${clickRecipe.orders}">
+		      		<div class="swiper-slide" >
+			       		<table>
+			        		<tr><td style="width: 300px; height: 210px;"><img class="img1" src="<c:url value='${orders.rOrder_img}'/>" ></td></tr>
+			        		<tr><th class="issue-title">${orders.rOrder_num}. ${orders.rOrder_content}</th></tr>
+			        	</table>
+		      		</div>
+		      	</c:forEach> 
+		      	</div>
+	   			<div class="swiper-button-next"></div>
+	   			<div class="swiper-button-prev"></div> <br><br>
+	   			<div align="center" class="swiper-pagination-order"></div>	
+ 			</div>
+ 			<br><hr>
+ 			
+ 			<div class="fs-4" id="main_title">${clickRecipe.recipe_title}와 비슷한 레시피</div>
+ 			<div class="swiper-container" >	
+	    		<div class="swiper-wrapper"> 
+	    		<c:forEach var="r" items="${relatedList}">
+		      		<div class="swiper-slide" >
+			       		<table>
+			       			<tr><td style="text-align: center; width:300px; height:210px;">
+		        				<a href="<c:url value="/recipe/recipe_detail"><c:param name="recipe_code" value="${r.recipe_code}">
+				     				</c:param></c:url>">
+		        				<img class="img1" src="<c:url value='${r.recipe_img}'/>"></a>
+		        			</td></tr>
+			        		<tr><th class="issue-title">${r.recipe_title}</th></tr>
+			        	</table>
+		      		</div>
+		      	</c:forEach> 
+		      	</div>
+	   			<div class="swiper-button-next"></div>
+	   			<div class="swiper-button-prev"></div> <br>
+	   			<div align="center" class="swiper-pagination"></div>	
+ 			</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- 테스트 임시 삽입 -->
 <button onclick="location.href='<c:url value='/mybox/recipe/add'>
 <c:param name='recipe_code' value='${clickRecipe.recipe_code}'></c:param></c:url>'">보관함에 저장</button>
 <div>
@@ -188,6 +280,48 @@ ${orders.rOrder_num}. ${orders.rOrder_content} <br>
 		        		</table>
 </c:forEach>
 </div>
+
+<script>
+new Swiper('.swiper-container', {
+    slidesPerView : 3, // 동시에 보여줄 슬라이드 rotn
+    spaceBetween : 30, // 슬라이드 간 간격
+    slidesPerGroup : 3, // 그룹으로 묶는 개수
+    
+    // 그룹수가 맞지 않을 경우 빈칸으로 메우기
+    loopFillGroupWithBlank : true,
+    loop : true, // 무한 반복
+    
+    pagination : { // 페이징
+       el : '.swiper-pagination',
+       clickable : true, // 페이징을 클릭하면 해당 영역으로 이동 <- 필요시 지정
+    },
+    
+    navigation : { // 네비게이션
+       nextEl : '.swiper-button-next', // 다음 버튼 클래스명
+       prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
+    },   
+ });
+ 
+new Swiper('.swiper-container-order', {
+    slidesPerView : 1, // 동시에 보여줄 슬라이드 rotn
+    spaceBetween : 30, // 슬라이드 간 간격
+    slidesPerGroup : 1, // 그룹으로 묶는 개수
+    
+    // 그룹수가 맞지 않을 경우 빈칸으로 메우기
+    loopFillGroupWithBlank : true,
+    loop : true, // 무한 반복
+    
+    pagination : { // 페이징
+       el : '.swiper-pagination-order',
+       clickable : true, // 페이징을 클릭하면 해당 영역으로 이동 <- 필요시 지정
+    },
+    
+    navigation : { // 네비게이션
+       nextEl : '.swiper-button-next', // 다음 버튼 클래스명
+       prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
+    },   
+ });
+</script>
 
 </body>
 </html>
