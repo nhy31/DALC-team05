@@ -25,14 +25,10 @@
 
 	<style>
 	
-	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-
-	@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-	* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
-
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
 
 	.main_title1 {
-	font-family: 'Nanum Gothic', sans-serif;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 22px;

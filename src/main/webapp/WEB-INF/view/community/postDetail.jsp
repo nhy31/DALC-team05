@@ -30,14 +30,11 @@
 
 	<style>
 
-	@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
-
-	@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-	* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
 
 
 	.main_title1 {
-	font-family: 'Nanum Gothic', sans-serif;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 22px;
@@ -160,15 +157,26 @@
 				<td><font class="post_add_left"><fmt:formatDate pattern="yyyy.MM.dd HH:mm" value="${post.post_uploadDate}"/> </font>
 					<font style="margin-right: 10px; margin-left: 10px; color: #DBDBDB;"> | </font>
 					<font class="post_add_left">조회수 ${post.post_hits}</font></td>
-				<td style="text-align:right;"><font class="post_add_right">신고</font>
+					
+				<td style="text-align:right;">
+					
+					<c:if test = "${post.member_code == CODE}" >
+						<font class="post_add_right"><a href="<c:url value="/community/post/delete">
+						<c:param name='post_code' value='${post.post_code}'></c:param>
+						<c:param name='commu_code' value='${post.commu_code}'></c:param></c:url>">삭제</a></font>
+					</c:if>
+					
+					<c:if test = "${post.member_code != CODE}">
+						<font class="post_add_right">신고</font>
+					</c:if>
+					
 					<font style="margin-right: 10px; margin-left: 10px; color: #DBDBDB;"> | </font>
 					<font class="post_add_right">댓글 ( ${post.commentNum}  )</font>
 					<font style="margin-right: 10px; margin-left: 10px; color: #DBDBDB;"> | </font>
 					<font class="post_add_right">URL 복사 </font> 
-					<font style="margin-right: 10px; margin-left: 10px; color: #DBDBDB;"> | </font>
-					<font class="post_add_right"><a href="<c:url value="/community/post/delete">
-						<c:param name='post_code' value='${post.post_code}'></c:param>
-						<c:param name='commu_code' value='${post.commu_code}'></c:param></c:url>">삭제</a></font></td>
+					
+					
+				</td>
 
 			</tr>
 			
