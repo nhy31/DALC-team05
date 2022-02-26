@@ -81,36 +81,6 @@ public class CommunityController {
       return mav;
    }
    
-//   // 전체 커뮤니티 리스트보기 -> 메인으로 이동
-//   @RequestMapping(value = "/community/list")
-//   public ModelAndView commuList(  HttpServletRequest request) {
-//	   
-//	  HttpSession session = request.getSession();
-//	  Member m = (Member) session.getAttribute("loginMember");
-//		  
-//	  ModelAndView mav = new ModelAndView();
-//	  mav.setViewName("community/list");
-//
-//      int member_code = m.getMember_code();
-//      List<Community> cList = new ArrayList<>();
-//      cList = commuService.getMyCommuList(member_code);
-//      for(int i=0; i<cList.size(); i++) {
-//    	  cList.get(i).setSick_name(sickService.getSickName(cList.get(i).getSick_code()));
-//      }
-//      
-//      mav.addObject("MyCommuList", cList);
-//
-//      List<Community> list = new ArrayList<>();
-//      list = commuService.getCommuList(member_code); // 전체 불러오기
-//      
-//      for(int i=0; i<list.size(); i++) {
-//    	  list.get(i).setSick_name(sickService.getSickName(list.get(i).getSick_code()));
-//      }
-//      mav.addObject("CommuList", list);
-//      
-//      return mav;
-//   }
-   
    // 리스트에서 클릭하면 커뮤니티에 대한 글을 모두 볼 수 있음
    @RequestMapping(value = "/community/posts")
    public ModelAndView commuPosts(
