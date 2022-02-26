@@ -181,7 +181,12 @@
 			</tr>
 			
 			<tr>
-				<td colspan="2"><img class="pos" src="<c:url value="/images/"/>${post.post_img}"/>  
+				<td colspan="2">
+
+					<c:if test='${posts.post_img != null}'>
+						<img class="pos" src="<c:url value="/images/"/>${post.post_img}"/>   
+					</c:if>
+
 				<div style="font-size: 18px; margin-top: 20px; white-space:pre;">${post.post_content}</div></td>
 			</tr>
 		</table>
@@ -200,6 +205,8 @@
 					<tr style="vertical-align:top; padding-top: 5px;">
 						<td rowspan="3" style="margin: 5px;">
 						<img class="member_img" src="<c:url value="/images/"/>${m.member_image}"/></td>
+						
+						
 						<td class="member_nickname">${m.member_nickName}</td>
 						<td rowspan="3" style="text-align:right; padding-right: 30px;">
 						
@@ -250,3 +257,4 @@
 
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

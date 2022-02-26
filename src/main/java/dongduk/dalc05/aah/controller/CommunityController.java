@@ -296,11 +296,6 @@ public class CommunityController {
 		
 		System.out.println("uploadPost  post_img  : " +  post_img );
 		
-		if(post_img == null) {
-			post_img = "default.jpg";
-		}
-		
-		
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
 

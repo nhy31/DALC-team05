@@ -336,3 +336,4 @@ header {
         </div><!-- /. wrap -->
  </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

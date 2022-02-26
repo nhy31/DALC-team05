@@ -228,3 +228,4 @@ font-weight: bold;
    
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

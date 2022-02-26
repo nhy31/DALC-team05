@@ -142,3 +142,4 @@
 </script>
 
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

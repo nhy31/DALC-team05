@@ -112,3 +112,4 @@ border: 1px solid black;
 </div>
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

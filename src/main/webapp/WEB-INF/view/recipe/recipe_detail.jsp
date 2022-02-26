@@ -191,3 +191,4 @@ ${orders.rOrder_num}. ${orders.rOrder_content} <br>
 
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

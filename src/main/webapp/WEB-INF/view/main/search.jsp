@@ -206,3 +206,4 @@ color: #4E4E4E;
 
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

@@ -140,7 +140,9 @@ border-radius: 79px;
 </style>
 
 </head>
-
+<c:forEach var="illness" items="${sicks}">
+<button class="single_btn">${illness.sick_name}</button>
+</c:forEach>	
 <body>
 <div class="content_start">
 	<div class="row">
@@ -228,3 +230,4 @@ border-radius: 79px;
    	
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

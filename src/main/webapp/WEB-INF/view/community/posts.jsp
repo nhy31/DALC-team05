@@ -20,6 +20,7 @@
 <!-- 내부 스타일 링크 -->
 <link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
+<link rel=stylesheet href="<c:url value='/css/btns.css'/>" type="text/css">
 	<title>아아현 커뮤니티</title>
 
 	<style>
@@ -183,7 +184,18 @@
 	   		<c:forEach var="posts" items="${posts}">
 				<tr class="post_tr" style="cursor:pointer" onclick="location.href='<c:url value='/community/post/detail'>
 						<c:param name="post_code" value="${posts.post_code}"></c:param> </c:url>'">
-					<td ><img class="post_img" src="<c:url value="/images/"/>${posts.post_img}"/>  </td>	
+					
+					<td>
+					
+						<c:if test='${posts.post_img == null}'>
+							<img class="post_img" src="<c:url value="/images/default.jpg"/>${posts.post_img}"/> 
+						</c:if>
+						
+						<c:if test='${posts.post_img != null}'>
+							<img class="post_img" src="<c:url value="/images/"/>${posts.post_img}"/> 
+						</c:if>
+					</td>	
+					
 					<td>
    					<div class="post_title">${posts.post_title}</div>
    					<font class="post_add">${posts.member_nickName} </font>
@@ -198,3 +210,4 @@
 
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

@@ -22,7 +22,6 @@
 <link rel=stylesheet href="<c:url value='/css/top.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
 
 <style type="text/css">
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
