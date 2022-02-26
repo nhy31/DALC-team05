@@ -8,15 +8,15 @@
 <head>
 <meta charset="UTF-8">
 
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 
 <!-- 내부 스타일 링크 -->
 <link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
 <!-- top CSS -->
 <link rel=stylesheet href="<c:url value='/css/top.css'/>" type="text/css">
@@ -75,9 +75,13 @@ width:60%;
 			<div align="right" >
 				<table style="margin-right:30px;">
 					<tr>
-						<td><a href="<c:url value="/member/login" />"><font style="font-size:1.1vw;">로그인</font></a></td>
+						<td><a href="<c:url value="/member/login" />">
+							<font style="font-size:1.1vw;"><span class='text-muted'>로그인</span></font></a>
+						</td>
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-						<td><a href="<c:url value="/member/join" />"><font style="font-size:1.1vw;">회원가입</font></a></td>
+						<td><a href="<c:url value="/member/join" />">
+							<font style="font-size:1.1vw;"><span class='text-muted'>회원가입</span></font></a>
+						</td>
 					</tr>
 				</table>
 			</div>
@@ -89,8 +93,9 @@ width:60%;
 				<div class="col-md-3 text-end" id="navbarsExample03">
 				<ul class="navbar-nav me-auto mb-2 mb-sm-0 justify-content-center">
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" 
-					aria-expanded="false"><font style="font-size:1.2vw">${member_nickName}님</font></a>
+					<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">
+						<font style="font-size:1.2vw"><span class='text-muted'>${member_nickName}님</span></font>
+					</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">
 					<li><a class="dropdown-item" href="<c:url value='/member/my'/>">마이페이지</a></li>
 	              	<li><a class="dropdown-item" href="<c:url value="/member/diary" />">질병 캘린더</a></li>
@@ -118,16 +123,20 @@ width:60%;
   		<div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample03" style="margin:0 auto;">
 			<ul class="navbar-nav">
 				<li class="nav-item" style="margin-left:100px;">
-					<a class="nav-link active" aria-current="page" href="<c:url value='/recipe'/>">레시피 추천</a>
+					<a class="nav-link active" aria-current="page" href="<c:url value='/recipe'/>">
+					<span class='text-muted'>레시피 추천</span></a>
 				</li>
 				<li class="nav-item" style="margin-left:100px;">
-					<a class="nav-link active" aria-current="page" href="<c:url value='/exercise/sick'/>">홈트레이닝 추천</a>
+					<a class="nav-link active" aria-current="page" href="<c:url value='/exercise/sick'/>">
+					<span class='text-muted'>홈트레이닝 추천</span></a>
 				</li>
 				<li class="nav-item" style="margin-left:100px;">
-					<a class="nav-link active" aria-current="page" href="<c:url value='/media'/>">건강 미디어</a>
+					<a class="nav-link active" aria-current="page" href="<c:url value='/media'/>">
+					<span class='text-muted'>건강 미디어</span></a>
 				</li>
 				<li class="nav-item" style="margin-left:100px; margin-right:100px;" >
-					<a class="nav-link active" aria-current="page" href="<c:url value='/community'/>">현대사회 커뮤니티</a>
+					<a class="nav-link active" aria-current="page" href="<c:url value='/community'/>">
+					<span class='text-muted'>현대사회 커뮤니티</span></a>
 				</li>
 			</ul>
 		</div>

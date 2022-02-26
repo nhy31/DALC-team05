@@ -150,7 +150,7 @@ border-radius: 79px;
 	   			<div class="swiper-wrapper"> <c:forEach var="r" items="${bests}">
 		        	<div class="swiper-slide">
 			        	<table style="text-align:left;">
-			        		<tr><td style="text-align: center;">
+			        		<tr><td style="text-align: center; width: 300px; height: 200px;">
 			        		<a href="<c:url value="/recipe/recipe_detail"><c:param name="recipe_code" value="${r.recipe_code}">
 				     				</c:param></c:url>"><img class="img1" src="<c:url value='${r.recipe_img}'/>"></a></td></tr>
 			        		<tr><th class="issue-title">${r.recipe_title}</th></tr>

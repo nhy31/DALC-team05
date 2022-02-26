@@ -13,7 +13,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width-device-width">
 
-<!-- 하윤 0208 부트스트랩 하는중 -->
 <!-- 부트스트랩 css -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -182,15 +181,18 @@ font-weight: bold;
 <div class="content"> <br><br><br>
 
 	<!-- 질병 별 추천 레시피 -->
-	<div class="fs-4" id="main_title"> 오늘의 인기 레시피</div>
+	<div class="fs-4" id="main_title"> 오늘의 인기 레시피</div> <br>
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 			<c:forEach var="list" items="${bestsR}">
 				<div class="swiper-slide" >
 					<table>
-						<tr><td style="text-align: center;"><a href="<c:url value="/recipe/recipe_detail"><c:param name="recipe_code" value="${list.recipe_code}">
-				     				</c:param></c:url>" >
-						<img class="img1" src="<c:url value='${list.recipe_img}'/>" ></a></td></tr>
+						<tr> 
+							<td style="width: 300px; height: 210px; ">
+								<a href="<c:url value="/recipe/recipe_detail"><c:param name="recipe_code" value="${list.recipe_code}"></c:param></c:url>" >
+								<img class="img1" src="<c:url value='${list.recipe_img}'/>" ></a>
+							</td>
+						</tr>
 			        	<tr><th style="padding:5px; font-size:1vw;">${list.recipe_title}</th></tr>
 			        	<tr><td style="font-size:1vw">조회수 ${list.recipe_hits}회</td></tr>
 			        </table>
@@ -198,6 +200,7 @@ font-weight: bold;
 		     </c:forEach> 
 	      </div>
 	      
+	      <br><br><br>
 	      <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
 	      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
 	      <div class="swiper-pagination"></div>
@@ -205,14 +208,14 @@ font-weight: bold;
    	<hr><br><br>
    
 	<!-- 질병 별 추천 홈트레이닝 -->
-	<div class="fs-4" id="main_title"> 오늘의 인기 홈트레이닝 </div>
+	<div class="fs-4" id="main_title"> 오늘의 인기 홈트레이닝 </div> <br>
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 			<c:forEach var="list" items="${bestsE}">
 				<div class="swiper-slide" >
 					<table>
-						<tr><td style="text-align: center;"> <a href="${list.exercise_url}" >
-							<img class="img" style="width:300px; height: 200px; margin:10px; padding:10px; object-fit: cover; align: center;" src="<c:url value='${list.exercise_thumb}'/>" ></a>
+						<tr><td style="width: 300px; height: 200px; "> <a href="${list.exercise_url}" >
+							<img class="img1" src="<c:url value='${list.exercise_thumb}'/>" ></a>
 						</td></tr>
 			        	<tr><th style="padding:10px; font-size:1vw;">${list.exercise_title}</th></tr>
 			        	<tr><td style="font-size:1vw;"> ${list.exercise_channel}</td></tr>
@@ -221,6 +224,7 @@ font-weight: bold;
 		     </c:forEach> 
 	      </div>
 	      
+	      <br>
 	      <div class="swiper-button-next"></div><!-- 다음 버튼 -->
 	      <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
 	      <div class="swiper-pagination"></div>
@@ -228,19 +232,20 @@ font-weight: bold;
    	<hr><br><br>
    	
    	<!-- 건강 미디어 -->
-   	<div class="fs-4" id="main_title"> 오늘의 건강 이슈 </div>
+   	<div class="fs-4" id="main_title"> 오늘의 건강 이슈 </div> <br>
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 			<c:forEach var="list" items="${medias}">
 				<div class="swiper-slide" >
 					<table>
-						<tr><td style="text-align: center;"><a href="${list.url}" ><img class="img" src="<c:url value='${list.image}'/>" ></a></td></tr>
+						<tr><td style="width: 300px; height: 210px; "><a href="${list.url}" ><img class="img1" src="<c:url value='${list.image}'/>" ></a></td></tr>
 			        	<tr><th style="padding:5px; font-size:1vw;">${list.title}</th></tr>
 			        	<tr><td style="font-size:1vw">${list.source}&nbsp;&nbsp;&nbsp;&nbsp;${list.time}</td></tr>
 			        </table>
 		      	</div>
 		      </c:forEach>
-		</div> <br><br>
+		</div> 
+		<br><br><br>
 		<div class="swiper-button-next"></div><!-- 다음 버튼 -->
 	    <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
 	    <div class="swiper-pagination"></div>
@@ -268,6 +273,7 @@ font-weight: bold;
          prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
       },   
    });
+   
 </script>
    
 </body>
