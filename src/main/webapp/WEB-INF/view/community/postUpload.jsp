@@ -10,11 +10,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- 외부 스타일 링크 -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-
-<!-- 내부 스타일 링크 -->
 <link rel=stylesheet href="<c:url value='/css/all.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
@@ -107,13 +107,21 @@
 			<button class="single_round_btn" style="font-size: 14px;" disabled>${sick}</button>
 			<font style="color: #B0B0B0">&nbsp; > &nbsp;</font> <font style="font-size: 14px; font-weight: 600">${post.commu_name}</font>
 		</div>
-		<form name="form" action="<c:url value='/community/post/upload.do' />" enctype="multipart/form-data">
+		<form name="form" method="POST" action="<c:url value='/community/post/upload.do' />" enctype="multipart/form-data">
 		<input type="hidden" name="commu_code" value="${post.commu_code}" readonly>
 			<table>
 				<tr>
 					<td><input class="post_title" type="text" name="post_title" required="required" placeholder="제목을 입력해주세요.">  </td> 
 				</tr>
 				<tr><td><hr></td></tr>
+				<tr>
+					<td> 
+					
+					<div class="input-group">
+			  <input type="file" class="form-control" name="img_file" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+			</div>
+					
+				</tr>
 				<tr>
 					<td><!-- <input class="post_content" type="text" name="post_content" required="required" placeholder="내용을 입력하세요. ">  -->
 						<textarea rows="" cols="" class="post_content" name="post_content" required="required" placeholder="내용을 입력하세요. "></textarea></td>

@@ -92,8 +92,8 @@
 	<!-- 게시글 업로드 -->
     <insert id="insertPost" parameterType="dongduk.dalc05.aah.domain.Post"> 
        insert into POST
-       (commu_code, member_code, post_title, post_content, post_hits, post_uploadDate)
-       values (#{commu_code}, #{member_code}, #{post_title}, #{post_content}, #{post_hits}, #{post_uploadDate});
+       (commu_code, member_code, post_title, post_content, post_hits, post_uploadDate, post_img)
+       values (#{commu_code}, #{member_code}, #{post_title}, #{post_content}, #{post_hits}, #{post_uploadDate}, #{post_img});
     </insert>
     
     <delete id="deletePost" parameterType="Integer">

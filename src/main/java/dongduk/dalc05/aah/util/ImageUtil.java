@@ -24,6 +24,9 @@ public class ImageUtil {
 
 		String filePath = "";
 
+		if(file == null)
+			return null;
+		
 		if (!file.isEmpty()) {
 			String orifileName = file.getOriginalFilename();
 			String ext = orifileName.substring(orifileName.lastIndexOf("."));

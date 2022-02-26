@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,6 +25,7 @@ import dongduk.dalc05.aah.domain.cMember;
 import dongduk.dalc05.aah.service.CommunityService;
 import dongduk.dalc05.aah.service.MemberService;
 import dongduk.dalc05.aah.service.SickService;
+import dongduk.dalc05.aah.util.ImageUtil;
 
 @Controller
 public class CommunityController {
@@ -36,6 +38,9 @@ public class CommunityController {
    
    @Autowired
    private MemberService memberService;
+   
+   @Autowired
+   private ImageUtil imageUtil; 
    
    // 메인에서 커뮤니티 카테고리로 이동
    @RequestMapping(value = "/community")
@@ -281,10 +286,20 @@ public class CommunityController {
 			RedirectAttributes redirect,
 			@RequestParam int commu_code,
 			@RequestParam String post_title,
-			@RequestParam String post_content
+			@RequestParam String post_content,
+			MultipartFile img_file
 			) {
 		
 		System.out.println("게시글업로드 test");
+		ModelAndView mav = new ModelAndView();
+	    String post_img = imageUtil.uploadImage(request, img_file);
+		
+		System.out.println("uploadPost  post_img  : " +  post_img );
+		
+		if(post_img == null) {
+			post_img = "default.jpg";
+		}
+		
 		
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");
@@ -294,11 +309,11 @@ public class CommunityController {
 		Date now = new Date();
 		
 		Post p = new Post(commu_code, m.getMember_code(), post_title, post_content, post_hits,
-				now, m.getMember_nickName(), commu_name);
+				now, m.getMember_nickName(), commu_name, post_img);
 		commuService.insertPost(p);
 		System.out.println("게시글업로드 SUECESS");
 		
-		ModelAndView mav = new ModelAndView();
+		
 		
 		redirect.addAttribute("commu_code", commu_code); 
 		mav.setViewName("redirect:/community/posts");

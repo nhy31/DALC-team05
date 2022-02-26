@@ -13,8 +13,6 @@ public class Post {
 	private String post_title;
 	private String post_content;
 	private int post_hits;
-	
-	// DB에 추가
 	private String post_img;
 	
 	@DateTimeFormat (pattern ="yyyy/MM/dd HH:mm")
@@ -40,6 +38,19 @@ public class Post {
 		this.commu_name = commu_name;
 	}
 
+	public Post(int commu_code, int member_code, String post_title, String post_content, int post_hits,
+			Date post_uploadDate, String member_nickName, String commu_name, String post_img) {
+		super();
+		this.commu_code = commu_code;
+		this.member_code = member_code;
+		this.post_title = post_title;
+		this.post_content = post_content;
+		this.post_hits = post_hits;
+		this.post_uploadDate = post_uploadDate;
+		this.member_nickName = member_nickName;
+		this.commu_name = commu_name;
+		this.post_img =  post_img;
+	}
 	public int getPost_code() {
 		return post_code;
 	}
@@ -118,5 +129,13 @@ public class Post {
 	public void setCommentNum(int commentNum) {
 		this.commentNum = commentNum;
 	}
+	public String getPost_img() {
+		return post_img;
+	}
+
+	public void setPost_img(String post_img) {
+		this.post_img = post_img;
+	}
+
 
 }

@@ -166,8 +166,10 @@
 					<font style="margin-right: 10px; margin-left: 10px; color: #DBDBDB;"> | </font>
 					<font class="post_add_right">URL 복사</font> </td>
 			</tr>
+			
 			<tr>
-				<td colspan="2"><div style="font-size: 18px; margin-top: 20px; white-space:pre;">${post.post_content}</div></td>
+				<td colspan="2"><img class="pos" src="<c:url value="/images/"/>${post.post_img}"/>  
+				<div style="font-size: 18px; margin-top: 20px; white-space:pre;">${post.post_content}</div></td>
 			</tr>
 		</table>
 
@@ -183,7 +185,8 @@
 						<col width="10%"/>
 					</colgroup>
 					<tr style="vertical-align:top; padding-top: 5px;">
-						<td rowspan="3" style="margin: 5px;"><img class="member_img" src="<c:url value='${m.member_image}'/>"/>  </td>
+						<td rowspan="3" style="margin: 5px;">
+						<img class="member_img" src="<c:url value="/images/"/>${m.member_image}"/></td>
 						<td class="member_nickname">${m.member_nickName}</td>
 						<td rowspan="3" style="text-align:right; padding-right: 30px;">신고 
 					</tr>

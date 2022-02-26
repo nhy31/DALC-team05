@@ -188,7 +188,7 @@
 	   		<c:forEach var="posts" items="${posts}">
 				<tr class="post_tr" style="cursor:pointer" onclick="location.href='<c:url value='/community/post/detail'>
 						<c:param name="post_code" value="${posts.post_code}"></c:param> </c:url>'">
-					<td ><img class="post_img" src="../images/default.jpg"/>  </td>	
+					<td ><img class="post_img" src="<c:url value="/images/"/>${posts.post_img}"/>  </td>	
 					<td>
    					<div class="post_title">${posts.post_title}</div>
    					<font class="post_add">${posts.member_nickName} </font>
