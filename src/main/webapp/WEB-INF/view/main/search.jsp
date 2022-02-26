@@ -105,7 +105,7 @@ color: #4E4E4E;
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">레시피 추천</div>
 			<div class="news-div">
-				<c:forEach var="list" items="${recipeByKeyword}" begin="0" end="2" step="1" varStatus="status">
+				<c:forEach var="list" items="${recipeByKeyword}" begin="0" end="4" step="1" varStatus="status">
 				<table id="news-one">
 					<tr>
 						<td rowspan="3" style="width:22%; height:100%">
@@ -136,7 +136,7 @@ color: #4E4E4E;
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">홈트레이닝 추천</div>
 			<div class="news-div">
-				<c:forEach var="list" items="${exerciseByKeyword}" begin="0" end="2" step="1" varStatus="status">
+				<c:forEach var="list" items="${exerciseByKeyword}" begin="0" end="4" step="1" varStatus="status">
 				<table id="news-one">
 					<tr>
 						<td rowspan="3" style="width:22%; height:100%">
@@ -169,11 +169,14 @@ color: #4E4E4E;
 		<div align="left" class="col-lg-8 col-md-10 col-10">
 			<div class="fs-4" id="main_title">현대 사회</div>
 			<div class="news-div">
-				<c:forEach var="list" items="${commuByKeyword}" begin="0" end="2" step="1" varStatus="status">
+				<c:forEach var="list" items="${commuByKeyword}" begin="0" end="4" step="1" varStatus="status">
 				<table id="news-one">
 					<tr>
-					<td class="news-title">${list.commu_name }</td>
-					<td class="news-contents">${list.commu_introduce }</td>
+						<td rowspan="3" style="width:22%; height:100%"></td>
+						<td class="news-title">${list.commu_name }</td>
+					</tr>
+					<tr>
+						<td class="news-contents">${list.commu_introduce }</td>
 					</tr>
 				</table>
 				</c:forEach>

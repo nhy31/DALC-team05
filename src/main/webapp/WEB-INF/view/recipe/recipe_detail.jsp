@@ -11,7 +11,121 @@
 <head>
 <meta charset="UTF-8">
 <title>아아현 레시피 상세보기</title>
+<style type="text/css">
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+.content_start {
+padding: 10px 10px 5px 10px;
+}
+
+#main_title {
+font-style: normal;
+font-weight: bold;
+color: #000000;
+}
+
+.issue-title {
+font-style: normal;
+font-size: 0.95vw;
+color: #4E4E4E;
+padding: 5px 10px 0px 10px;
+}
+
+.issue-info {
+font-style: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+padding: 5px 10px 0px 10px;
+}
+
+.img1 {
+height: 100%;
+width:100%;
+border-radius: 6px;
+}
+
+.img2 {
+max-height: 100%;
+max-width:100%;
+border-radius: 6px;
+}
+
+.sick_btns {
+margin:10px 0px 0px 10px;
+}
+
+.news-div {
+margin: 10px 10px 0px 10px;
+}
+
+#news-one {
+margin: 0px 10px 25px 0px;
+}
+
+.news-title {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: bold;
+font-size: 1.2vw;
+color: #4E4E4E;
+}
+
+#news-contents {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+background: #E1E1E1;
+}
+
+.news-info {
+padding: 0px 25px 0px 25px;
+font-style: normal;
+font-weight: normal;
+font-size: 0.9vw;
+color: #4E4E4E;
+}
+
+.single_btn{
+margin-top: 10px;
+background-color:#ffffff;;
+border: 1px solid #DDDDDD;
+color:#4E4E4E;
+font-size: 0.7vw;
+text-align: center;
+padding: 3px 9px;
+border-radius: 79px;
+}
+
+
+.box-radio-input input[type="radio"]{
+        display: none;
+      }
+
+      .box-radio-input input[type="radio"] + span{
+        display: inline-block;
+        background: none;
+        border: 1.5px solid #DDDDDD;
+        color: #4E4E4E;
+        padding: 7px 15px;
+        font-family: -apple-system;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 79px;
+        cursor: pointer;
+      }
+
+      .box-radio-input input[type="radio"]:checked + span{
+        border:1px solid #851BD8;
+        background:#851BD8;
+        color:#fff;
+        font-weight: bold;
+      }
+</style>
 </head>
+
 <body> <!-- 테스트 임시 삽입 -->
 <button onclick="location.href='<c:url value='/mybox/recipe/add'>
 <c:param name='recipe_code' value='${clickRecipe.recipe_code}'></c:param></c:url>'">보관함에 저장</button>
