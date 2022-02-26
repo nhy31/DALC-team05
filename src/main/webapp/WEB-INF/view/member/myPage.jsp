@@ -149,7 +149,9 @@ border-radius: 6px;
 			<div class="row">
 				<h6 class="hr_write">나의 정보</h6>
 				<p/><p/>
-				<div class="col-sm-12"> <div align="center"><img class="myImg" src="<c:url value='${me.member_image}'/>" /></div></div>
+				<div class="col-sm-12"> 
+				<div align="center"> <img class="myImg" src="<c:url value="/images/"/>${me.member_image}"/></div>
+				</div>
 				<p/><p/>
 				<div class="col-sm-12">
 		              <label for="name" class="form-label">이름</label>

@@ -85,6 +85,8 @@ public class MemberController {
 		// DB에 기본정보 insert -> memberService.signUp(memberDTO);
 		String member_image = imageUtil.uploadImage(request, img_file);
 		
+		System.out.println("uploadPost member_image : " + member_image);
+		
 		if(member_image == null) {
 			member_image = "/images/userImg.jpg";
 		}

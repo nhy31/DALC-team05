@@ -150,7 +150,8 @@
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
 		<h2 class="mb-3"> 회원 가입 </h2>
-			<form class="needs-validation" name="form" method="POST"  onsubmit="return checkAll()" action="<c:url value='/member/join.do' />" enctype="multipart/form-data" novalidate>
+			<form class="needs-validation" name="form" method="POST"  onsubmit="return checkAll()" 
+			action="<c:url value='/member/join.do' />" enctype="multipart/form-data" novalidate>
 			<div class="row">
 				<h6 class="hr_write">필수정보</h6>
 				<p/><p/>
