@@ -214,7 +214,7 @@ font-weight: bold;
 							<img class="img" style="width:300px; height: 200px; margin:10px; padding:10px; object-fit: cover; align: center;" src="<c:url value='${list.exercise_thumb}'/>" ></a>
 						</td></tr>
 			        	<tr><th style="padding:10px; font-size:1vw;">${list.exercise_title}</th></tr>
-			        	<tr><td style="font-size:1vw;">조회수 ${list.exercise_views}회</td></tr>
+			        	<tr><td style="font-size:1vw;"> ${list.exercise_channel}</td></tr>
 			        </table>
 		      	</div>
 		     </c:forEach> 
