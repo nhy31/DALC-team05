@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@ include file="../main/top_temp.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,7 @@
 <link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css"> 
 <link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
-    
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
@@ -38,6 +38,7 @@
  
 <!-- Bootstrap core CSS -->
 <link href="/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 
 <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -50,12 +51,19 @@
 
 
     <style>
+    
+       .card{
+         width: 223px;
+       }
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
         -webkit-user-select: none;
         -moz-user-select: none;
         user-select: none;
+        
+      height: 152px;
       }
 
       @media (min-width: 768px) {
@@ -63,9 +71,52 @@
           font-size: 3.5rem;
         }
       }
+      
+      label {
+        /* Presentation */
+        font-size: 30px;
+        position: relative;
+        left: 150px;
+      }
+
+      /* Required Styling */
+      
+      label input[type="checkbox"] {
+        display: none;
+      }
+      
+      .custom-checkbox {
+        margin-left: 2em;
+        position: relative;
+        cursor: pointer;
+      }
+      
+      .custom-checkbox .bi {
+        color: red;
+        position: absolute;
+        top: 0.4em;
+        left: -1.25em;
+        font-size: 0.75em;
+      }
+      
+      .custom-checkbox .bi-heart {
+        color: gray;
+      }
+      
+      .custom-checkbox .bi-heart-fill {
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+      }
+      
+      .custom-checkbox:hover .bi-heart-fill {
+        opacity: 0.5;
+      }
+      
+      .custom-checkbox input[type="checkbox"]:checked ~ .bi-heart-fill {
+        opacity: 1;
+      }
     </style>
 
-    
   </head>
   <body>
     
@@ -77,18 +128,25 @@
       <c:forEach var="list" items="${myBoxList}">
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+         <label for="id-of-input" class="custom-checkbox">
+            <input type="checkbox" id="id-of-input"/>
+            <i class="bi bi-heart"></i>
+            <i class="bi bi-heart-fill"></i>
+         </label>
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+             focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">
+            
+            Thumbnail</text>
+            </svg>
             <div class="card-body">
-              <p class="card-text">${list.myBox_code} </p>
+              <p class="card-text"> 콘텐츠 이름 ${list.myBox_code} </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">일기쓰기</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary" 
-                  onclick="location.href='<c:url value='/member/mybox/delete'>
-	 				<c:param name="myBox_code" value="${list.myBox_code}"></c:param> 
-		 			</c:url>'">삭제</button>
+                  onclick="location.href='<c:url value='/member/mybox/delete'> <c:param name="myBox_code" value="${list.myBox_code}"></c:param> 
+                </c:url>'">삭제</button>
                 </div>
-                <small class="text-muted">추가한날짜</small>
+                <small class="text-muted">날짜</small>
               </div>
             </div>
           </div>

@@ -39,16 +39,16 @@ public class MyBoxController {
 		List<MyBox> list = new ArrayList<>();
 		list = myBoxService.getAllList(member_code);
 		
-//		for(int i=0; i<list.size(); i++) {
-//			if(list.get(i).getRecipe_code() == -1) {
-//				list.get(i).setImage(null); // 후에 홈트코드로 홈트영상이미지 불러온다
-//				list.get(i).setSick_name(null); // 후에 홈트에 저장된 sick_code로 sick_name 불러온다
-//			}
-//			else {
-//				list.get(i).setImage(null); // 후에 레시피코드로 레시피이미지 불러온다
-//				list.get(i).setSick_name(null); // 후에 레시피 저장된 sick_code로 sick_name 불러온다
-//			}
-//		}
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getRecipe_code() == -1) {
+				list.get(i).setImage(null); // 후에 홈트코드로 홈트영상이미지 불러온다
+				list.get(i).setSick_name(null); // 후에 홈트에 저장된 sick_code로 sick_name 불러온다
+			}
+			else {
+				list.get(i).setImage(null); // 후에 레시피코드로 레시피이미지 불러온다
+				list.get(i).setSick_name(null); // 후에 레시피 저장된 sick_code로 sick_name 불러온다
+			}
+		}
 		
 		mav.addObject("myBoxList", list);
 		

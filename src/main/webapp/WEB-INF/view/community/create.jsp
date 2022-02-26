@@ -26,6 +26,10 @@
 <title>커뮤니티 만들기</title>
 
 <style>
+
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
+
 .content_start {
 padding: 10px 10px 5px 10px;
 }

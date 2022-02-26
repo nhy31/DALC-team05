@@ -9,6 +9,9 @@
 <title>알림창</title>
 </head>
 <style>
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; } 
+
 .swal-button--confirm{
   background :  #851BD8;
 }
