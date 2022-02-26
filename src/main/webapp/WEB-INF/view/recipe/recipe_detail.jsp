@@ -55,6 +55,7 @@ ${uses.rUse_name} ${uses.rUse_volume} <br>
 
 <br><div>과정정보<br>
 <c:forEach var="orders" items="${clickRecipe.orders}">
+${orders.rOrder_num}. ${orders.rOrder_content} <br>
 </c:forEach>
 <br>
 </div>

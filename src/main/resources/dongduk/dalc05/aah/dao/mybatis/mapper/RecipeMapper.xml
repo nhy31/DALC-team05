@@ -66,6 +66,7 @@
 		SELECT *
 		FROM rOrder
 		WHERE recipe_code = #{recipe_code}
+		ORDER BY rOrder_num 
 	</select>
 	
 	
