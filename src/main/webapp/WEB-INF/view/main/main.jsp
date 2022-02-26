@@ -152,16 +152,16 @@ font-weight: bold;
 <div class="row" style="height: 300px; width:100%">
 	<div class="col-md-2"></div>
     <div class="col-md-8" style="height: 300px;" >
-   		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height:300px;">
+   		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height:300px; text-align:center;">
   			<div class="carousel-inner"style="height: 300px;">
-    			<div class="carousel-item active"  style="height: 300px;">
-      				<img style="height: 300px; align: center;" src="<c:url value='/images/mainImage1.jpg'/>" class="d-block w-100" alt="...">
+    			<div class="carousel-item active" style="height: 300px;">
+      				<img style="height: 400px; object-fit: cover; align: center;" src="<c:url value='/images/mainImage1.jpg'/>" class="d-block w-100" alt="...">
     			</div>
     			<div class="carousel-item">
-     				<img src="<c:url value='/images/mainImage2.jpg'/>" class="d-block w-100" alt="...">
+     				<img style="height: 400px; object-fit: cover; align: center;" src="<c:url value='/images/mainImage2.jpg'/>" class="d-block w-100" alt="...">
    			 	</div>
     			<div class="carousel-item">
-      				<img src="<c:url value='/images/mainImage3.jpg'/>" class="d-block w-100" alt="...">
+      				<img style="height: 400px; object-fit: cover; align: center;" src="<c:url value='/images/mainImage3.jpg'/>" class="d-block w-100" alt="...">
     			</div>
  	 		</div>
   			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
