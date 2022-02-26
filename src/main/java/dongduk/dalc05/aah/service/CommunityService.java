@@ -34,4 +34,7 @@ public interface CommunityService {
 	public void insertComment(Comment c); // 댓글 업로드
 	public void deleteComment(int comment_code); // 댓글 삭제
 	public List<Comment> getComments(int post_code); // 댓글 모두 가져오기
+	
+	/* 키워드 포함 커뮤 가져오기 */
+	public List<Community> getCommunityByKeyword(String keyword);
 }

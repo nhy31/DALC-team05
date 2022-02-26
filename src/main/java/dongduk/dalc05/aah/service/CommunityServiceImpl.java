@@ -97,6 +97,12 @@ public class CommunityServiceImpl implements CommunityService {
 	
 	// 댓글 모두 가져오기
 	@Override
-	public  List<Comment> getComments(int post_code) { return commuDao.getComments(post_code); } 
+	public  List<Comment> getComments(int post_code) { return commuDao.getComments(post_code); }
+
+	// 키워드로 커뮤 불러오기
+	@Override
+	public List<Community> getCommunityByKeyword(String keyword) {
+		return commuDao.getCommunityByKeyword(keyword);
+	} 
 
 }

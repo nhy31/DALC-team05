@@ -143,5 +143,12 @@
       FROM comment
       WHERE post_code = #{post_code}
     </select>
-  
+    
+    <!-- 키워드 포함 커뮤데이터 가져오기 -->
+    <select id="getCommunityByKeyword" parameterType="String" resultType="dongduk.dalc05.aah.domain.Community">
+    	SELECT *
+    	FROM community
+    	WHERE commu_name LIKE CONCAT('%',#{keyword},'%')
+    </select>
+    
 </mapper>

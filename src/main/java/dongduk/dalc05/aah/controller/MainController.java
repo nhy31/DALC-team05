@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import dongduk.dalc05.aah.domain.Community;
 import dongduk.dalc05.aah.domain.Exercise;
 import dongduk.dalc05.aah.domain.Media;
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.Recipe;
 import dongduk.dalc05.aah.domain.Sick;
+import dongduk.dalc05.aah.service.CommunityService;
 import dongduk.dalc05.aah.service.ExerciseService;
 import dongduk.dalc05.aah.service.RecipeService;
 import dongduk.dalc05.aah.service.SickService;
@@ -35,7 +37,8 @@ public class MainController {
 	private ExerciseService exerciseService;
 	@Autowired
 	private SickService sickService;
-	
+	@Autowired
+	private CommunityService commuService;
 	
 	
 	// 완료 // 홈 메인페이지 시작
@@ -175,6 +178,9 @@ public class MainController {
 		//미디어 키워드 검색정보
 
 		//커뮤 키워드 검색정보
+		List<Community> commuList = new ArrayList<>();
+		commuList = commuService.getCommunityByKeyword(keyword);
+		mav.addObject("commuByKeyword", commuList);
 		
 		
 		//총 검색 개수

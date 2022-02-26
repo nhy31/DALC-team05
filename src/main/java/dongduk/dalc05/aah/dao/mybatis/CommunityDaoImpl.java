@@ -98,6 +98,12 @@ public class CommunityDaoImpl implements CommunityDao {
 	@Override
 	public int countComment(int post_code) { return communityMapper.countComment(post_code); }
 
+	// 커뮤 키워드 검색
+	@Override
+	public List<Community> getCommunityByKeyword(String keyword) {
+		return communityMapper.getCommunityByKeyword(keyword);
+	}
+
 
 }
 

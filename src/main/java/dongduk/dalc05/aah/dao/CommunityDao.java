@@ -37,4 +37,7 @@ public interface CommunityDao {
 	void insertComment(Comment c); // 댓글 업로드
 	void deleteComment(int comment_code); // 댓글 삭제
 	List<Comment> getComments(int post_code); // 댓글 모두 가져오기
+	
+	/* 검색 키워드로 가져오기 - 나연 */
+	List<Community> getCommunityByKeyword(String keyword);
 }
