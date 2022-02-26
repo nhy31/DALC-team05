@@ -47,16 +47,7 @@
 			ss.setAttribute("member_id", m.getMember_id());
 			ss.setAttribute("member_nickName", m.getMember_nickName());
 		}
-		
-		String n = (String) session.getAttribute("naverName");
-		if(n != null){
-			System.out.println("넘어온 n:" + n);
-			ss.setAttribute("ses", 1);
-			ss.setAttribute("member_id", "temp");
-			ss.setAttribute("member_nickName", n);
-		}
-		else
-			ss.setAttribute("ses", 0);
+
 	%>
 	
 	<!-- 비로그인 경우 -->

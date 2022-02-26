@@ -136,7 +136,7 @@ font-weight: bold;
 
 </style>
 
-<title>홈트레이닝 메인페이지</title>
+<title>아아현 홈트 페이지</title>
 </head>
 
 <body>
@@ -174,26 +174,29 @@ font-weight: bold;
 						<span>${illness.sick_name}</span></label>
 				</c:forEach>
 			</div>
-
 			<div class="news-div">
 				<c:forEach var = "list" items="${sick_exercise}">
-				<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-					<div class="col-auto d-none d-lg-block" align="center">
-						<img class="today_img" src="${list.exercise_thumb}" alt="thumbnail" />
-					</div>
-					<div class="col p-4 d-flex flex-column position-static">
-						<strong class="d-inline-block mb-2 text-primary">${list.exercise_length}</strong>
-						<div class="fs-4" id="main_title">${list.exercise_title}</div>
-						<div class="mb-1 text-muted">${list.exercise_views}</div>
-						<!-- <p class="card-text mb-auto">운동에 대한 정보</p> -->
-						<a href="${list.exercise_url}" class="stretched-link">홈트레이닝 하러가기</a>
-					</div>
-				</div>
+				<table id="news-one">
+					<tr>
+						<td rowspan="3" style="width:22%; height:100%">
+							<a href="<c:url value='${list.exercise_url}'/>">
+							<img class="img2" src="<c:url value='${list.exercise_thumb}'/>" ></a>
+						</td>
+						<td class="news-title">${list.exercise_title}</td>
+					</tr>
+					<tr>
+						<td id="news-contents">채널명: ${list.exercise_channel} <br>
+							조회수: ${list.exercise_views} <br>
+						</td>
+					</tr>
+					<tr>
+						<td class="news-info" align="right"> ${list.exercise_length}분</td>
+					</tr>
+				</table>
 				</c:forEach>
-			</div>
-			
-		</div>
-	<div class="col-lg-2 col-md-1 col-1"></div>
+			</div>	
+		<div class="col-lg-2 col-md-1 col-1"></div>
+	</div>
 	</div>
 </div>
 <!-- < % @ include file="../exercise/exercise_sick.jsp" % > -->
