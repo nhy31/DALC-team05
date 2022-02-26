@@ -198,8 +198,8 @@ public class RecipeController {
         interpreter.exec("import csv");
 
         // 파일 read
-//      interpreter.exec("f = open('./src/main/resources/csv/recipes.csv', 'r')"); //상대경로 (상대경로 안되면 절대경로로 한번 바꿔서 해보세요)
-        interpreter.exec("f = open('/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
+      interpreter.exec("f = open('/Users/shpar/git/DALC-team05//src/main/resources/csv/recipes.csv', 'r')"); //상대경로 (상대경로 안되면 절대경로로 한번 바꿔서 해보세요)
+//        interpreter.exec("f = open('/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
         interpreter.exec("reader = csv.reader(f)");
     	interpreter.exec("header = next(reader)");
     	
@@ -213,7 +213,16 @@ public class RecipeController {
    						"		break\n" +
 						"	i+=1");
    		interpreter.exec("#print(input)");
-    	
+//   		PyObject o = interpreter.eval("input"); 
+//   		System.out.println("input: "+o.toString());
+   		interpreter.exec("f.close()");
+   		
+   	// 파일 read
+        interpreter.exec("f = open('/Users/shpar/git/DALC-team05//src/main/resources/csv/recipes.csv', 'r')"); //상대경로 (상대경로 안되면 절대경로로 한번 바꿔서 해보세요)
+//          interpreter.exec("f = open('/git/DALC-team05/src/main/resources/csv/recipes.csv', 'r')"); //절대경로(본인컴퓨터에 맞춰서 변경)
+        
+   		interpreter.exec("reader = csv.reader(f)");
+    	interpreter.exec("header = next(reader)");
     	// recipe_list: recipe csv파일에 있는 레시피들에 대한 리스트
     	// sim_list: 각 레시피에 대한 자카드 유사도를 담은 리스트
     	interpreter.exec("recipe_list = list()");
@@ -231,14 +240,18 @@ public class RecipeController {
    		interpreter.exec("f.close()");
    		
    		// 유사도 상위 5개 (본인 포함 6개) 인덱스 추출
-   		interpreter.exec("top = sorted(range(len(sim_list)), key=lambda i: sim_list[i])[-5:]");
+   		interpreter.exec("top = sorted(range(len(sim_list)), key=lambda i: sim_list[i])[-6:]");
    		interpreter.exec("#print(top)");
    		
+//   		PyObject ob = interpreter.eval("top"); 
+//   		System.out.println("상위1: "+ob.toString());
    		
-   		// 본인을 제외한 유사도 상위 레시피 5개
+//   		// 본인을 제외한 유사도 상위 레시피 5개
    		interpreter.exec("result = []\n");
    		
    		interpreter.exec("for k in top:\n"
+   						+"#	print(k)\n"
+   						+"#	print(recipe_list[k])\n"
    						+"	if recipe_list[k][0] != input[0]:\n"
    						+"#		print(recipe_list[k])\n"
    						+"		result.append(recipe_list[k][0])\n"
@@ -246,8 +259,8 @@ public class RecipeController {
  
    		
    		//obj에 들어있는 list가 추천 된 레시피코드
-   		PyObject obj = interpreter.eval("result");
-   		//		System.out.println("result: "+obj.toString());
+   		PyObject obj = interpreter.eval("result[:5]");
+//   		System.out.println("result: "+obj.toString());
 		
    		//recipeCode는 5가지 유사한 recipecode가 들어있는 배열 
 		String[] recipeCode = obj.toString().split("', '");
