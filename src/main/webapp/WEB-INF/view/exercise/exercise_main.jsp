@@ -193,7 +193,14 @@ font-weight: bold;
 						</td>
 					</tr>
 					<tr>
-						<td class="news-info" align="right"> ${list.exercise_length}분</td>
+						<!-- <td style="text-align:right;"><button class="single_btn" onclick="location.href='<c:url value='/mybox/exercise/add'>
+							<c:param name='exercise_code' value='${list.exercise_code}'></c:param></c:url>'">보관</button>
+						</td>-->
+						<td class="news-info" align="right"> 
+							${list.exercise_length}분
+							<button class="single_btn" onclick="location.href='<c:url value='/mybox/exercise/add'>
+							<c:param name='exercise_code' value='${list.exercise_code}'></c:param></c:url>'">보관</button>
+						</td>
 					</tr>
 				</table>
 				</c:forEach>

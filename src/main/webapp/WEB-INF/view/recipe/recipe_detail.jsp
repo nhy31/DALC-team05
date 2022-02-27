@@ -10,10 +10,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width-device-width">
+
+<!-- 스타일 링크 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
+
 <title>아아현 레시피 상세보기</title>
 
 <style type="text/css">
@@ -138,7 +144,12 @@ border-radius: 79px;
 	<div class="row">
 		<div class="col-lg-2 col-md-1 col-1"></div>
 		<div align="left" class="col-lg-8 col-md-10 col-10">
-			<div class="fs-4" id="main_title">${clickRecipe.recipe_title}</div> <br>
+			<div class="fs-4" id="main_title">
+				${clickRecipe.recipe_title} &nbsp;&nbsp;
+				<button class="single_btn" onclick="location.href='<c:url value='/mybox/recipe/add'>
+					<c:param name='recipe_code' value='${clickRecipe.recipe_code}'></c:param></c:url>'">찜하기
+				</button>
+			</div> <br>
 			<table id="news-one">
 				<tr>
 					<td rowspan="9" style="width:22%; height:100%">
@@ -175,8 +186,12 @@ border-radius: 79px;
 			<br>
 			<hr>
 			
-			<div class="fs-4" id="main_title">${clickRecipe.recipe_title} 만들기</div>
-			<div class="swiper-container-order" >	
+			<div class="fs-4" id="main_title">${clickRecipe.recipe_title} 만들기</div> <br>
+			<div class="swiper-container-order" >
+				<c:forEach var="orders" items="${clickRecipe.orders}">
+					<p class="issue-title">${orders.rOrder_num}. ${orders.rOrder_content}</p><br>
+				</c:forEach>	
+				<!-- 
 	    		<div class="swiper-wrapper"> 
 	    		<c:forEach var="orders" items="${clickRecipe.orders}">
 		      		<div class="swiper-slide" >
@@ -190,6 +205,7 @@ border-radius: 79px;
 	   			<div class="swiper-button-next"></div>
 	   			<div class="swiper-button-prev"></div> <br><br>
 	   			<div align="center" class="swiper-pagination-order"></div>	
+	   			-->
  			</div>
  			<br><hr>
  			

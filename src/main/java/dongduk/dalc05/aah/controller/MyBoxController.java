@@ -105,36 +105,38 @@ public class MyBoxController {
 		return mav;
 	}
 	
-//	// 홈트를 보관함에 저장하기
-//	@RequestMapping(value = "/mybox/exercise/add")
-//	public ModelAndView exerciseAdd(
-//			HttpServletRequest request,
-//			@RequestParam ("exercise_code") int exercise_code,
-//			Model model
-//			) {
-//		
-//		HttpSession session = request.getSession();
-//		Member m = (Member) session.getAttribute("loginMember");
-//		int member_code = m.getMember_code();
-//		
-//		ModelAndView mav = new ModelAndView();
-//		mav.setViewName("redirect:/member/mybox");
-//		
-//		// 로그인 X -> 이용불가
-//		if(m == null) {
-//			mav.setViewName("alert/error");
-//			model.addAttribute("msg", "로그인 후 이용하실 수 있습니다.");
-//	        model.addAttribute("url","/member/login");
-//	        return mav;	
-//		}
-//		
-//		
-//		MyBox add = new MyBox();
-//		add.MyBoxExercise(member_code, exercise_code);
-//		myBoxService.insertMyBox(add);
-//		
-//		return mav;
-//	}
+	// 홈트를 보관함에 저장하기
+	@RequestMapping(value = "/mybox/exercise/add")
+	public ModelAndView exerciseAdd(
+			HttpServletRequest request,
+			@RequestParam ("exercise_code") int exercise_code,
+			Model model) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		HttpSession session = request.getSession();
+		Member m = (Member) session.getAttribute("loginMember");
+		
+		// 로그인 X -> 이용불가
+		if(m == null) {
+			mav.setViewName("alert/error");
+			model.addAttribute("msg", "로그인 후 이용하실 수 있습니다.");
+	        model.addAttribute("url","/member/login");
+	        return mav;	
+		}
+		
+		int member_code = m.getMember_code();
+		mav.setViewName("redirect:/member/mybox");
+		
+		MyBox add = new MyBox();
+		add.MyBoxExercise(member_code, exercise_code);
+		System.out.println("홈트보관함: " + member_code + " " + exercise_code);
+		System.out.println("Mybox객체: " + add.getRecipe_code() +" " + add.getExercise_code());
+//		System.out.println("Mybox객체: " + add.getmember_code() +" " + add.getExercise_code());
+		myBoxService.insertMyBox(add);
+		
+		return mav;
+	}
 	
 	// 보관함에서 삭제하기
 	@RequestMapping(value = "/member/mybox/delete")

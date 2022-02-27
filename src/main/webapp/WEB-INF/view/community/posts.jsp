@@ -121,10 +121,9 @@
 	</style>
 </head>
 
-<body style="width: 70%; margin: 0 auto 50px auto;" >
+<body>
 
-
-
+<div style="width: 70%; margin: 0 auto 50px auto;">
 	<div class="main_title1">이번 주 인기글</div>
 	<div class="add">매주 업데이트 되는 인기글을 확인하세요.</div>
 		<div class="bestPosts">
@@ -206,8 +205,8 @@
    				<tr><td colspan="3"><hr></td></tr>
 			</c:forEach>
    	</table>
-
-
+   	</div>
 </body>
 </html>
+
 <%@ include file="../main/bottom_footers.jsp"%> 

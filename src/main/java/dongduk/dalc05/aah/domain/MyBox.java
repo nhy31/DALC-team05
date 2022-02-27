@@ -26,9 +26,10 @@ public class MyBox {
 		this.recipe_code = recipe_code;
 	}
 	
-	public void MyBoxExercise(int member_code, int  exercise_code) {
+	public void MyBoxExercise(int member_code, int exercise_code) {
 		this.member_code = member_code;
 		this.exercise_code = exercise_code;
+		this.recipe_code = 1;
 	}
 	
 	public int getMyBox_code() {

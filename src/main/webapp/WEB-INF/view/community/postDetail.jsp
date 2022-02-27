@@ -132,8 +132,9 @@
 	</style>
 </head>
 
-<body style="width: 70%; margin: 0 auto 50px auto;" >
+<body>
 
+<div style="width: 70%; margin: 0 auto 50px auto;" >
 	<div class="post_border">
 		<div>
 			<button class="single_round_btn" style="font-size: 14px;" disabled>${sick}</button>
@@ -252,7 +253,7 @@
 			</table>
 		</form>
 	</div>
-
+</div>
 
 
 </body>
