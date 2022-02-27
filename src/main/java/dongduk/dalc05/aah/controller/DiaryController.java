@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import dongduk.dalc05.aah.domain.Diary;
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.service.DiaryService;
-
 @Controller
 public class DiaryController {
 	   
