@@ -184,9 +184,9 @@
 			<tr>
 				<td colspan="2">
 
-					<c:if test='${posts.post_img != null}'>
-						<img class="pos" src="<c:url value="/images/"/>${post.post_img}"/>   
-					</c:if>
+						<c:if test='${posts.post_img != null}'>
+							<img class="post_img" src="<c:url value="/images/"/>${posts.post_img}"/> 
+						</c:if>
 
 				<div style="font-size: 18px; margin-top: 20px; white-space:pre;">${post.post_content}</div></td>
 			</tr>

@@ -113,28 +113,28 @@ border-radius: 79px;
 
 
 .box-radio-input input[type="radio"]{
-        display: none;
-      }
+ display: none;
+}
 
-      .box-radio-input input[type="radio"] + span{
-        display: inline-block;
-        background: none;
-        border: 1.5px solid #DDDDDD;
-        color: #4E4E4E;
-        padding: 7px 15px;
-        font-family: -apple-system;
-        font-size: 12px;
-        text-align: center;
-        border-radius: 79px;
-        cursor: pointer;
-      }
+.box-radio-input input[type="radio"] + span{
+display: inline-block;
+background: none;
+border: 1.5px solid #DDDDDD;
+color: #4E4E4E;
+padding: 7px 15px;
+font-family: -apple-system;
+font-size: 12px;
+text-align: center;
+border-radius: 79px;
+cursor: pointer;
+}
 
-      .box-radio-input input[type="radio"]:checked + span{
-        border:1px solid #851BD8;
-        background:#851BD8;
-        color:#fff;
-        font-weight: bold;
-      }
+.box-radio-input input[type="radio"]:checked + span{
+border:1px solid #851BD8;
+background:#851BD8;
+color:#fff;
+font-weight: bold;
+}
 </style>
 </head>
 
@@ -150,6 +150,11 @@ border-radius: 79px;
 					<c:param name='recipe_code' value='${clickRecipe.recipe_code}'></c:param></c:url>'">찜하기
 				</button>
 			</div> <br>
+			<div class="fs-4" id="main_title">${clickRecipe.recipe_title}
+				<c:if test='${alle == 1}'>
+					<div><font style="color:red; font-weight:normal;">※ 알레르기를 유발하는 재료가 있습니다 ${danger}</font></div>	
+				</c:if>
+				</div><br>
 			<table id="news-one">
 				<tr>
 					<td rowspan="9" style="width:22%; height:100%">
@@ -234,21 +239,20 @@ border-radius: 79px;
 	<br><br><br>
 </div>
 
+
 <!-- 테스트 임시 삽입 
 <button onclick="location.href='<c:url value='/mybox/recipe/add'>
 <c:param name='recipe_code' value='${clickRecipe.recipe_code}'></c:param></c:url>'">보관함에 저장</button>
 <div>
 내가 클릭한 레시피 정보 (이걸로 가져다쓰시면됩니당) <br>
 
-이미지 : ${clickRecipe.recipe_img}<br>
-제목: ${clickRecipe.recipe_title}<br>
+이미지 : ${clickRecipe.recipe_img}<br> //
+제목: ${clickRecipe.recipe_title}<br> //
 코드 : ${clickRecipe.recipe_code}<br>
-한줄소개 : ${clickRecipe.recipe_memo}<br>
+한줄소개 : ${clickRecipe.recipe_memo}<br> //
 어느나라음식 : ${clickRecipe.recipe_country}<br>
 카테고리 : ${clickRecipe.recipe_category}<br>
-시간 : ${clickRecipe.recipe_time}<br>
-양 : ${clickRecipe.recipe_person}<br>
-난이도 : ${clickRecipe.recipe_level}<br>
+시간 : ${clickRecipe.recipe_time}<br> //
 조회수 : ${clickRecipe.recipe_hits}<br>
 
 <br><div>주재료정보<br>

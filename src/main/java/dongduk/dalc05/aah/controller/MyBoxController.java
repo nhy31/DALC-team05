@@ -82,8 +82,7 @@ public class MyBoxController {
 	        model.addAttribute("url","/member/login");
 	        return mav;	
 		}
-		
-		
+
 		int member_code = m.getMember_code();
 		
 		

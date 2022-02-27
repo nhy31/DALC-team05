@@ -49,6 +49,7 @@ width:60%;
 			ss.setAttribute("CODE", m.getMember_code());
 			ss.setAttribute("member_id", m.getMember_id());
 			ss.setAttribute("member_nickName", m.getMember_nickName());
+			ss.setAttribute("ALLERGY", m.getMember_allergy());
 		}
 		
 		/*if(m == null || socialm == null)

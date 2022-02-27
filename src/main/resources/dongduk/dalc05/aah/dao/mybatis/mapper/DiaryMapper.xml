@@ -12,9 +12,9 @@
 	
 	<!-- -->
     <insert id="insertDiary" parameterType="dongduk.dalc05.aah.domain.Diary">
-        INSERT INTO (member_code, diary_date, recipe_code, diary_content, bloodPressure, bloodSugar)
+        INSERT INTO diary(member_code, diary_date, diary_title, diary_content, diary_img)
         values 
-    (#{member_code}, #{diary_date}, #{recipe_code}, #{diary_content}, #{bloodPressure}, #{bloodSugar})
+    (#{member_code}, #{diary_date}, #{diary_title}, #{diary_content}, #{diary_img})
     </insert>
 	
 	<delete id="" parameterType="Integer">
