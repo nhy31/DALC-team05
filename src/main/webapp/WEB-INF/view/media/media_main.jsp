@@ -27,7 +27,8 @@
 
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
-* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; 
+} 
 .content_start {
 padding: 10px 10px 5px 10px;
 }
@@ -139,9 +140,10 @@ border-radius: 79px;
       
 </style>
 
-</head>
-
+</head>	
 <body>
+
+
 <div class="content_start">
 	<div class="row">
 		<div class="col-lg-2 col-md-1 col-1"></div>
@@ -228,3 +230,4 @@ border-radius: 79px;
    	
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

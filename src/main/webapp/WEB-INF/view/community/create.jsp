@@ -201,3 +201,4 @@ margin: 20px 10px 100px 10px;
 
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

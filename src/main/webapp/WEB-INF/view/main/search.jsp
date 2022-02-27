@@ -135,11 +135,11 @@ color: #4E4E4E;
 						<td class="news-info" align="right">조회수 ${list.recipe_hits}회</td>
 					</tr>
 				</table>
-				</c:forEach>
-				<div class="fs-4" align="right">
+				</c:forEach> <br>
+				<div class="news-info" align="right">
 					<a href="<c:url value='/recipe'/>" >검색결과 더보기</a>
 				</div>
-			</div>
+			</div><hr>
 		</div>
 	</div>
 	<br>
@@ -168,11 +168,11 @@ color: #4E4E4E;
 						<td class="news-info" align="right"> ${list.exercise_length}분</td>
 					</tr>
 				</table>
-				</c:forEach>
-				<div class="fs-4" align="right">
+				</c:forEach> <br>
+				<div class="news-info" align="right">
 					<a href="<c:url value='/exercise/sick'/>" >검색결과 더보기</a>
 				</div>
-			</div>
+			</div> <hr>
 		</div>
 	</div>
 	<br>
@@ -193,8 +193,8 @@ color: #4E4E4E;
 						<td class="news-contents">${list.commu_introduce }</td>
 					</tr>
 				</table>
-				</c:forEach>
-				<div class="fs-4" align="right">
+				</c:forEach> <br>
+				<div class="news-info" align="right">
 					<a href="<c:url value='/community'/>" >검색결과 더보기</a>
 				</div>
 			</div>
@@ -206,3 +206,4 @@ color: #4E4E4E;
 
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

@@ -22,7 +22,6 @@
 <link rel=stylesheet href="<c:url value='/css/top.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/swiper.css'/>" type="text/css">
 <link rel=stylesheet href="<c:url value='/css/content.css'/>" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/main.css'/>" type="text/css">
 
 <style type="text/css">
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
@@ -36,17 +35,30 @@ width:60%;
 <body>
 <% 
 		HttpSession ss = request.getSession();
-		
 		Member m = (Member) session.getAttribute("loginMember");
+		Member socialm = (Member) session.getAttribute("socialMember");
 		
-		if(m == null)
+		if(m == null && socialm == null)
+			ss.setAttribute("ses", 0);
+		else if(socialm != null){
+			ss.setAttribute("ses", 1);
+			ss.setAttribute("member_nickName", socialm.getMember_nickName());
+			ss.setAttribute("socialMember", socialm);
+		}else if(m != null){
+			ss.setAttribute("ses", 1);
+			ss.setAttribute("CODE", m.getMember_code());
+			ss.setAttribute("member_id", m.getMember_id());
+			ss.setAttribute("member_nickName", m.getMember_nickName());
+		}
+		
+		/*if(m == null || socialm == null)
 			ss.setAttribute("ses", 0);
 		else{
 			ss.setAttribute("ses", 1);
 			ss.setAttribute("CODE", m.getMember_code());
 			ss.setAttribute("member_id", m.getMember_id());
 			ss.setAttribute("member_nickName", m.getMember_nickName());
-		}
+		}*/
 
 	%>
 <br>
@@ -57,7 +69,7 @@ width:60%;
 
 	<!-- border는 확인용.. -->
 	<div style="border: 0px solid gold; float: left; width: 30%;">
-	<a href="<c:url value='/main'/>"><img class="logo" src="<c:url value='/images/aah-logo.png'/>"></a>
+	<a href="<c:url value='/main'/>"><img class="logo" src="<c:url value='/images/small-logo.png'/>"></a>
 	</div>
 	
 	<div style="border: 0px solid gold; float: left; width: 40%;">
@@ -76,11 +88,11 @@ width:60%;
 				<table style="margin-right:30px;">
 					<tr>
 						<td><a href="<c:url value="/member/login" />">
-							<font style="font-size:1.1vw;"><span class='text-muted'>로그인</span></font></a>
+							<font style="font-size:1.1vw;"><span class='text-dark'>로그인</span></font></a>
 						</td>
 						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 						<td><a href="<c:url value="/member/join" />">
-							<font style="font-size:1.1vw;"><span class='text-muted'>회원가입</span></font></a>
+							<font style="font-size:1.1vw;"><span class='text-dark'>회원가입</span></font></a>
 						</td>
 					</tr>
 				</table>
@@ -94,11 +106,11 @@ width:60%;
 				<ul class="navbar-nav me-auto mb-2 mb-sm-0 justify-content-center">
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">
-						<font style="font-size:1.2vw"><span class='text-muted'>${member_nickName}님</span></font>
+						<font style="font-size:1.2vw"><span class='text-dark'>${member_nickName}님</span></font>
 					</a>
 					<ul class="dropdown-menu" aria-labelledby="dropdown03">
 					<li><a class="dropdown-item" href="<c:url value='/member/my'/>">마이페이지</a></li>
-	              	<li><a class="dropdown-item" href="<c:url value="/member/diary" />">질병 캘린더</a></li>
+	              	<li><a class="dropdown-item" href="<c:url value="/member/diary" />">다이어리</a></li>
 	              	<li><a class="dropdown-item" href="<c:url value="/member/mybox" />">보관함</a></li>
 	              	<li><a class="dropdown-item" href="<c:url value='/member/logout.do'/>">로그아웃</a></li>
 	              	<li><a class="dropdown-item" href="<c:url value="/member/delete.do" />">탈퇴</a></li>
@@ -124,19 +136,19 @@ width:60%;
 			<ul class="navbar-nav">
 				<li class="nav-item" style="margin-left:100px;">
 					<a class="nav-link active" aria-current="page" href="<c:url value='/recipe'/>">
-					<span class='text-muted'>레시피 추천</span></a>
+					<span class='text-dark'>레시피 추천</span></a>
 				</li>
 				<li class="nav-item" style="margin-left:100px;">
 					<a class="nav-link active" aria-current="page" href="<c:url value='/exercise/sick'/>">
-					<span class='text-muted'>홈트레이닝 추천</span></a>
+					<span class='text-dark'>홈트레이닝 추천</span></a>
 				</li>
 				<li class="nav-item" style="margin-left:100px;">
 					<a class="nav-link active" aria-current="page" href="<c:url value='/media'/>">
-					<span class='text-muted'>건강 미디어</span></a>
+					<span class='text-dark'>건강 미디어</span></a>
 				</li>
 				<li class="nav-item" style="margin-left:100px; margin-right:100px;" >
 					<a class="nav-link active" aria-current="page" href="<c:url value='/community'/>">
-					<span class='text-muted'>현대사회 커뮤니티</span></a>
+					<span class='text-dark'>현대사회 커뮤니티</span></a>
 				</li>
 			</ul>
 		</div>

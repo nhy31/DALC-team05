@@ -175,7 +175,7 @@ border-radius: 79px;
 			<br>
 			<hr>
 			
-			<div class="fs-4" id="main_title">만드는 방법</div>
+			<div class="fs-4" id="main_title">${clickRecipe.recipe_title} 만들기</div>
 			<div class="swiper-container-order" >	
 	    		<div class="swiper-wrapper"> 
 	    		<c:forEach var="orders" items="${clickRecipe.orders}">
@@ -208,17 +208,17 @@ border-radius: 79px;
 			        	</table>
 		      		</div>
 		      	</c:forEach> 
-		      	</div>
+		      	</div><br><br>
 	   			<div class="swiper-button-next"></div>
 	   			<div class="swiper-button-prev"></div> <br>
 	   			<div align="center" class="swiper-pagination"></div>	
  			</div>
 		</div>
-
 	</div>
+	<br><br><br>
 </div>
 
-<!-- 테스트 임시 삽입 -->
+<!-- 테스트 임시 삽입 
 <button onclick="location.href='<c:url value='/mybox/recipe/add'>
 <c:param name='recipe_code' value='${clickRecipe.recipe_code}'></c:param></c:url>'">보관함에 저장</button>
 <div>
@@ -280,6 +280,7 @@ ${orders.rOrder_num}. ${orders.rOrder_content} <br>
 		        		</table>
 </c:forEach>
 </div>
+-->
 
 <script>
 new Swiper('.swiper-container', {
@@ -325,3 +326,4 @@ new Swiper('.swiper-container-order', {
 
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

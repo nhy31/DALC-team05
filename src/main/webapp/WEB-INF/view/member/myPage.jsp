@@ -285,3 +285,4 @@ border-radius: 6px;
 
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

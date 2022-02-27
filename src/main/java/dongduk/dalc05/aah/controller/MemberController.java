@@ -180,21 +180,35 @@ public class MemberController {
     	String naverId = (String)response_obj.get("email");
     	String phone = (String)response_obj.get("mobile");
     	String name = (String)response_obj.get("name");
+    	String gender = (String)response_obj.get("gender");
     	
     	System.out.println(apiResult);
     	System.out.println("네이버 닉네임: " + nickName);
-    	System.out.println("네이버 아이디: " + naverId);
+    	System.out.println("네이버 이메일: " + naverId);
     	System.out.println("네이버 폰넘버: " + phone);
     	System.out.println("네이버 이름: " + name);
-    	
+    	System.out.println("네이버 성별: " + gender);    	
+    	if(gender.equals("M"))
+    		gender = "남성";
+    	else
+    		gender = "여성";
+    
     	session.setAttribute("sessionNaverId", nickName);
     	model.addAttribute("apiResult", apiResult);
+    	 
+    	Member member = new Member();
+    	member.setMember_name(name);
+    	member.setMember_id(naverId);
+    	member.setMember_nickName(nickName);
+    	member.setMember_phone(phone);
     	
-		// 로그인 세션 처리 
+    	// 로그인 세션 처리
     	session.setAttribute("naverName", nickName);
-		//memberService.insertMember(new Member(naverId, "1234", name, nickName, phone,"", null, null, null, 1));
+		session.setAttribute("socialMember", member);
+//		memberService.insertMember(new Member(null, null, name, nickName, phone, null, null, null, null, gender));
+    	
 		model.addAttribute("msg", nickName + "님 방문을 환영합니다");
-        model.addAttribute("url","/");
+        model.addAttribute("url","/member/join");
     	
         return "alert/success";
     }
@@ -248,7 +262,7 @@ public class MemberController {
 	public String logoutDo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		session.removeAttribute("loginMember");
-		session.removeAttribute("naverName");
+		session.removeAttribute("socialMember");
 		
 		//네이버 소셜로그인으로 로그인했을 경우의 로그아웃
 		//session.invalidate();

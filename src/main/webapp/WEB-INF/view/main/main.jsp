@@ -149,19 +149,19 @@ font-weight: bold;
 
 <body>
 
-<div class="row" style="height: 300px; width:100%">
+<div class="row" style="height: 340px; width:100%">
 	<div class="col-md-2"></div>
-    <div class="col-md-8" style="height: 300px;" >
+    <div class="col-md-8" style="height: 340px;" >
    		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height:300px; text-align:center;">
-  			<div class="carousel-inner"style="height: 300px;">
-    			<div class="carousel-item active" style="height: 300px;">
-      				<img style="height: 400px; object-fit: cover; align: center;" src="<c:url value='/images/mainImage1.jpg'/>" class="d-block w-100" alt="...">
+  			<div class="carousel-inner"style="height: 340px;">
+    			<div class="carousel-item active" style="height: 340px;">
+      				<img style="border-radius: 6px; height: 340px; object-fit: cover; align: center;" src="<c:url value='/images/main-img.png'/>" class="d-block w-100" alt="...">
     			</div>
     			<div class="carousel-item">
-     				<img style="height: 400px; object-fit: cover; align: center;" src="<c:url value='/images/mainImage2.jpg'/>" class="d-block w-100" alt="...">
+     				<img style="border-radius: 6px; height: 340px; object-fit: cover; align: center;" src="<c:url value='/images/main-img2.png'/>" class="d-block w-100" alt="...">
    			 	</div>
     			<div class="carousel-item">
-      				<img style="height: 400px; object-fit: cover; align: center;" src="<c:url value='/images/mainImage3.jpg'/>" class="d-block w-100" alt="...">
+      				<img style="border-radius: 6px; height: 340px; object-fit: cover; align: center;" src="<c:url value='/images/mainImage3.jpg'/>" class="d-block w-100" alt="...">
     			</div>
  	 		</div>
   			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -176,7 +176,6 @@ font-weight: bold;
   	<div class="col-md-2"></div>
   </div>
 </div>
-
 
 <div class="content"> <br><br><br>
 
@@ -278,3 +277,4 @@ font-weight: bold;
    
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

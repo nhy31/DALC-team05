@@ -158,7 +158,7 @@
 		
 				<div class="col-sm-12">
 		              <label for="name" class="form-label">이름</label>
-		              <input type="text" class="form-control"  name="member_name" id="name" placeholder="홍길동" required>${member.member_name}
+		              <input type="text" class="form-control"  name="member_name" id="name" value="${socialMember.member_name}" placeholder="홍길동" required>${member.member_name}
 		              <div class="invalid-feedback">
 		              	이름을 입력해주세요
 		              </div>
@@ -167,7 +167,7 @@
 				
 		        <div class="col-sm-12">
 		        	<label for="name" class="form-label">이메일</label>
-		         	  <input type="email" class="form-control"  name="member_id" id="email" placeholder="you@example.com" required>${member.member_id}
+		         	  <input type="email" class="form-control"  name="member_id" id="email" value="${socialMember.member_id}" placeholder="you@example.com" required>${member.member_id}
 		              <div class="invalid-feedback">
 		              	email을 입력해주세요
 		              </div>
@@ -176,7 +176,7 @@
 			 	
 			 	<div class="col-sm-12">
 			 	<label for="name" class="form-label">닉네임</label>
-	              <input type="text" class="form-control"  name="member_nickName" id="neckName" placeholder="한글/영문/숫자/기호 모두 가능" required>${member.member_nickName}
+	              <input type="text" class="form-control"  name="member_nickName" id="neckName" value="${socialMember.member_nickName}" placeholder="한글/영문/숫자/기호 모두 가능" required>${member.member_nickName}
 	              <div class="invalid-feedback">
 	              	닉네임을 입력해주세요
 	              </div>
@@ -200,7 +200,7 @@
 
 	   			<div class="col-sm-12">
 	   			<label for="name" class="form-label">휴대폰</label>
-	    			<input type="text" name="member_phone"  class="form-control" placeholder="(-없이 숫자만 입력)" id="phone" value="" required>${member.member_phone}
+	    			<input type="text" name="member_phone"  class="form-control" placeholder="(-없이 숫자만 입력)" id="phone" value="${socialMember.member_phone}" required>${member.member_phone}
 	  			</div>
 			  	<p/>
 			 
@@ -285,3 +285,4 @@
 </div>
 </body>
 </html>
+<%@ include file="../main/bottom_footers.jsp"%> 

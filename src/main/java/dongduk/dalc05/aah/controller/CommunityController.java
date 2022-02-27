@@ -56,7 +56,7 @@ public class CommunityController {
 	  // 로그인 X -> 이용불가
 	  if(m == null) {
 		  	
-		  	mav.setViewName("alert/error");
+		  	mav.setViewName("alert/warning");
 			model.addAttribute("msg", "로그인 후 이용하실 수 있습니다.");
 	        model.addAttribute("url","/member/login");
 	        return mav;
@@ -176,7 +176,7 @@ public class CommunityController {
 	
 	   // 커뮤니티 이름 중복체크
 	   if(commuService.checkName(commu_name) != 0) {
-		  	mav.setViewName("alert/error");
+		  	mav.setViewName("alert/warning");
 			model.addAttribute("msg", "이미 존재하는 커뮤니티 이름입니다.");
 	        model.addAttribute("url","/community/create");
 	        return mav;
@@ -295,11 +295,6 @@ public class CommunityController {
 	    String post_img = imageUtil.uploadImage(request, img_file);
 		
 		System.out.println("uploadPost  post_img  : " +  post_img );
-		
-		if(post_img == null) {
-			post_img = "default.jpg";
-		}
-		
 		
 		HttpSession session = request.getSession();
 		Member m = (Member) session.getAttribute("loginMember");

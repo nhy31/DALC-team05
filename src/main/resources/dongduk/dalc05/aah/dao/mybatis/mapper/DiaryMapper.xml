@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.DiaryMapper">
+	
+	<!--   -->
+	<select id="getMyDiary" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Diary">
+	  Select *
+      FROM diary
+      WHERE member_code = #{member_code} 
+	</select>
+	
+	<!-- -->
+    <insert id="insertDiary" parameterType="dongduk.dalc05.aah.domain.Diary">
+        INSERT INTO (member_code, diary_date, recipe_code, diary_content, bloodPressure, bloodSugar)
+        values 
+    (#{member_code}, #{diary_date}, #{recipe_code}, #{diary_content}, #{bloodPressure}, #{bloodSugar})
+    </insert>
+	
+	<delete id="" parameterType="Integer">
+	delete from diary where diary_code = #{diary_code}
+	</delete>
+   
+</mapper>
+ 
