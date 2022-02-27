@@ -9,6 +9,9 @@
 - 팀장: 나하윤 @nhy31 <br>
 - 팀원: 김효선, 박소현, 손예서, 안태연, 이가은, 유나연 <br>
 
+- ![image](https://user-images.githubusercontent.com/59862742/155891685-8f00a2f6-9d71-477b-8d47-773da623108c.png)
+
+
 <br>
 <h2>:calendar:기간</h2>
 - 기획 2021/09 ~ 2021/12 <br>
