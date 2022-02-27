@@ -128,11 +128,11 @@
       <c:forEach var="list" items="${list}">
         <div class="col">
           <div class="card shadow-sm">
-<!--          <label for="id-of-input" class="custom-checkbox"> -->
-<!--             <input type="checkbox" id="id-of-input" /> -->
-<!--             <i class="bi bi-heart"></i> -->
-<!--             <i class="bi bi-heart-fill"></i> -->
-<!--          </label> -->
+         <c:if test='${list.chk == 1}'><label for="id-of-input" class="custom-checkbox">
+            <input onClick="return false;" type="checkbox" id="id-of-input" />
+            
+            <i class="bi bi-heart-fill"></i>
+         </label></c:if>
             <img src="<c:url value=' ${list.recipe_img}'/>" >
             <div class="card-body">
               <p class="card-text"> 레시피명 : ${list.recipe_title} </p>

@@ -134,18 +134,18 @@
          </label>
             <img src="<c:url value=' ${list.img}'/>" >
             <div class="card-body">
-              <p class="card-text"> 레시피명 ${list.title} </p>
+              <p class="card-text"> 레시피명 : ${list.title} </p>
               <p class="card-text"> ${list.memo} </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                    <button type="button" class="btn btn-sm btn-outline-secondary" 
                   onclick="location.href='<c:url value='/recipe/recipe_detail'> <c:param name="recipe_code" value="${list.recipe_code}"></c:param> 
-                </c:url>'">more...</button>
+                </c:url>'">more</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary" 
                   onclick="location.href='<c:url value='/member/mybox/delete'> <c:param name="myBox_code" value="${list.myBox_code}"></c:param> 
                 </c:url>'">delete</button>
                                   <button type="button" class="btn btn-sm btn-outline-secondary" 
-                  onclick="location.href='<c:url value='/member/diary'></c:url>'">diary</button>
+                  onclick="location.href='<c:url value='/member/diary/upload'><c:param name="recipe_title" value='${list.title}'></c:param></c:url>'">diary</button>
                 </div>
                 
               </div>

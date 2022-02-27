@@ -28,6 +28,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dongduk.dalc05.aah.domain.Ingredient;
 import dongduk.dalc05.aah.domain.Member;
+import dongduk.dalc05.aah.domain.MyBox;
 import dongduk.dalc05.aah.domain.Recipe;
 import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.domain.rOrder;
@@ -37,9 +38,12 @@ import dongduk.dalc05.aah.service.RecipeService;
 import dongduk.dalc05.aah.service.SickService;
 import dongduk.dalc05.aah.util.PagingVO;
 import dongduk.dalc05.aah.service.MemberService;
+import dongduk.dalc05.aah.service.MyBoxService;
 
 @Controller
 public class RecipeController {
+	@Autowired
+	private MyBoxService myBoxService;
 	
 	@Autowired
 	private MemberService memberService;
@@ -56,17 +60,29 @@ public class RecipeController {
     @RequestMapping(value = "/recipe/all")
     public ModelAndView recipeAll(
     		HttpServletRequest request) {
+    	
+    	HttpSession session = request.getSession();
+		Member m = (Member) session.getAttribute("loginMember");
+		int member_code = m.getMember_code();
+		
      	ModelAndView mav = new ModelAndView();
   	    mav.setViewName("recipe/recipe_all");
   	    
   	    List<Recipe> list = recipeService.getAllRecipes();
-  	    mav.addObject("list", list);
-  	    
+  		List<MyBox> box = myBoxService.getAllList(member_code);
+
+  	  	for(int i=0; i<list.size(); i++) {
+  	  		for(int j=0; j<box.size(); j++)
+  	  			if(box.get(j).getRecipe_code() == list.get(i).getRecipe_code()) {
+  	  				list.get(i).setChk(1);
+  	  		}
+  	  	}
+  	  	
   	    System.out.println("0227확인 " + list.size());
-  	    
+  	    mav.addObject("list", list);
   	    return mav;
     }
-	
+
     // 메인페이지 -> 레시피페이지 이동
     @RequestMapping(value = "/recipe")
     public ModelAndView recipe(
@@ -77,37 +93,32 @@ public class RecipeController {
   	    
   	    HttpSession session = request.getSession();
  	    Member member = (Member) session.getAttribute("loginMember");
+ 	    int member_code = member.getMember_code();
+ 	    List<MyBox> box = myBoxService.getAllList(member_code);
  	    
  	    int mSickCode = 0;
  	    
  	    // 로그인 한 경우
  	    if(member != null) {
  	    	mSickCode = member.getSick_code();
- 	    	List<Ingredient> list = recipeService.getIngredients(mSickCode);
- 	  	    List<Recipe> recipes = new ArrayList<>();
- 	  	    for(int i=0; i<list.size(); i++) {
- 	  	    	System.out.println("재료명" + list.get(i).getIngredient_name());
- 	  	    	List<Recipe> r = recipeService.getRecipes(list.get(i).getIngredient_name());
- 	  	    	if(r != null) {
- 	  	    		
- 	  	    		for(int j=0; j<r.size(); j++) {
- 	  	  	    		System.out.println("레시피명" + r.get(j).getRecipe_title());
- 	  	  	    		recipes.add(r.get(j));
- 	  	  	    	}
- 	  	  	    }
- 	  	    }
- 	  	    	
- 	  	    mav.addObject("recipes", recipes);
  	    }
  	    
- 	    // 로그인 안한 경우 (member == null, mSickCode == 0)
- 	    else {
- 	  	    List<Recipe> recipes = recipeService.getAllRecipes();
- 	  	    for(int i=0; i<recipes.size(); i++) 
- 	  	  	    System.out.println("레시피명 " + recipes.get(i).getRecipe_title());
- 	  	    mav.addObject("recipes", recipes);
- 	    }
- 	    
+ 	    List<Ingredient> list = recipeService.getIngredients(mSickCode);
+  	    List<Recipe> recipes = new ArrayList<>();
+  	    for(int i=0; i<list.size(); i++) {
+  	    	System.out.println("재료명" + list.get(i).getIngredient_name());
+  	    	List<Recipe> r = recipeService.getRecipes(list.get(i).getIngredient_name());
+  	    	if(r != null) {
+  	    		
+  	    		for(int j=0; j<r.size(); j++) {
+  	  	    		System.out.println("레시피명" + r.get(j).getRecipe_title());
+  	  	    		recipes.add(r.get(j));
+  	  	    	}
+  	  	    }
+  	    }
+  	    	
+  	    mav.addObject("recipes", recipes);
+ 	  
   	    List<Sick> sicks = sickService.getSickList();
   		for(int i=0; i<sicks.size(); i++) {
     		if(sicks.get(i).getSick_code() ==  mSickCode) {
@@ -118,6 +129,12 @@ public class RecipeController {
   	    mav.addObject("sicks", sicks);
   	    
   	    List<Recipe> bests = recipeService.getTop16();
+	  	for(int i=0; i<bests.size(); i++) {
+	  		for(int j=0; j<box.size(); j++)
+	  			if(box.get(j).getRecipe_code() == bests.get(i).getRecipe_code()) {
+	  				bests.get(i).setChk(1);
+	  		}
+	  	}
   	    mav.addObject("bests", bests);
 
   	    

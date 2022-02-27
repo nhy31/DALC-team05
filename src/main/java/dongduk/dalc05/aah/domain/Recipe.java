@@ -19,7 +19,17 @@ public class Recipe {
 	// only domain
 	private List<rUse> uses;
 	private List<rOrder> orders;
+	private int chk; // 보관함 표시 
 	
+	
+	public int getChk() {
+		return chk;
+	}
+
+	public void setChk(int chk) {
+		this.chk = chk;
+	}
+
 	public Recipe() {}
 
 	public int getRecipe_code() {
