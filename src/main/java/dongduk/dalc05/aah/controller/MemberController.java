@@ -88,7 +88,7 @@ public class MemberController {
 		System.out.println("uploadPost member_image : " + member_image);
 		
 		if(member_image == null) {
-			member_image = "/images/userImg.jpg";
+			member_image = "userImg.png";
 		}
 		
 		if (memberService.checkId(member_id) == null && memberService.checkNick(member_nickName) == null) {
@@ -313,7 +313,7 @@ public class MemberController {
 		String member_image = imageUtil.uploadImage(request, img_file);
 		
 		if(member_image == null) {
-			member_image = "/images/userImg.jpg";
+			member_image = "userImg.png";
 		}
 		
 		HttpSession session = request.getSession();
@@ -352,10 +352,9 @@ public class MemberController {
 		// DB에서 삭제 
 		memberService.deleteMember(m.getMember_code());
 		
-		// session.removeAttribute("member_code");
-		session.removeAttribute("member_id");
-		session.removeAttribute("member_nickName");
-		
+		session.removeAttribute("loginMember");
+		session.removeAttribute("socialMember");
+
 		model.addAttribute("msg", "탈퇴되었습니다.");
         model.addAttribute("url","/");
   

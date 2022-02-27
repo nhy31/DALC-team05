@@ -165,6 +165,7 @@ public class CommunityController {
    // 커뮤니티 생성
    @RequestMapping(value = "/community/create.do")
    public ModelAndView commuCreateDo(
+		   HttpServletRequest request,
 		   Model model,
 		   RedirectAttributes redirect,
 		   @RequestParam int sick_code,
@@ -174,6 +175,9 @@ public class CommunityController {
 	   
 	   ModelAndView mav = new ModelAndView();
 	
+	   HttpSession session = request.getSession();
+	   Member m = (Member) session.getAttribute("loginMember");
+		
 	   // 커뮤니티 이름 중복체크
 	   if(commuService.checkName(commu_name) != 0) {
 		  	mav.setViewName("alert/warning");
@@ -188,13 +192,16 @@ public class CommunityController {
 	   c.setSick_code(sick_code);
 	   c.setSick_name(sickService.getSickName(sick_code));
     
-	   commuService.insertCommu(c);  
+	   commuService.insertCommu(c); 
 	   
 	   int commu_code = commuService.getCommuCode(commu_name);
 	   
-	   redirect.addAttribute("commu_code", commu_code); 
+	   cMember cm = new cMember(m.getMember_code(), commu_code);
+	   commuService.insertCmember(cm);
 
+	   redirect.addAttribute("commu_code", commu_code); 
 	   mav.setViewName("redirect:/community/posts");
+
 	   return mav;
    }
    
