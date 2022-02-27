@@ -14,4 +14,7 @@ public interface ExerciseService {
 	
 	//키워드 포함된 홈트데이터 가져오기
 	public List<Exercise> getExerciseByKeyword(String keyword);
+	
+	//기본키로 홈트데이터 가져오기
+	public Exercise getExerciseByCode(int exercise_code);
 }

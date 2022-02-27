@@ -29,4 +29,9 @@ public class ExerciseServiceImpl implements ExerciseService{
 		return exerciseDao.getExerciseByKeyword(keyword);
 	}
 
+	@Override
+	public Exercise getExerciseByCode(int exercise_code) {
+		return exerciseDao.getExerciseByCode(exercise_code);
+	}
+
 }

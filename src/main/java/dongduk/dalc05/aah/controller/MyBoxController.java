@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import dongduk.dalc05.aah.domain.Exercise;
 import dongduk.dalc05.aah.domain.Member;
 import dongduk.dalc05.aah.domain.MyBox;
 import dongduk.dalc05.aah.domain.Recipe;
+import dongduk.dalc05.aah.service.ExerciseService;
 import dongduk.dalc05.aah.service.MyBoxService;
 import dongduk.dalc05.aah.service.RecipeService;
 
@@ -28,6 +30,9 @@ public class MyBoxController {
 	
 	@Autowired
 	private RecipeService recipeService;
+	
+	@Autowired
+	private ExerciseService exerciseService;
 	
 	// 보관함 페이지로 이동
 	@RequestMapping(value = "/member/mybox")
@@ -41,23 +46,28 @@ public class MyBoxController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("member/myBox");
 		
-		List<MyBox> list = new ArrayList<>();
-		list = myBoxService.getAllList(member_code);
+		List<MyBox> rList = new ArrayList<>();
+		rList = myBoxService.getAllList(member_code);
 		
-		for(int i=0; i<list.size(); i++) {
-//			if(list.get(i).getRecipe_code() == -1) {
-//				list.get(i).setImage(null); // 후에 홈트코드로 홈트영상이미지 불러온다
-//				list.get(i).setSick_name(null); // 후에 홈트에 저장된 sick_code로 sick_name 불러온다
-//			}
-			
-			Recipe re = recipeService.getRecipeFromCode(list.get(i).getRecipe_code());
-			list.get(i).setTitle(re.getRecipe_title());
-			list.get(i).setMemo(re.getRecipe_memo());
-			list.get(i).setImg(re.getRecipe_img());
-			
+		List<MyBox> eList = new ArrayList<>();
+		eList = myBoxService.getAllList(member_code);
+		
+		for(int i=0; i< rList.size(); i++) {
+			Recipe re = recipeService.getRecipeFromCode(rList.get(i).getRecipe_code());
+			rList.get(i).setTitle(re.getRecipe_title());
+			rList.get(i).setMemo(re.getRecipe_memo());
+			rList.get(i).setImg(re.getRecipe_img());
 		}
 		
-		mav.addObject("myBoxList", list);
+		for(int i = 0; i < eList.size(); i++) {
+			Exercise ex = exerciseService.getExerciseByCode(rList.get(i).getExercise_code());
+			eList.get(i).setTitle(ex.getExercise_title());
+			eList.get(i).setMemo(ex.getExercise_channel() + "\n" + ex.getExercise_length());
+			eList.get(i).setImg(ex.getExercise_thumb());
+		}
+		
+		mav.addObject("myBoxList", rList);
+		mav.addObject("myBoxList2", eList);
 		
 		return mav;
 	}

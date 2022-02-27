@@ -55,7 +55,6 @@
        .card{
          width: 223px;
        }
-
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -65,7 +64,6 @@
         
       height: 152px;
       }
-
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -78,7 +76,6 @@
         position: relative;
         left: 150px;
       }
-
       /* Required Styling */
       
       label input[type="checkbox"] {
@@ -119,8 +116,6 @@
 
   </head>
   <body>
-    
-
 
 <div class="album py-5 bg-light">
 <div class="container">
@@ -140,12 +135,43 @@
                 <div class="btn-group">
                    <button type="button" class="btn btn-sm btn-outline-secondary" 
                   onclick="location.href='<c:url value='/recipe/recipe_detail'> <c:param name="recipe_code" value="${list.recipe_code}"></c:param> 
-                </c:url>'">more</button>
+                </c:url>'">자세히</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary" 
                   onclick="location.href='<c:url value='/member/mybox/delete'> <c:param name="myBox_code" value="${list.myBox_code}"></c:param> 
-                </c:url>'">delete</button>
+                </c:url>'">삭제</button>
                                   <button type="button" class="btn btn-sm btn-outline-secondary" 
-                  onclick="location.href='<c:url value='/member/diary/upload'><c:param name="recipe_title" value='${list.title}'></c:param></c:url>'">diary</button>
+                  onclick="location.href='<c:url value='/member/diary/upload'><c:param name="recipe_title" value='${list.title}'></c:param></c:url>'">다이어리</button>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        </c:forEach>
+        </div>
+        
+        <!-- 홈트 보관함 -->
+        <br><br>
+        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3">
+        <c:forEach var="list" items="${myBoxList2}">
+        <div class="col">
+          <div class="card shadow-sm">
+         <label for="id-of-input" class="custom-checkbox">
+            <input onClick="return false;" type="checkbox" id="id-of-input" checked/>
+            <i class="bi bi-heart-fill" ></i>
+         </label>
+            <img src="<c:url value=' ${list.img}'/>" >
+            <div class="card-body">
+              <p class="card-text"> 홈트명 : ${list.title} </p>
+              <p class="card-text"> ${list.memo} </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                   <button type="button" class="btn btn-sm btn-outline-secondary">보러가기</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" 
+                  onclick="location.href='<c:url value='/member/mybox/delete'> <c:param name="myBox_code" value="${list.myBox_code}"></c:param> 
+                </c:url>'">삭제</button>
+                                  <button type="button" class="btn btn-sm btn-outline-secondary" 
+                  onclick="location.href='<c:url value='/member/diary/upload'><c:param name="recipe_title" value='${list.title}'></c:param></c:url>'">다이어리</button>
                 </div>
                 
               </div>
@@ -156,6 +182,7 @@
 </div>
 </div>
 </div>
+
 </body>
 </html>
 <%@ include file="../main/bottom_footers.jsp"%> 

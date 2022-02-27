@@ -144,13 +144,10 @@ font-weight: bold;
 	<div class="row">
 		<div class="col-lg-2 col-md-1 col-1"></div>
 		<div align="left" class="col-lg-8 col-md-10 col-10">
-			<div class="fs-4" id="main_title">
-				${clickRecipe.recipe_title} &nbsp;&nbsp;
+			<div class="fs-4" id="main_title">${clickRecipe.recipe_title} &nbsp;&nbsp;
 				<button class="single_btn" onclick="location.href='<c:url value='/mybox/recipe/add'>
 					<c:param name='recipe_code' value='${clickRecipe.recipe_code}'></c:param></c:url>'">찜하기
 				</button>
-			</div> <br>
-			<div class="fs-4" id="main_title">${clickRecipe.recipe_title}
 				<c:if test='${alle == 1}'>
 					<div><font style="color:red; font-weight:normal;">※ 알레르기를 유발하는 재료가 있습니다 ${danger}</font></div>	
 				</c:if>
@@ -185,8 +182,16 @@ font-weight: bold;
 						</c:if>
 					</c:forEach>
 				</td></tr>
-				<tr><td class="news-info">시간</td></tr>
-				<tr><td class="news-info"><button type="button" class="single_btn">${clickRecipe.recipe_time}</button></td></tr>
+				<tr>
+					<td class="news-info">시간 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 양 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 난이도</td>
+				</tr>
+				<tr>
+					<td class="news-info">
+						<button type="button" class="single_btn">${clickRecipe.recipe_time}</button>
+						<button type="button" class="single_btn">${clickRecipe.recipe_person}</button>
+						<button type="button" class="single_btn"> ${clickRecipe.recipe_level}</button>
+					</td>
+				</tr>
 			</table>
 			<br>
 			<hr>

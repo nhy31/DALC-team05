@@ -24,4 +24,11 @@
 		FROM exercise
 		WHERE exercise_title LIKE CONCAT('%',#{keyword},'%')
 	</select> 
+	
+	<!-- 기본키로 홈트데이터 가져오기 -->
+	<select id="getExerciseByCode" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Exercise">
+		SELECT *
+		FROM exercise
+		WHERE exercise_code = #{exercise_code}
+	</select>
 </mapper>

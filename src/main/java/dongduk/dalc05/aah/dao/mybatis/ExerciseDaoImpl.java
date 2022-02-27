@@ -32,6 +32,12 @@ public class ExerciseDaoImpl implements ExerciseDao{
 	public List<Exercise> getExerciseByKeyword(String keyword) {
 		return exerciseMapper.getExerciseByKeyword(keyword);
 	}
+
+	//기본키로 검색
+	@Override
+	public Exercise getExerciseByCode(int exercise_code) {
+		return exerciseMapper.getExerciseByCode(exercise_code);
+	}
 	
 
 }

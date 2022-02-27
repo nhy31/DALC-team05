@@ -17,4 +17,7 @@ public interface ExerciseMapper {
 	
 	//키워드로 데이터 불러오기
 	List<Exercise> getExerciseByKeyword(String keyword);
+	
+	//기본키로 데이터 불러오기
+	Exercise getExerciseByCode(int exercise_code);
 }

@@ -95,7 +95,8 @@
 	<script type="text/javascript" src="./jquery-3.3.1.min.js"></script>
 </head>
 
-<body style="width: 70%; margin: 0 auto 50px auto;" >
+<body>
+<div style="width: 70%; margin: 0 auto 50px auto;">
 	<div class="main_title1"> 일기 쓰기 </div>
 	<hr>
 	<div class="post_border">
@@ -129,7 +130,7 @@
 			</table>
 		</form>
 	</div>
-
+</div>
 </body>
 
 <script type="text/javascript">

@@ -17,4 +17,7 @@ public interface ExerciseDao {
 	
 	//키워드로 정보 가져오기
 	List<Exercise> getExerciseByKeyword(String keyword);
+	
+	//기본키로 홈트 가져오기
+	Exercise getExerciseByCode(int exercise_code);
 }

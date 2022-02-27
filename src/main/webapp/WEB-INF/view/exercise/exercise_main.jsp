@@ -103,9 +103,9 @@ color: #4E4E4E;
 }
 
 .single_btn{
-background-color: #851BD8;
-border: none;
-color: #ffffff;
+background-color: #ffffff;
+border: 1.5px solid #DDDDDD;
+color: #4E4E4E;
 font-size: 12px;
 font-weight: bold;
 text-align: center;
@@ -197,7 +197,7 @@ font-weight: bold;
 							<c:param name='exercise_code' value='${list.exercise_code}'></c:param></c:url>'">보관</button>
 						</td>-->
 						<td class="news-info" align="right"> 
-							${list.exercise_length}분
+							${list.exercise_length}분 &nbsp;
 							<button class="single_btn" onclick="location.href='<c:url value='/mybox/exercise/add'>
 							<c:param name='exercise_code' value='${list.exercise_code}'></c:param></c:url>'">보관</button>
 						</td>
