@@ -55,7 +55,7 @@
 - framework : Spring <br>
 - 개발언어 : Java, HTML/CSS/JavaScript, Python <br>
 - DBMS  : MySql <br>
-<img src="https://user-images.githubusercontent.com/59862742/156128171-ef5c4c47-0fe0-4319-af23-7d829b0e67c2.png" width="200" height="1600"/>
+<img src="https://user-images.githubusercontent.com/59862742/156128171-ef5c4c47-0fe0-4319-af23-7d829b0e67c2.png" width="1600" height="400"/>
 
 
 
