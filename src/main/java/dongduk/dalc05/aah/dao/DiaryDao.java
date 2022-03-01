@@ -1,9 +1,7 @@
 package dongduk.dalc05.aah.dao;
 
 import java.util.List;
-
 import org.springframework.stereotype.Repository;
-
 import dongduk.dalc05.aah.domain.Diary;
 
 @Repository
@@ -17,6 +15,5 @@ public interface DiaryDao {
 	
 	// 일기 삭제
 	void deleteDiary(int diary_code);
-	
 
 }

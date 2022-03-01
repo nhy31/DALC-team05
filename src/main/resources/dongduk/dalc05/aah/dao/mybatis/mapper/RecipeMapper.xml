@@ -16,8 +16,8 @@
 		Select *
 		FROM recipe	
 	</select>
-	
-	
+
+	<!-- 재료 가져오기 -->
 	<select id="getIngredients" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Ingredient">
 		Select *
 		FROM ingredient

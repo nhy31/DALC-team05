@@ -23,7 +23,3 @@
 		WHERE myBox_code = #{myBox_code} and member_code = #{member_code}
 	</delete>
 </mapper>
-
-<!-- 	 IN ( Select myBox_code -->
-<!-- 		                       From MyBox -->
-<!-- 		                       Where member_code = #{member_code}; -->

@@ -37,7 +37,7 @@ public interface RecipeDao {
 	// 레시피 과정
 	List<rOrder> getOrders(int recipe_code);
 	
-	//
+	// 검색
 	List<Recipe> getRecipeByKeyword(String keyword);
 	
 }

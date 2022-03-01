@@ -3,20 +3,21 @@
 
 <mapper namespace="dongduk.dalc05.aah.dao.mybatis.mapper.DiaryMapper">
 	
-	<!--   -->
+	<!-- 다이어리 가져오기  -->
 	<select id="getMyDiary" parameterType="Integer" resultType="dongduk.dalc05.aah.domain.Diary">
 	  Select *
       FROM diary
       WHERE member_code = #{member_code} 
 	</select>
 	
-	<!-- -->
+	<!-- 다이어리 삽입 -->
     <insert id="insertDiary" parameterType="dongduk.dalc05.aah.domain.Diary">
         INSERT INTO diary(member_code, diary_date, diary_title, diary_content, diary_img)
         values 
     (#{member_code}, #{diary_date}, #{diary_title}, #{diary_content}, #{diary_img})
     </insert>
 	
+	<!-- 다이어리 삭제 -->
 	<delete id="" parameterType="Integer">
 	delete from diary where diary_code = #{diary_code}
 	</delete>

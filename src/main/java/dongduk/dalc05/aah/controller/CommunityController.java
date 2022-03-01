@@ -50,8 +50,8 @@ public class CommunityController {
 	 
 	  HttpSession session = request.getSession();
 	  Member m = (Member) session.getAttribute("loginMember");
-	  
 	  ModelAndView mav = new ModelAndView();
+	  mav.setViewName("community/community_main");
 	  
 	  // 로그인 X -> 이용불가
 	  if(m == null) {
@@ -61,11 +61,9 @@ public class CommunityController {
 	        model.addAttribute("url","/member/login");
 	        return mav;
 	  }
-	  
-	  mav.setViewName("community/community_main");
-	      
+  
       List<Post> bests = new ArrayList<>();
-      bests = commuService.getBestPosts(); // sql 쿼리로 조회순 나열해서 10개 뽑아서 정렬
+      bests = commuService.getBestPosts(); // 조회순 나열해서 10개 뽑아서 정렬
       mav.addObject("BestPosts", bests);
       
       int member_code = m.getMember_code();
@@ -86,7 +84,7 @@ public class CommunityController {
       return mav;
    }
    
-   // 리스트에서 클릭하면 커뮤니티에 대한 글을 모두 볼 수 있음
+   // 리스트에서 클릭하면 커뮤니티에 대한 글을 모두 보기
    @RequestMapping(value = "/community/posts")
    public ModelAndView commuPosts(
 		   HttpServletRequest request,
@@ -111,11 +109,9 @@ public class CommunityController {
 		   }
 	   }
 	 
-
 	   System.out.println("글쓰기버튼 존재유무 확인 " + writeOk);
 	   
 	   List<Post> list = new ArrayList<>();
-	   
 	   // 전체 게시판 선택 
 	   if(commu_code == 0) {
 		   list = commuService.getAllPosts();
@@ -135,29 +131,22 @@ public class CommunityController {
 	  
 	  Community c = commuService.getCommuInfo(commu_code);
 	  c.setSick_name(sickService.getSickName(c.getSick_code()));
-	  
 	  mav.addObject("c", c);
-	  
+	
 	  List<Post> bests = new ArrayList<>();
       bests = commuService.getBestPosts(); // sql 쿼리로 조회순 나열해서 10개 뽑아서 정렬
       mav.addObject("BestPosts", bests);
-	  
       return mav;
    }
    
-  
    // 커뮤니티 생성페이지로 이동
    @RequestMapping(value = "/community/create")
    public ModelAndView commuCreate() {
-	   
 	   ModelAndView mav = new ModelAndView();
 	   mav.setViewName("community/create");
-	   
 	   List<Sick> list = new ArrayList<>();
 	   list = sickService.getSickList();
-	  
 	   list.get(0).setChecked(1);
-	   
 	   mav.addObject("sicks", list);
 	   return mav;
    }
@@ -315,13 +304,9 @@ public class CommunityController {
 		commuService.insertPost(p);
 		System.out.println("게시글업로드 SUECESS");
 		
-		
-		
 		redirect.addAttribute("commu_code", commu_code); 
 		mav.setViewName("redirect:/community/posts");
-		
 		return mav;
-		
 	}
 		
 	// 게시글 삭제

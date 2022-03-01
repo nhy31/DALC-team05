@@ -21,7 +21,7 @@ public interface CommunityDao {
 	void insertCmember(cMember cm); // 커뮤 가입
 	void cancelCmember(cMember cm); // 커뮤가입 해지
 	Community getCommuInfo(int commu_code); // 커뮤정보 가져오기
-	int getCommuCode(String commu_name); // 방금 생성된 커뮤코드 가져오기위한 메소드
+	int getCommuCode(String commu_name); // 방금 생성된 커뮤코드 가져오기
 	
 	/* 게시글 post 관련*/
 	List<Post> getAllPosts(); // 전체 게시글 
@@ -30,7 +30,7 @@ public interface CommunityDao {
 	void insertPost(Post p); // 게시글 업로드
 	void deletePost(int post_code); // 게시글 삭제
 	Post postDetail(int post_code); // 게시글 자세히 보기
-	void hitsCount(int post_code); // 게시글 조회 (조회수증가)
+	void hitsCount(int post_code); // 게시글 조회 (조회수 증가)
 	int countComment(int post_code); // 게시글의 댓글수 카운트
 	
 	/* 댓글 comment 관련 */
@@ -38,6 +38,6 @@ public interface CommunityDao {
 	void deleteComment(int comment_code); // 댓글 삭제
 	List<Comment> getComments(int post_code); // 댓글 모두 가져오기
 	
-	/* 검색 키워드로 가져오기 - 나연 */
+	/* 검색 키워드로 가져오기 */
 	List<Community> getCommunityByKeyword(String keyword);
 }

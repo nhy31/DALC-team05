@@ -24,7 +24,6 @@ import dongduk.dalc05.aah.domain.Sick;
 import dongduk.dalc05.aah.service.MemberService;
 import dongduk.dalc05.aah.service.SickService;
 
-// 할일 : 추후에 substring 등 가공한거 text() 함수로 바꾸기
 @Controller
 public class MediaController {
 	
