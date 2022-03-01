@@ -1,6 +1,7 @@
 <br>
 <h1>:mask:아프다 아파, 현대사회:sweat_drops:</h1>
 :mag_right:사용자 질병별 요리 레시피 추천 웹서비스 <br>
+:clapper:시연영상 바로가기 → https://youtu.be/P1DEj-VMbR4
 
 <br>
 <h2>:memo:팀소개</h2>
