@@ -14,7 +14,7 @@
 - 팀원: 김효선(시각화), 박소현(AI), 손예서(디자인), 안태연(AI), 유나연(Front_end), 이가은(기획) <br>
 
 <br>
-<h2>:bulb: 주요 기능 5가지</h2> <br>
+<h2>:bulb: 주요 기능 5가지</h2> 
 1. 질병에 따른 레시피 및 홈트레이닝 영상 추천 <br>
 2. 레시피와 홈트레이닝 찜하기 기능을 통한 보관함 제공 <br>
 3. 질병별 실시간 건강 뉴스 제공 <br>
@@ -47,7 +47,7 @@
 <h2>:calendar: 기간</h2>
 - 기획 2021/09 ~ 2021/12 <br>
 - 개발 2022/01 ~ 2022/02 <br>
-
+-
 <br>
 <h2>:paperclip: 개발환경 & 적용기술 </h2>
 - 개발도구 : eclipse <br>
@@ -55,7 +55,7 @@
 - framework : Spring <br>
 - 개발언어 : Java, HTML/CSS/JavaScript, Python <br>
 - DBMS  : MySql <br><br>
-<img src="https://user-images.githubusercontent.com/59862742/156128171-ef5c4c47-0fe0-4319-af23-7d829b0e67c2.png" width="800" height="400"/>
+<img src="https://user-images.githubusercontent.com/59862742/156128171-ef5c4c47-0fe0-4319-af23-7d829b0e67c2.png" width="700" height="400"/>
 
 
 
