@@ -71,22 +71,25 @@
 - 손예서 : 디자인 담장자 + 기획 업무 <br>
 - 안태연 : AI 담당자 + 프론트 업무<br>
 - 유나연 : 프론트 담당자 + 홈트레이닝 백엔드<br>
-- 이가은 : 기획 담당자 + 프론트  <br>
+- 이가은 : 기획 담당자 + 프론트 업무 <br>
 
 <br>
 <h2>:calendar: 기간</h2>
 - 기획 2021/09 ~ 2021/12 <br>
 - 개발 2022/01 ~ 2022/02 <br>
 
-
 <br>
 <h2>:paperclip: 개발환경 & 적용기술 </h2>
 - 개발도구 : Eclipse <br>
 - OS : Windows <br>
-- framework : Spring <br>
 - 개발언어 : Java, HTML/CSS/JavaScript, Python <br>
-- DBMS  : MySql <br><br>
-<img src="https://user-images.githubusercontent.com/59862742/156128171-ef5c4c47-0fe0-4319-af23-7d829b0e67c2.png" width="620" height="400"/>
+- DBMS :  MySql <br>
+- AI : TensorFlow, Keras <br>
+- Back-end : Spring, MyBatis <br>
+- Front-end : bootstrap <br>
+- 디자인 : Figma <br>
+- 시각화 : Tableau <br>
+- etc : notion, google drive, github <br>
 
 <br>
 
