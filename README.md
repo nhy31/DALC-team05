@@ -23,7 +23,7 @@
 
 <br>
 <h2>:two_women_holding_hands: 담당파트</h2>
-- 저희 팀은 다양한 경험을 쌓기 위해 지원한 담당파트 외에도 서브파트를 선택하여 협업하였습니다. :simple_smile: <br>
+- 저희 팀은 다양한 경험을 쌓기 위해 지원한 담당파트 외에도 서브파트를 선택하여 협업하였습니다:simple_smile: <br>
 - 기획 : 이가은 <br>
 - 기획 sub : 김효선, 손예서 <br>
 - 디자인 : 손예서 <br>
@@ -54,9 +54,9 @@
 - OS : Windows <br>
 - framework : Spring <br>
 - 개발언어 : Java, HTML/CSS/JavaScript, Python <br>
-= DBMS  : MySql <br>
-![image](https://user-images.githubusercontent.com/59862742/156128171-ef5c4c47-0fe0-4319-af23-7d829b0e67c2.png) <br>
-
+- DBMS  : MySql <br>
+![image]() <br>
+<img srd="https://user-images.githubusercontent.com/59862742/156128171-ef5c4c47-0fe0-4319-af23-7d829b0e67c2.png">
 
 
 
