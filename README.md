@@ -15,7 +15,6 @@
 
 <br>
 <h2>:bulb: 기능 </h2> 
-<ul>
 1. 회원가입 및 로그인 
   <ul>
    <li> naver 가입, 로그인 지원</li>
@@ -57,15 +56,12 @@
 <br>
 <h2>:two_women_holding_hands: 담당파트</h2>
 - 저희 팀은 다양한 경험을 쌓기 위해 담당파트 외에도 서브파트를 선택하여 협업하였습니다. <br>
-- 기획 : 이가은 <br>
-- 기획 sub : 김효선, 손예서 <br>
+- 기획 : 이가은 (sub : 김효선, 손예서)<br>
 - 디자인 : 손예서 <br>
 - 시각화 : 김효선  <br>
 - AI : 박소현, 안태연 <br>
-- BackEnd : 나하윤 <br>
-- BackEnd sub : 유나연 <br>
-- FrontEnd : 유나연 <br> 
-- FrontEnd sub : 안태연, 나하윤, 박소현, 이가은 <br>
+- BackEnd : 나하윤 (sub : 유나연) <br>
+- FrontEnd : 유나연 (sub : 안태연, 나하윤, 박소현, 이가은) <br> 
 
 <br>
 <h2>:clipboard: 세부업무</h2>
@@ -80,7 +76,8 @@
 <h2>:calendar: 기간</h2>
 - 기획 2021/09 ~ 2021/12 <br>
 - 개발 2022/01 ~ 2022/02 <br>
--
+
+
 <br>
 <h2>:paperclip: 개발환경 & 적용기술 </h2>
 - 개발도구 : eclipse <br>
