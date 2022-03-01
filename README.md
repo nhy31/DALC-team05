@@ -2,7 +2,7 @@
 <h1>:mask: 아프다 아파, 현대사회:sweat_drops:</h1>
 - :trophy: DALC 최종발표회 '우수 프로젝트' 선정 <br>
 - :question: 사용자 질병별 요리 레시피 및 홈트레이닝 추천 웹서비스 <br>
-- :memo:: notion 바로가기 → https://www.notion.so/DALC-5-ffcb649afa7c470d98d4f57c715d5ad4 <br>
+- :memo: notion 바로가기 → https://www.notion.so/DALC-5-ffcb649afa7c470d98d4f57c715d5ad4 <br>
 - :clapper: 시연영상 바로가기 → https://youtu.be/P1DEj-VMbR4 <br>
 - :mag_right: 프로젝트 최종발표회 PPT 바로가기 → https://github.com/nhy31/DALC-team05/blob/master/aah-ppt.pdf <br>
 
