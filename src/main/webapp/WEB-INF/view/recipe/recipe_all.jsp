@@ -32,7 +32,7 @@
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.88.1">
 
-<title>나의 보관함</title>
+<title>레시피 모두보기</title>
 
 <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/album/">
  
@@ -120,11 +120,12 @@
   </head>
   <body>
     
-
-
+<br>
+<div align="center"><h5>레시피 모두보기</h5></div><br>
 <div class="album py-5 bg-light">
 <div class="container">
 <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3">
+
       <c:forEach var="list" items="${list}">
         <div class="col">
           <div class="card shadow-sm">
