@@ -63,15 +63,13 @@
 2. 질병에 따른 레시피 및 홈트레이닝 영상 추천 <br> 
   <ul>
    <li> 모든 레시피 보기 가능 <img src="https://user-images.githubusercontent.com/59862742/156925025-071bf92a-fcd3-4cf7-8931-2c2d0802da73.png"></li>
-   <li> 조회수에 따른 인기 레시피 top16 & 질병별 레시피 제공 (질병선택 가능) <img src="https://user-images.githubusercontent.com/59862742/156925035-1e3d16d9-2bd6-40f6-91af-d8790723d26e.png"></li>
-   <li> 레시피 상세보기 : 알레르기, 난이도/소요시간, 재료, 과정, 연관 레시피 등의 정보 제공 <img src="https://user-images.githubusercontent.com/59862742/156925034-d6ee7936-0d40-4c1a-8f3b-6cb729e2f315.png"> </li>
-   <li> 찜하기 버튼 제공 </li>
+   <li> 조회수에 따른 인기 레시피 top16 & 질병별 레시피 제공 (질병선택 가능) <img src="https://user-images.githubusercontent.com/59862742/156925035-1e3d16d9-2bd6-40f6-91af-d8790723d26e.png"> </li>
+   <li> 레시피 상세보기 : 알레르기, 난이도/소요시간, 재료, 과정, 연관 레시피 등의 정보 제공, 찜하기 버튼 제공 <img src="https://user-images.githubusercontent.com/59862742/156925034-d6ee7936-0d40-4c1a-8f3b-6cb729e2f315.png"> </li>
    <li> 홈트레이닝 영상 (클릭 시, youtube) <img src="https://user-images.githubusercontent.com/59862742/156925040-1180cc57-050b-4580-9559-e1d5c27a1f5f.png"></li>
   </ul>
 3. 레시피와 홈트레이닝 찜하기 기능을 통한 보관함 제공 <br>
   <ul>
-   <li>상세보기 버튼</li>
-   <li>삭제 버튼</li>
+   <li> 상세보기 버튼, 삭제 버튼, 일기버튼 </li>
    <li>일기 버튼 클릭 시, 제목에 레시피 이름을 띄울 수 있음. 일반 일기 작성도 가능 </li>  
   </ul>
 4. 기록을 위한 다이어리 기능 제공 <br> 
@@ -87,8 +85,8 @@
   </ul>
 6. 커뮤니티 기능 제공 <br>
   <ul>
-   <li>인기 게시글 조회수 top10 <img src="https://user-images.githubusercontent.com/59862742/156925037-0661af60-9eeb-4f30-824a-4940363c78fc.png"></li>
-   <li>나의 커뮤니티, 전체 커뮤니티 리스트 제공 (가입과 삭제)</li>
+   <li>인기 게시글 조회수 top10, 나의 커뮤니티, 전체 커뮤니티 리스트 제공 (가입과 삭제) <img src="https://user-images.githubusercontent.com/59862742/156925037-0661af60-9eeb-4f30-824a-4940363c78fc.png"></li>
+   <li></li>
    <li>커뮤별 게시글 <img src="https://user-images.githubusercontent.com/59862742/156925038-01d2fbba-735c-4f43-840b-52a04ed28ae0.png"></li>
    <li>커뮤니티 생성 <img src="https://user-images.githubusercontent.com/59862742/156925039-ca5f6208-8b77-4875-872d-ac61faf01db1.png"></li>
    <li>게시글 작성 및 삭제</li>
