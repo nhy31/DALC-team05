@@ -51,7 +51,7 @@
 - 시각화 : Tableau <br>
 - etc : notion, google drive, github <br>
 
-
+<br>
 <h2>:bulb: 기능 및 화면 소개 </h2> 
 1. 회원가입 및 로그인 
   <ul>
