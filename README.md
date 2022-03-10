@@ -62,7 +62,7 @@
   </ul>
 2. 질병에 따른 레시피 및 홈트레이닝 영상 추천 <br> 
   <ul>
-   <li> 모든 레시피 보기 가능 <img src="https://user-images.githubusercontent.com/59862742/156925025-071bf92a-fcd3-4cf7-8931-2c2d0802da73.png"></li>
+   <li> 모든 레시피 보기 가능 <img src="https://user-images.githubusercontent.com/59862742/156925025-071bf92a-fcd3-4cf7-8931-2c2d0802da73.png"></li><br>
    <li> 조회수에 따른 인기 레시피 top16 & 질병별 레시피 제공 (질병선택 가능) <img src="https://user-images.githubusercontent.com/59862742/156925035-1e3d16d9-2bd6-40f6-91af-d8790723d26e.png"> </li>
    <li> 레시피 상세보기 : 알레르기, 난이도/소요시간, 재료, 과정, 연관 레시피 등의 정보 제공, 찜하기 버튼 제공 <img src="https://user-images.githubusercontent.com/59862742/156925034-d6ee7936-0d40-4c1a-8f3b-6cb729e2f315.png"> </li>
    <li> 홈트레이닝 영상 (클릭 시, youtube) <img src="https://user-images.githubusercontent.com/59862742/156925040-1180cc57-050b-4580-9559-e1d5c27a1f5f.png"></li>
@@ -81,12 +81,11 @@
 5. 질병별 실시간 건강 뉴스 제공 <br>
   <ul>
    <li>네이버 뉴스 크롤링 <img src="https://user-images.githubusercontent.com/59862742/156925036-3993b83f-94de-4020-bf68-b7faf47c887c.png"></li>
-   <li>클릭 시, 실제 기사 링크</li>
+   <li>클릭 시, 실제 기사 링크로 이동</li>
   </ul>
 6. 커뮤니티 기능 제공 <br>
   <ul>
    <li>인기 게시글 조회수 top10, 나의 커뮤니티, 전체 커뮤니티 리스트 제공 (가입과 삭제) <img src="https://user-images.githubusercontent.com/59862742/156925037-0661af60-9eeb-4f30-824a-4940363c78fc.png"></li>
-   <li></li>
    <li>커뮤별 게시글 <img src="https://user-images.githubusercontent.com/59862742/156925038-01d2fbba-735c-4f43-840b-52a04ed28ae0.png"></li>
    <li>커뮤니티 생성 <img src="https://user-images.githubusercontent.com/59862742/156925039-ca5f6208-8b77-4875-872d-ac61faf01db1.png"></li>
    <li>게시글 작성 및 삭제</li>
