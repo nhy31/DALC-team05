@@ -5,7 +5,6 @@
 - :trophy: DALC 최종발표회 '우수 프로젝트' 선정 <br>
 - :question: 사용자 질병별 요리 레시피 및 홈트레이닝 추천 웹서비스 <br>
 - :clapper: 시연영상 바로가기 → https://youtu.be/P1DEj-VMbR4 <br>
-- :mag_right: 프로젝트 최종발표회 PPT 바로가기 → https://github.com/nhy31/DALC-team05/blob/master/aah-ppt.pdf <br>
 - :calendar: 21/09 ~ 21/12 기획, 22/01 ~ 22/02 개발 <br> 
 
 <br>
