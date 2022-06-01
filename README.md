@@ -10,7 +10,7 @@
 
 <br>
 <h2>:two_women_holding_hands: 팀 소개</h2>
-- 교내동아리 DALC AI Web Service Project team05 <br>
+- 교내동아리 DALC( AI Web Service) team05 <br>
 - 팀장: 나하윤 <br>
 - 기획 : 이가은 (sub : 김효선, 손예서)<br>
 - 디자인 : 손예서 <br>
