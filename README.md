@@ -42,7 +42,7 @@
 - etc : notion, google drive, github <br>
 
 <br>
-<h2>:bulb: 기능 소개 </h2> 
+<h2>:star: 기능 소개 </h2> 
 1. 회원가입 및 로그인 
   <ul>
    <li> naver 가입, 로그인 지원</li>
